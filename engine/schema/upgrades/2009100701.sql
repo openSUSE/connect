@@ -1,0 +1,2 @@
+-- Previously was the UTF8 migration that is now in code at 2010033101.
+-- Keeping this file to force an overwrite and to avoid confusion with missing migrations.
