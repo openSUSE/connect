@@ -24,7 +24,7 @@ if (!defined('Auth_OpenID_RAND_SOURCE')) {
 	// good version
     //define('Auth_OpenID_RAND_SOURCE', '/dev/urandom');
     // use this one for broken systems (eg. Windows)
-    //define('Auth_OpenID_RAND_SOURCE', null);
+    define('Auth_OpenID_RAND_SOURCE', null);
 }
 
 class Auth_OpenID_CryptUtil {
