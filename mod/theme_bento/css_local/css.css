@@ -3,3 +3,6 @@
 Overwriting elgg specific styles here
 *************************************** */
 
+#header ul#global-navigation {
+    width: 550px;
+}

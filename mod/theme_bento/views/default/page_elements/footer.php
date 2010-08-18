@@ -23,27 +23,28 @@
     <div id="footer" class="container_12">
 
         <div class="box_content grid_3">
-          <strong class="grey-medium spacer1">User: username</strong>
+              <a href="<?php echo $_SESSION['user']->getURL(); ?>"><img class="user_mini_avatar" src="<?php echo $_SESSION['user']->getIcon('topbar'); ?>" alt="User avatar" /></a>
+              <strong class="grey-medium spacer1"><a href="<?php echo $_SESSION['user']->getURL(); ?>"><?php echo $_SESSION['username']; ?></a></strong>
           <ul class="navlist">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+            <li><a href="<?php echo $vars['url']; ?>pg/settings/" class="usersettings"><?php echo elgg_echo('settings'); ?></a></li>
+            <?php if ($vars['user']->isAdmin()) { ?>
+            <li> <a href="<?php echo $vars['url']; ?>pg/admin/" class="usersettings"><?php echo elgg_echo("admin"); ?></a></li>
+            <?php } ?>
           </ul>
         </div>
+
 
       <div class="box_content grid_3">
         <strong class="grey-medium spacer1">Locations</strong>
         <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
+          <li><a href="<?php echo $vars['url']; ?>pg/dashboard/"><?php echo elgg_echo('dashboard'); ?></a></li>
         </ul>
       </div>
 
       <div class="box_content grid_3">
         <strong class="grey-medium spacer1">Help</strong>
         <ul>
-          <li>1</li>
+          <li><a href="http://en.opensuse.org/openSUSE:Connect">Connect Wiki page</a></li>
         </ul>
       </div>
 

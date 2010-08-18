@@ -31,27 +31,7 @@
                 <li id="item-development"><a href="http://wiki.opensuse.org//openSUSE:Browse#Development">Development</a></li>
             </ul>
 
-            <?php if (isloggedin()) { ?>
-
-            <a href="<?php echo $_SESSION['user']->getURL(); ?>"><img class="user_mini_avatar" src="<?php echo $_SESSION['user']->getIcon('topbar'); ?>" alt="User avatar" /></a>
-
-            <a href="<?php echo $vars['url']; ?>pg/dashboard/"><?php echo elgg_echo('dashboard'); ?></a>
-
-                <?php echo elgg_view("navigation/topbar_tools"); ?>
-
-            <?php echo elgg_view('elgg_topbar/extend', $vars); ?>
-
-                <a href="<?php echo $vars['url']; ?>pg/settings/" class="usersettings"><?php echo elgg_echo('settings'); ?></a>
-
-                    <?php if ($vars['user']->isAdmin()) { ?>
-
-                        <a href="<?php echo $vars['url']; ?>pg/admin/" class="usersettings"><?php echo elgg_echo("admin"); ?></a>
-
-                    <?php } ?>
-
-                <?php echo elgg_view('page_elements/searchbox'); ?>
-
-                <?php } ?>
+            <?php echo elgg_view('page_elements/searchbox'); ?>
 
         </div>
 
