@@ -1,0 +1,3 @@
+[submodule "mod/theme_bento/bento"]
+	path = mod/theme_bento/bento
+	url = git://gitorious.org/opensuse/themes.git
