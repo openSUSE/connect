@@ -6,3 +6,17 @@ Overwriting elgg specific styles here
 #header ul#global-navigation {
     width: 550px;
 }
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, table, pre, blockquote, .box small {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+h3 {
+    font-size: 1em;
+}
+
+ul.topbardropdownmenu a {
+    color: #669900;
+    padding: reset;
+}

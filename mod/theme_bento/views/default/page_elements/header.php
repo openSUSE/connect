@@ -59,7 +59,7 @@ $release = get_version(true);
 	<meta name="ElggVersion" content="<?php echo $version; ?>" />
 	<title><?php echo $title; ?></title>
 
-	<script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/jquery/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="<?php echo $CONFIG->bento_path ?>/js/jquery.js"></script>
 	<script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/jquery/jquery-ui-1.7.2.custom.min.js"></script>
 	<script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/jquery/jquery.form.js"></script>
 	<script type="text/javascript" src="<?php echo $vars['url']; ?>_css/js.php?lastcache=<?php echo $vars['config']->lastcache; ?>&amp;js=initialise_elgg&amp;viewtype=<?php echo $vars['view']; ?>"></script>
@@ -76,7 +76,7 @@ $release = get_version(true);
 	<!-- include the default css file -->
 	<link rel="stylesheet" href="<?php echo $vars['url']; ?>_css/css.css?lastcache=<?php echo $vars['config']->lastcache; ?>&amp;viewtype=<?php echo $vars['view']; ?>" type="text/css" />
 
-        <link rel="stylesheet" href="https://static.opensuse.org/themes/bento/css/style.css?lastcache=<?php echo $vars['config']->lastcache; ?>" type="text/css" />
+        <link rel="stylesheet" href="<?php echo $CONFIG->bento_path ?>/css/style.css?lastcache=<?php echo $vars['config']->lastcache; ?>" type="text/css" />
         <link rel="stylesheet" href="<?php echo $vars['url']; ?>mod/theme_bento/css_local/css.css?lastcache=<?php echo $vars['config']->lastcache; ?>" type="text/css" />
 
 
