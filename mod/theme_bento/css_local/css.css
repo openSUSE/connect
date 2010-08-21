@@ -32,39 +32,42 @@ ul.dropdown ul {
 }
 
 
-/* Old Foo */
-/*ul.topbardropdownmenu a {
-    color: #669900;
-    padding: reset;
+#page_container {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-ul.topbardropdownmenu, ul.topbardropdownmenu ul {
-display:inline;
-float:left;
-float: right;
-float:none;
-list-style-type:none;
-margin:0;
-padding:0;
-position:relative;
-z-index:9000;
+#page_wrapper.grid_13 {
+  width: 760px;
+}
+#page_wrapper.grid_16 {
+  width: 940px;
+}
+#page_wrapper {
+  margin: 0 auto;
+  min-height: 300px;
+  padding: 15px 0;
 }
 
-
-ul.topbardropdownmenu li {
-display:block;
-float:left;
-float: none;
-clear: both;
-list-style:none outside none;
-margin:0;
-padding:0;
-position:relative;
+#layout_canvas {
+  /* override original style*/
+  border-radius: inherit;
+  -moz-border-radius: inherit;
+  -webkit-border-radius: inherit;
+  -khtml-border-radius: inherit;
+  
+  background: transparent;
+  border-bottom: none;
+  border-right: none;
+  margin: 0;
+  min-height: 360px;
+  padding: 0;
 }
 
-ul.topbardropdownmenu ul {
-border-top:1px solid black;
-top:24px;
-width:150px;
-width: auto;
-}*/
+#dashboard_info {
+  background: none repeat scroll 0 0 #BBDAF7;
+  border-bottom: none;
+  border-right: none;
+  margin: 0 0 0;
+  padding: 2px 5px;
+}

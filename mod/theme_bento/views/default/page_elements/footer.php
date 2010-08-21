@@ -17,7 +17,10 @@
 
 <div class="clearfloat"></div>
 
+<!-- <div class="clearfloat"></div> -->
 
+</div><!-- /#page_wrapper -->
+</div><!-- /#page_container -->
     
 <!-- Start: Footer -->
     <div id="footer" class="container_12">
@@ -61,10 +64,7 @@
 
 
 
-<div class="clearfloat"></div>
 
-</div><!-- /#page_wrapper -->
-</div><!-- /#page_container -->
 <!-- insert an analytics view to be extended -->
 <?php
 	echo elgg_view('footer/analytics');

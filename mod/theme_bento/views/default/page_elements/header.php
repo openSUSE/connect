@@ -46,7 +46,7 @@ END;
 }
 
 // we won't trust server configuration but specify utf-8
-header('Foo Content-type: text/html; charset=utf-8');
+header('Content-type: text/html; charset=utf-8');
 
 $version = get_version();
 $release = get_version(true);
