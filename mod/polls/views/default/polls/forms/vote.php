@@ -18,6 +18,7 @@
 		$question = $vars['entity']->question;
 		$tags = $vars['entity']->tags;
 		$access_id = $vars['entity']->access_id;
+		$polltype = $vars['entity']->polltype;
 	}
 	else 
 	{
@@ -25,10 +26,14 @@
 		forward($vars['url']."pg/polls/all");
 	}
 
-	//convert $responses to radio inputs for form display
+	//convert $responses to radio/checkboxes inputs for form display
 	$responses = polls_get_choice_array($vars['entity']);
 	  		
-	$response_inputs .= elgg_view('input/radio', array('internalname' => 'response','options' => $responses));
+	if ($polltype == 1) {
+		$response_inputs .= elgg_view('input/radio', array('internalname' => 'response','options' => $responses));
+	} else {
+		$response_inputs .= elgg_view('input/checkboxes', array('internalname' => 'response','options' => $responses));
+	}
    	
    	$submit_input = '<br />'.elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('Vote')));
 

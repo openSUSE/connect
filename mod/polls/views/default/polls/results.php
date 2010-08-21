@@ -79,7 +79,7 @@
 		{
 			foreach($fromArray as $item)
 			{
-				if($item->value == $valueToCount)
+				if(in_array($valueToCount, unserialize($item->value)))
 				{
 					$count += 1;
 				}

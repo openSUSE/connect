@@ -27,7 +27,7 @@
 			'item:object:poll' => 'Polls',
 			'polls:question' => "Poll question",
 			'polls:responses' => "Response choices",
-			'polls:polltype' => "How many answers do you want to allow?"
+			'polls:polltype' => "How many answers do you want to allow?",
 			'polls:results' => "[+] Show the results",
 			'polls:show_results' => "Show results",
 			'polls:show_poll' => "Show poll",
@@ -82,7 +82,7 @@
 			'polls:posted' => "Your poll was successfully posted.",
 			'polls:responded' => "Thank you for responding, your vote was recorded.",
 			'polls:deleted' => "Your poll was successfully deleted.",
-			'polls:totalvotes' => "Total number of votes: ",
+			'polls:totalvotes' => "Total number of people voting: ",
 			'polls:voted' => "Your vote has been cast for this poll. Thank you for voting on this poll.",
 			
 	

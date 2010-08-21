@@ -42,10 +42,11 @@
 			$owner = get_entity($poll->getOwner());
 				
 			//add vote as an annotation
-			$poll->annotate('vote', $response, $poll->access_id);
+			if (!is_array($response)) $response = array($response);
+			$poll->annotate('vote', serialize($response), $poll->access_id);
 				
 			// Add to river
-	        add_to_river('river/object/poll/vote','vote',get_loggedin_userid(),$poll->guid);
+			add_to_river('river/object/poll/vote','vote',get_loggedin_userid(),$poll->guid);
 			
 			//set session variable
 			$_SESSION['hasVoted'] = $poll->guid;

@@ -29,7 +29,7 @@
 	// Cache to the session
 	$_SESSION['question'] = $question;
 	$_SESSION['polltags'] = $tags;
-	$_SESSION['pollttype'] = $polltype;
+	$_SESSION['polltype'] = $polltype;
 
 	// Convert string of tags into a preformatted array
 	$tagarray = string_to_tag_array($tags);

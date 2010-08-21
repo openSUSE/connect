@@ -60,7 +60,7 @@
 	background-position: right -40px;
 }
 
-.input-radio {
+.input-checkboxes, .input-radio {
 	border:none;
 	text-align:left;
 	vertical-align:top;
