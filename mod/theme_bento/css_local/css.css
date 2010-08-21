@@ -7,6 +7,10 @@ Overwriting elgg specific styles here
     width: 550px;
 }
 
+#subheader {
+  overflow: visible;
+}
+
 h1, h2, h3, h4, h5, h6, p, ul, ol, table, pre, blockquote, .box small {
     margin-left: 0px;
     margin-right: 0px;
@@ -19,4 +23,38 @@ h3 {
 ul.topbardropdownmenu a {
     color: #669900;
     padding: reset;
+}
+
+
+
+
+ul.topbardropdownmenu, ul.topbardropdownmenu ul {
+display:inline;
+float:left;
+float: right;
+/*float:none;*/
+list-style-type:none;
+margin:0;
+padding:0;
+position:relative;
+z-index:9000;
+}
+
+
+ul.topbardropdownmenu li {
+display:block;
+float:left;
+float: none;
+clear: both;
+list-style:none outside none;
+margin:0;
+padding:0;
+position:relative;
+}
+
+ul.topbardropdownmenu ul {
+border-top:1px solid black;
+top:24px;
+width:150px;
+width: auto;
 }

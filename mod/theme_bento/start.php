@@ -14,8 +14,8 @@ function bento_init() {
     global $CONFIG;
 
     // switch between hosted and local version of bento theming files
-    //$CONFIG->bento_path = "https://static.opensuse.org/themes/bento";
-    $CONFIG->bento_path = "/themes/bento";
+    $CONFIG->bento_path = "https://static.opensuse.org/themes/bento";
+    // $CONFIG->bento_path = "/themes/bento";
 
 }
 
