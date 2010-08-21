@@ -19,7 +19,7 @@
     <div class="grid_10 omega" style="text-align: right;">
         <?php if (isloggedin()) { ?>
 
-
+        <!-- User Icon -->
         <a href="<?php echo $_SESSION['user']->getURL(); ?>"><img class="user_mini_avatar" src="<?php echo $_SESSION['user']->getIcon('topbar'); ?>" alt="User avatar" /></a>
 
         <a href="<?php echo $vars['url']; ?>pg/dashboard/"><?php echo elgg_echo('dashboard'); ?></a>
