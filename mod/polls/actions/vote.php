@@ -34,15 +34,18 @@
 				register_error(elgg_echo("polls:novote"));
 				forward($poll->getUrl());
 			}
-				
-		// Otherwise, save the poll post 
+		}
+		if (!is_array($response)) $response = array($response);
+		if (count($response) != $poll->polltype) {
+			register_error(elgg_echo("polls:wrongnumanswers"));
+			forward($poll->getUrl());
+		// Otherwise, save the poll post
 		} else {
 				
 			// Get owning user
 			$owner = get_entity($poll->getOwner());
 				
 			//add vote as an annotation
-			if (!is_array($response)) $response = array($response);
 			$poll->annotate('vote', serialize($response), $poll->access_id);
 				
 			// Add to river

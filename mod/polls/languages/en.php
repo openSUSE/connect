@@ -93,6 +93,7 @@
 			'polls:save:failure' => "Your poll could not be saved. Please try again.",
 			'polls:blank' => "Sorry: you need to fill in both the question and responses before you can make a poll.",
 			'polls:novote' => "Sorry: you need to choose an option to vote in this poll.",
+			'polls:wrongnumanswers' => "Sorry: you have provided a wrong number of answers.",
 			'polls:notfound' => "Sorry: we could not find the specified poll.",
 			'polls:nonefound' => "No polls were found from %s",
 			'polls:notdeleted' => "Sorry: we could not delete this poll."
