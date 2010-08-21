@@ -8,7 +8,7 @@ Overwriting elgg specific styles here
 }
 
 #subheader {
-  overflow: visible;
+/*  overflow: visible;*/
 }
 
 h1, h2, h3, h4, h5, h6, p, ul, ol, table, pre, blockquote, .box small {
@@ -20,19 +20,29 @@ h3 {
     font-size: 1em;
 }
 
-ul.topbardropdownmenu a {
-    color: #669900;
-    padding: reset;
+ul.dropdown,
+ul.dropdown ul {
+  list-style: none outside;
+  margin: 0;
+}
+
+.menuitemtools {}
+.submenuitemtools {
+  display: none;
 }
 
 
-
+/* Old Foo */
+/*ul.topbardropdownmenu a {
+    color: #669900;
+    padding: reset;
+}
 
 ul.topbardropdownmenu, ul.topbardropdownmenu ul {
 display:inline;
 float:left;
 float: right;
-/*float:none;*/
+float:none;
 list-style-type:none;
 margin:0;
 padding:0;
@@ -57,4 +67,4 @@ border-top:1px solid black;
 top:24px;
 width:150px;
 width: auto;
-}
+}*/
