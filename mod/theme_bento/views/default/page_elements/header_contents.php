@@ -12,11 +12,11 @@
 ?>
 
 <div id="subheader" class="container_16">
-    <div id="breadcrump" class="grid_6 alpha">
+    <div id="breadcrump" class="grid_11 alpha">
         <a href="/"><img src="<?php echo $vars['url']; ?>mod/theme_bento/graphics/home_grey.png" alt="Connect Home"/></a>
     </div>
 
-    <div class="grid_10 omega">
+    <div class="grid_5 omega">
       
       <?php if (isloggedin()) { // Loggedin users only ?>
 
