@@ -70,7 +70,7 @@
 	width: 90%;
 }
 
-.polltype-input-text {
+.maxanswers-input-text {
 	width: 5%;
 }
 

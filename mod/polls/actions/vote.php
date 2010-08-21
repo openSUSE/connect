@@ -14,8 +14,8 @@
 	// Make sure we're logged in (send us to the front page if not)
 	gatekeeper();
 
-    // make sure action is secure
-    action_gatekeeper();
+	// make sure action is secure
+	action_gatekeeper();
 
 	// Get input data
 	$response = get_input('response');
@@ -36,8 +36,8 @@
 			}
 		}
 		if (!is_array($response)) $response = array($response);
-		if (count($response) != $poll->polltype) {
-			register_error(elgg_echo("polls:wrongnumanswers"));
+		if (count($response) > $poll->maxanswers) {
+			register_error(sprintf(elgg_echo("polls:wrongnumanswers"),$poll->maxanswers));
 			forward($poll->getUrl());
 		// Otherwise, save the poll post
 		} else {
@@ -63,8 +63,6 @@
 				// Forward to the poll page
 				forward($poll->getUrl());
 			}
-								
 		}
-			
 	}
 ?>

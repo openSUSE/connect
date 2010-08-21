@@ -14,35 +14,37 @@
 if (isset($vars['entity'])) {
 	$action = "polls/edit";
 	$question = $vars['entity']->question;
-	$polltype = $vars['entity']->polltype;
+	$maxanswers = $vars['entity']->maxanswers;
 	$tags = $vars['entity']->tags;
 	$access_id = $vars['entity']->access_id;
 } else  {
 	$action = "polls/add";
 	$question = "";
-	$polltype = "";
+	$maxanswers = 1;
 	$tags = "";
 	if (defined('ACCESS_DEFAULT')){
-  		$access_id = ACCESS_DEFAULT;
-  	}else{
-  		$access_id = ACCESS_PRIVATE;
-  	}
+		$access_id = ACCESS_DEFAULT;
+	}else{
+		$access_id = ACCESS_PRIVATE;
+	}
 }
 
 // Just in case we have some cached details
 if (isset($vars['question'])) {
 	$question = $vars['question'];
 	$tags = $vars['polltags'];
-	$polltype = $vars['polltype'];
+	$maxanswers = $vars['maxanswers'];
 }
 ?>
 
 <?php
         $question_label = elgg_echo('polls:question');
         $question_textbox = elgg_view('input/text', array('internalname' => 'question', 'value' => $question));
-       
-	$polltype_label = elgg_echo('polls:polltype'); 
-        $polltype_textbox = elgg_view('input/text', array('internalname' => 'polltype', 'value' => $polltype, 'class' => 'polltype-input-text'));
+
+        $maxanswers_label = elgg_echo('polls:maxanswers'); 
+        $maxanswers_textbox = elgg_view('input/pulldown', array('internalname' => 'maxanswers',
+                'options_values' => array('1' => elgg_echo('polls:type:1'), '2' => elgg_echo('polls:type:2'), '3' => elgg_echo('polls:type:3'), '4' => elgg_echo('polls:type:4'), '5' => elgg_echo('polls:type:5') ),
+                'value' => $maxanswers, 'class' => 'maxanswers-input-text'));
 
         $responses_label = elgg_echo('polls:responses');
         //$responses_textbox = elgg_view('input/text', array('internalname' => 'responses', 'value' => $responsestring));
@@ -74,8 +76,8 @@ if (isset($vars['question'])) {
                         $question_textbox
 		</p>
 		<p>
-			<label>$polltype_label</label><br />
-			$polltype_textbox
+			<label>$maxanswers_label</label><br />
+			$maxanswers_textbox
 		<p>
 			<label>$responses_label</label><br />
                         $responses_control

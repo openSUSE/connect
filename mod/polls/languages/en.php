@@ -27,7 +27,8 @@
 			'item:object:poll' => 'Polls',
 			'polls:question' => "Poll question",
 			'polls:responses' => "Response choices",
-			'polls:polltype' => "How many answers do you want to allow?",
+			'polls:maxanswers' => "Poll type:",
+			'polls:maxansdesc' => "Choose up to %d options ...",
 			'polls:results' => "[+] Show the results",
 			'polls:show_results' => "Show results",
 			'polls:show_poll' => "Show poll",
@@ -93,12 +94,18 @@
 			'polls:save:failure' => "Your poll could not be saved. Please try again.",
 			'polls:blank' => "Sorry: you need to fill in both the question and responses before you can make a poll.",
 			'polls:novote' => "Sorry: you need to choose an option to vote in this poll.",
-			'polls:wrongnumanswers' => "Sorry: you have provided a wrong number of answers.",
+			'polls:wrongnumanswers' => "Sorry: you have to provide at most %d answers.",
 			'polls:notfound' => "Sorry: we could not find the specified poll.",
 			'polls:nonefound' => "No polls were found from %s",
-			'polls:notdeleted' => "Sorry: we could not delete this poll."
+			'polls:notdeleted' => "Sorry: we could not delete this poll.",
+
+			'polls:type:1' => "single choice",
+			'polls:type:2' => "multiple choice (max. 2 answers)",
+			'polls:type:3' => "multiple choice (max. 3 answers)",
+			'polls:type:4' => "multiple choice (max. 4 answers)",
+			'polls:type:5' => "multiple choice (max. 5 answers)"
 	);
-					
+
 	add_translation("en",$english);
 
 ?>
