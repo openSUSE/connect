@@ -43,15 +43,13 @@
 		
 		public function getTitle(){
 			// make title
-			$title = $this->metadata_label;
+			$trans_key = "profile:" . $this->metadata_name;
+			if($trans_key == ($title = elgg_echo($trans_key))) {
+				$title = $this->metadata_label;
+			}
 			
 			if(empty($title)){
-				$trans_key = "profile:" . $this->metadata_name;
-				if($trans_key != elgg_echo($trans_key)){
-					$title = elgg_echo($trans_key);
-				} else {
-					$title = $this->metadata_name;
-				}
+				$title = $this->metadata_name;
 			}
 			
 			return $title;
