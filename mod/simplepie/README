@@ -1,0 +1,20 @@
+Widget Title
+---------------------------
+To change the widget title, edit the language file (en.php) and change the 
+string 'simplepie:widget' from 'RSS Feed' to whatever you desire.
+
+
+Proxy Server
+----------------------------
+If your site is going through a proxy server to get to the feeds, you may 
+want to increase the timeout on the feeds (though this is unlikely as the 
+default timeout is 10 seconds). You can do this by editing 
+simplepie/views/default/widgets/feed_reader/view.php. There you can just 
+uncomment the line $feed->set_timeout(20);
+
+
+Images
+--------------------------
+Currently, images are stripped from the feeds as they are likely larger 
+than the width of the widget and will cause display issues. To include
+images, edit the widget view and add the img tag to the $allow_tags array.
