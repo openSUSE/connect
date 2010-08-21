@@ -20,6 +20,7 @@
 
 	// Get input data
 	$question = get_input('question');
+	$polltype = get_input('polltype',1);
 	$number_of_choices = (int) get_input('number_of_choices',0);
 	$tags = get_input('polltags');
 	$access = get_input('access_id');
@@ -28,6 +29,7 @@
 	// Cache to the session
 	$_SESSION['question'] = $question;
 	$_SESSION['polltags'] = $tags;
+	$_SESSION['pollttype'] = $polltype;
 
 	// Convert string of tags into a preformatted array
 	$tagarray = string_to_tag_array($tags);
@@ -68,6 +70,7 @@
 		// Set its title and description appropriately
 		$poll->question = $question;
 		$poll->title = $question;
+		$poll->polltype = $polltype;
 			
 		// Before we can set metadata, we need to save the poll post
 		if (!$poll->save()) {

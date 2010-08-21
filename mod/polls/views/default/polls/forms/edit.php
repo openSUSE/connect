@@ -14,11 +14,13 @@
 if (isset($vars['entity'])) {
 	$action = "polls/edit";
 	$question = $vars['entity']->question;
+	$polltype = $vars['entity']->polltype;
 	$tags = $vars['entity']->tags;
 	$access_id = $vars['entity']->access_id;
 } else  {
 	$action = "polls/add";
 	$question = "";
+	$polltype = "";
 	$tags = "";
 	if (defined('ACCESS_DEFAULT')){
   		$access_id = ACCESS_DEFAULT;
@@ -31,17 +33,24 @@ if (isset($vars['entity'])) {
 if (isset($vars['question'])) {
 	$question = $vars['question'];
 	$tags = $vars['polltags'];
+	$polltype = $vars['polltype'];
 }
 ?>
 
 <?php
         $question_label = elgg_echo('polls:question');
         $question_textbox = elgg_view('input/text', array('internalname' => 'question', 'value' => $question));
-        
+       
+	$polltype_label = elgg_echo('polls:polltype'); 
+        $polltype_textbox = elgg_view('input/text', array('internalname' => 'polltype', 'value' => $polltype, 'class' => 'polltype-input-text'));
+
         $responses_label = elgg_echo('polls:responses');
         //$responses_textbox = elgg_view('input/text', array('internalname' => 'responses', 'value' => $responsestring));
         $responses_control = elgg_view('polls/input/choices',array('poll'=>$vars['entity']));
-                
+
+        $types_label = elgg_echo('polls:types');
+        $types_control = elgg_view('polls/input/choices',array('poll'=>$vars['entity']));
+
         $tag_label = elgg_echo('tags');
         $tag_input = elgg_view('input/tags', array('internalname' => 'polltags', 'value' => $tags));
                 
@@ -64,6 +73,9 @@ if (isset($vars['question'])) {
 			<label>$question_label</label><br />
                         $question_textbox
 		</p>
+		<p>
+			<label>$polltype_label</label><br />
+			$polltype_textbox
 		<p>
 			<label>$responses_label</label><br />
                         $responses_control

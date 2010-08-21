@@ -27,6 +27,7 @@
 			'item:object:poll' => 'Polls',
 			'polls:question' => "Poll question",
 			'polls:responses' => "Response choices",
+			'polls:polltype' => "How many answers do you want to allow?"
 			'polls:results' => "[+] Show the results",
 			'polls:show_results' => "Show results",
 			'polls:show_poll' => "Show poll",

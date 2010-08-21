@@ -70,6 +70,10 @@
 	width: 90%;
 }
 
+.polltype-input-text {
+	width: 5%;
+}
+
 #progress_indicator {
 	width:200px;
 	padding: 5px;
