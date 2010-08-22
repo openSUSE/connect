@@ -19,7 +19,7 @@
 
 <!-- <div class="clearfloat"></div> -->
 
-</div><!-- /#page_wrapper -->
+<!-- </div> --><!-- /#page_wrapper -->
 </div><!-- /#page_container -->
     
 <!-- Start: Footer -->

@@ -9,7 +9,7 @@
  */
 ?>
 <!-- main content -->
-<div id="two_column_left_sidebar_maincontent">
+<div id="two_column_left_sidebar_maincontent" class="box box-shadow grid_13 clearfix">
 
 <?php
 
