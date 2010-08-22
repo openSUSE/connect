@@ -43,7 +43,7 @@ if (isset($vars['question'])) {
 
         $maxanswers_label = elgg_echo('polls:maxanswers'); 
         $maxanswers_textbox = elgg_view('input/pulldown', array('internalname' => 'maxanswers',
-                'options_values' => array('1' => elgg_echo('polls:type:1'), '2' => elgg_echo('polls:type:2'), '3' => elgg_echo('polls:type:3'), '4' => elgg_echo('polls:type:4'), '5' => elgg_echo('polls:type:5') ),
+                'options_values' => array('1' => elgg_echo('polls:type:1'), '0' => elgg_echo('polls:type:0') ,'2' => elgg_echo('polls:type:2'), '3' => elgg_echo('polls:type:3'), '4' => elgg_echo('polls:type:4'), '5' => elgg_echo('polls:type:5') ),
                 'value' => $maxanswers, 'class' => 'maxanswers-input-text'));
 
         $responses_label = elgg_echo('polls:responses');

@@ -99,6 +99,7 @@
 			'polls:nonefound' => "No polls were found from %s",
 			'polls:notdeleted' => "Sorry: we could not delete this poll.",
 
+			'polls:type:0' => "multiple choice (unlimited answers)",
 			'polls:type:1' => "single choice",
 			'polls:type:2' => "multiple choice (max. 2 answers)",
 			'polls:type:3' => "multiple choice (max. 3 answers)",

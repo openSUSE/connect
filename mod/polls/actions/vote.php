@@ -36,7 +36,8 @@
 			}
 		}
 		if (!is_array($response)) $response = array($response);
-		if (count($response) > $poll->maxanswers) {
+		// check max number of answers if defined
+		if ($poll->maxanswers > 0 && count($response) > $poll->maxanswers) {
 			register_error(sprintf(elgg_echo("polls:wrongnumanswers"),$poll->maxanswers));
 			forward($poll->getUrl());
 		// Otherwise, save the poll post

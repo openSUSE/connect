@@ -28,7 +28,9 @@
 
 	//convert $responses to radio/checkboxes inputs for form display
 	$responses = polls_get_choice_array($vars['entity']);
-	$response_inputs .= '<p>'.sprintf(elgg_echo('polls:maxansdesc'),$maxanswers).'</p>';
+	if ($maxanswers > 1) {
+		$response_inputs .= '<p>'.sprintf(elgg_echo('polls:maxansdesc'),$maxanswers).'</p>';
+	}
 	if ($maxanswers == 1) {
 		$response_inputs .= elgg_view('input/radio', array('internalname' => 'response','options' => $responses));
 	} else {
