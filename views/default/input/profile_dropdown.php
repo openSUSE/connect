@@ -40,11 +40,14 @@ if (isset($vars['options'])) {
 ?>
 
 <select style="width: 100%;" <?php if ($disabled) echo ' disabled="yes" '; ?> <?php echo $vars['js']; ?> name="<?php echo $vars['internalname']; ?>" <?php if (isset($vars['internalid'])) echo "id=\"{$vars['internalid']}\""; ?> class="<?php echo $class; ?>" size=1>
+		<option value=""  <?php if($vars['value']=="")   echo "selected";?>><?php
+			echo elgg_echo("checkbox:empty");
+		?></option>
 <?php
 	foreach($data as $option) {
 		$label = "profile:data:" . $vars['internalname'] . ":" . $option;
 		$label = elgg_echo($label);
-		if($vars['value'] == $option)
+		if($vars['value'] == $vars['internalname'] . ":" . $option)
 			$checked="selected";
 		else
 			$checked="";

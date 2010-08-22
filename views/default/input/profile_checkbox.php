@@ -29,13 +29,24 @@ if (isset($vars['disabled'])) {
 	$disabled = $vars['disabled'];
 }
 
-if (isset($vars['label'])) {
-	$label=$vars['label'];
+if (isset($vars['options'])) {
+	$data=$vars['options'];
 } else {
-	$label="profile:long:" . $vars['internalname'];
-	$label=elgg_echo($label);
+	$tmp="profile:data:" . $vars['internalname'];
+	$tmp=elgg_echo($tmp);
+	$data=explode(':',$tmp);
 }
 
 ?>
 
-<p><input type="checkbox" <?php if ($disabled) echo ' disabled="yes" '; ?> <?php echo $vars['js']; ?> name="<?php echo $vars['internalname']; ?>" <?php if (isset($vars['internalid'])) echo "id=\"{$vars['internalid']}\""; ?> value="<?php echo $label; ?>" <?php if($vars['value']) echo checked; ?> class="<?php echo $class; ?>"/> <?php echo $label; ?></p>
+<select style="width: 100%;" <?php if ($disabled) echo ' disabled="yes" '; ?> <?php echo $vars['js']; ?> name="<?php echo $vars['internalname']; ?>" <?php if (isset($vars['internalid'])) echo "id=\"{$vars['internalid']}\""; ?> class="<?php echo $class; ?>" size=1>
+		<option value=""  <?php if($vars['value']=="")   echo "selected";?>><?php
+			echo elgg_echo("checkbox:empty");
+		?></option>
+		<option value="-1" <?php if($vars['value']<0)    echo "selected";?>><?php
+			echo elgg_echo("checkbox:no");
+		?></option>
+		<option value="1" <?php if($vars['value']>0)     echo "selected";?>><?php
+			echo elgg_echo("checkbox:yes");
+		?></option>
+</select>
