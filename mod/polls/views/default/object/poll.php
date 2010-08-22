@@ -62,7 +62,7 @@
 		<!-- display the user icon -->
 			<div class="poll_post_icon">
 				<?php					
-					echo elgg_view("profile/icon",array('entity' => $vars['entity']->getOwnerEntity(), 'size' => 'medium'));
+					echo elgg_view("profile/icon",array('entity' => $vars['entity']->getOwnerEntity(), 'size' => 'tiny'));
 				?>
 			</div>
 			<p class="strapline">
