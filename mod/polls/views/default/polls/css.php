@@ -70,10 +70,6 @@
 	width: 90%;
 }
 
-.maxanswers-input-text {
-	width: 5%;
-}
-
 #progress_indicator {
 	width:200px;
 	padding: 5px;

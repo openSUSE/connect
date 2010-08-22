@@ -23,8 +23,9 @@
 			'polls:addpost' => "Create a poll",
 			'polls:editpost' => "Edit a poll",
 			'polls:text' => "Poll text",
-			'polls:strapline' => "%s",			
+			'polls:strapline' => "%s",
 			'item:object:poll' => 'Polls',
+			'item:object:poll_choice' => 'Poll choices',
 			'polls:question' => "Poll question",
 			'polls:responses' => "Response choices",
 			'polls:maxanswers' => "Poll type:",
@@ -99,12 +100,12 @@
 			'polls:nonefound' => "No polls were found from %s",
 			'polls:notdeleted' => "Sorry: we could not delete this poll.",
 
-			'polls:type:0' => "multiple choice (unlimited answers)",
-			'polls:type:1' => "single choice",
-			'polls:type:2' => "multiple choice (max. 2 answers)",
-			'polls:type:3' => "multiple choice (max. 3 answers)",
-			'polls:type:4' => "multiple choice (max. 4 answers)",
-			'polls:type:5' => "multiple choice (max. 5 answers)"
+			'polls:type:0' => "multiple response (unlimited)",
+			'polls:type:1' => "single response",
+			'polls:type:2' => "multiple response (max. 2)",
+			'polls:type:3' => "multiple response (max. 3)",
+			'polls:type:4' => "multiple response (max. 4)",
+			'polls:type:5' => "multiple response (max. 5)"
 	);
 
 	add_translation("en",$english);
