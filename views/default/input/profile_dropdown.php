@@ -48,7 +48,7 @@ if (isset($vars['options'])) {
 			$checked="selected";
 		else
 			$checked="";
-		echo "<option value=\"$option\" $checked>" . $label . "</option>";
+		echo "<option value=\"${vars['internalname']}:${option}\" $checked>" . $label . "</option>";
 	}
 ?>
 </select>
