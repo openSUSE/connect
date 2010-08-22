@@ -39,12 +39,16 @@ if (isset($vars['options'])) {
 
 ?>
 
-<select style="width: 100%;" <?php if ($disabled) echo ' disabled="yes" '; ?> <?php echo $vars['js']; ?> name="<?php echo $vars['internalname']; ?>" <?php if (isset($vars['internalid'])) echo "id=\"{$vars['internalid']}\""; ?> size=1>
+<select style="width: 100%;" <?php if ($disabled) echo ' disabled="yes" '; ?> <?php echo $vars['js']; ?> name="<?php echo $vars['internalname']; ?>" <?php if (isset($vars['internalid'])) echo "id=\"{$vars['internalid']}\""; ?> class="<?php echo $class; ?>" size=1>
 <?php
 	foreach($data as $option) {
 		$label = "profile:data:" . $vars['internalname'] . ":" . $option;
 		$label = elgg_echo($label);
-		echo "<option value=\"$option\">" . $label . "</option>";
+		if($vars['value'] == $option)
+			$checked="selected";
+		else
+			$checked="";
+		echo "<option value=\"$option\" $checked>" . $label . "</option>";
 	}
 ?>
 </select>
