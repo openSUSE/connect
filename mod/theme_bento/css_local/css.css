@@ -25,6 +25,35 @@ ul.dropdown ul {
   list-style: none outside;
   margin: 0;
 }
+
+#two_column_left_sidebar_maincontent {
+-moz-border-radius:8px 8px 8px 8px;
+background: inherit;
+float:left;
+margin:0;
+min-height:360px;
+padding:0 0 5px;
+}
+
+#two_column_left_sidebar_maincontent.grid_13 {
+  width: 760px;
+}
+
+.admin_statistics, .admin_users_online, .usersettings_statistics, .admin_adduser_link, #add-box, #search-box, #logbrowser_search_area {
+
+border-radius: 5px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+-khtml-border-radius: 5px;
+
+background: white;
+border: 1px solid #ddd;
+margin: 0 10px 10px;
+padding: 10px;
+
+}
+
+
 /* ================ */
 .menuitemtools {}
 
