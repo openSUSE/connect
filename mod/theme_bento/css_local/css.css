@@ -25,13 +25,20 @@ ul.dropdown ul {
   list-style: none outside;
   margin: 0;
 }
-
+/* ================ */
 .menuitemtools {}
+
 .submenuitemtools {
   display: none;
+  background: #999;
+  width: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 8000;
+  margin: 0;
 }
-
-
+/* ================ */
 #page_container {
   margin-left: auto;
   margin-right: auto;

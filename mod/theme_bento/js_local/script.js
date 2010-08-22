@@ -1,10 +1,27 @@
 $(document).ready(function() {
   
-  $('a.menuitemtools').click(function() {
-    $('.submenuitemtools').insertAfter('#footer').show();
-    $('.submenuitemtools').css('background', '#666').css({background: '#999', width: '200px', position: 'absolute', top: '0'}); // DEBUG
+  $('#subheader a.menuitemtools').click(function() {
+    
+    // get Menu-Item position X/Y
+    var menuItemH = $(this).height();
+    
+    var menuPos = $('.menuitemtools').offset();
+    var menuPosY = parseInt(menuPos.top) + menuItemH;
+    var menuPosX = parseInt(menuPos.left);
+
+    console.log(menuPosX + " " + menuPosY); // DEBUG
+    
+    $('.submenuitemtools').insertAfter('#footer').css({
+        top: menuPosY,
+        left: menuPosX
+        }).show();
     
     return false;
   });
+  
+  $('.submenuitemtools').mouseleave(function() {
+    $('.submenuitemtools').hide();
+  });
+  
   
 });
