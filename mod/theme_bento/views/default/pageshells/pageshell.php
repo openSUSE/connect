@@ -38,12 +38,12 @@ if (empty($vars['title'])) {
 
 
 <!-- canvas -->
-<div id="layout_canvas">
+<!-- <div id="layout_canvas"> -->
 
 <?php echo $vars['body']; ?>
 
 <div class="clearfloat"></div>
-</div><!-- /#layout_canvas -->
+<!-- </div> --><!-- /#layout_canvas -->
 
 <?php
 if(isloggedin()){
