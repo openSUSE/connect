@@ -78,3 +78,21 @@ ul.dropdown ul {
   margin: 0 0 0;
   padding: 2px 5px;
 }
+
+
+/* == Move to base.css of bento-theme ===================================== */
+
+#header #global-search-form input {
+  font: inherit;
+}
+
+/*  this is also in siki local css => style.css Line 35 
+    Should be merged into base.css */
+#local-user-actions a {
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.textleft { text-align: left; }
+.textcenter { text-align: center; }
+.textright { text-align: right; }
