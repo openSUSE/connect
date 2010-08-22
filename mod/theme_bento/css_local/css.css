@@ -29,15 +29,36 @@ ul.dropdown ul {
 .menuitemtools {}
 
 .submenuitemtools {
+  box-shadow: 0 2px 1px #ddd;
+  -moz-box-shadow: 0 2px 2px #ddd;
+  -webkit-box-shadow: 0 2px 2px #ddd;
+  background: #f6f6f6 url("../css/images/gradient-light-short-02.png") repeat-x scroll 0 -23px;
+  border-color: transparent #F6F6F6 #EEEEEE;
+  border-color: transparent #e6e6e6 #ccc;
+  border-style: solid;
+  border-width: 1px;
   display: none;
-  background: #999;
-  width: 200px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 8000;
+  font-size: 12px;
+  list-style: none inside none;
   margin: 0;
+  padding: 5px 0 0.5em;
+  position: absolute;
+  z-index: 9999;
+  
+  border-bottom-left: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left: 5px;
+  -khtml-border-bottom-left: 5px;
+  
+  border-bottom-right: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right: 5px;
+  -khtml-border-bottom-right: 5px;
 }
+  .submenuitemtools li {
+    margin: 0 10px;
+    padding: 2px 0;
+  }
 /* ================ */
 #page_container {
   margin-left: auto;
@@ -96,3 +117,6 @@ ul.dropdown ul {
 .textleft { text-align: left; }
 .textcenter { text-align: center; }
 .textright { text-align: right; }
+
+
+

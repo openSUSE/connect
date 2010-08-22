@@ -6,7 +6,7 @@ $(document).ready(function() {
     var menuItemH = $(this).height();
     var menuPos = $('.menuitemtools').offset();
     var menuPosY = parseInt(menuPos.top) + menuItemH;
-    var menuPosX = parseInt(menuPos.left);
+    var menuPosX = parseInt(menuPos.left) - 10; // dropdown content has 10px margin.
     
     $('.submenuitemtools').insertAfter('#footer').css({
         top: menuPosY,
