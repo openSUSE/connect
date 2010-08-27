@@ -25,6 +25,7 @@
 <!-- Start: Footer -->
     <div id="footer" class="container_12">
 
+        <?php if (isloggedin()) { // Loggedin users only ?>
         <div class="box_content grid_3">
               <a href="<?php echo $_SESSION['user']->getURL(); ?>"><img class="user_mini_avatar" src="<?php echo $_SESSION['user']->getIcon('topbar'); ?>" alt="User avatar" /></a>
               <strong class="grey-medium spacer1"><a href="<?php echo $_SESSION['user']->getURL(); ?>"><?php echo $_SESSION['username']; ?></a></strong>
@@ -35,6 +36,7 @@
             <?php } ?>
           </ul>
         </div>
+        <?php } ?>
 
 
       <div class="box_content grid_3">
