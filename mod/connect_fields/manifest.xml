@@ -2,7 +2,7 @@
 <plugin_manifest>
         <field key="author" value="Lubos Lunak" />
         <field key="version" value="1.0" />
-        <field key="description" value="Setting profile fields" />
+        <field key="description" value="Override Profile and Groups fields" />
         <field key="website" value="http://www.opensuse.org" />
         <field key="copyright" value="(C) Novell Inc. 2010" />
         <field key="licence" value="GNU Public License version" />
