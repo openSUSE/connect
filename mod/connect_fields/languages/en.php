@@ -1,6 +1,6 @@
 <?php
- 
-  $english = array(     
+
+  $english = array(
       'checkbox:yes'             => 'Yes',
       'checkbox:no'              => 'No',
       'checkbox:empty'           => 'Not set',
@@ -11,7 +11,7 @@
       'profile:data:country:sk'  => 'Slovakia',
       'profile:data:country:de'  => 'Germany',
         );
- 
+
   add_translation("en",$english);
- 
+
 ?>
