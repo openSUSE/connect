@@ -14,20 +14,27 @@ global $CONFIG;
  */
 
 function ichain_client_init() {
-    // Check for ichain header
-    $_SERVER['HTTP_X_USERNAME'] = "digitaltom";
+    // use the following 3 lines to fake a login:
+    //$_SERVER['HTTP_X_USERNAME'] = "digitaltom";
+    //$_SERVER['HTTP_X_EMAIL'] = "tomm@opensuse.org";
+    //logout();
+
     $username = $_SERVER['HTTP_X_USERNAME'];
     if (isset($username) && !isloggedin()) {
         // load or create user
         $user = get_user_by_username($username);
         if (!$user) {
-            error_log("Automatically creating new elgg user " . $username);
-            // TODO: auto register new user
-            //register_user($username, $password, $name, $email, $allow_multiple_emails = false, $friend_guid = 0, $invitecode = '');
-
-
+            // TODO make sure we get valid mails here
+            $email = $_SERVER['HTTP_X_EMAIL'];
+            error_log("Automatically creating new elgg user " . $username . " with mail: " . $email);
+            // auto register new user
+            if (register_user($username, 'opensuse', $username, $email)) {
+                error_log("New elgg user " . $username . " created.");
+                $user = get_user_by_username($username);
+            } else
+                error_log("Could not create elgg user " . $username);
+                return false;
         }
-
         error_log("Automatically logging in elgg user " . $username);
         login($user, true);
         return true;
