@@ -7,7 +7,10 @@
 
   $lines = file('bcard_template.svg');
   header('Content-type: image/svg+xml');
-  header('Content-Disposition: attachment; filename="business_cards.svg"');
+  if(($_GET['preview'])=='true')
+    $lines = file('bcard_preview_template.svg');
+  else
+    header('Content-Disposition: attachment; filename="business_cards.svg"');
   foreach ($lines as $line) {
     $tpl = array("__NAME__", "__POSITION__", "__EMAIL__","__PHONE__","__WEB__");
     $txt = array($name,$pos,$email,$phone,$web);
