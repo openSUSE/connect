@@ -18,7 +18,7 @@
 	//grab the login form
 	$area1 = elgg_view("account/forms/login");
 	//get the newest members who have an avatar
-	$area2 = get_entities_from_metadata('icontime', '', 'user', '', 0, 25);
+	$area2 = elgg_get_entities(array('type' => 'user', 'limit' => 25));
 	//grab the latest 4 blog posts. to display more, change 4 to something else
 	$area3 = elgg_list_entities(array('type' => 'object', 'subtype' => 'blog', 'limit' => 2, 'full_view' => FALSE, 'pagination' => FALSE));
 	//grab the latest bookmarks
