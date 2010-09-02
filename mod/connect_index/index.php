@@ -29,9 +29,11 @@
 	$area6 = elgg_list_entities(array('type' => 'group', 'limit' => 4, 'full_view' => FALSE, 'pagination' => FALSE));
 	//newest polls
 	$area7 = elgg_list_entities(array('type' => 'object', 'subtype' => 'poll', 'limit' => 1, 'full_view' => FALSE, 'pagination' => FALSE));
-	
+	//newest events 
+	$area8 = elgg_list_entities(array('type' => 'object', 'subtype' => 'event_calendar', 'limit' => 3, 'full_view' => FALSE, 'pagination' => FALSE));
+				 
     //display the contents in our new canvas layout
-	$body = elgg_view_layout('new_index',$area1, $area2, $area3, $area4, $area5, $area6, $area7);
+	$body = elgg_view_layout('new_index',$area1, $area2, $area3, $area4, $area5, $area6, $area7, $area8);
    
     page_draw($title, $body);
 		

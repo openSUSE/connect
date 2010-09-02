@@ -143,6 +143,21 @@
         </div>
 <?php
 	}
+    if(is_plugin_enabled('event_calendar')){
+?>
+        <!-- display latest bookmarks -->
+        <div class="index_box">
+            <h2><?php echo elgg_echo("custom:events"); ?></h2>
+            <?php
+                if (isset($vars['area8'])){
+                    echo $vars['area8']; //display bookmarks
+		}else{
+                    echo "<p>" . elgg_echo('custom:noevents') . "</p>";
+                }
+            ?>
+        </div>
+<?php
+        }
 ?>
     </div>
     <div class="clearfloat"></div>
