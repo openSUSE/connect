@@ -13,12 +13,11 @@
 	 
     function indexCustom_init() {
 	
-        // Extend system CSS with our own styles
-				elgg_extend_view('css','custom_index/css');
+      // Extend system CSS with our own styles
+      elgg_extend_view('css','custom_index/css');
 				
        // Replace the default index page
-			register_plugin_hook('index','system','custom_index');
-			
+      register_plugin_hook('index','system','custom_index');			
 				
     }
     

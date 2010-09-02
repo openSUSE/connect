@@ -14,12 +14,10 @@
 	 
 ?>
 
-<div id="custom_index">
-
     <!-- left column content -->
-    <div id="index_left">
+    <div class="grid_4 alpha">
         <!-- welcome message -->
-        <div id="index_welcome"> 
+        <div class="box box-shadow"> <!-- id="index_welcome" --> 
         	<?php
         		if (isloggedin()){
 	        		echo "<h2>" . elgg_echo("welcome") . " ";
@@ -36,7 +34,7 @@
 			    if (!isloggedin()){
 	            	//display the login form
 			    	echo $vars['area1'];
-				echo "<p><b>Want to try out connect?</b><br />Use the user geeko with password opensuse</p>";
+				echo "<h3 style=\"margin-bottom: -1ex;\">Want to try out connect?</h3><p>Use the user <strong>geeko</strong> with password <strong>opensuse</strong>.</p>";
 			    	echo "<div class=\"clearfloat\"></div>";
 		        }
 	        ?>
@@ -45,8 +43,8 @@
     if(is_plugin_enabled('file')){
 ?> 	
         <!-- display latest files -->
-        <div class="index_box">
-            <h2><?php echo elgg_echo("custom:files"); ?></h2>
+        <div class="box box-shadow">
+            <h2 class="box-header"><?php echo elgg_echo("custom:files"); ?></h2>
             <?php 
                 if (!empty($vars['area5'])) {
                     echo $vars['area5'];//this will display files
@@ -61,8 +59,8 @@
     if(is_plugin_enabled('groups')){
 ?> 
         <!-- display latest groups -->
-	    <div class="index_box">
-            <h2><?php echo elgg_echo("custom:groups"); ?></h2>
+	    <div class="box box-shadow">
+            <h2 class="box-header"><?php echo elgg_echo("custom:groups"); ?></h2>
         <?php 
                 if (!empty($vars['area6'])) {
                     echo $vars['area6'];//this will display groups
@@ -77,8 +75,8 @@
     if(is_plugin_enabled('polls')){
 ?>
         <!-- display latest groups -->
-            <div class="index_box">
-            <h2><?php echo elgg_echo("custom:polls"); ?></h2>
+            <div class="box box-shadow">
+            <h2 class="box-header"><?php echo elgg_echo("custom:polls"); ?></h2>
         <?php
                 if (!empty($vars['area7'])) {
                     echo $vars['area7'];//this will display groups
@@ -93,15 +91,15 @@
     </div>
     
     <!-- right hand column -->
-    <div id="index_right">
+    <div class="grid_12 box box-shadow omega">
         <!-- more content -->
 	    <?php
             //include a view that plugins can extend
             echo elgg_view("index/righthandside");
         ?>
         <!-- latest members -->
-	<div class="index_box">
-            <h2><?php echo elgg_echo("custom:members"); ?></h2>
+
+            <h2 class="box-header"><?php echo elgg_echo("custom:members"); ?></h2>
             <div class="contentWrapper">
             <?php
                 if(isset($vars['area2'])) {
@@ -112,18 +110,18 @@
                         echo "</div>";
                     }
                 }else{
-		    echo "<p>" . elgg_echo('custom:nousers') . "</p>";
-		}
+		              echo "<p>" . elgg_echo('custom:nousers') . "</p>";
+		            }
             ?>
                 <div class="clearfloat"></div>
-                </div>
-        </div>
+            </div>
+
 <?php
     if(is_plugin_enabled('blog')){
 ?> 
         <!-- latest blogs -->
-        <div class="index_box">
-            <h2><?php echo elgg_echo("custom:blogs"); ?></h2>
+        <div class="box box-shadow">
+            <h2 class="box-header"><?php echo elgg_echo("custom:blogs"); ?></h2>
             <?php 
                 if (isset($vars['area3'])) 
                     echo $vars['area3']; //display blog posts
@@ -135,8 +133,8 @@
     if(is_plugin_enabled('bookmarks')){
 ?>
         <!-- display latest bookmarks -->
-    	<div class="index_box">
-            <h2><?php echo elgg_echo("custom:bookmarks"); ?></h2>
+    	<div class="box box-shadow">
+            <h2 class="box-header"><?php echo elgg_echo("custom:bookmarks"); ?></h2>
             <?php 
                 if (isset($vars['area4'])) 
                     echo $vars['area4']; //display bookmarks
@@ -147,12 +145,12 @@
     if(is_plugin_enabled('event_calendar')){
 ?>
         <!-- display latest bookmarks -->
-        <div class="index_box">
-            <h2><?php echo elgg_echo("custom:events"); ?></h2>
+        <div>
+            <h2 class="box-subheader"><?php echo elgg_echo("custom:events"); ?></h2>
             <?php
                 if (isset($vars['area8'])){
                     echo $vars['area8']; //display bookmarks
-		}else{
+		} else {
                     echo "<p>" . elgg_echo('custom:noevents') . "</p>";
                 }
             ?>
@@ -163,4 +161,3 @@
 ?>
     </div>
     <div class="clearfloat"></div>
-</div>

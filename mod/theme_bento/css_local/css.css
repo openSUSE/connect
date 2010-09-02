@@ -12,8 +12,8 @@ Overwriting elgg specific styles here
 }
 
 h1, h2, h3, h4, h5, h6, p, ul, ol, table, pre, blockquote, .box small {
-    margin-left: 0px;
-    margin-right: 0px;
+/*    margin-left: 0px;*/
+/*    margin-right: 0px;*/
 }
 
 h3 {
@@ -127,6 +127,11 @@ padding: 10px;
   border-right: none;
   margin: 0 0 0;
   padding: 2px 5px;
+}
+
+#persistent_login {
+  margin-top: -3.5em;
+  margin-right: 2em;
 }
 
 
