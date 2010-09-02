@@ -14,12 +14,10 @@
 	 
 ?>
 
-<div id="custom_index">
-
     <!-- left column content -->
-    <div id="index_left">
+    <div class="grid_4 alpha">
         <!-- welcome message -->
-        <div id="index_welcome"> 
+        <div class="box box-shadow"> <!-- id="index_welcome" --> 
         	<?php
         		if (isloggedin()){
 	        		echo "<h2>" . elgg_echo("welcome") . " ";
@@ -45,7 +43,7 @@
     if(is_plugin_enabled('file')){
 ?> 	
         <!-- display latest files -->
-        <div class="index_box">
+        <div class="box box-shadow">
             <h2><?php echo elgg_echo("custom:files"); ?></h2>
             <?php 
                 if (!empty($vars['area5'])) {
@@ -61,7 +59,7 @@
     if(is_plugin_enabled('groups')){
 ?> 
         <!-- display latest groups -->
-	    <div class="index_box">
+	    <div class="box box-shadow">
             <h2><?php echo elgg_echo("custom:groups"); ?></h2>
         <?php 
                 if (!empty($vars['area6'])) {
@@ -93,14 +91,15 @@
     </div>
     
     <!-- right hand column -->
-    <div id="index_right">
+    <div class="grid_12 box box-shadow omega">
         <!-- more content -->
 	    <?php
             //include a view that plugins can extend
             echo elgg_view("index/righthandside");
         ?>
         <!-- latest members -->
-	<div class="index_box">
+
+        <div class="">
             <h2><?php echo elgg_echo("custom:members"); ?></h2>
             <div class="contentWrapper">
             <?php
@@ -122,7 +121,7 @@
     if(is_plugin_enabled('blog')){
 ?> 
         <!-- latest blogs -->
-        <div class="index_box">
+        <div class="box box-shadow">
             <h2><?php echo elgg_echo("custom:blogs"); ?></h2>
             <?php 
                 if (isset($vars['area3'])) 
@@ -135,7 +134,7 @@
     if(is_plugin_enabled('bookmarks')){
 ?>
         <!-- display latest bookmarks -->
-    	<div class="index_box">
+    	<div class="box box-shadow">
             <h2><?php echo elgg_echo("custom:bookmarks"); ?></h2>
             <?php 
                 if (isset($vars['area4'])) 
@@ -162,4 +161,3 @@
 ?>
     </div>
     <div class="clearfloat"></div>
-</div>

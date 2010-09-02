@@ -2,11 +2,11 @@
 	/**
 	 * Custom Index page css extender
 	 * 
-	 * @package custom_index
+	 * @package connect_index
 	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
 	 * @author Curverider <info@elgg.com>
 	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.org/
+	 * @link git://git.cynapses.org/projects/cpaste.git
 	 */
 ?>
 
@@ -14,7 +14,7 @@
 	margin:10px;
 }
 #index_left {
-    width:442px;
+  
     float:left;
     margin:0 0 30px 0;
     padding:0 0 20px 0px;
@@ -37,6 +37,7 @@
 	margin:5px 0 10px 0;
 	padding:0 0 10px 0;
 	background: #dedede;
+	background: fuchsia;
 	-webkit-border-radius: 8px; 
 	-moz-border-radius: 8px;
 	width:240px;
@@ -44,7 +45,7 @@
 #index_welcome #login-box form {
 	margin:0 10px 0 10px;
 	padding:0 10px 4px 10px;
-	background: white;
+	background: inherit;
 	-webkit-border-radius: 8px; 
 	-moz-border-radius: 8px;
 	width:200px;
