@@ -15,7 +15,7 @@
 ?>
 
     <!-- left column content -->
-    <div class="grid_4 alpha">
+    <div class="grid_8 alpha">
         <!-- welcome message -->
         <div class="box box-shadow"> <!-- id="index_welcome" --> 
         	<?php
@@ -91,14 +91,14 @@
     </div>
     
     <!-- right hand column -->
-    <div class="grid_12 box box-shadow omega">
+    <div class="grid_8 omega">
         <!-- more content -->
 	    <?php
             //include a view that plugins can extend
             echo elgg_view("index/righthandside");
         ?>
         <!-- latest members -->
-
+      <div class="box box-shadow">
             <h2 class="box-header"><?php echo elgg_echo("custom:members"); ?></h2>
             <div class="contentWrapper">
             <?php
@@ -113,8 +113,9 @@
 		              echo "<p>" . elgg_echo('custom:nousers') . "</p>";
 		            }
             ?>
-                <div class="clearfloat"></div>
-            </div>
+            <div class="clearfloat"></div>
+        </div>
+      </div>
 
 <?php
     if(is_plugin_enabled('blog')){
@@ -145,8 +146,8 @@
     if(is_plugin_enabled('event_calendar')){
 ?>
         <!-- display latest bookmarks -->
-        <div>
-            <h2 class="box-subheader"><?php echo elgg_echo("custom:events"); ?></h2>
+        <div class="box box-shadow">
+          <h2 class="box-header"><?php echo elgg_echo("custom:events"); ?></h2>
             <?php
                 if (isset($vars['area8'])){
                     echo $vars['area8']; //display bookmarks
