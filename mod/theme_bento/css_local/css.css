@@ -135,6 +135,11 @@ padding: 10px;
 }
 
 
+.search_listing {
+  margin-bottom: 2em;
+}
+
+
 /* == Move to base.css of bento-theme ===================================== */
 
 #header #global-search-form input {
