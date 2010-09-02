@@ -157,6 +157,7 @@
                 }
             ?>
         </div>
+	<img src="/beta.png">
 <?php
         }
 ?>
