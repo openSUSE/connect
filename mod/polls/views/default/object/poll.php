@@ -67,7 +67,7 @@
 			</div>
 			<p class="strapline">
 				<?php echo sprintf(elgg_echo("polls:strapline"), date("F j, Y",$vars['entity']->time_created)); ?>
-				<?php echo elgg_echo('by'); ?> <a href="<?php echo $vars['url']; ?>pg/ad/<?php echo $vars['entity']->getOwnerEntity()->username; ?>"><?php echo $vars['entity']->getOwnerEntity()->name; ?></a> 
+				<?php echo elgg_echo('by'); ?> <a href="<?php echo $vars['url']; ?>pg/profile/<?php echo $vars['entity']->getOwnerEntity()->username; ?>"><?php echo $vars['entity']->getOwnerEntity()->name; ?></a> 
 				<!-- display the comments link -->
 				<?php
 			    //get the number of responses
