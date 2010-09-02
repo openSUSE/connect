@@ -28,7 +28,7 @@
 	//newest groups
 	$area6 = elgg_list_entities(array('type' => 'group', 'limit' => 4, 'full_view' => FALSE, 'pagination' => FALSE));
 	//newest polls
-	$area7 = elgg_list_entities(array('type' => 'object', 'subtype' => 'poll', 'limit' => 1, 'full_view' => FALSE, 'pagination' => FALSE));
+	$area7 = elgg_list_entities(array('type' => 'object', 'subtype' => 'poll', 'limit' => 4, 'full_view' => FALSE, 'pagination' => FALSE));
 	//newest events 
 	$area8 = elgg_list_entities(array('type' => 'object', 'subtype' => 'event_calendar', 'limit' => 3, 'full_view' => FALSE, 'pagination' => FALSE));
 				 
