@@ -10,7 +10,7 @@
 
 $user = page_owner_entity();
 
-if ($user) {
+if ($user && ($user->username != "geeko")) {
 ?>
 <h3><?php echo elgg_echo('user:set:password'); ?></h3>
 <p>
