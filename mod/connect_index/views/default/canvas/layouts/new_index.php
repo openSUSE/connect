@@ -34,7 +34,7 @@
 			    if (!isloggedin()){
 	            	//display the login form
 			    	echo $vars['area1'];
-				echo "<p><b>Want to try out connect?</b><br />Use the user geeko with password opensuse</p>";
+				echo "<h3 style=\"margin-bottom: -1ex;\">Want to try out connect?</h3><p>Use the user <strong>geeko</strong> with password <strong>opensuse</strong>.</p>";
 			    	echo "<div class=\"clearfloat\"></div>";
 		        }
 	        ?>
@@ -44,7 +44,7 @@
 ?> 	
         <!-- display latest files -->
         <div class="box box-shadow">
-            <h2><?php echo elgg_echo("custom:files"); ?></h2>
+            <h2 class="box-header"><?php echo elgg_echo("custom:files"); ?></h2>
             <?php 
                 if (!empty($vars['area5'])) {
                     echo $vars['area5'];//this will display files
@@ -60,7 +60,7 @@
 ?> 
         <!-- display latest groups -->
 	    <div class="box box-shadow">
-            <h2><?php echo elgg_echo("custom:groups"); ?></h2>
+            <h2 class="box-header"><?php echo elgg_echo("custom:groups"); ?></h2>
         <?php 
                 if (!empty($vars['area6'])) {
                     echo $vars['area6'];//this will display groups
@@ -76,7 +76,7 @@
 ?>
         <!-- display latest groups -->
             <div class="box box-shadow">
-            <h2><?php echo elgg_echo("custom:polls"); ?></h2>
+            <h2 class="box-header"><?php echo elgg_echo("custom:polls"); ?></h2>
         <?php
                 if (!empty($vars['area7'])) {
                     echo $vars['area7'];//this will display groups
@@ -99,8 +99,7 @@
         ?>
         <!-- latest members -->
 
-        <div class="">
-            <h2><?php echo elgg_echo("custom:members"); ?></h2>
+            <h2 class="box-header"><?php echo elgg_echo("custom:members"); ?></h2>
             <div class="contentWrapper">
             <?php
                 if(isset($vars['area2'])) {
@@ -111,18 +110,18 @@
                         echo "</div>";
                     }
                 }else{
-		    echo "<p>" . elgg_echo('custom:nousers') . "</p>";
-		}
+		              echo "<p>" . elgg_echo('custom:nousers') . "</p>";
+		            }
             ?>
                 <div class="clearfloat"></div>
-                </div>
-        </div>
+            </div>
+
 <?php
     if(is_plugin_enabled('blog')){
 ?> 
         <!-- latest blogs -->
         <div class="box box-shadow">
-            <h2><?php echo elgg_echo("custom:blogs"); ?></h2>
+            <h2 class="box-header"><?php echo elgg_echo("custom:blogs"); ?></h2>
             <?php 
                 if (isset($vars['area3'])) 
                     echo $vars['area3']; //display blog posts
@@ -135,7 +134,7 @@
 ?>
         <!-- display latest bookmarks -->
     	<div class="box box-shadow">
-            <h2><?php echo elgg_echo("custom:bookmarks"); ?></h2>
+            <h2 class="box-header"><?php echo elgg_echo("custom:bookmarks"); ?></h2>
             <?php 
                 if (isset($vars['area4'])) 
                     echo $vars['area4']; //display bookmarks
@@ -147,11 +146,11 @@
 ?>
         <!-- display latest bookmarks -->
         <div>
-            <h2><?php echo elgg_echo("custom:events"); ?></h2>
+            <h2 class="box-subheader"><?php echo elgg_echo("custom:events"); ?></h2>
             <?php
                 if (isset($vars['area8'])){
                     echo $vars['area8']; //display bookmarks
-		}else{
+		} else {
                     echo "<p>" . elgg_echo('custom:noevents') . "</p>";
                 }
             ?>
