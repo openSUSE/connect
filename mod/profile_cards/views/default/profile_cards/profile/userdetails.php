@@ -14,19 +14,19 @@
 ?>
 <div class="collapsable_box">
 	<div class="collapsable_box_header">
-	<a href="javascript:void(0);" class="toggle_box_edit_panel"><?=elgg_echo('user_details:show')?></a><h1><?=elgg_echo('user_details:caption')?></h1>
+	<a href="javascript:void(0);" class="toggle_box_edit_panel"><?php echo elgg_echo('user_details:show')?></a><h1><?php echo elgg_echo('user_details:caption')?></h1>
 	</div>
    <div class="collapsable_box_editpanel" id="profile_info">
       <div style="display: table;">
       <div style="display: table-cell; padding: 10px;">
-      <p><a href="<?php echo $vc_url; ?>"><?=elgg_echo('user_details:get_vcard')?></a></p>
-      <p><b><?=elgg_echo('user_details:qr')?></b></p>
+      <p><a href="<?php echo $vc_url; ?>"><?php echo elgg_echo('user_details:get_vcard')?></a></p>
+      <p><b><?php echo elgg_echo('user_details:qr')?></b></p>
       <img alt="qr" src="<?php echo $qr_url; ?>" />
       </div>
       <div style="display: table-cell; padding: 10px;">
-      <p><a href="<?php echo $bc_url; ?>"><?=elgg_echo('user_details:get_bcard')?></a></p>
-      <p><b><?=elgg_echo('user_details:bc_pre')?></b></p>
-      <img alt="<?=elgg_echo('user_details:get_bcard')?>" src=<?=$bc_url . "&preview=true"?> />
+      <p><a href="<?php echo $bc_url; ?>"><?php echo elgg_echo('user_details:get_bcard')?></a></p>
+      <p><b><?php echo elgg_echo('user_details:bc_pre')?></b></p>
+      <img alt="<?php echo elgg_echo('user_details:get_bcard')?>" src=<?php echo $bc_url . "&preview=true"?> />
       </div>
       </div>
    </div>
