@@ -36,6 +36,7 @@
 			    if (!isloggedin()){
 	            	//display the login form
 			    	echo $vars['area1'];
+				echo "<p><b>Want to try out connect?</b><br />Use the user geeko with password opensuse</p>";
 			    	echo "<div class=\"clearfloat\"></div>";
 		        }
 	        ?>
