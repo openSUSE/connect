@@ -75,7 +75,7 @@
     if(is_plugin_enabled('polls')){
 ?>
         <!-- display latest groups -->
-            <div class="index_box">
+            <div class="box box-shadow">
             <h2><?php echo elgg_echo("custom:polls"); ?></h2>
         <?php
                 if (!empty($vars['area7'])) {
@@ -146,7 +146,7 @@
     if(is_plugin_enabled('event_calendar')){
 ?>
         <!-- display latest bookmarks -->
-        <div class="index_box">
+        <div>
             <h2><?php echo elgg_echo("custom:events"); ?></h2>
             <?php
                 if (isset($vars['area8'])){
