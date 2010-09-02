@@ -15,21 +15,23 @@
 		
     //get required data		
 	set_context('search');//display results in search mode, which is list view
-	//grab the latest 4 blog posts. to display more, change 4 to something else
-	$blogs = elgg_list_entities(array('type' => 'object', 'subtype' => 'blog', 'limit' => 4, 'full_view' => FALSE, 'view_type_toggle' => FALSE, 'pagination' => FALSE));
-	//grab the latest bookmarks
-	$bookmarks = elgg_list_entities(array('type' => 'object', 'subtype' => 'bookmarks', 'limit' => 4, 'full_view' => FALSE, 'view_type_toggle' => FALSE, 'pagination' => FALSE));
-	//grab the latest files
-	$files = elgg_list_entities(array('type' => 'object', 'subtype' => 'file', 'limit' => 4, 'full_view' => FALSE, 'view_type_toggle' => FALSE, 'pagination' => FALSE));
-	//get the newest members who have an avatar
-	$newest_members = elgg_get_entities_from_metadata(array('metadata_names' => 'icontime', 'types' => 'user', 'limit' => 10));
-	//newest groups
-	$groups = elgg_list_entities(array(type => 'group', 'limit' => 4, 'full_view' => FALSE, 'view_type_toggle' => FALSE, 'pagination' => FALSE));
 	//grab the login form
-	$login = elgg_view("account/forms/login");
+	$area1 = elgg_view("account/forms/login");
+	//get the newest members who have an avatar
+	$area2 = get_entities_from_metadata('icontime', '', 'user', '', 0, 25);
+	//grab the latest 4 blog posts. to display more, change 4 to something else
+	$area3 = elgg_list_entities(array('type' => 'object', 'subtype' => 'blog', 'limit' => 2, 'full_view' => FALSE, 'pagination' => FALSE));
+	//grab the latest bookmarks
+	$area4 = elgg_list_entities(array('type' => 'object', 'subtype' => 'bookmarks', 'limit' => 4, 'full_view' => FALSE, 'pagination' => FALSE));
+	//grab the latest files
+	$area5 = elgg_list_entities(array('type' => 'object', 'subtype' => 'file', 'limit' => 4, 'full_view' => FALSE, 'pagination' => FALSE));
+	//newest groups
+	$area6 = elgg_list_entities(array('type' => 'group', 'limit' => 4, 'full_view' => FALSE, 'pagination' => FALSE));
+	//newest polls
+	$area7 = elgg_list_entities(array('type' => 'object', 'subtype' => 'poll', 'limit' => 1, 'full_view' => FALSE, 'pagination' => FALSE));
 	
     //display the contents in our new canvas layout
-	$body = elgg_view_layout('new_index',$login, $files, $newest_members, $blogs, $groups, $bookmarks);
+	$body = elgg_view_layout('new_index',$area1, $area2, $area3, $area4, $area5, $area6, $area7);
    
     page_draw($title, $body);
 		

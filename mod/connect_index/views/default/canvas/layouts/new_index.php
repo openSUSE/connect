@@ -47,10 +47,10 @@
         <div class="index_box">
             <h2><?php echo elgg_echo("custom:files"); ?></h2>
             <?php 
-                if (!empty($vars['area2'])) {
-                    echo $vars['area2'];//this will display files
+                if (!empty($vars['area5'])) {
+                    echo $vars['area5'];//this will display files
                 }else{
-                    echo "<p><?php echo elgg_echo('custom:nofiles'); ?></p>";
+                    echo "<p>" . elgg_echo('custom:nofiles') . "</p>";
                 }
             ?>
         </div>
@@ -63,15 +63,31 @@
 	    <div class="index_box">
             <h2><?php echo elgg_echo("custom:groups"); ?></h2>
         <?php 
-                if (!empty($vars['area5'])) {
-                    echo $vars['area5'];//this will display groups
+                if (!empty($vars['area6'])) {
+                    echo $vars['area6'];//this will display groups
                 }else{
-                    echo "<p><?php echo elgg_echo('custom:nogroups'); ?>.</p>";
+                    echo "<p>". elgg_echo('custom:nogroups') . "</p>";
                 }
             ?>
     	</div>
 <?php
-	}
+        }
+
+    if(is_plugin_enabled('polls')){
+?>
+        <!-- display latest groups -->
+            <div class="index_box">
+            <h2><?php echo elgg_echo("custom:polls"); ?></h2>
+        <?php
+                if (!empty($vars['area7'])) {
+                    echo $vars['area7'];//this will display groups
+                }else{
+                    echo "<p>" . elgg_echo('custom:nopolls') . "</p>";
+                }
+            ?>
+        </div>
+<?php
+        }
 ?>
     </div>
     
@@ -83,21 +99,23 @@
             echo elgg_view("index/righthandside");
         ?>
         <!-- latest members -->
-        <div class="index_box">
+	<div class="index_box">
             <h2><?php echo elgg_echo("custom:members"); ?></h2>
             <div class="contentWrapper">
-            <?php 
-                if(isset($vars['area3'])) {
+            <?php
+                if(isset($vars['area2'])) {
                     //display member avatars
-                    foreach($vars['area3'] as $members){
+                    foreach($vars['area2'] as $members){
                         echo "<div class=\"index_members\">";
                         echo elgg_view("profile/icon",array('entity' => $members, 'size' => 'small'));
                         echo "</div>";
                     }
-                }
+                }else{
+		    echo "<p>" . elgg_echo('custom:nousers') . "</p>";
+		}
             ?>
-	        <div class="clearfloat"></div>
-	        </div>
+                <div class="clearfloat"></div>
+                </div>
         </div>
 <?php
     if(is_plugin_enabled('blog')){
@@ -106,8 +124,8 @@
         <div class="index_box">
             <h2><?php echo elgg_echo("custom:blogs"); ?></h2>
             <?php 
-                if (isset($vars['area4'])) 
-                    echo $vars['area4']; //display blog posts
+                if (isset($vars['area3'])) 
+                    echo $vars['area3']; //display blog posts
             ?>
         </div>
 <?php
@@ -119,8 +137,8 @@
     	<div class="index_box">
             <h2><?php echo elgg_echo("custom:bookmarks"); ?></h2>
             <?php 
-                if (isset($vars['area6'])) 
-                    echo $vars['area6']; //display bookmarks
+                if (isset($vars['area4'])) 
+                    echo $vars['area4']; //display bookmarks
             ?>
         </div>
 <?php
