@@ -27,12 +27,10 @@ if ((isset($CONFIG->https_login)) && ($CONFIG->https_login)) {
 }
 ?>
 
-<div id="login-box">
-<h2><?php echo elgg_echo('login'); ?></h2>
+<h2 class="box-subheader"><?php echo elgg_echo('login'); ?></h2>
 	<?php
 		echo elgg_view('input/form', array('body' => $form_body, 'action' => "{$login_url}action/login"));
 	?>
-</div>
 <script type="text/javascript">
 	$(document).ready(function() { $('input[name=username]').focus(); });
 </script>
