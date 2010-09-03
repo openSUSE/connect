@@ -139,6 +139,11 @@ padding: 10px;
   margin-bottom: 2em;
 }
 
+.index_members {
+  float: left;
+  width: 40px;
+  margin-right: 0.5em;
+}
 
 /* == Move to base.css of bento-theme ===================================== */
 
