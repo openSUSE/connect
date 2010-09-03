@@ -131,7 +131,7 @@ padding: 10px;
 
 #persistent_login {
   margin-top: -3.5em;
-  margin-right: 2em;
+  margin-right: 9em;
 }
 
 
@@ -143,6 +143,10 @@ padding: 10px;
   float: left;
   width: 40px;
   margin-right: 0.5em;
+}
+
+.loginbox {
+  margin-left: 143px;
 }
 
 /* == Move to base.css of bento-theme ===================================== */
