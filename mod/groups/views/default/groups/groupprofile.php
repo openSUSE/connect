@@ -61,7 +61,8 @@
 						echo ": </b>";
 
 						$options = array(
-							'value' => $vars['entity']->$shortname
+							'value' => $vars['entity']->$shortname,
+							'internalname' => "groups:{$shortname}"
 						);
 
 						if ($valtype == 'tags') {

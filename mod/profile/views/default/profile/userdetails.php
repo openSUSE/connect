@@ -112,7 +112,8 @@
 							?>: </b>
 							<?php
 							$options = array(
-								'value' => $vars['entity']->$shortname
+								'value' => $vars['entity']->$shortname,
+								'internalname' => "profile:{$shortname}"
 							);
 
 							if ($valtype == 'tags') {

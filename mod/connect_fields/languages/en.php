@@ -24,6 +24,7 @@
       'profile:github'           => 'GitHub',
       'profile:linkedin'         => 'LinkedIn',
       'profile:xing'             => 'Xing',
+      'profile:obs'              => 'Build Service repository',
 
       'groups:blog'             => 'Blog',
       'groups:irc'              => 'IRC channel',
