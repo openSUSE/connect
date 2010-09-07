@@ -13,9 +13,9 @@
   $bc_url = '../../mod/profile_cards/bcard.php?' . $common;
 ?>
 <div class="collapsable_box">
-	<div class="collapsable_box_header">
-	<a href="javascript:void(0);" class="toggle_box_edit_panel"><?php echo elgg_echo('user_details:show')?></a><h1><?php echo elgg_echo('user_details:caption')?></h1>
-	</div>
+  <div class="collapsable_box_header">
+  <a href="javascript:void(0);" class="toggle_box_edit_panel"><?php echo elgg_echo('user_details:show')?></a><h1><?php echo elgg_echo('user_details:caption')?></h1>
+  </div>
    <div class="collapsable_box_editpanel" id="profile_info">
       <div style="display: table;">
       <div style="display: table-cell; padding: 10px;">
