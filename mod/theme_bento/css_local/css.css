@@ -149,6 +149,17 @@ padding: 10px;
   margin-left: 143px;
 }
 
+/* == Widgest ============================================================= */
+#widgets_left,
+#widgets_right,
+#widgets_middle {
+  float: left;
+/*  margin: 0;
+  padding: 0;*/
+  width: 280px;
+}
+
+
 /* == Move to base.css of bento-theme ===================================== */
 
 #header #global-search-form input {
