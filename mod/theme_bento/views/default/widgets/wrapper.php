@@ -31,12 +31,12 @@ if ($callback != "true") {
 
   ?>
 
-  <div id="widget<?php echo $vars['entity']->getGUID(); ?>">
-  <div class="collapsable_box">
-  <div class="collapsable_box_header">
-  <a href="javascript:void(0);" class="toggle_box_contents">-</a><?php if ($vars['entity']->canEdit()) { ?><a href="javascript:void(0);" class="toggle_box_edit_panel"><?php echo elgg_echo('edit'); ?></a><?php } ?>
-  <h1><?php echo $title; ?></h1>
-  </div>
+  <div id="widget<?php echo $vars['entity']->getGUID(); ?>" class="box box-shadow">
+
+  <!-- <div class="box-header"> -->
+
+  <h2 class="box-header"><?php echo $title; ?>     <a href="javascript:void(0);" class="toggle_box_contents">-</a><?php if ($vars['entity']->canEdit()) { ?><a href="javascript:void(0);" class="toggle_box_edit_panel"><?php echo elgg_echo('edit'); ?></a><?php } ?></h2>
+  <!-- </div> -->
   <?php
 
   if ($vars['entity']->canEdit()) {
@@ -83,7 +83,7 @@ if ($callback != "true") {
 
     ?>
   </div><!-- /.collapsable_box_content -->
-  </div><!-- /.collapsable_box -->
+
   </div>
 
 <script type="text/javascript">
