@@ -7,7 +7,7 @@ function create_url($type, $value) {
    $data = array (
       ':obs'              => 'https://build.opensuse.org/project/show?project=%v',
       ':gpg'              => 'http://pgp.mit.edu:11371/pks/lookup?op=get&search=%v',
-      'profile:facebook'  => 'http://www.facebook.com/#!/%v',
+      'profile:facebook'  => 'http://www.facebook.com/%v',
       ':contactemail'     => 'mailto:%v',
       ':linkedin'         => 'http://www.linkedin.com/in/%v',
       'profile:twitter'   => 'http://twitter.com/%v',
