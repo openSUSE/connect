@@ -26,7 +26,7 @@
       <div style="display: table-cell; padding: 10px;">
       <p><a href="<?php echo $bc_url; ?>"><?php echo elgg_echo('user_details:get_bcard')?></a></p>
       <p><b><?php echo elgg_echo('user_details:bc_pre')?></b></p>
-      <img alt="<?php echo elgg_echo('user_details:get_bcard')?>" src=<?php echo $bc_url . "&preview=true"?> />
+      <img id="bcard_preview" alt="<?php echo elgg_echo('user_details:get_bcard')?>" src=<?php echo $bc_url . "&preview=true"?> />
       </div>
       </div>
    </div>
