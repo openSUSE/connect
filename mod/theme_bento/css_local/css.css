@@ -160,6 +160,30 @@ padding: 10px;
 }
 
 
+
+.box-header-edit {
+  float: right;
+}
+
+.contentWrapper {
+  border-radius: none;
+  -moz-border-radius: none;
+  -webkit-border-radius: none;
+  -khtml-border-radius: none;
+  
+  background-color: transparent;
+  margin: 0 1em 1em;
+  padding: 1em;
+  
+}
+
+
+/* TEMP - Remove later */
+
+#customise_editpanel table.draggable_widget h3 {
+  width: 100px;
+}
+
 /* == Move to base.css of bento-theme ===================================== */
 
 #header #global-search-form input {

@@ -35,7 +35,7 @@ if ($callback != "true") {
 
   <!-- <div class="box-header"> -->
 
-  <h2 class="box-header"><?php echo $title; ?>     <a href="javascript:void(0);" class="toggle_box_contents">-</a><?php if ($vars['entity']->canEdit()) { ?><a href="javascript:void(0);" class="toggle_box_edit_panel"><?php echo elgg_echo('edit'); ?></a><?php } ?></h2>
+  <h2 class="box-header"><?php echo $title; ?> <span class="box-header-edit"><a href="javascript:void(0);" class="toggle_box_contents">-</a><?php if ($vars['entity']->canEdit()) { ?><a href="javascript:void(0);" class="toggle_box_edit_panel"><?php echo elgg_echo('edit'); ?></a><?php } ?></span></h2>
   <!-- </div> -->
   <?php
 
@@ -55,7 +55,8 @@ if ($callback != "true") {
   }
 
   ?>
-  <div class="collapsable_box_content">
+  <!-- <div class="collapsable_box_content"> -->
+  <div class="">
   <?php
 
   echo "<div id=\"widgetcontent{$vars['entity']->getGUID()}\">";
