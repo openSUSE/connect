@@ -49,34 +49,14 @@
 
 }
 #customise_editpanel {
-/*  -moz-border-radius: 8px 8px 8px 8px;
-  background: none repeat scroll 0 0 #DEDEDE;
-  margin: 0 0 20px;
-  padding: 10px;*/
   display: none;
 }
 
-#customise_page_view {
-/*  background: none repeat scroll 0 0 white;
-  margin: auto;
-  padding: auto;
-  width: auto;
-*/}
+#customise_page_view {}
 
 #customise_page_view {
-  /*margin: 0 0 10px;
-    padding: 10px;
-    width: 700px;*/
     padding: 0 !important;
     margin: 0 !important;
 }
 
-#customise_editpanel_rhs {
-/*  background: none repeat scroll 0 0 white;
-  float: right;
-  width: 220px;
-*/}
-
-#collapsable_box_editpanel {
-  display: none;
-}
+#customise_editpanel_rhs {}
