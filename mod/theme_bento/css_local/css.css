@@ -159,22 +159,33 @@ padding: 10px;
   width: 280px;
 }
 
+#customise_page_view,
+.contentWrapper {
+  
+  border-radius: none;
+  -moz-border-radius: none;
+  -webkit-border-radius: none;
+  -khtml-border-radius: none;
+  
+}
 
+
+#customise_page_view {
+  border
+  background: none repeat scroll 0 0 white;
+  margin: 0 0 10px;
+  padding: 10px;
+  width: 656px;
+}
 
 .box-header-edit {
   float: right;
 }
 
 .contentWrapper {
-  border-radius: none;
-  -moz-border-radius: none;
-  -webkit-border-radius: none;
-  -khtml-border-radius: none;
-  
   background-color: transparent;
   margin: 0 1em 1em;
   padding: 1em;
-  
 }
 
 

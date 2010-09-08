@@ -29,7 +29,7 @@ if ($owner && $owner->canEdit()) {
 
 ?>
 
-<div id="customise_editpanel">
+<div id="customise_editpanel" class="grid_16 alpha omega box box-shadow">
 
 <div id="customise_editpanel_rhs">
 <h2><?php echo elgg_echo("widgets:gallery"); ?></h2>
@@ -64,9 +64,9 @@ if ($owner && $owner->canEdit()) {
 </div><!-- /#customise_editpanel_rhs -->
 </div><!-- /#widget_picker_gallery -->
 
-<div class="customise_editpanel_instructions">
-<h2><?php echo elgg_echo('widgets:add'); ?></h2>
-<?php echo elgg_view('output/longtext', array('value' => elgg_echo('widgets:add:description'))); ?>
+<div class="customise-editpanel-instructions grid_12">
+  <h2><?php echo elgg_echo('widgets:add'); ?></h2>
+  <?php echo elgg_view('output/longtext', array('value' => elgg_echo('widgets:add:description'))); ?>
 </div>
 
 
@@ -261,7 +261,7 @@ $token = generate_action_token($ts);
     <?php if (isset($vars['area1'])) echo $vars['area1']; ?>
 </div>
 
-    <div id="widgets-right" class="grid_5">
+    <div id="widgets-right" class="grid_5 alpha">
     <?php
 
       if (is_array($area3widgets) && sizeof($area3widgets) > 0)
@@ -290,7 +290,7 @@ $token = generate_action_token($ts);
 
 
     <!-- widgets middle -->
-    <div id="widgets-middle" class="grid_5 alpha">
+    <div id="widgets-middle" class="grid_5 omega">
 
     <?php if (isset($vars['area2'])) echo $vars['area2']; ?>
     <?php
