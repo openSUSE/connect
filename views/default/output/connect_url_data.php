@@ -1,7 +1,6 @@
 <?php
 
 function create_url($type, $value) {
-   echo $type;
    if(preg_match('@^(https://|http://|irc://)@',$value)) {
       return "<a href=\"{$value}\">" . $value . '</a>';
    }
