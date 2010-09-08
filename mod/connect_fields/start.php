@@ -3,7 +3,7 @@
         global $CONFIG;
         $return_value["blog"] = "url";
         $return_value["country"] = "profile_dropdown";
-        $return_value["xmpp"] = "text";
+        $return_value["xmpp"] = "connect_url";
         $return_value["contactemail"] = "connect_multitext";
         $return_value["freenode_nick"] = "text";
         $return_value["freenode_cloak"] = "text";
@@ -13,6 +13,7 @@
         $return_value["ssh"] = "longtext";
         $return_value["twitter"] = "connect_url";
         $return_value["identica"] = "connect_url";
+        $return_value["sip"] = "connect_url";
         $return_value["skype"] = "text";
         $return_value["faceboook"] = "connect_url";
         $return_value["ohloh"] = "connect_url";
@@ -29,7 +30,7 @@
     function connect_fields_group_setup($hook_name, $entity_type, $return_value, $parameters) {
         global $CONFIG;
         $return_value["blog"] = "url";
-        $return_value["irc"] = "text";
+        $return_value["freenode_channel"] = "connect_url";
         $return_value["twitter"] = "url";
         $return_value["identica"] = "url";
         $return_value["faceboook"] = "url";

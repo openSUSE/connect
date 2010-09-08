@@ -1,7 +1,8 @@
 <?php
 
 function create_url($type, $value) {
-   if(preg_match('/^https?:\/\//',$value)) {
+   echo $type;
+   if(preg_match('@^(https://|http://|irc://)@',$value)) {
       return "<a href=\"{$value}\">" . $value . '</a>';
    }
    $data = array (
@@ -9,6 +10,9 @@ function create_url($type, $value) {
       ':gpg'              => 'http://pgp.mit.edu:11371/pks/lookup?op=get&search=%v',
       'profile:facebook'  => 'http://www.facebook.com/%v',
       ':contactemail'     => 'mailto:%v',
+      ':xmpp'             => 'xmpp:%v',
+      ':sip'              => 'sip:%v',
+      ':freenode_channel' => 'irc://irc.freenode.net/%v',
       ':linkedin'         => 'http://www.linkedin.com/in/%v',
       'profile:twitter'   => 'http://twitter.com/%v',
       'profile:identica'  => 'http://identi.ca/%v',

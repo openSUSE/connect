@@ -17,6 +17,7 @@
       'profile:ssh'              => 'SSH key',
       'profile:twitter'          => 'Twitter',
       'profile:identica'         => 'identi.ca',
+      'profile:sip'              => 'SIP address',
       'profile:skype'            => 'Skype',
       'profile:faceboook'        => 'Facebook',
       'profile:ohloh'            => 'ohloh',
