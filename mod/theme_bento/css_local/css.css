@@ -149,6 +149,21 @@ padding: 10px;
   margin-left: 143px;
 }
 
+
+
+.collapsable_box {
+  margin-top: -15px;
+}
+.box-header h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.2em;
+}
+.toggle_box_contents,
+.toggle_box_edit_panel {
+  float: right;
+}
+
 /* == Widgest ============================================================= */
 #widgets_left,
 #widgets_right,
@@ -159,27 +174,56 @@ padding: 10px;
   width: 280px;
 }
 
+
+
+/*
 #customise_page_view,
 .contentWrapper {
-  
   border-radius: none;
   -moz-border-radius: none;
   -webkit-border-radius: none;
   -khtml-border-radius: none;
-  
+}
+#customise_editpanel {
+  -moz-border-radius: 8px 8px 8px 8px;
+  background: none repeat scroll 0 0 #DEDEDE;
+  display: none;
+  margin: 0 0 20px;
+  padding: 10px;
 }
 
+#customise_page_view {
+  background: none repeat scroll 0 0 white;
+  margin: auto;
+  padding: auto;
+  width: auto;
+}
 
 #customise_page_view {
-  border
-  background: none repeat scroll 0 0 white;
   margin: 0 0 10px;
   padding: 10px;
-  width: 656px;
+  width: 700px;
+}
+
+#customise_editpanel_rhs {
+  background: none repeat scroll 0 0 white;
+  float: right;
+  width: 220px;
+}
+*/
+
+a.button {
+  padding: 0.5em 1em;
+  text-decoration: none;
+}
+.pluginsettings,
+.manifest_file {
+  display: none;
 }
 
 .box-header-edit {
   float: right;
+  display: inline;
 }
 
 .contentWrapper {
@@ -188,11 +232,21 @@ padding: 10px;
   padding: 1em;
 }
 
-
+#collapsable_box_editpanel {
+  display: none;
+}
 /* TEMP - Remove later */
 
 #customise_editpanel table.draggable_widget h3 {
-  width: 100px;
+/*  width: 100px;*/
+width: 100%;
+background: #eee;
+}
+
+.draggable_widget {
+  width: 85%;
+  background: #eee;
+  margin-bottom: 0.5em;
 }
 
 /* == Move to base.css of bento-theme ===================================== */
@@ -213,4 +267,52 @@ padding: 10px;
 .textright { text-align: right; }
 
 
+.box-header.top-zero {
+  margin-top: -15px !important;
+}
 
+.box.box-settings {
+  background-color: #eee;
+}
+
+#customise_page_view td {
+  vertical-align: top;
+}
+
+td.box {
+  margin: 0 0.5em;
+}
+
+.ui-droppable {
+  min-height: 20em;
+  margin: 0 0.5em;
+  width: 16.3em;
+}
+.drag-handle,
+.more-info {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.more-info {
+  background: blue;
+}
+.drag-handle {
+  background: fuchsia;
+}
+
+.collapsable_box_editpanel {
+  background:none repeat scroll 0 0 #A8A8A8;
+  border-bottom:1px solid white;
+  border-left:1px solid white;
+  display:none;
+  padding:10px 10px 5px;
+}
+
+
+
+.toggle_box_contents,
+.toggle_box_edit_panel {}
+.toggle_box_edit_panel {
+  text-transform: uppercase;
+}
