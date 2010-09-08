@@ -15,7 +15,7 @@
         $return_value["identica"] = "connect_url";
         $return_value["sip"] = "connect_url";
         $return_value["skype"] = "text";
-        $return_value["faceboook"] = "connect_url";
+        $return_value["facebook"] = "connect_url";
         $return_value["ohloh"] = "connect_url";
         $return_value["gitorious"] = "connect_url";
         $return_value["github"] = "connect_url";
@@ -33,7 +33,7 @@
         $return_value["freenode_channel"] = "connect_url";
         $return_value["twitter"] = "url";
         $return_value["identica"] = "url";
-        $return_value["faceboook"] = "url";
+        $return_value["facebook"] = "url";
         $return_value["obs"] = "connect_multitext";
         $return_value["ohloh"] = "connect_url";
         $return_value["bugtracker"] = "url";
