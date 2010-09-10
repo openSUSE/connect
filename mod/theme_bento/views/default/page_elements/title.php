@@ -34,7 +34,7 @@ if (($_SESSION['guid']) && ($page_owner && $page_owner_user->guid != $_SESSION['
 	if($page_owner_user instanceOf ElggGroup) {
 		$display = "<div id=\"content_area_group_title\">" . $info . "</div>";
 	} else {
-		$display = "<div id=\"content_area_user_title\">" . $info . "</div>";
+		$display = "<div id=\"content_area_user_title\" class=\"box-header\">" . $info . "</div>";
 	}
 	if (!empty($submenu)  && $vars['submenu'] == true) {
 		// plugins can extend this to add menu options

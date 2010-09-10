@@ -39,6 +39,12 @@ padding:0 0 5px;
   width: 760px;
 }
 
+#content_area_user_title.box-header {
+  margin-top: 1px;
+}
+#content_area_user_title.box-header h2 {
+  margin-bottom: 0;
+}
 .navigation ul {
   list-style: none inside;
   margin: 0;
