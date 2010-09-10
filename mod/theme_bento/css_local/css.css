@@ -176,48 +176,8 @@ padding: 10px;
 #widgets_right,
 #widgets_middle {
   float: left;
-/*  margin: 0;
-  padding: 0;*/
   width: 280px;
 }
-
-
-
-/*
-#customise_page_view,
-.contentWrapper {
-  border-radius: none;
-  -moz-border-radius: none;
-  -webkit-border-radius: none;
-  -khtml-border-radius: none;
-}
-#customise_editpanel {
-  -moz-border-radius: 8px 8px 8px 8px;
-  background: none repeat scroll 0 0 #DEDEDE;
-  display: none;
-  margin: 0 0 20px;
-  padding: 10px;
-}
-
-#customise_page_view {
-  background: none repeat scroll 0 0 white;
-  margin: auto;
-  padding: auto;
-  width: auto;
-}
-
-#customise_page_view {
-  margin: 0 0 10px;
-  padding: 10px;
-  width: 700px;
-}
-
-#customise_editpanel_rhs {
-  background: none repeat scroll 0 0 white;
-  float: right;
-  width: 220px;
-}
-*/
 
 a.button {
   padding: 0.5em 1em;
@@ -238,15 +198,43 @@ a.button {
   margin: 0 1em 1em;
   padding: 1em;
   overflow: hidden;
-#persistent_login}
+}
 
 #collapsable_box_editpanel {
   display: none;
 }
+
+
+.simplepie_blog_title {
+  text-align: left;
+}
+
+.simplepie_blog_title h2 {
+  margin-top: -0.5em;
+}
+
+.simplepie_title h4 a {
+  color: #690;
+}
+.simplepie_blog_title h2,
+.simplepie_title h4 {
+  margin-left: 0!important;
+  margin-bottom: 0.5em;
+}
+
+.simplepie_item {
+  border-bottom: 1px dotted #ccc;
+  padding-bottom: 1em;
+}
+.simplepie_item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
 /* TEMP - Remove later */
 
 #customise_editpanel table.draggable_widget h3 {
-/*  width: 100px;*/
 width: 100%;
 background: #eee;
 }
