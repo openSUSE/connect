@@ -41,6 +41,11 @@
     margin-top: 0.5em !important;
     text-shadow: #999 0 1px 1px;
   }
+    .plugin_details h3 a {
+      font-size: 0.6em;
+      font-weight: normal;
+      text-shadow: none;
+    }
 
 .plugin_details a.button {
   border: 1px solid #c9c9c9;
