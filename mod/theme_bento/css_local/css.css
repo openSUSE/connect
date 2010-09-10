@@ -28,7 +28,7 @@ ul.dropdown ul {
 
 #two_column_left_sidebar_maincontent {
 -moz-border-radius:8px 8px 8px 8px;
-background: inherit;
+background: #fefefe;
 float:left;
 margin:0;
 min-height:360px;
@@ -43,6 +43,12 @@ padding:0 0 5px;
   list-style: none inside;
   margin: 0;
   padding: 0;
+}
+
+#owner_block_rss_feed {
+  border-bottom: 1px dotted #ccc;
+  padding-bottom: 1em;
+  padding-top: 0.5em;
 }
 
 .admin_statistics, .admin_users_online, .usersettings_statistics, .admin_adduser_link, #add-box, #search-box, #logbrowser_search_area {
@@ -237,6 +243,13 @@ a.button {
   padding-bottom: 0;
   margin-bottom: 0;
 }
+
+.plugin_details {
+
+}
+
+
+
 
 /* TEMP - Remove later */
 

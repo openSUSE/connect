@@ -12,25 +12,50 @@
 
 
 .plugin_details {
-  border: 1px dotted #666;
-  margin: 0.5em 0;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  
+  margin: 1em;
+  border: 2px solid #999;
+
+  box-shadow: 0 1px 2px #ccc;
+  -moz-box-shadow: 0 1px 2px #ccc;
+  -webkit-box-shadow: 0 1px 2px #ccc;
+  
   position: relative;
+  
 }
   .plugin_details.active {
-    background: white;
+    border-color: #768d99;
+    border-color: #80A0B2;
+    background-color: #f6f6f6;
+    
+/*    box-shadow: 0 1px 3px #999;
+    -moz-box-shadow: 0 1px 3px #999;
+    -webkit-box-shadow: 0 1px 3px #999;*/
+    
   }
+
+.plugin_details.not-active {
+  background-color: #e9e9e9;
+  border-color: #fff;
+}
   .plugin_details h3 {
     font-size: 1.5em;
   }
-.plugin_details.not-active {
-  background-color: #ddd;
+
+.plugin_details a.button {
+  border: 1px solid #c9c9c9;
 }
+
 .admin_plugin_enable_disable,
 .admin_plugin_reorder {
   position: absolute;
   bottom: 1em;
   right: 1em;
 }
+
 
 .admin_plugin_reorder {
   bottom: auto;
