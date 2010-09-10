@@ -24,6 +24,7 @@
   -webkit-box-shadow: 0 1px 2px #ccc;
   
   position: relative;
+  border-left-width:1em;
   
 }
   .plugin_details.active {
