@@ -14,8 +14,8 @@ $ts = time();
 $token = generate_action_token($ts);
 
 // Description of what's going on
-$buttons = " <a class='enableallplugins' href=\"{$CONFIG->url}action/admin/plugins/enableall?__elgg_token=$token&__elgg_ts=$ts\">".elgg_echo('enableall')."</a>  <a class='disableallplugins' href=\"{$CONFIG->url}action/admin/plugins/disableall?__elgg_token=$token&__elgg_ts=$ts\">".elgg_echo('disableall')."</a> ";
-echo "<div class=\"contentWrapper\"><span class=\"contentIntro\">" . $buttons . elgg_view('output/longtext', array('value' => elgg_echo("admin:plugins:description"))) . "<div class='clearfloat'></div></span></div>";
+$buttons = " <a class='enableallplugins button' href=\"{$CONFIG->url}action/admin/plugins/enableall?__elgg_token=$token&__elgg_ts=$ts\">".elgg_echo('enableall')."</a>  <a class='disableallplugins button' href=\"{$CONFIG->url}action/admin/plugins/disableall?__elgg_token=$token&__elgg_ts=$ts\">".elgg_echo('disableall')."</a> ";
+echo "<div class=\"contentWrapper\"><span class=\"contentIntro\">" . elgg_view('output/longtext', array('value' => elgg_echo("admin:plugins:description"))) . $buttons . "<div class='clearfloat'></div></span></div>";
 
 $limit = get_input('limit', 10);
 $offset = get_input('offset', 0);

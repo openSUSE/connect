@@ -39,6 +39,11 @@ padding:0 0 5px;
   width: 760px;
 }
 
+.contentIntro p {
+  margin: 0 1.5em 2em 0;
+  float: left;
+}
+
 #content_area_user_title.box-header {
   margin-top: 1px;
 }
@@ -198,7 +203,7 @@ padding: 10px;
 }
 
 a.button {
-  padding: 0.5em 1em;
+  padding: 0.3em 0.8em;
   text-decoration: none;
 }
 .pluginsettings,
