@@ -130,7 +130,7 @@ padding: 10px;
 }
 
 #persistent_login {
-  margin-top: -3.5em;
+  margin-top: -2.5em;
   margin-right: 9em;
 }
 
@@ -237,7 +237,8 @@ a.button {
   background-color: transparent;
   margin: 0 1em 1em;
   padding: 1em;
-}
+  overflow: hidden;
+#persistent_login}
 
 #collapsable_box_editpanel {
   display: none;

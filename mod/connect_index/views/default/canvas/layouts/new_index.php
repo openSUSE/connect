@@ -43,8 +43,8 @@
                         <img id="connect-beta" src="/beta.png" />
             			    	<?php
 			    	
-				    echo "<h3 style=\"margin-bottom: -1ex; margin-top: 2.5em;\">Want to try out Connect?</h3><p>Use the user <strong>geeko</strong> with password <strong>opensuse</strong>.</p>";
-			    	echo "<div class=\"clearfloat\"></div>";
+				    echo "<h3 style=\"margin-bottom: -1ex; margin-top: 2em;\">Want to try out Connect?</h3><p style=\"margin: 1em 0 3em;\">Use the user <strong>geeko</strong> with password <strong>opensuse</strong>.</p>";
+            // echo "<div class=\"clearfloat\"></div>";
 			    	
 			    	//display the login form
 			    	echo $vars['area1'];
