@@ -19,9 +19,9 @@
   margin: 1em;
   border: 2px solid #999;
 
-  box-shadow: 0 1px 2px #ccc;
-  -moz-box-shadow: 0 1px 2px #ccc;
-  -webkit-box-shadow: 0 1px 2px #ccc;
+  box-shadow: 0 1px 3px #ccc;
+  -moz-box-shadow: 0 1px 3px #ccc;
+  -webkit-box-shadow: 0 1px 3px #ccc;
   
   position: relative;
   border-left-width:1em;
