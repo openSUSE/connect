@@ -11,6 +11,7 @@
 			'polls:votes' => "votes",
 			'polls:user' => "%s's poll",
 			'polls:group_polls' => "Group polls",
+			'group:polls:empty' => "No group polls",
 			'polls:user:friends' => "%s's friends' poll",
 			'polls:your' => "Your polls",
 			'polls:not_me' => "%s's polls",
