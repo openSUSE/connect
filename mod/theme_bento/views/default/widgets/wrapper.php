@@ -38,7 +38,7 @@ if ($callback != "true") {
       <div class=" box-header collapsable_box_header">
       <a href="javascript:void(0);" class="toggle_box_contents">-</a><?php if ($vars['entity']->canEdit()) { ?><a href="javascript:void(0);" class="toggle_box_edit_panel"><?php echo elgg_echo('edit'); ?></a><?php } ?>
       <h2><?php echo $title; ?></h2>
-  <!--><h2 class="box-header"><?php echo $title; ?> <div class="box-header-edit collapsable_box_header"><a href="javascript:void(0);" class="toggle_box_contents">-</a><?php if ($vars['entity']->canEdit()) { ?><a href="javascript:void(0);" class="toggle_box_edit_panel"><?php echo elgg_echo('edit'); ?></a><?php } ?></div></h2> -->
+  <!-- <h2 class="box-header"><?php echo $title; ?> <div class="box-header-edit collapsable_box_header"><a href="javascript:void(0);" class="toggle_box_contents">-</a><?php if ($vars['entity']->canEdit()) { ?><a href="javascript:void(0);" class="toggle_box_edit_panel"><?php echo elgg_echo('edit'); ?></a><?php } ?></div></h2> -->
   </div>
   <?php
 
