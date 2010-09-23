@@ -32,7 +32,7 @@
 	//newest events
 	$area8 = elgg_list_entities(array('type' => 'object', 'subtype' => 'event_calendar', 'limit' => 3, 'full_view' => FALSE, 'pagination' => FALSE));
 	//newest actions
-	$area9 = elgg_view_river_items(0, 0, '', '', '', '') . "</div>";
+	$area9 = elgg_view_river_items(0, 0, '', '', '', '', 10, 0, 0, false) . "</div>";
 	//display the contents in our new canvas layout
 	$body = elgg_view_layout('new_index',$area1, $area2, $area3, $area4, $area5, $area6, $area7, $area8, $area9);
 	page_draw($title, $body);
