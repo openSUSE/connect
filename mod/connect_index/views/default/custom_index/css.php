@@ -82,6 +82,3 @@
 	display:block;
 	margin-top:-34px;
 }
-
-
-

@@ -173,6 +173,22 @@
 
 <?php
         }
+    if(is_plugin_enabled('riverdashboard')){
+?>
+        <!-- display river -->
+        <div class="box box-shadow">
+          <h2 class="box-header"><?php echo elgg_echo("custom:river"); ?></h2>
+            <?php
+                if (isset($vars['area9'])){
+                    echo $vars['area9'];
+		} else {
+                    echo "<p>" . elgg_echo('custom:noriver') . "</p>";
+                }
+            ?>
+        </div>
+
+<?php
+        }
 ?>
     </div>
     <div class="clearfloat"></div>
