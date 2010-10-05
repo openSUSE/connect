@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin_manifest>
+        <field key="author" value="Michal Hrusecky" />
+        <field key="version" value="1.0" />
+        <field key="description" value="Export users data using REST API" />
+        <field key="website" value="http://www.opensuse.org" />
+        <field key="copyright" value="(C) Novell Inc. 2010" />
+        <field key="licence" value="GNU Public License version" />
+        <field key="elgg_version" value="2010030101" />
+</plugin_manifest>
