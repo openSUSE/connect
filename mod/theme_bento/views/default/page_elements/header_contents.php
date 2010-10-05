@@ -78,7 +78,7 @@
 
 
 
-<div id="page_container" class="container_16 content-wrapper">
+<div id="page_container" class="container_16 content-wrapper clearfix">
     <!-- <div id="page_wrapper" class="box box-shadow grid_13 clearfix"> Temp. disabled -->
     <!-- <div id="page_wrapper" class="box box-shadow grid_16 alpha omega clearfix"> -->
 
