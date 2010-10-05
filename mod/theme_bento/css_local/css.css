@@ -175,7 +175,7 @@ padding: 10px;
 
 
 .collapsable_box {
-  margin-top: -15px;
+/*  margin-top: -15px;*/
 }
 .box-header h2 {
   margin-top: 0;
@@ -353,3 +353,11 @@ td.box {
 .toggle_box_edit_panel {
   text-transform: uppercase;
 }
+
+a.toggle_customise_edit_panel {
+  width: auto;
+}
+
+
+
+
