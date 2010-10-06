@@ -3,6 +3,7 @@
         global $CONFIG;
         $return_value["blog"] = "url";
         $return_value["country"] = "profile_dropdown";
+        $return_value["gender"] = "profile_dropdown";
         $return_value["xmpp"] = "connect_url";
         $return_value["contactemail"] = "connect_multitext";
         $return_value["freenode_nick"] = "text";

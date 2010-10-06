@@ -40,6 +40,11 @@
       'profile:data:country:cz'  => 'Czech Republic',
       'profile:data:country:sk'  => 'Slovakia',
       'profile:data:country:de'  => 'Germany',
+
+      'profile:data:gender'      => 'm:f',
+      'profile:data:gender:m'    => 'Male',
+      'profile:data:gender:f'    => 'Female',
+
   );
 
   add_translation("en",$english);
