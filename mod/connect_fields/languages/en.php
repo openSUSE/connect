@@ -7,12 +7,15 @@
       'checkbox:empty'           => 'Not set',
 
       'profile:blog'             => 'Blog',
+      'profile:lizards_blog'     => 'Lizards Blog',
       'profile:gender'           => 'Gender',
+      'profile:birthday'         => 'Birthday',
       'profile:country'          => 'Current country',
       'profile:xmpp'             => 'Jabber (XMPP)',
       'profile:freenode_nick'    => 'Freenode IRC nick',
       'profile:freenode_cloak'   => 'Freenode IRC cloak',
-      'profile:email_alias'      => 'opensuse.org email alias',
+      'profile:email_nick'       => 'opensuse.org email alias (nick)',
+      'profile:email_full'       => 'opensuse.org email alias (full)',
       'profile:openid'           => 'OpenID',
       'profile:gpg'              => 'GPG key',
       'profile:ssh'              => 'SSH key',
@@ -288,6 +291,10 @@
       'profile:data:gender'      => 'm:f',
       'profile:data:gender:m'    => 'Male',
       'profile:data:gender:f'    => 'Female',
+
+      'profile:data:lizards_blog'   => 'y:n',
+      'profile:data:lizards_blog:y' => 'Yes',
+      'profile:data:lizards_blog:n' => 'No',
 
   );
 

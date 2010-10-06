@@ -2,13 +2,16 @@
     function connect_fields_profile_setup($hook_name, $entity_type, $return_value, $parameters) {
         global $CONFIG;
         $return_value["blog"] = "url";
+        $return_value["lizards_blog"] = "profile_dropdown";
         $return_value["country"] = "profile_dropdown";
         $return_value["gender"] = "profile_dropdown";
+        $return_value["birthday"] = "calendar";
         $return_value["xmpp"] = "connect_url";
         $return_value["contactemail"] = "connect_multitext";
         $return_value["freenode_nick"] = "text";
         $return_value["freenode_cloak"] = "text";
-        $return_value["email_alias"] = "text";
+        $return_value["email_nick"] = "text";
+        $return_value["email_full"] = "text";
         $return_value["openid"] = "url";
         $return_value["gpg"] = "connect_url";
         $return_value["ssh"] = "longtext";
