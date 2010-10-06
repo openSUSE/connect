@@ -218,7 +218,7 @@ a.button {
 .contentWrapper {
   background-color: transparent;
   margin: 0 1em 1em;
-  padding: 1em;
+/*  padding: 1em;*/
   overflow: hidden;
 }
 
@@ -386,4 +386,29 @@ a.toggle_customise_edit_panel {
 
 #customise_editpanel {
   background-color: #eee;
+}
+
+#elgg_horizontal_tabbed_nav {
+  border-bottom: 1px solid #ddd;
+  overflow: hidden;
+  margin-bottom: 1em;
+}
+
+#elgg_horizontal_tabbed_nav ul {
+  margin: 0;
+}
+
+#elgg_horizontal_tabbed_nav li {
+  float: left;
+  margin: 0.5em;
+}
+#elgg_horizontal_tabbed_nav li.selected a {
+  color: #690;
+  font-weight: bold;
+}
+  #elgg_horizontal_tabbed_nav li a:hover {
+    background: none;
+  }
+#elgg_horizontal_tabbed_nav + div.group_count {
+  clear: both;
 }
