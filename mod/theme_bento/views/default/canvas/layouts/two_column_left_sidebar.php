@@ -22,7 +22,7 @@
 </div><!-- /two_column_left_sidebar -->
 
 <!-- main content -->
-<div id="two_column_left_sidebar_maincontent" class="box box-shadow grid_13 clearfix">
+<div id="two_column_left_sidebar_maincontent" class="box box-shadow grid_13 omega clearfix">
 
 <?php if (isset($vars['area2'])) echo $vars['area2']; ?>
 
