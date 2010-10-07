@@ -396,6 +396,6 @@ span.timestamp {
 }
 
 #groupsearchform .search_input {
-	width:176px;
+
 }
 

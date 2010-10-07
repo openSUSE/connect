@@ -372,6 +372,8 @@ a.toggle_customise_edit_panel {
   margin-right: 1em;
 }
 
+
+
 #customise_page_view table {
   margin: 0;
 }
@@ -428,3 +430,14 @@ a.toggle_customise_edit_panel {
 }
   .search_listing .groupicon img {
       border: 1px solid #fff;
+      }
+      
+      
+#memberssearchform {
+  border: none;
+}
+
+
+.sidebarBox .search_input {
+  width: 10em;
+}

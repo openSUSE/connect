@@ -59,6 +59,6 @@
 	margin:4px 0 5px 0;
 }
 #memberssearchform .search_input {
-	width:176px;
+ 
 }
 
