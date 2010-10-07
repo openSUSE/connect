@@ -49,6 +49,8 @@
       text-shadow: none;
     }
 
+.groups .search_listing {}
+
 .plugin_details a.button {
   border: 1px solid #c9c9c9;
 }
