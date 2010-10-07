@@ -25,6 +25,10 @@
       // Get key description (we might be interested in who is asking)
       $key = get_key_description();
 
+      // Defaults for the attribute
+      if ($attr == "")
+         $attr = "*";
+
       // If there is no such entity, return NULL
       if (!($user = get_entity($guid)))
          return NULL;
@@ -133,7 +137,7 @@
                            'required' => true),
                        "attribute" => array(
                            'type' => 'string',
-                           'required' => true),
+                           'required' => false),
                        ),
                  'Returns user attribute',
                  'GET',
@@ -148,7 +152,7 @@
                            'required' => true),
                        "attribute" => array(
                            'type' => 'string',
-                           'required' => true),
+                           'required' => false),
                        ),
                  'Returns attribute of any entity',
                  'GET',
