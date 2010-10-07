@@ -26,6 +26,7 @@
         $return_value["linkedin"] = "connect_url";
         $return_value["xing"] = "url";
         $return_value["obs"] = "connect_multitext";
+        $return_value["contributions"] = "longtext";
         unset($return_value["skills"]);
         unset($return_value["interests"]);
         return $return_value;

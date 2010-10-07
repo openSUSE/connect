@@ -30,6 +30,7 @@
       'profile:linkedin'         => 'LinkedIn',
       'profile:xing'             => 'Xing',
       'profile:obs'              => 'Build Service repository',
+      'profile:contributions'    => 'Contributions',
 
       'groups:blog'              => 'Blog',
       'groups:irc'               => 'IRC channel',
