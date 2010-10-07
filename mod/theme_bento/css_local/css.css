@@ -417,3 +417,12 @@ a.toggle_customise_edit_panel {
 #two_column_left_sidebar_maincontent_boxes {
   min-height: 25em;
 }
+
+.search_listing {
+  background-color: #E9E9E9;
+}
+.search_listing .groupicon {
+  margin: 1em 0 0 15px;
+}
+  .search_listing .groupicon img {
+      border: 1px solid #fff;

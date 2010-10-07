@@ -11,13 +11,14 @@
 ?>
 
 
-.plugin_details {
+.plugin_details, .search_listing {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -khtml-border-radius: 5px;
   
   margin: 1em;
-  border: 2px solid #999;
+  border-width: 2px;
+  border-style: solid;
 
   box-shadow: 0 1px 3px #ccc;
   -moz-box-shadow: 0 1px 3px #ccc;
@@ -33,7 +34,7 @@
     background-color: #f6f6f6;
   }
 
-.plugin_details.not-active {
+.plugin_details.not-active, .search_listing {
   background-color: #e9e9e9;
   border-color: #fff;
 }
