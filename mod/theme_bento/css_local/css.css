@@ -412,3 +412,8 @@ a.toggle_customise_edit_panel {
 #elgg_horizontal_tabbed_nav + div.group_count {
   clear: both;
 }
+
+
+#two_column_left_sidebar_maincontent_boxes {
+  min-height: 25em;
+}
