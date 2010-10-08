@@ -193,7 +193,7 @@
 	-moz-border-radius: 8px;
 }
 #group_pages_widget .search_listing {
-	border: 2px solid #cccccc;
+  /* border: 2px solid #cccccc; */
 }
 #right_column .filerepo_widget_singleitem {
 	background: #dedede !important;
@@ -280,8 +280,7 @@ span.timestamp {
 }
 /* new groups page */
 .groups .search_listing {
-	border:2px solid #cccccc;
-	margin:0 0 5px 0;
+  
 }
 .groups .search_listing:hover {
 	background:#dedede;

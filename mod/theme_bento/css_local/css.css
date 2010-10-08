@@ -218,8 +218,11 @@ a.button {
 .contentWrapper {
   background-color: transparent;
   margin: 0 1em 1em;
-/*  padding: 1em;*/
   overflow: hidden;
+}
+.contentWrapper h2,
+.contentWrapper h3 {
+  margin-left: 0;
 }
 
 #collapsable_box_editpanel {
@@ -420,10 +423,9 @@ a.toggle_customise_edit_panel {
 .search_listing {
   background-color: #efefef;
   margin-bottom: 1em !important;
-  border-width: 2px 2px 2px 1em !important;
+  border-width: 1px !important;
   border-color: #fff !important;
-  margin-left: 0.2em !important;
-  margin-right: 0.2em !important;
+  margin: 0.5em 1em 1em;
 }
 .search_listing .groupicon {
   margin: 1em 0 0 15px;

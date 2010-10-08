@@ -14,8 +14,6 @@
 
 /* new members page */
 .members .search_listing {
-	border:2px solid #cccccc;
-	margin:0 0 5px 0;
 }
 .members .search_listing:hover {
 	background:#dedede;
