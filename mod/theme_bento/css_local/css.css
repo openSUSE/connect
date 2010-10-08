@@ -443,3 +443,12 @@ a.toggle_customise_edit_panel {
 .sidebarBox .search_input {
   width: 10em;
 }
+
+
+/* disable hover of navigation */
+
+.navigation a:hover, .navigation a:focus {
+  background: none;
+  color: #3399CC;
+}
+
