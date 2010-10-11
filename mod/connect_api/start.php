@@ -73,7 +73,6 @@
    function connect_entity_set_attribute($guid,$attr,$value) {
       // Get key description (we might be interested in who is asking)
       $key = get_key_description();
-      if(
 
       // If there is no such entity, return NULL
       if (!($user = get_entity($guid)))
