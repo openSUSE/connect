@@ -59,12 +59,18 @@
          if($key)
             elgg_set_ignore_access($ia);
 
-         $result = array();
+         $result = array( "guid" => $user->guid, 
+                          "type" => $user->type
+                        );
+         if($user->name)
+            $result = $result + array ( "name" => $user->name );
+         if($user->email)
+            $result = $result + array ( "email" => $user->email );
          foreach($md as $m) {
             if($m->owner_guid == $user->guid)
                $result = $result + array($m->name => $m->value);
          }
-         return array($attr => $result);
+         return array("all" => $result);
       }
       return new ErrorResult("There is no such attribute.");
    }
@@ -73,7 +79,8 @@
    function connect_entity_set_attribute($guid,$attr,$value) {
       // Get key description (we might be interested in who is asking)
       $key = get_key_description();
-
+      if(!$key)
+         return new ErrorResult("Insuficient rights.");
       // If there is no such entity, return NULL
       if (!($user = get_entity($guid)))
          return new ErrorResult("There is no such entity.");
@@ -156,21 +163,54 @@
       return new ErrorResult("There is no such user.");
     }
 
-    function connect_user_create($login, $email, $password, $name = "") {
+    function connect_user_create($login, $email, $password, $name = "", $validate = TRUE) {
+      $ia = elgg_set_ignore_access(TRUE);
       try {
          if($name == "") $name = $login;
          $guid = register_user($login, $password, $name, $email, false, 0, "");
          $new_user = get_entity($guid);
-         request_user_validation($guid);
-         $new_user->disable('new_user', false);
+         if($validate) {
+            request_user_validation($guid);
+            $new_user->disable('new_user', false);
+         } else {
+            $new_user->enable();
+            set_user_validation_status($guid, true, 'email');
+         }
+         elgg_set_ignore_access($ia);
          return array(
-                  'login' => $new_user->login,
+                  'login' => $new_user->username,
                   'name' => $new_user->name,
                   'email' => $new_user->email,
                   );
       } catch (RegistrationException $r) {
+         elgg_set_ignore_access($ia);
          return new ErrorResult($r->getMessage());
       }
+    }
+
+    function connect_user_add_groups($login, $group_guid) {
+      if (($user = get_user_by_username($login)) &&
+            (!($user->isBanned()))) {
+         $group = get_entity($group_guid);
+         if(!$group)
+            return new ErrorResult("Group not found!");
+         $ia = elgg_set_ignore_access(TRUE);
+			if (($group instanceof ElggGroup) && ($group->join($user)))
+			{
+				// Remove any invite or join request flags
+				remove_entity_relationship($group->guid, 'invited', $user->guid);
+				remove_entity_relationship($user->guid, 'membership_request', $group->guid);
+
+				// add to river
+				add_to_river('river/group/create','join',$user->guid,$group->guid);
+
+            elgg_set_ignore_access($ia);
+				return connect_user_get_groups($login);
+			}
+         elgg_set_ignore_access($ia);
+         return new ErrorResult("Can't join the group :-(");
+      }
+      return new ErrorResult("There is no such user.");
     }
 
     // Register our API
@@ -182,6 +222,20 @@
                            'required' => true)),
                  'Returns groups that user is a member of',
                  'GET',
+                 $non_public,
+                 false
+                );
+
+    expose_function("connect.user.groups.add",
+                "connect_user_add_groups",
+                 array("login" => array(
+                           'type' => 'string',
+                           'required' => true),
+                       "group_guid" => array(
+                           'type' => 'int',
+                           'required' => true)),
+                 'Add user to the group',
+                 'POST',
                  $non_public,
                  false
                 );
@@ -238,6 +292,9 @@
                            'required' => true),
                        "name" => array(
                            'type' => 'string',
+                           'required' => false),
+                       "validate" => array(
+                           'type' => 'boolean',
                            'required' => false),
                        ),
                  'Returns attribute of any entity',
