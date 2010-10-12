@@ -16,6 +16,7 @@
       'profile:freenode_cloak'   => 'Freenode IRC cloak',
       'profile:email_nick'       => 'opensuse.org email alias (nick)',
       'profile:email_full'       => 'opensuse.org email alias (full)',
+      'profile:email_target'     => 'opensuse.org email alias (target)',
       'profile:openid'           => 'OpenID',
       'profile:gpg'              => 'GPG key',
       'profile:ssh'              => 'SSH key',
