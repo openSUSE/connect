@@ -12,6 +12,7 @@
         $return_value["freenode_cloak"] = "text";
         $return_value["email_nick"] = "text";
         $return_value["email_full"] = "text";
+        $return_value["email_target"] = "text";
         $return_value["openid"] = "url";
         $return_value["gpg"] = "connect_url";
         $return_value["ssh"] = "longtext";
