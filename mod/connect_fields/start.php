@@ -36,7 +36,7 @@
     function connect_fields_group_setup($hook_name, $entity_type, $return_value, $parameters) {
         global $CONFIG;
         $return_value["blog"] = "url";
-        $return_value["freenode_channel"] = "connect_url";
+        $return_value["irc"] = "text";
         $return_value["twitter"] = "url";
         $return_value["identica"] = "url";
         $return_value["facebook"] = "url";
