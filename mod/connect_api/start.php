@@ -195,18 +195,18 @@
          if(!$group)
             return new ErrorResult("Group not found!");
          $ia = elgg_set_ignore_access(TRUE);
-			if (($group instanceof ElggGroup) && ($group->join($user)))
-			{
-				// Remove any invite or join request flags
-				remove_entity_relationship($group->guid, 'invited', $user->guid);
-				remove_entity_relationship($user->guid, 'membership_request', $group->guid);
+            if (($group instanceof ElggGroup) && ($group->join($user)))
+            {
+                // Remove any invite or join request flags
+                remove_entity_relationship($group->guid, 'invited', $user->guid);
+                remove_entity_relationship($user->guid, 'membership_request', $group->guid);
 
-				// add to river
-				add_to_river('river/group/create','join',$user->guid,$group->guid);
+                // add to river
+                add_to_river('river/group/create','join',$user->guid,$group->guid);
 
             elgg_set_ignore_access($ia);
-				return connect_user_get_groups($login);
-			}
+                return connect_user_get_groups($login);
+            }
          elgg_set_ignore_access($ia);
          return new ErrorResult("Can't join the group :-(");
       }
