@@ -398,7 +398,7 @@ To remove a widget drag it back to the <b>Widget gallery</b>.",
 
 	'registration:notemail' => 'The email address you provided does not appear to be a valid email address.',
 	'registration:userexists' => 'That username already exists',
-	'registration:usernametooshort' => 'Your username must be a minimum of 4 characters long.',
+	'registration:usernametooshort' => 'Your username must be a minimum of 2 characters long.',
 	'registration:passwordtooshort' => 'The password must be a minimum of 6 characters long.',
 	'registration:dupeemail' => 'This email address has already been registered.',
 	'registration:invalidchars' => 'Sorry, your username contains invalid characters.',
