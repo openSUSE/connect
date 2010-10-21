@@ -21,7 +21,7 @@
    }
 
    // Returns value of the attribute
-   function connect_entity_get_attribute($guid,$attr) {
+   function connect_entity_attribute_get($guid,$attr) {
       // Get key description (we might be interested in who is asking)
       $key = get_key_description();
 
@@ -107,26 +107,26 @@
 
 
    // Wrapper to allow to get attributes for login
-   function connect_user_get_attribute($login,$attr) {
+   function connect_user_attribute_get($login,$attr) {
       if (($user = get_user_by_username($login)) &&
             (!($user->isBanned()))) {
-         return connect_entity_get_attribute($user->guid,$attr);
+         return connect_entity_attribute_get($user->guid,$attr);
       }
       return new ErrorResult("There is no such user.");
    }
 
    // Wrapper to allow to set attributes for login
-   function connect_user_set_attribute($login,$attr,$value) {
+   function connect_user_attribute_set($login,$attr,$value) {
       if (($user = get_user_by_username($login)) &&
             (!($user->isBanned()))) {
-         return connect_entity_set_attribute($user->guid,$attr,$value);
+         return connect_entity_attribute_set($user->guid,$attr,$value);
       }
       return new ErrorResult("There is no such user.");
    }
 
 
    // Returns list of users groups
-   function connect_user_get_groups($login) {
+   function connect_user_groups_get($login) {
    if (($user = get_user_by_username($login)) && (!($user->isBanned()))) {
          // Formulate what we want
          $options = array(
@@ -188,13 +188,13 @@
       }
     }
 
-    function connect_user_add_groups($login, $group_guid) {
+    function connect_user_groups_add($login, $group_guid) {
       if (($user = get_user_by_username($login)) &&
             (!($user->isBanned()))) {
          $group = get_entity($group_guid);
          if(!$group)
             return new ErrorResult("Group not found!");
-         $ia = elgg_set_ignore_access(TRUE);
+            $ia = elgg_set_ignore_access(TRUE);
             if (($group instanceof ElggGroup) && ($group->join($user)))
             {
                 // Remove any invite or join request flags
@@ -204,19 +204,39 @@
                 // add to river
                 add_to_river('river/group/create','join',$user->guid,$group->guid);
 
-            elgg_set_ignore_access($ia);
-                return connect_user_get_groups($login);
+                elgg_set_ignore_access($ia);
+                return connect_user_groups_get($login);
             }
          elgg_set_ignore_access($ia);
-         return new ErrorResult("Can't join the group :-(");
+         return new ErrorResult("Can't join the group.");
       }
       return new ErrorResult("There is no such user.");
     }
 
+    function connect_user_groups_requestjoin($login, $group_guid) {
+      if (($user = get_user_by_username($login)) &&
+            (!($user->isBanned()))) {
+         $group = get_entity($group_guid);
+         if(!$group)
+            return new ErrorResult("Group not found!");
+            $ia = elgg_set_ignore_access(TRUE);
+            if (($group instanceof ElggGroup))
+            {
+                add_entity_relationship($user->guid, 'membership_request', $group->guid);
+                elgg_set_ignore_access($ia);
+                return connect_user_groups_get($login);
+            }
+         elgg_set_ignore_access($ia);
+         return new ErrorResult("Can't create join request to the group.");
+      }
+      return new ErrorResult("There is no such user.");
+    }
+
+
     // Register our API
 
     expose_function("connect.user.groups.get",
-                "connect_user_get_groups",
+                    "connect_user_groups_get",
                  array("login" => array(
                            'type' => 'string',
                            'required' => true)),
@@ -227,7 +247,7 @@
                 );
 
     expose_function("connect.user.groups.add",
-                "connect_user_add_groups",
+                    "connect_user_groups_add",
                  array("login" => array(
                            'type' => 'string',
                            'required' => true),
@@ -240,8 +260,22 @@
                  false
                 );
 
+    expose_function("connect.user.groups.requestjoin",
+                    "connect_user_groups_requestjoin",
+                 array("login" => array(
+                           'type' => 'string',
+                           'required' => true),
+                       "group_guid" => array(
+                           'type' => 'int',
+                           'required' => true)),
+                 'Add join request user to the group',
+                 'POST',
+                 $non_public,
+                 false
+                );
+
     expose_function("connect.user.attribute.get",
-                "connect_user_get_attribute",
+                    "connect_user_attribute_get",
                  array("login" => array(
                            'type' => 'string',
                            'required' => true),
@@ -256,7 +290,7 @@
                 );
 
     expose_function("connect.entity.attribute.get",
-                "connect_entity_get_attribute",
+                    "connect_entity_attribute_get",
                  array("guid" => array(
                            'type' => 'int',
                            'required' => true),
@@ -271,7 +305,7 @@
                 );
 
     expose_function("connect.whoami",
-                "get_key_description",
+                    "get_key_description",
                  array(),
                  'Returns description of your key',
                  'GET',
@@ -280,7 +314,7 @@
                 );
 
     expose_function("connect.user.create",
-                "connect_user_create",
+                    "connect_user_create",
                  array("login" => array(
                            'type' => 'string',
                            'required' => true),
@@ -304,7 +338,7 @@
                 );
 
     expose_function("connect.user.attribute.set",
-                "connect_user_set_attribute",
+                    "connect_user_attribute_set",
                  array("login" => array(
                            'type' => 'string',
                            'required' => true),
@@ -322,7 +356,7 @@
                 );
 
     expose_function("connect.entity.attribute.set",
-                "connect_entity_set_attribute",
+                    "connect_entity_attribute_set",
                  array("guid" => array(
                            'type' => 'int',
                            'required' => true),
