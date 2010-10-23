@@ -76,7 +76,7 @@
    }
 
    // Sets value of the attribute
-   function connect_entity_set_attribute($guid,$attr,$value) {
+   function connect_entity_attribute_set($guid,$attr,$value) {
       // Get key description (we might be interested in who is asking)
       $key = get_key_description();
       if(!$key)
