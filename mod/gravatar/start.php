@@ -53,8 +53,8 @@
 			$size = 40;
 			if (isset($size_lookup[$params['size']]))
 				$size = $size_lookup[$params['size']];
-				
-			return "http://www.gravatar.com/avatar/".md5($params['entity']->email) . ".jpg?s=$size";
+			$lowercase = strtolower($params['entity']->email);
+			return "http://www.gravatar.com/avatar/" . md5($lowercase) . ".jpg?s=$size";
 			
 		}
 	}
