@@ -88,7 +88,7 @@ class ElggMetadata extends ElggExtender {
 		} else {
 			$this->id = create_metadata($this->entity_guid, $this->name, $this->value, $this->value_type, $this->owner_guid, $this->access_id);
 			if (!$this->id) {
-				throw new IOException(sprintf(elgg_new('IOException:UnableToSaveNew'), get_class()));
+				throw new IOException(sprintf(elgg_echo('IOException:UnableToSaveNew'), get_class()));
 			}
 			return $this->id;
 		}
@@ -183,24 +183,33 @@ function remove_metadata($entity_guid, $name, $value = "") {
 /**
  * Create a new metadata object, or update an existing one.
  *
+ * Metadata can be an array by setting allow_multiple to TRUE, but it is an
+ * indexed array with no control over the indexing.
+ *
  * @param int $entity_guid The entity to attach the metadata to
  * @param string $name Name of the metadata
- * @param string $value Value of the metadata (cannot be associative array)
- * @param string $value_type
- * @param int $owner_guid
- * @param int $access_id
- * @param bool $allow_multiple
+ * @param string $value Value of the metadata
+ * @param string $value_type 'text', 'integer', or '' for automatic detection
+ * @param int $owner_guid GUID of entity that owns the metadata
+ * @param int $access_id Default is ACCESS_PRIVATE
+ * @param bool $allow_multiple Allow multiple values for one key. Default is FALSE
+ * @return int/bool id of metadata or FALSE if failure
  */
 function create_metadata($entity_guid, $name, $value, $value_type, $owner_guid, $access_id = ACCESS_PRIVATE, $allow_multiple = false) {
 	global $CONFIG;
 
 	$entity_guid = (int)$entity_guid;
+	// name and value are encoded in add_metastring()
 	//$name = sanitise_string(trim($name));
 	//$value = sanitise_string(trim($value));
 	$value_type = detect_extender_valuetype($value, sanitise_string(trim($value_type)));
 	$time = time();
 	$owner_guid = (int)$owner_guid;
 	$allow_multiple = (boolean)$allow_multiple;
+
+	if (!isset($value)) {
+		return FALSE;
+	}
 
 	if ($owner_guid==0) {
 		$owner_guid = get_loggedin_userid();
@@ -211,15 +220,14 @@ function create_metadata($entity_guid, $name, $value, $value_type, $owner_guid, 
 	$id = false;
 
 	$existing = get_data_row("SELECT * from {$CONFIG->dbprefix}metadata WHERE entity_guid = $entity_guid and name_id=" . add_metastring($name) . " limit 1");
-	if (($existing) && (!$allow_multiple) && (isset($value))) {
-		$id = $existing->id;
+	if ($existing && !$allow_multiple) {
+		$id = (int)$existing->id;
 		$result = update_metadata($id, $name, $value, $value_type, $owner_guid, $access_id);
 
 		if (!$result) {
 			return false;
 		}
-	}
-	else if (isset($value)) {
+	} else {
 		// Support boolean types
 		if (is_bool($value)) {
 			if ($value) {
@@ -243,19 +251,14 @@ function create_metadata($entity_guid, $name, $value, $value_type, $owner_guid, 
 		// If ok then add it
 		$id = insert_data("INSERT into {$CONFIG->dbprefix}metadata (entity_guid, name_id, value_id, value_type, owner_guid, time_created, access_id) VALUES ($entity_guid, '$name','$value','$value_type', $owner_guid, $time, $access_id)");
 
-		if ($id!==false) {
+		if ($id !== false) {
 			$obj = get_metadata($id);
 			if (trigger_elgg_event('create', 'metadata', $obj)) {
-				return true;
+				return $id;
 			} else {
 				delete_metadata($id);
 			}
 		}
-
-	} else if ($existing) {
-		// TODO: Check... are you sure you meant to do this Ben? :)
-		$id = $existing->id;
-		delete_metadata($id);
 	}
 
 	return $id;
@@ -343,12 +346,16 @@ function update_metadata($id, $name, $value, $value_type, $owner_guid, $access_i
 /**
  * This function creates metadata from an associative array of "key => value" pairs.
  *
- * @param int $entity_guid
- * @param string $name_and_values
- * @param string $value_type
- * @param int $owner_guid
- * @param int $access_id
- * @param bool $allow_multiple
+ * To achieve an array for a single key, pass in the same key multiple times with
+ * allow_multiple set to TRUE. This creates an indexed array. It does not support
+ * associative arrays and there is no guarantee on the ordering in the array.
+ *
+ * @param int $entity_guid The entity to attach the metadata to
+ * @param string $name_and_values Associative array - a value can be a string, number, bool
+ * @param string $value_type 'text', 'integer', or '' for automatic detection
+ * @param int $owner_guid GUID of entity that owns the metadata
+ * @param int $access_id Default is ACCESS_PRIVATE
+ * @param bool $allow_multiple Allow multiple values for one key. Default is FALSE
  */
 function create_metadata_from_array($entity_guid, array $name_and_values, $value_type, $owner_guid, $access_id = ACCESS_PRIVATE, $allow_multiple = false) {
 	foreach ($name_and_values as $k => $v) {
@@ -552,7 +559,7 @@ function find_metadata($meta_name = "", $meta_value = "", $entity_type = "", $en
  *
  * 	metadata_values => NULL|ARR metadata values
  *
- * 	metadata_name_value_pairs => NULL|ARR (name = 'name', value => 'value', 'operand' => '=', 'case_sensitive' => TRUE) entries.
+ * 	metadata_name_value_pairs => NULL|ARR (name => 'name', value => 'value', 'operand' => '=', 'case_sensitive' => TRUE) entries.
  * 	Currently if multiple values are sent via an array (value => array('value1', 'value2') the pair's operand will be forced to "IN".
  *
  * 	metadata_name_value_pairs_operator => NULL|STR The operator to use for combining (name = value) OPERATOR (name = value); default AND
@@ -565,6 +572,7 @@ function find_metadata($meta_name = "", $meta_value = "", $entity_type = "", $en
  *  metadata_owner_guids => NULL|ARR guids for metadata owners
  *
  * @return array
+ * @since 1.7.0
  */
 function elgg_get_entities_from_metadata(array $options = array()) {
 	$defaults = array(
@@ -595,6 +603,7 @@ function elgg_get_entities_from_metadata(array $options = array()) {
  * @param array $options Options
  *
  * @return array
+ * @since 1.7.0
  */
 function elgg_entities_get_metastrings_options($type, $options) {
 	$valid_types = array('metadata', 'annotation');
@@ -662,6 +671,7 @@ function elgg_entities_get_metastrings_options($type, $options) {
  * @param BOOL $case_sensitive
  * @param ARR|NULL $order_by_metadata array of names / direction
  * @return FALSE|array False on fail, array('joins', 'wheres')
+ * @since 1.7.0
  */
 function elgg_get_entity_metadata_where_sql($e_table, $n_table, $names = NULL, $values = NULL, $pairs = NULL, $pair_operator = 'AND', $case_sensitive = TRUE, $order_by_metadata = NULL, $owner_guids = NULL) {
 	global $CONFIG;
@@ -674,7 +684,7 @@ function elgg_get_entity_metadata_where_sql($e_table, $n_table, $names = NULL, $
 		&& (!$values && $values !== 0)
 		&& (!$pairs && $pairs !== 0)
 		&& (!$owner_guids && $owner_guids !== 0)
-		&& !isset($order_by_metadata)) {
+		&& !$order_by_metadata) {
 		return '';
 	}
 
@@ -932,7 +942,11 @@ $count = FALSE, $case_sensitive = TRUE) {
 	}
 
 	if ($owner_guid) {
-		$options['owner_guid'] = $owner_guid;
+		if (is_array($owner_guid)) {
+			$options['owner_guids'] = $owner_guid;
+		} else {
+			$options['owner_guid'] = $owner_guid;
+		}
 	}
 
 	if ($limit) {
@@ -944,11 +958,11 @@ $count = FALSE, $case_sensitive = TRUE) {
 	}
 
 	if ($order_by) {
-		$options['order_by'];
+		$options['order_by'] = $order_by;
 	}
 
 	if ($site_guid) {
-		$options['site_guid'];
+		$options['site_guid'] = $site_guid;
 	}
 
 	if ($count) {
@@ -966,6 +980,7 @@ $count = FALSE, $case_sensitive = TRUE) {
  *
  * @see elgg_view_entity_list
  *
+ * @deprecated 1.8 Use elgg_list_entities_from_metadata
  * @param mixed $meta_name Metadata name to search on
  * @param mixed $meta_value The value to match, optionally
  * @param string $entity_type The type of entity to look for, eg 'site' or 'object'
@@ -978,6 +993,8 @@ $count = FALSE, $case_sensitive = TRUE) {
  * @return string A list of entities suitable for display
  */
 function list_entities_from_metadata($meta_name, $meta_value = "", $entity_type = ELGG_ENTITIES_ANY_VALUE, $entity_subtype = ELGG_ENTITIES_ANY_VALUE, $owner_guid = 0, $limit = 10, $fullview = true, $viewtypetoggle = true, $pagination = true, $case_sensitive = true ) {
+	elgg_deprecated_notice('list_entities_from_metadata() was deprecated by elgg_list_entities_from_metadata()!', 1.8);
+
 	$offset = (int) get_input('offset');
 	$limit = (int) $limit;
 	$options = array(
@@ -997,6 +1014,31 @@ function list_entities_from_metadata($meta_name, $meta_value = "", $entity_type 
 	$entities = elgg_get_entities_from_metadata($options);
 
 	return elgg_view_entity_list($entities, $count, $offset, $limit, $fullview, $viewtypetoggle, $pagination);
+}
+
+/**
+ * Returns a list of entities filtered by provided metadata.
+ *
+ * @see elgg_get_entities_from_metadata
+ *
+ * @param array $options
+ * @since 1.7.0
+ */
+function elgg_list_entities_from_metadata($options) {
+	$defaults = array(
+		'offset' => (int) max(get_input('offset', 0), 0),
+		'limit' => (int) max(get_input('limit', 10), 0),
+		'full_view' => TRUE,
+		'view_type_toggle' => FALSE,
+		'pagination' => TRUE
+	);
+
+	$options = array_merge($defaults, $options);
+
+	$count = elgg_get_entities_from_metadata(array_merge(array('count' => TRUE), $options));
+	$entities = elgg_get_entities_from_metadata($options);
+
+	return elgg_view_entity_list($entities, $count, $options['offset'], $options['limit'], $options['full_view'], $options['view_type_toggle'], $options['pagination']);
 }
 
 /**
@@ -1035,7 +1077,11 @@ $count = false, $meta_array_operator = 'and') {
 	}
 
 	if ($owner_guid) {
-		$options['owner_guid'] = $owner_guid;
+		if (is_array($owner_guid)) {
+			$options['owner_guids'] = $owner_guid;
+		} else {
+			$options['owner_guid'] = $owner_guid;
+		}
 	}
 
 	if ($limit) {

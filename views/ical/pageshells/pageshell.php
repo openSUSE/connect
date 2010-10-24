@@ -11,6 +11,7 @@
 
 header("Content-Type: text/calendar");
 
+echo $vars['body'];
 ?>
 BEGIN:VCALENDAR
 VERSION:2.0

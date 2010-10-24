@@ -48,13 +48,13 @@ function establish_db_link($dblinkname = "readwrite") {
 	}
 
 	// Connect to database
-	if (!$dblink[$dblinkname] = mysql_connect($CONFIG->dbhost, $CONFIG->dbuser, $CONFIG->dbpass, true)) {
+	if (!$dblink[$dblinkname] = mysql_connect($dbhost, $dbuser, $dbpass, true)) {
 		$msg = sprintf(elgg_echo('DatabaseException:WrongCredentials'),
-				$CONFIG->dbuser, $CONFIG->dbhost, "****");
+				$dbuser, $dbhost, "****");
 		throw new DatabaseException($msg);
 	}
-	if (!mysql_select_db($CONFIG->dbname, $dblink[$dblinkname])) {
-		$msg = sprintf(elgg_echo('DatabaseException:NoConnect'), $CONFIG->dbname);
+	if (!mysql_select_db($dbname, $dblink[$dblinkname])) {
+		$msg = sprintf(elgg_echo('DatabaseException:NoConnect'), $dbname);
 		throw new DatabaseException($msg);
 	}
 
@@ -280,6 +280,7 @@ function get_data($query, $callback = "") {
 
 	if (empty($resultarray)) {
 		elgg_log("DB query \"$query\" returned no results.");
+		// @todo consider changing this to return empty array #1242
 		return false;
 	}
 
@@ -576,7 +577,7 @@ function db_upgrade($version, $fromdir = "", $quiet = FALSE) {
  * This function, called by validate_platform(), will check whether the installed version of
  * MySQL meets the minimum required.
  *
- * TODO: If multiple dbs are supported check which db is supported and use the appropriate code to validate
+ * @todo If multiple dbs are supported check which db is supported and use the appropriate code to validate
  * the appropriate version.
  *
  * @return bool

@@ -1,6 +1,793 @@
+2010-10-14  brettp
+
+	* .: Tagging 1.7.4 for real this time.
+	* Forgot to include Twitter oAuth instructions in changes. #Fail.
+	* Bah forgot to add the release date in CHANGES.
+	* Updated changes for the bookmarks bugfix while in beta.
+	* Version bump to 1.7.4 final.
+
+2010-10-12  brettp
+
+	* Added a second bulk actions for validating unvalidated users if
+	  there are > 5.
+
+2010-10-11  brettp
+
+	* Fixes #2552. Fixed langauge string.
+	* Refs #2551: Added placeholder title text for bookmarks that were
+	  added without titles.
+
+2010-10-10  brettp
+
+	* Fixes #2551. Checking for title and address in bookmark save
+	  action.
+
+2010-10-09  brettp
+
+	* Fixes #1833: Saving a blog draft saves the blogguid to the
+	  session to avoid problems when pulling in drafts on existing blog
+	  posts.
+
+2010-10-08  cash
+
+	* using elgg_get_excerpt() in comment river view
+
+2010-10-08  brettp
+
+	* Interface fixes for unvalidated users page.
+	* Only selecting disabled entities to avoid showing entities
+	  logging in with 3rd party plugins.
+	* Simplified taking bulk actions on users. Added "check all"
+	  button.
+
+2010-10-07  brettp
+
+	* Version bump in README. Updated changes.
+	* Added pagination to unvalidated user list.
+
+2010-10-06  brettp
+
+	* Refs #2537: Invalidating instead of regenerating simplecache when
+	  plugin states are changed.
+	* Version bump to 1.7.4b
+	* Fixes #2410: Added elgg_invalidat_simplecache(). Instead of doing
+	  a silly echo ''; exit; when simplecache can't load a file, it now
+	  regenerates and displays it.
+	* Refs #2518: Backported the Unvalidated Users admin section to
+	  1.7.
+
+2010-10-05  brettp
+
+	* Fixes #2202. Backported parts of 1.8's Twitter service to 1.7 for
+	  oAuth. We'll need to selectively merge the bug fixes and
+	  improvements I've made back to 1.8. Updated The Wire to use the
+	  new twitter services plugin hooks.
+	* Fixes #2493: Added optional parent argument to profile's
+	  setup_avatar_menu(). Added JS in riverdashboard to rebuild the
+	  avatar menu when loading sections via ajax.
+	* Fixes #2465. Fixed an invalid call to is_callable() in the
+	  ElggMemcache::__construct() to prevent an early call to
+	  elgg_echo(), which caches the hard coded default language 'en'.
+	  Also removed the early elgg_echo() call if switching between
+	  multiple and single versions of memcache. The memcache
+	  implementation needs rewritten.
+
+2010-10-01  cash
+
+	* Fixes #2499 - fixed resize of non square tall images and resizing
+	  of images not allowed to be upscaled
+
+2010-09-30  cash
+
+	* Fixes #2498 - checking for existence of comment text before
+	  displaying
+	* Fixes #2489 - group tool registered with 'file'
+
+2010-09-29  cash
+
+	* Fixes #2474 - using local variables rather than globals for db
+	  paramaters
+	* Fixes #2496 - fixes group pages welcome message editing and the
+	  editing of a user's welcome page by an admin
+	* fixed bug where Elgg crashes if an update is attempted on a bad
+	  entity
+
+2010-09-15  brettp
+
+	* Refs #2366: Merged previous to 1.7 branch.
+
+2010-09-12  cash
+
+	* Fixes #2459 - correctly handle POST data when magic quotes is
+	  turned on for the web services API
+
+2010-09-11  brettp
+
+	* Fixes #2464: Using is_numeric() in get_entities() to avoid
+	  returning entity with guid 1 if a truthy param is passed.
+
+2010-09-11  cash
+
+	* json viewtype needed an entity_list view
+
+2010-09-09  cash
+
+	* Fixes #2454 - perform password sanity checks before registering a
+	  user
+
+2010-09-03  cash
+
+	* need to check if page owner exists before using it
+
+2010-09-02  brettp
+
+	* Version bump to 1.7.3.
+
+2010-08-31  cash
+
+	* Fixes #2437 - fixes bug introduced in [6707] - thanks for the
+	  report!
+	* Fixes #2429 - profile only adds sidebar links when viewer has
+	  proper permissions
+
+2010-08-29  cash
+
+	* Forward to REFERER when captcha check fails
+
+2010-08-28  cash
+
+	* Fixes #2426 - deprecated get_entities* functions now support
+	  multiple owners as they did in Elgg 1.6
+	* merged [6872] from trunk into 1.7 branch
+
+2010-08-23  cash
+
+	* Fixes #2412 - catch DB exception and create the group acl
+
+2010-08-19  brettp
+
+	* Version bump for 1.7.2.
+	* Fixes #2393: Added Evan to contributors file.
+
+2010-08-15  cash
+
+	* Fixes #2406 - check if the passed viewtype is valid on boot
+
+2010-08-11  cash
+
+	* updated comment in upgrade so people do not confuse sql and php
+	  upgrade scripts
+
+2010-08-10  cash
+
+	* Fixes #2399 - fixes topic string in groups plugin
+
+2010-08-08  cash
+
+	* fixed hardcoded 'via' in the wire plugin
+	* Fixes #2398 - 'update' is no longer hardcoded in wire
+
+2010-08-07  cash
+
+	* cannot use links in a system message due to jQuery
+	* People are having a hard time figuring out where the Elgg wiki is
+	  so including the link
+	* cleaned up the reported content plugin
+	* Fixes #1905 using better button titles in reported content plugin
+	* Fixes #1828 - encoding quotes in file titles for embed plugin
+	* Fixes #2395 - 'by' no longer hard coded but replaced by
+	  'groups:lastcomment'
+	* Fixes #2371 - create_annotation returns false when a plugin
+	  rejects the annotation through the elgg event
+	* the elgg loading entity from a database row function now falls
+	  back to the parent class when the sub class no longer exists due
+	  to a plugin being disabled
+	* fixed bug in twitter widget when username is not set - extra div
+	  was leaking through
+	* removed dependency from the plugins on css in bookmarks plugin
+	* added world wire posts link to sidebar when logged out
+	* Closes #2362 - ignoring all . directories in mod
+	* Fixes #2392 - search plugin's mysql query now specifies the
+	  database link
+	* fixed avatar drop down issue for the write as reported at
+	  http://community.elgg.org/mod/groups/topicposts.php?topic=538793&group_guid=212067
+
+2010-08-06  cash
+
+	* do not push status message to say that notification settings have
+	  been saved if they haven't changed
+	* Fixes #2388 - check now includes type to avoid issue that Milan
+	  pointed out
+	* fixed some language issues in pages plugin
+	* Fixes #2387 - removed all title editing disabling code
+	* Fixes #2389 - removed some junk from the widget textareas
+
+2010-08-06  brettp
+
+	* Merged [6790]'s License correction to 1.7 branch and 1.7.2b tag.
+	* Merged license correction from [6803] to 1.7 branch and 1.7.2b
+	  tag.
+
+2010-07-31  cash
+
+	* standardized todo comments so that it is easier to track them in
+	  an IDE
+	* entity list pagination needs a clearfloat in case the entity view
+	  does not fill entire width
+
+2010-07-30  cash
+
+	* updated the @since documentation for the engine starting from
+	  1.7.0
+
+2010-07-27  cash
+
+	* Began pulling out 1.7.2 changes into CHANGES.txt
+
+2010-07-24  cash
+
+	* distinguishe between PHP log messages and Elgg log messages
+	* Refs #1150 - removed direct session access from minor core
+	  plugins
+	* missed this in [6763]
+	* Refs #1150 removed session access and did a little clean up in
+	  messages plugin
+	* Refs #1150 - removed remaining direct session accesses in core
+	  views
+	* missed this in [6755]
+	* removed unused language strings in riverdashboard plugin
+	* Cleaned up the friends widget plugin
+
+2010-07-23  cash
+
+	* Refs #1150 - removed some direct session access from core views
+	* cleaned up the title view
+
+2010-07-22  cash
+
+	* Refs #1150 - using get_loggedin_user* functions on settings pages
+	  and cleaned up view code
+	* Refs #1150 - core actions do not use $_SESSION['user']
+
+2010-07-21  brettp
+
+	* Added optional params to validate_action_token() to specify a
+	  token to validate instead of pulling from $_REQUEST.
+
+2010-07-21  cash
+
+	* cleaned up some documentation for annotations
+	* added comment in get_data() related to returning false or an
+	  empty array
+	* removed imaginary elgg_new() function calls and replaced with
+	  elgg_echo()
+
+2010-07-20  cash
+
+	* Refs #2327 - replaced call to get_tags() in category list view
+	* Refs #2327 - replaced call to list_entities_from_metadata() in
+	  category listing page and fixed a context issue that needs to be
+	  looked at for 1.8
+	* Refs #2327 - replaced call to list_entities_from_metadata() in
+	  group tag search
+	* Refs #2327 - replaced call to list_entities_from_metadata() in
+	  file search page
+	* Fixes #2369 - non-logged in users no longer misleading text on
+	  closed groups
+	* Fixes #2370 - applied Glen's patch to fix groups welcome message
+
+2010-07-16  brettp
+
+	* Refs #2327. Applied Evan's patch to remove a call to
+	  list_entities in /entities/list.php
+	* Fixes #2353. Applied Evan's patch so that elgg_get_tags() returns
+	  tags with count >= threshold instead of >.
+	* Fixes #2144. Applied Evan's patch to not regenerate simplecache
+	  in regenerate_plugin_list().
+
+2010-07-15  cash
+
+	* Refs #1974 - json river view now uses json export global and
+	  changed timestamp to a timestamp
+
+2010-07-15  brettp
+
+	* Closes #2358, refs #2351. Using empty() to check for subtype
+	  string in get_objects_in_group().
+	* Refs #2351. get_objects_from_container() returns FALSE on
+	  incorrect subtypes.
+	* Refs #1974: Added HTML string to river output json view.
+
+2010-07-13  brettp
+
+	* Fixes #2063: Added unit tests for get_image_resize_parameters().
+	  Removed odd logic that ignored all options when not upscaling
+	  (see #1445).
+
+2010-07-10  cash
+
+	* more standardization of entities.php
+	* added missing brackets so if statement conforms to coding
+	  standard
+	* Fixes #1896 - notifications are now set when collections change -
+	  includes an upgrade script to fix installs pre-fix
+	* Fixed a bug where $limit was being ignored if set to 0
+	* Refs #2035 - forgot that people may be upgrading from 1.6 or
+	  earlier so cannot reuse same function name that I stole from
+	  earlier upgrade script
+	* Fixes #2035 - profile icons now use user guid rather than
+	  usernames - includes upgrade script
+	* Closes #2275 - added friendly title to page urls
+	* Fixed site notifications for pages plugin
+	* Fixes #2305 - page titles can be edited
+	* Fixes #1391 - widget ownership is not limited to users
+
+2010-07-09  brettp
+
+	* Fixes #2224: Applied Evan's patch to not cache unchangable
+	  ElggEntity attributes.
+
+2010-07-09  cash
+
+	* Closes #2324 - cleaned up documentation related to new output and
+	  views core lib files
+	* Fixed deprecated notice for list_entities_from_metadata()
+	* removed unused code in file plugin's world page controller
+	  related to tags
+	* Fixes #2346 - limit is now used in file world page controller
+
+2010-07-07  cash
+
+	* Fixes #2333 - Applied Evan's patch - elgg_make_excerpt is now
+	  elgg_get_excerpt
+	* Closes #2326 - moves views related boot function to views.php
+	* Fixes #1434 - applied Evan's patch - max execution time is turned
+	  off during upgrades
+
+2010-07-06  cash
+
+	* Closes #2328 - applied Evan's patch to remove hacks from htaccess
+
+2010-07-05  cash
+
+	* Fixes #1291 - blog access control has specific CSS to set width
+
+2010-07-04  cash
+
+	* Fixes #2337 - when group content is deleted, forward to group
+	  page
+	* Refs #2063 - pulled out resize parameter calculations into a
+	  separate function so that we can write unit tests on it
+	* removed empty line from top of HTML page
+
+2010-07-03  cash
+
+	* Fixes #1243 - deleting a user on his profile forwards to user
+	  administration and system message includes name of user deleted
+	* Closes #2027 - added plugin hooks for friendly time and friendly
+	  title
+	* Closes #740 - updated documentation on metadata creation to be
+	  explicit with reference to not supporting associative arrays
+	* Refs #1393 - tried to make the ugly hack comprehensible and added
+	  a note that this will be deprecated in Elgg 1.8
+	* Closes #864 - file and notification plugins already set page
+	  owner. Removed remaining page owner on remaining admin plugins
+	  doing that.
+	* Fixes #2061 - missing filestore metadata causes fallback to
+	  default filestore rather than exception. If a bad filestore is
+	  specified, throw useful exception message
+	* registering simpletype before grabbing tags in embed plugin
+	* made warning stronger on htmlawed plugin - same as trunk now
+	* Refs #2327 - removes another call to deprecated
+	  get_entities_from_relationship() in groups plugin
+	* newest blog posts listed first in date archive now
+	* Refs #2327 - registering simpletype as a tag name in files plugin
+	  for filetype cloud
+	* Refs #2327 - removes some deprecated get entities from
+	  relationship calls in groups plugin
+	* Refs #2327 - removed calls to deprecated
+	  get_entities_from_annotations() in annotations.php
+	* updated documentation on exposing a method in web services api
+	* Fixes #2034 - adds a group create event and renames the group
+	  join event so it does not collide with group create
+	* removed river view for groups not used in Elgg 1.5 and beyond
+	* Fixes #2295 - added a membership roster page
+	* Fixes #2277 and standardizes group widgets for blogs, bookmarks,
+	  files, and pages - themes may need to add 2 new CSS elements
+	  related to .group_widget
+	* Closes #1856 - forum topics can now be edited
+
+2010-07-02  cash
+
+	* easier to understand version of previous commit
+	* Fixes #2297 - calling metadata with a null value does not delete
+	  first array value anymore - returning id of created metadata and
+	  updated all functions that use the return value
+	* Fixes #828 - set_input() and get_input() now handle nested arrays
+
+2010-07-01  cash
+
+	* removed empty directory from last commit
+	* Closes #2117 - removes empty views no longer needed due to new
+	  fallback mechanism on viewtypes
+
+2010-06-30  cash
+
+	* Refs #2027 - using elgg_view_friendly_time() in core
+	* Refs #2117 #2276 #2027 - added elgg_get_friendly_time and
+	  elgg_get_friendly_title so they can be used in non-html views
+	* added documentation to the graphics/icon view
+
+2010-06-27  cash
+
+	* Refs #2068 - fixed invisible groups when access level is owned by
+	  group
+	* Fixes #2200 - committed bman's patch with a hint to developers to
+	  avoid redirects
+
+2010-06-24  cash
+
+	* Refs #1127 - create time has been added to relationships
+	* Refs #2068 - missing commit from [6553]
+
+2010-06-23  brettp
+
+	* Fixed typo in INSTALL.txt.
+
+2010-06-23  cash
+
+	* Fixes #2068 - group access collections owned by group - also
+	  updated access collection membership in case problems occurred in
+	  the past
+
+2010-06-23  brettp
+
+	* Fixes #2041: Updated category links for blogs.
+	* Checkboxes input: Corrected the <br /> and once again forcing []s
+	  on internal name.
+	* Fixes #2300: Using usort() to sort users by their display name in
+	  user picker.
+	* Fixes #2012: Blog posts not in full view mode are trimmed to 500
+	  chars.
+	* Using '...' instead of &#8230 in elgg_make_excerpt() to keep it
+	  usable in non-HTML land.
+	* Added policy for breaking between standard English words.
+	  Updated a few examples and fixed some typos.
+	  CODING.txt is now double spaced for your viewing pleasure (since
+	  whitespace is free).
+	* Fixes #2054: elgg_pluralise_options_array() was too smart for its
+	  own good and was breaking singular -> plural rewrites if a
+	  default wasn't ELGG_ENTITIES_ANY_VALUE. Made it dumb. Added unit
+	  tests for site_guids.
+
+2010-06-22  brettp
+
+	* Grab counts for search terms first to avoid multiple queries on 0
+	  results. Switched to boolean mode for title/desc only searches.
+	* Added default value for $where in search_get_where_sql().
+	  Commented out worthless if statement.
+	  -This line, and those below, will be ignored--
+	  
+	  M start.php
+	* Fixes #1943: Removing boolean mode operators from highlighting in
+	  search. Fixed boolean mode detection when using +, -, and ~s.
+	* Fixes #397: Added hidden value for checkboxes to allow use in
+	  settings. Cleaned up checkboxes code.
+
+2010-06-21  cash
+
+	* Improved the documentation of create_metadata()
+	* replaced 2 with ACCESS_PUBLIC in group listing view
+
+2010-06-19  brettp
+
+	* Fixes #2135: Escaping regexp chars in search strings.
+	* Refs #2252: Allowing plugins to load during an upgrade in order
+	  to recache views correctly.
+	  Merged a few important missed bits of 1.8's start.php file to
+	  1.7's.
+	* Making sure to include admin field in utf8 username update.
+
+2010-06-18  brettp
+
+	* Fixes #2274: Use !$order_by_metadata instead of
+	  !isset($order_by_metadata) in
+	  elgg_entities_get_metastrings_options() because isset(array())
+	  returns true, which forces a join on the metastrings table.
+	  Added unit tests for egeb_relationship()
+	* Fixes #2293: Pulled in Glen's patch.
+
+2010-06-18  cash
+
+	* Fixes #2252 - global variable that page_elements/header depends
+	  on now set for caching - before views were cached but browser was
+	  not requesting them
+
+2010-06-17  brettp
+
+	* Fixes #2123: Special encoding and data migration for utf8
+	  usernames when upgrading from < 1.7.
+	  Version bumpbed.
+
+2010-06-16  cash
+
+	* Closes #2288 - friends pages can now be removed from page
+	  handling system. Links to these friends pages in core could
+	  already be removed through remove_menu() and overriding views
+	* Refs #2288 - cleaned up friends pages - removed start script,
+	  fixed a title bug, removed direct $_SESSION access
+	* Fixes #2287 - handles empty site email address now
+
+2010-06-15  brettp
+
+	* Fixes #2164: Backported elgg_list_entities_from_metadata() to 1.7
+	  branch
+	* Fixes #2014: Pulled in Evan's patch to display invalid username
+	  chars.
+
+2010-06-15  cash
+
+	* fixed group featuring
+
+2010-06-15  brettp
+
+	* Backported 1.8's engine/start.php file to 1.7 because it's much
+	  nicer.
+
+2010-06-14  brettp
+
+	* Fixes #2252: Move core view discovery to system boot event so
+	  upgrade.php correctly regenerates views cache for core views.
+	  Very important for css...
+	* Can't take it any more--view functions have been pulled out into
+	  engine/lib/views.php
+
+2010-06-13  brettp
+
+	* Fixes #2208: Applied Evan's patch to remove extra spaces from
+	  pagination "current page." CSS is already in place to keep things
+	  pretty.
+	* Fixes #2126: Applied Evan's patch.
+
+2010-06-12  cash
+
+	* elgg_view() was not falling back to plugin views correctly
+
+2010-06-05  cash
+
+	* Fixes #2261 - forward user on error back to referrer. Captcha
+	  still doesn't play nice.
+	* Fixes #2257 - checking if invited person is already member and
+	  display better error messages
+	* Fixes #2265 - checking if user has any collections before
+	  updating them
+	* Fixes #2264 - checking if access collection is empty before
+	  looping
+
+2010-06-04  brettp
+
+	* Fixed UTF8 reply subject mangling.
+	  Removed an unused view.
+
+2010-06-04  cash
+
+	* Closes #2260 - group names are now links in widget
+	* Closes #1837 - removes bad notification relationships during
+	  upgrade
+
+2010-06-03  brettp
+
+	* Merged previous CODING.txt changes to 1.7 branch.
+
+2010-06-03  cash
+
+	* Refs #1837 - Generalizes previous commit to also handle deleted
+	  friends
+	* Refs #1837 - leaving a group now removes the notification
+	  relationships
+
+2010-06-02  cash
+
+	* Closes #2115 - simplecache is viewtype specific and does not
+	  regenerate twice per reset
+
+2010-06-01  cash
+
+	* Refs #2115 - simplecache is now viewtype sensitive
+	* profile icon encodes & properly
+	* img tag widths and heights should not include px
+
+2010-05-29  brettp
+
+	* Merged previous view_type additions to 1.7 branch.
+
+2010-05-28  cash
+
+	* stop cutting off the last word of short posts
+	* Closes #2191 - can now remove menu items
+
+2010-05-27  nickw
+
+	* Porting r6257:6258 from trunk: registers password reset/request
+	  as public actions.
+
+2010-05-27  cash
+
+	* Closes #2044 - rewrote default_page_handler so that it does what
+	  it is supposed to do
+	* Closes #2108 - TinyMCE no longer pulls out domain from local
+	  links
+	* Fixes #2171 - input/pulldown now works with an options array
+
+2010-05-26  brettp
+
+	* Merged previous to 1.7.
+
+2010-05-26  cash
+
+	* Fixes #2037 #2089 - fixing issues with joining group when saving
+	  group
+	* forgot to uncomment actual fix in previous commit - truly closes
+	  #1963 this time
+	* Fixes #1963 - group profile data is now properly encoded and
+	  includes upgrade script to fix current data
+	* standardized group edit action
+
+2010-05-24  brettp
+
+	* Merging previous to 1.7 branch.
+
+2010-05-20  brettp
+
+	* Merged 6118 and PART of 6117 from trunk => 1.7. *grumble, grumble
+	  atomic commits*
+	* Merging [6119] into 1.7 branch.
+
+2010-05-19  cash
+
+	* Fixes #2138 - updating a bookmark does not add a new bookmark
+	  river event now
+	* Fixes #1879 - admins can now edit and delete group forum topics
+	  and posts in groups they do not belong to
+
+2010-05-18  brettp
+
+	* Merged previous commit's functionality into 1.7 branch.
+
+2010-05-13  cash
+
+	* moved some output related functions from elgglib.php to
+	  output.php
+	* Closes #2140 and #2184 - excerpt code is now in output.php
+	* removed activity.php from libraries being loaded
+	* good-bye activity.php - moved only function to river.php and
+	  deprecated
+	* promote river2.php to river.php
+	* Refs #2140 - welcome output.php and a general purpose excerpt
+	  function
+
+2010-05-12  cash
+
+	* Fixes #1923 - added page owner to 2 group pages
+	* Fixes #2181 - only add river event when profile edited by owner
+	* Fixes #2136 - removed session fingerprint using user agent - not
+	  dependable, nor does it provide any increase in security
+	* Fixes #2153 - user agent removed from action token calculation
+	* Fixes #2006 - simplecache and viewpathcache flags work the same
+	  way now
+
+2010-05-11  brettp
+
+	* Check wwwroot for trailing slashes on site info edit.
+
+2010-05-11  cash
+
+	* Fixes #2187 - notifications plugin now unextends the user
+	  settings view for notifications
+	* Refs #2187 - added method to unextend views
+	* Fixes #2186 - forgot to add & in [5996]
+
+2010-05-10  cash
+
+	* Fixes #2185 - sets query string in rewrite rules rather than in
+	  php code - **requires update to htaccess**
+
+2010-05-07  cash
+
+	* Fixes #1900 - page owner is set for notification pages
+	* added page handler to notifications plugin
+	* finished standardizing the notifications plugin
+
+2010-05-05  brettp
+
+	* Fixes #2145: elgg_list_entities() respects offset and limit
+	  passed via $_GET.
+	* Fixes #2148: Admin-only actions called by non-admin users
+	  register an error on redirect.
+	* Fixes #2156: Blog draft and preview work without body content.
+
+2010-05-04  cash
+
+	* starting standardizing the notifications plugin
+	* riverdashboard now supports RSS feeds and allows non-logged in
+	  users to view
+	* cleaned up documentation on contentwrapper view
+	* use pagehandler in riverdashboard and select page title based on
+	  configuration
+
+2010-05-03  cash
+
+	* forgot to add @since on addition of remove_from_river_by_id()
+	* Standardized the riverdashboard plugin
+	* Closes #2066 - added function to remove single river entry
+	* merged [5939] from trunk into 1.7 branch
+
+2010-05-01  cash
+
+	* you post comments - not save them - this confuses content owners
+	  who think they are saving their content
+	* Refs #1150 - active code in engine now uses get_loggedin_user*
+	  functions
+	* made get_loggedin_user() consistent with its documentation and
+	  made null uppercase
+
+2010-04-30  cash
+
+	* Refs #2117 - rss viewtype needs entity list view
+	* Closes #1888 - forum topics view now uses $vars[] instead of
+	  get_input()
+	* Fixes #2141 - applied patch to catch request for non-existent
+	  user's profile icon
+
+2010-04-29  cash
+
+	* Fixes #2137 - time creation parameters are now properly be
+	  rewritten for deprecated interfaces
+	* cleaned up messageboard code - better widget code, no direct uses
+	  of $_POST, and so on
+	* Refs #2055 - added comment to explain why output of
+	  get_access_sql_suffix() is modified in river table query
+	* Closes #2130 - forward(REFERER) now works
+
+2010-04-28  cash
+
+	* Fixes #2133 - user default access works again
+	* Fixes #2132 - widget save action no longer forwards and does not
+	  queue up system messages
+	* Fixes #1783 - deleted message board entries are removed from the
+	  river
+	* standardized the messageboard plugin
+
+2010-04-27  cash
+
+	* Refs #2117 - only fall back to default view if that viewtype has
+	  been registered
+	* Fixes #1403 - conversion over to new mail function is complete
+	* brought the invite friends plugin up to standards
+	* a little cleanup of friend create river view
+	* Fixes #2120 - actions() now checks properly for public actions
+	* Fixes #2119 - handles disabled entities in the river
+	* Refs #1403 - invitefriends now uses an Elgg function to send mail
+
+2010-04-26  cash
+
+	* Fixes #2060 - users are logged in regardless of method's
+	  requirement for authentication
+	* removed session PAM from default web services handler
+
+2010-04-23  cash
+
+	* Refs #1403 - first cut at a general purpose email send function
+
+2010-04-22  cash
+
+	* fixed elgg_get_file_list() so that it actually works
+	* improved documentation of elgg_extend_view()
+	* Added plugin hook to forward()
+
 2010-04-21  brettp
 
-	* ., CHANGES.txt, version.php: Tagged 1.7.1
+	* Updated changes and bumped version for 1.7.1
 
 2010-04-21  cash
 

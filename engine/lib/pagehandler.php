@@ -9,7 +9,9 @@
  */
 
 /**
- * Turns the current page over to the page handler, allowing registered handlers to take over
+ * Turns the current page over to the page handler, allowing registered handlers to take over.
+ *
+ * If a page handler returns FALSE, the request is handed over to the default_page_handler.
  *
  * @param string $handler The name of the handler type (eg 'blog')
  * @param array $page The parameters to the page, as an array (exploded by '/' slashes)
@@ -20,21 +22,11 @@ function page_handler($handler, $page) {
 
 	set_context($handler);
 
-	// if there are any query parameters, make them available from get_input
-	if (strpos($_SERVER['REQUEST_URI'], '?') !== FALSE) {
-		$query = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], '?') + 1);
-		if (isset($query)) {
-			$query_arr = elgg_parse_str($query);
-			if (is_array($query_arr)) {
-				foreach($query_arr as $name => $val) {
-					set_input($name, $val);
-				}
-			}
-		}
-	}
-
-	// if page url ends in a / then last element of $page is an empty string
 	$page = explode('/',$page);
+	// remove empty array element when page url ends in a / (see #1480)
+	if ($page[count($page) - 1] === '') {
+		array_pop($page);
+	}
 
 	if (!isset($CONFIG->pagehandler) || empty($handler)) {
 		$result = false;
@@ -94,7 +86,26 @@ function register_page_handler($handler, $function) {
 }
 
 /**
- * A default page handler that attempts to load the actual file at a given page handler location
+ * Unregister a page handler for an identifier
+ *
+ * Note: to replace a page handler, call register_page_handler()
+ * 
+ * @param string $handler The page type identifier
+ * @since 1.7.2
+ */
+function unregister_page_handler($handler) {
+	global $CONFIG;
+	
+	if (!isset($CONFIG->pagehandler)) {
+		return;
+	}
+
+	unset($CONFIG->pagehandler[$handler]);
+}
+
+/**
+ * A default page handler
+ * Tries to locate a suitable file to include. Only works for core pages, not plugins.
  *
  * @param array $page The page URL elements
  * @param string $handler The base handler
@@ -102,25 +113,25 @@ function register_page_handler($handler, $function) {
  */
 function default_page_handler($page, $handler) {
 	global $CONFIG;
-	$script = "";
 
-	$page = implode('/',$page);
-	if (($questionmark = strripos($page, '?'))) {
-		$page = substr($page, 0, $questionmark);
-	}
-	$script = str_replace("..","",$script);
+	$page = implode('/', $page);
+
+	// protect against including arbitary files
+	$page = str_replace("..", "", $page);
+	
 	$callpath = $CONFIG->path . $handler . "/" . $page;
-	if (!file_exists($callpath) || is_dir($callpath) || substr_count($callpath,'.php') == 0) {
-			if (substr($callpath,strlen($callpath) - 1, 1) != "/") {
-				$callpath .= "/";
+	if (is_dir($callpath)) {
+		$callpath = sanitise_filepath($callpath);
+		$callpath .= "index.php";
+		if (file_exists($callpath)) {
+			if (include($callpath)) {
+				return TRUE;
 			}
-			$callpath .= "index.php";
-			if (!include($callpath)) {
-				return false;
-			}
-	} else {
+		}
+	} else if (file_exists($callpath)) {
 		include($callpath);
+		return TRUE;
 	}
 
-	return true;
+	return FALSE;
 }

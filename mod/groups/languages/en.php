@@ -58,6 +58,10 @@
 			'groups:group' => "Group",
 			'groups:search:tags' => "tag",
 
+			'groups:memberlist' => "Group members",
+			'groups:membersof' => "Members of %s",
+			'groups:members:more' => "View more members",
+
 			'groups:notfound' => "Group not found",
 			'groups:notfound:details' => "The requested group either does not exist or you do not have access to it",
 
@@ -81,7 +85,8 @@
 			 */
 			'groups:access:private' => 'Closed - Users must be invited',
 			'groups:access:public' => 'Open - Any user may join',
-			'groups:closedgroup' => 'This group has a closed membership. To ask to be added, click the "request membership" menu link.',
+			'groups:closedgroup' => 'This group has a closed membership.',
+			'groups:closedgroup:request' => 'To ask to be added, click the "request membership" menu link.',
 			'groups:visibility' => 'Who can see this group?',
 
 			/*
@@ -95,6 +100,7 @@
 
 			'group:created' => 'Created %s with %d posts',
 			'groups:lastupdated' => 'Last updated %s by %s',
+			'groups:lastcomment' => 'Last comment %s by %s',
 			'groups:pages' => 'Group pages',
 			'groups:files' => 'Group files',
 
@@ -131,7 +137,7 @@
 			'grouptopic:error' => 'Your group topic could not be created. Please try again or contact a system administrator.',
 			'groups:forumpost:edited' => "You have successfully edited the forum post.",
 			'groups:forumpost:error' => "There was a problem editing the forum post.",
-			'groups:privategroup' => 'This group is private, requesting membership.',
+			'groups:privategroup' => 'This group is closed. Requesting membership.',
 			'groups:notitle' => 'Groups must have a title',
 			'groups:cantjoin' => 'Can not join group',
 			'groups:cantleave' => 'Could not leave group',
@@ -179,7 +185,8 @@ or click below to view the group's join requests:
 				Forum river items
 			*/
 
-			'groups:river:member' => 'is now a member of',
+			'groups:river:member' => '%s is now a member of',
+			'groups:river:create' => '%s has created the group',
 			'groupforum:river:updated' => '%s has updated',
 			'groupforum:river:update' => 'this discussion topic',
 			'groupforum:river:created' => '%s has created',
@@ -187,7 +194,6 @@ or click below to view the group's join requests:
 			'groupforum:river:posted' => '%s has posted a new comment',
 			'groupforum:river:annotate:create' => 'on this discussion topic',
 			'groupforum:river:postedtopic' => '%s has started a new discussion topic titled',
-			'groups:river:member' => '%s is now a member of',
 			'groups:river:togroup' => 'to the group',
 
 			'groups:nowidgets' => 'No widgets have been defined for this group.',

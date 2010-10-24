@@ -290,9 +290,10 @@ class ElggHMACCache extends ElggCache {
  * 			"description" => "Some human readable description"
  * 			"function" = 'my_function_callback'
  * 			"parameters" = array (
- * 				"variable" = array ( // NB, the order should be the same as the function callback
+ * 				"variable" = array ( // the order should be the same as the function callback
  * 					type => 'int' | 'bool' | 'float' | 'string'
  * 					required => true (default) | false
+ *					default => value // optional
  * 				)
  * 			)
  * 			"call_method" = 'GET' | 'POST'
@@ -313,7 +314,7 @@ $API_METHODS = array();
  * @param string $method The api name to expose - for example "myapi.dosomething"
  * @param string $function Your function callback.
  * @param array $parameters (optional) List of parameters in the same order as in your function.
- * Default values may be set for parameters which would allow REST api users flexibility in
+ * Default values may be set for parameters which allow REST api users flexibility in
  * what parameters are passed. Generally, optional parameters should be after required parameters.
  * This array should be in the format
  *   "variable" = array (
@@ -388,6 +389,7 @@ function expose_function($method, $function, array $parameters = NULL, $descript
 /**
  * Unregister an API method
  * @param string $method The api name that was exposed
+ * @since 1.7.0
  */
 function unexpose_function($method) {
 	global $API_METHODS;
@@ -402,6 +404,7 @@ function unexpose_function($method) {
  * @param string $method The api name that was exposed
  * @return true or throws an exception
  * @throws APIException
+ * @since 1.7.0
  */
 function authenticate_method($method) {
 	global $API_METHODS;
@@ -411,8 +414,9 @@ function authenticate_method($method) {
 		throw new APIException(sprintf(elgg_echo('APIException:MethodCallNotImplemented'), $method));
 	}
 
-	// make sure that POST variables are available if relevant
-	if (get_call_method() === 'POST') {
+	// make sure that POST variables are available if needed
+	// @todo this may not be needed anymore due to adding %{QUERY_STRING} in .htaccess in 1.7.2
+	if (get_call_method() === 'POST' && empty($_POST)) {
 		include_post_data();
 	}
 
@@ -423,9 +427,11 @@ function authenticate_method($method) {
 		}
 	}
 
-	// check user authentication if required
+	$user_auth_result = pam_authenticate();
+
+	// check if user authentication is required
 	if ($API_METHODS[$method]["require_user_auth"] == true) {
-		if (pam_authenticate() == false) {
+		if ($user_auth_result == false) {
 			throw new APIException(elgg_echo('APIException:UserAuthenticationFailed'));
 		}
 	}
@@ -535,25 +541,18 @@ function get_parameters_for_method($method) {
 /**
  * Get POST data
  * Since this is called through a handler, we need to manually get the post data
- * @return POST data from PHP
+ * @return POST data as string encoded as multipart/form-data
  */
 function get_post_data() {
-	global $GLOBALS;
 
-	$postdata = '';
-	if (isset($GLOBALS['HTTP_RAW_POST_DATA']))
-		$postdata = $GLOBALS['HTTP_RAW_POST_DATA'];
-
-	// Attempt another method to return post data (incase always_populate_raw_post_data is switched off)
-	if (!$postdata) {
-		$postdata = file_get_contents('php://input');
-	}
+	$postdata = file_get_contents('php://input');
 
 	return $postdata;
 }
 
 /**
  * This fixes the post parameters that are munged due to page handler
+ * @since 1.7.0
  */
 function include_post_data() {
 
@@ -561,11 +560,21 @@ function include_post_data() {
 
 	if (isset($postdata)) {
 		$query_arr = elgg_parse_str($postdata);
+
+		// grrrr... magic quotes is turned on so we need to strip slashes
+		if (ini_get_bool('magic_quotes_gpc')) {
+			if (function_exists('stripslashes_deep')) {
+				// defined in input.php to handle magic quotes
+				$query_arr = stripslashes_deep($query_arr);
+			}
+		}
+
 		if (is_array($query_arr)) {
-			foreach($query_arr as $name => $val) {
+			foreach ($query_arr as $name => $val) {
 				set_input($name, $val);
 			}
 		}
+
 	}
 }
 
@@ -575,6 +584,7 @@ function include_post_data() {
  * @param $parameters
  * @return true on success or exception
  * @throws APIException
+ * @since 1.7.0
  */
 function verify_parameters($method, $parameters) {
 	global $API_METHODS;
@@ -607,6 +617,7 @@ function verify_parameters($method, $parameters) {
  * @param array $parameters Array of parameters
  * @return string or exception
  * @throws APIException
+ * @since 1.7.0
  */
 function serialise_parameters($method, $parameters) {
 	global $API_METHODS;
@@ -685,6 +696,7 @@ function serialise_parameters($method, $parameters) {
  * PAM: Confirm that the call includes a valid API key
  * @return true if good API key - otherwise throws exception
  * @throws APIException
+ * @since 1.7.0
  */
 function api_auth_key() {
 	global $CONFIG;
@@ -712,6 +724,7 @@ function api_auth_key() {
  * PAM: Confirm the HMAC signature
  * @return true if success - otherwise throws exception
  * @throws SecurityException
+ * @since 1.7.0
  */
 function api_auth_hmac() {
 	global $CONFIG;
@@ -847,7 +860,7 @@ function get_and_validate_api_headers() {
 function map_api_hash($algo) {
 	$algo = strtolower(sanitise_string($algo));
 	$supported_algos = array(
-		"md5" => "md5",	// TODO: Consider phasing this out
+		"md5" => "md5",	// @todo Consider phasing this out
 		"sha" => "sha1", // alias for sha1
 		"sha1" => "sha1",
 		"sha256" => "sha256"
@@ -894,7 +907,7 @@ function calculate_hmac($algo, $time, $nonce, $api_key, $secret_key, $get_variab
 /**
  * Calculate a hash for some post data.
  *
- * TODO: Work out how to handle really large bits of data.
+ * @todo Work out how to handle really large bits of data.
  *
  * @param string $postdata string The post data.
  * @param string $algo The algorithm used.
@@ -1091,6 +1104,7 @@ function create_user_token($username, $expire = 60) {
  * @param int $site_guid The ID of the site (default is current site)
  * @return false if none available or array of stdClass objects
  * 		(see users_apisessions schema for available variables in objects)
+ * @since 1.7.0
  */
 function get_user_tokens($user_guid, $site_guid) {
 	global $CONFIG;
@@ -1146,6 +1160,7 @@ function validate_user_token($token, $site_guid) {
  * @param string $token
  * @param int $site_guid The ID of the site (default is current site)
  * @return bool
+ * @since 1.7.0
  */
 function remove_user_token($token, $site_guid) {
 	global $CONFIG;
@@ -1165,6 +1180,7 @@ function remove_user_token($token, $site_guid) {
  * Remove expired tokens
  *
  * @return bool
+ * @since 1.7.0
  */
 function remove_expired_user_tokens() {
 	global $CONFIG;
@@ -1436,17 +1452,6 @@ function __php_api_exception_handler($exception) {
 function service_handler($handler, $request) {
 	global $CONFIG;
 
-	// setup the input parameters since this comes through rewrite rule
-	$query = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], '?')+1);
-	if (isset($query)) {
-		$query_arr = elgg_parse_str($query);
-		if (is_array($query_arr)) {
-			foreach($query_arr as $name => $val) {
-				set_input($name, $val);
-			}
-		}
-	}
-
 	set_context('api');
 
 	$request = explode('/',$request);
@@ -1482,6 +1487,7 @@ function service_handler($handler, $request) {
  * @param string $handler web services type
  * @param string $function Your function name
  * @return true|false Depending on success
+ * @since 1.7.0
  */
 function register_service_handler($handler, $function) {
 	global $CONFIG;
@@ -1502,6 +1508,7 @@ function register_service_handler($handler, $function) {
  * with register_service_handler().
  *
  * @param string $handler web services type
+ * @return 1.7.0
  */
 function unregister_service_handler($handler) {
 	global $CONFIG;

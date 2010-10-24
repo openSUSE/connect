@@ -1244,6 +1244,9 @@ p.user_menu_friends_of {
 .river_object_thewire_create {
 	background: url(<?php echo $vars['url']; ?>_graphics/river_icons/river_icon_thewire.gif) no-repeat left -1px;
 }
+.river_group_create {
+	background: url(<?php echo $vars['url']; ?>_graphics/river_icons/river_icon_forum.gif) no-repeat left -1px;
+}
 .river_group_join {
 	background: url(<?php echo $vars['url']; ?>_graphics/river_icons/river_icon_forum.gif) no-repeat left -1px;
 }
@@ -2139,6 +2142,13 @@ a.toggle_customise_edit_panel:hover {
 	display:none;
 	width: 200px;
 	line-height: 1.2em;
+}
+.widget_more_wrapper {
+	background-color: white;
+	margin:0 10px 5px 10px;
+	padding:5px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
 }
 /* droppable area hover class  */
 .droppable-hover {

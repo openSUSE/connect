@@ -682,7 +682,7 @@ function remove_user_admin($user_guid) {
  * THIS FUNCTION IS DEPRECATED.
  *
  * Delete a user's extra data.
- *
+ * @todo remove
  * @param int $guid
  */
 function delete_user_entity($guid) {
@@ -754,8 +754,10 @@ function user_remove_friend($user_guid, $friend_guid) {
 
 	// perform cleanup for access lists.
 	$collections = get_user_access_collections($user_guid);
-	foreach ($collections as $collection) {
-		remove_user_from_access_collection($friend_guid, $collection->id);
+	if ($collections) {
+		foreach ($collections as $collection) {
+			remove_user_from_access_collection($friend_guid, $collection->id);
+		}
 	}
 
 	return remove_entity_relationship($user_guid, "friend", $friend_guid);
@@ -1293,10 +1295,10 @@ function elgg_user_resetpassword_page_handler($page) {
 		'action' => $CONFIG->site->url . 'action/user/passwordreset'
 	));
 
-	$content = elgg_view_title(elgg_echo('resetpassword'));
-	$content .= elgg_view('page_elements/contentwrapper', array('body' => $form));
+	$title = elgg_echo('resetpassword');
+	$content = elgg_view_title(elgg_echo('resetpassword')) . $form;
 
-	page_draw($title, $content);
+	page_draw($title, elgg_view_layout('one_column', $content));
 }
 
 /**
@@ -1360,7 +1362,7 @@ function request_user_validation($user_guid) {
  * @return bool
  */
 function is_email_address($address) {
-	// TODO: Make this better!
+	// @todo Make this better!
 
 	if (strpos($address, '@')=== false) {
 		return false;
@@ -1408,7 +1410,7 @@ function validate_username($username) {
 
 	// Basic, check length
 	if (!isset($CONFIG->minusername)) {
-		$CONFIG->minusername = 2;
+		$CONFIG->minusername = 4;
 	}
 
 	if (strlen($username) < $CONFIG->minusername) {
@@ -1432,11 +1434,12 @@ function validate_username($username) {
 		throw new RegistrationException(elgg_echo('registration:invalidchars'));
 	}
 
-	// Belts and braces TODO: Tidy into main unicode
-	$blacklist2 = '/\\"\'*& ?#%^(){}[]~?<>;|¬`@+=';
+	// Belts and braces
+	// @todo Tidy into main unicode
+	$blacklist2 = '\'/\\"*& ?#%^(){}[]~?<>;|¬`@-+=';
 	for ($n=0; $n < strlen($blacklist2); $n++) {
 		if (strpos($username, $blacklist2[$n])!==false) {
-			throw new RegistrationException(elgg_echo('registration:invalidchars'));
+			throw new RegistrationException(sprintf(elgg_echo('registration:invalidchars'), $blacklist2[$n], $blacklist2));
 		}
 	}
 
@@ -1602,7 +1605,7 @@ function collections_submenu_items() {
 	global $CONFIG;
 	$user = get_loggedin_user();
 	add_submenu_item(elgg_echo('friends:collections'), $CONFIG->wwwroot . "pg/collections/" . $user->username);
-	add_submenu_item(elgg_echo('friends:collections:add'),$CONFIG->wwwroot."pg/collections/add");
+	add_submenu_item(elgg_echo('friends:collections:add'), $CONFIG->wwwroot . "pg/collections/add");
 }
 
 /**
@@ -1613,10 +1616,9 @@ function friends_page_handler($page_elements) {
 	if (isset($page_elements[0]) && $user = get_user_by_username($page_elements[0])) {
 		set_page_owner($user->getGUID());
 	}
-	if ($_SESSION['guid'] == page_owner()) {
+	if (get_loggedin_userid() == page_owner()) {
 		collections_submenu_items();
 	}
-
 	require_once(dirname(dirname(dirname(__FILE__))) . "/friends/index.php");
 }
 
@@ -1628,26 +1630,26 @@ function friends_of_page_handler($page_elements) {
 	if (isset($page_elements[0]) && $user = get_user_by_username($page_elements[0])) {
 		set_page_owner($user->getGUID());
 	}
-	if ($_SESSION['guid'] == page_owner()) {
+	if (get_loggedin_userid() == page_owner()) {
 		collections_submenu_items();
 	}
 	require_once(dirname(dirname(dirname(__FILE__))) . "/friends/of.php");
 }
 
 /**
- * Page handler for friends of
+ * Page handler for friends collections
  *
  */
 function collections_page_handler($page_elements) {
 	if (isset($page_elements[0])) {
 		if ($page_elements[0] == "add") {
-			set_page_owner($_SESSION['guid']);
+			set_page_owner(get_loggedin_userid());
 			collections_submenu_items();
 			require_once(dirname(dirname(dirname(__FILE__))) . "/friends/add.php");
 		} else {
 			if ($user = get_user_by_username($page_elements[0])) {
 				set_page_owner($user->getGUID());
-				if ($_SESSION['guid'] == page_owner()) {
+				if (get_loggedin_userid() == page_owner()) {
 					collections_submenu_items();
 				}
 				require_once(dirname(dirname(dirname(__FILE__))) . "/friends/collections.php");
@@ -1701,7 +1703,7 @@ function set_last_login($user_guid) {
  * A permissions plugin hook that grants access to users if they are newly created - allows
  * for email activation.
  *
- * TODO: Do this in a better way!
+ * @todo Do this in a better way!
  *
  * @param unknown_type $hook
  * @param unknown_type $entity_type
@@ -1786,8 +1788,8 @@ function users_init() {
 
 	register_action("usersettings/save");
 
-	register_action("user/passwordreset");
-	register_action("user/requestnewpassword");
+	register_action("user/passwordreset", TRUE);
+	register_action("user/requestnewpassword", TRUE);
 
 	// User name change
 	extend_elgg_settings_page('user/settings/name', 'usersettings/user', 1);
@@ -1817,7 +1819,7 @@ function users_init() {
 	register_elgg_event_handler('create', 'user', 'user_create_hook_add_site_relationship');
 
 	// Handle a special case for newly created users when the user is not logged in
-	// TODO: handle this better!
+	// @todo handle this better!
 	register_plugin_hook('permissions_check','all','new_user_enable_permissions_check');
 }
 

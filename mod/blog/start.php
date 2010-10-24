@@ -71,7 +71,8 @@
 				add_widget_type('blog',elgg_echo("blog"),elgg_echo("blog:widget:description"));
 				
 			// Add group menu option
-				add_group_tool_option('blog',elgg_echo('blog:enableblog'),true);
+				add_group_tool_option('blog',elgg_echo('groups:enableblog'),true);
+				elgg_extend_view('groups/left_column', 'blog/groupprofile_blog');
 		}
 		
 		function blog_pagesetup() {
@@ -102,7 +103,7 @@
 						
 					if (!defined('everyoneblog') && page_owner()) {
 						
-						if ($dates = get_entity_dates('object','blog',page_owner())) {
+						if ($dates = get_entity_dates('object','blog',page_owner(),0,'time_created desc')) {
 							foreach($dates as $date) {
 								$timestamplow = mktime(0,0,0,substr($date,4,2),1,substr($date,0,4));
 								$timestamphigh = mktime(0,0,0,((int) substr($date,4,2)) + 1,1,substr($date,0,4));
@@ -239,9 +240,8 @@
 			
 			global $CONFIG;
 			$title = $blogpost->title;
-			$title = friendly_title($title);
-			return $CONFIG->url . "pg/blog/" . $blogpost->getOwnerEntity()->username . "/read/" . $blogpost->getGUID() . "/" . $title;
-			
+			$title = elgg_get_friendly_title($title);
+			return $CONFIG->url . "pg/blog/" . $blogpost->getOwnerEntity()->username . "/read/" . $blogpost->getGUID() . "/" . $title;	
 		}
 		
 		/**

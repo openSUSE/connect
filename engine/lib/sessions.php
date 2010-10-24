@@ -60,8 +60,8 @@ class ElggSession implements ArrayAccess {
 			return ElggSession::$__localcache[$key];
 		}
 
-		$value = null;
-		$value = trigger_plugin_hook('session:get', $key, null, $value);
+		$value = NULL;
+		$value = trigger_plugin_hook('session:get', $key, NULL, $value);
 
 		ElggSession::$__localcache[$key] = $value;
 
@@ -110,10 +110,11 @@ class ElggSession implements ArrayAccess {
 
 
 /**
- * Return the current logged in user, or null if no user is logged in.
+ * Return the current logged in user, or NULL if no user is logged in.
  *
  * If no user can be found in the current session, a plugin hook - 'session:get' 'user' to give plugin
  * authors another way to provide user details to the ACL system without touching the session.
+ * @return ElggUser|NULL
  */
 function get_loggedin_user() {
 	global $SESSION;
@@ -122,7 +123,7 @@ function get_loggedin_user() {
 		return $SESSION['user'];
 	}
 
-	return false;
+	return NULL;
 }
 
 /**
@@ -133,8 +134,9 @@ function get_loggedin_user() {
  */
 function get_loggedin_userid() {
 	$user = get_loggedin_user();
-	if ($user)
+	if ($user) {
 		return $user->guid;
+	}
 
 	return 0;
 }
@@ -184,6 +186,7 @@ function isadminloggedin() {
  *
  * @param $user_guid
  * @return bool
+ * @since 1.7.1
  */
 function elgg_is_admin_user($user_guid) {
 	global $CONFIG;
@@ -465,17 +468,6 @@ function logout() {
 }
 
 /**
- * Returns a fingerprint for an elgg session.
- *
- * @return string
- */
-function get_session_fingerprint() {
-	global $CONFIG;
-
-	return md5($_SERVER['HTTP_USER_AGENT'] . get_site_secret());
-}
-
-/**
  * Initialises the system session and potentially logs the user in
  *
  * This function looks for:
@@ -509,16 +501,6 @@ function session_init($event, $object_type, $object) {
 
 	session_name('Elgg');
 	session_start();
-
-	// Do some sanity checking by generating a fingerprint (makes some XSS attacks harder)
-	if (isset($_SESSION['__elgg_fingerprint'])) {
-		if ($_SESSION['__elgg_fingerprint'] != get_session_fingerprint()) {
-			session_destroy();
-			return false;
-		}
-	} else {
-		$_SESSION['__elgg_fingerprint'] = get_session_fingerprint();
-	}
 
 	// Generate a simple token (private from potentially public session id)
 	if (!isset($_SESSION['__elgg_session'])) {

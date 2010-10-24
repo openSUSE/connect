@@ -68,7 +68,7 @@
 		?>
 	    </div>
 	    
-		
+			<div class="note_text">
 		<?php
 		    echo "<b>{$user_name}: </b>";
 		    
@@ -78,7 +78,7 @@
 		    $desc = preg_replace('/\@([A-Za-z0-9\_\.\-]*)/i','@<a href="' . $vars['url'] . 'pg/thewire/$1">$1</a>',$desc);
 			echo parse_urls($desc);
 		?>
-		
+			</div>
 		
 		<div class="clearfloat"></div>
 		</div>
@@ -87,11 +87,12 @@
 		<?php
 			
 				echo elgg_echo("thewire:wired") . " " . sprintf(elgg_echo("thewire:strapline"),
-								friendly_time($vars['entity']->time_created)
+								elgg_view_friendly_time($vars['entity']->time_created)
 				);
-				
-				echo " via " . elgg_echo($vars['entity']->method) . ".";
-			
+
+				echo ' ';
+				echo sprintf(elgg_echo('thewire:via_method'), elgg_echo($vars['entity']->method));
+				echo '.';
 		?>
 		</div>
 		

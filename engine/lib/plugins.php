@@ -99,11 +99,13 @@ function get_plugin_list() {
 			$CONFIG->pluginlistcache = $plugins;
 			return $plugins;
 		} else {
+			// this only runs on install, otherwise uses serialized plugin order
 			$plugins = array();
 
 			if ($handle = opendir($CONFIG->pluginspath)) {
 				while ($mod = readdir($handle)) {
-					if (!in_array($mod,array('.','..','.svn','CVS')) && is_dir($CONFIG->pluginspath . "/" . $mod)) {
+					// must be directory and not begin with a .
+					if (substr($mod, 0, 1) !== '.' && is_dir($CONFIG->pluginspath . "/" . $mod)) {
 						$plugins[] = $mod;
 					}
 				}
@@ -131,10 +133,10 @@ function get_plugin_list() {
  * @param array $pluginorder Optionally, a list of existing plugins and their orders
  * @return array The new list of plugins and their orders
  */
-function regenerate_plugin_list($pluginorder = false) {
+function regenerate_plugin_list($pluginorder = FALSE) {
 	global $CONFIG;
 
-	$CONFIG->pluginlistcache = null;
+	$CONFIG->pluginlistcache = NULL;
 
 	if ($site = get_entity($CONFIG->site_guid)) {
 		if (empty($pluginorder)) {
@@ -162,7 +164,8 @@ function regenerate_plugin_list($pluginorder = false) {
 		// Add new plugins to the end
 		if ($handle = opendir($CONFIG->pluginspath)) {
 			while ($mod = readdir($handle)) {
-				if (!in_array($mod,array('.','..','.svn','CVS')) && is_dir($CONFIG->pluginspath . "/" . $mod)) {
+				// must be directory and not begin with a .
+				if (substr($mod, 0, 1) !== '.' && is_dir($CONFIG->pluginspath . "/" . $mod)) {
 					if (!in_array($mod, $pluginorder)) {
 						$max = $max + 10;
 						$pluginorder[$max] = $mod;
@@ -187,15 +190,10 @@ function regenerate_plugin_list($pluginorder = false) {
 
 		$site->pluginorder = $plugins;
 
-		// Regenerate caches
-		elgg_view_regenerate_simplecache();
-		elgg_filepath_cache_reset();
-
 		return $plugins;
-
 	}
 
-	return false;
+	return FALSE;
 }
 
 
@@ -239,11 +237,18 @@ function load_plugins() {
 						}
 
 						if (!$cached_view_paths) {
-							if (is_dir($CONFIG->pluginspath . $mod . "/views")) {
-								if ($handle = opendir($CONFIG->pluginspath . $mod . "/views")) {
-									while ($viewtype = readdir($handle)) {
-										if (!in_array($viewtype,array('.','..','.svn','CVS')) && is_dir($CONFIG->pluginspath . $mod . "/views/" . $viewtype)) {
-											autoregister_views("",$CONFIG->pluginspath . $mod . "/views/" . $viewtype,$CONFIG->pluginspath . $mod . "/views/", $viewtype);
+							$view_dir = $CONFIG->pluginspath . $mod . '/views/';
+
+							if (is_dir($view_dir) && ($handle = opendir($view_dir))) {
+								while (FALSE !== ($view_type = readdir($handle))) {
+									$view_type_dir = $view_dir . $view_type;
+
+									if ('.' !== substr($view_type, 0, 1) && is_dir($view_type_dir)) {
+										if (autoregister_views('', $view_type_dir, $view_dir, $view_type)) {
+											// add the valid view type.
+											if (!in_array($view_type, $CONFIG->view_types)) {
+												$CONFIG->view_types[] = $view_type;
+											}
 										}
 									}
 								}
@@ -564,6 +569,7 @@ function clear_plugin_setting($name, $plugin_name = "") {
  * Clear all plugin settings.
  *
  * @param string $plugin_name Optional plugin name, if not specified then it is detected from where you are calling from.
+ * @since 1.7.0
  */
 function clear_all_plugin_settings($plugin_name = "") {
 	$plugin = find_plugin_settings($plugin_name);

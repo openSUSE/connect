@@ -42,6 +42,7 @@ $english = array(
 
 	'actionundefined' => "The requested action (%s) was not defined in the system.",
 	'actionloggedout' => "Sorry, you cannot perform this action while logged out.",
+	'actionunauthorized' => 'You are unauthorized to perform this action',
 
 	'SecurityException:Codeblock' => "Denied access to execute privileged code block",
 	'DatabaseException:WrongCredentials' => "Elgg couldn't connect to the database using the given credentials.",
@@ -56,7 +57,7 @@ $english = array(
 
 	'InvalidClassException:NotValidElggStar' => "GUID:%d is not a valid %s",
 
-	'PluginException:MisconfiguredPlugin' => "%s is a misconfigured plugin. It has been disabled. Please see the Elgg wiki for possible causes.",
+	'PluginException:MisconfiguredPlugin' => "%s is a misconfigured plugin. It has been disabled. Please search the Elgg wiki for possible causes (http://docs.elgg.org/wiki/).",
 
 	'InvalidParameterException:NonElggUser' => "Passing a non-ElggUser to an ElggUser constructor!",
 
@@ -96,7 +97,7 @@ $english = array(
 	'InvalidParameterException:MissingOwner' => "File %s (file guid:%d) (owner guid:%d) is missing an owner!",
 	'IOException:CouldNotMake' => "Could not make %s",
 	'IOException:MissingFileName' => "You must specify a name before opening a file.",
-	'ClassNotFoundException:NotFoundNotSavedWithFile' => "Filestore not found or class not saved with file!",
+	'ClassNotFoundException:NotFoundNotSavedWithFile' => "Unable to load filestore class %s for file %u",
 	'NotificationException:NoNotificationMethod' => "No notification method specified.",
 	'NotificationException:NoHandlerFound' => "No handler found for '%s' or it was not callable.",
 	'NotificationException:ErrorNotifyingGuid' => "There was an error while notifying %d",
@@ -177,6 +178,9 @@ $english = array(
 	'CronException:unknownperiod' => '%s is not a recognised period.',
 
 	'SecurityException:deletedisablecurrentsite' => 'You can not delete or disable the site you are currently viewing!',
+
+	'RegistrationException:EmptyPassword' => 'The password fields cannot be empty',
+	'RegistrationException:PasswordMismatch' => 'Passwords must match',
 
 	'memcache:notinstalled' => 'PHP memcache module not installed, you must install php5-memcache',
 	'memcache:noservers' => 'No memcache servers defined, please populate the $CONFIG->memcache_servers variable',
@@ -283,10 +287,6 @@ To remove a widget drag it back to the <b>Widget gallery</b>.",
 
 	'friends:of:owned' => "People who have made %s a friend",
 
-	'friends:num_display' => "Number of friends to display",
-	'friends:icon_size' => "Icon size",
-	'friends:tiny' => "tiny",
-	'friends:small' => "small",
 	'friends:of' => "Friends of",
 	'friends:collections' => "Collections of friends",
 	'friends:collections:add' => "New friends collection",
@@ -302,9 +302,6 @@ To remove a widget drag it back to the <b>Widget gallery</b>.",
 	'friends:collections:members' => "Collection members",
 	'friends:collections:edit' => "Edit collection",
 
-	'friends:river:created' => "%s added the friends widget.",
-	'friends:river:updated' => "%s updated their friends widget.",
-	'friends:river:delete' => "%s removed their friends widget.",
 	'friends:river:add' => "%s is now a friend with",
 
 	'friendspicker:chararray' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -398,10 +395,10 @@ To remove a widget drag it back to the <b>Widget gallery</b>.",
 
 	'registration:notemail' => 'The email address you provided does not appear to be a valid email address.',
 	'registration:userexists' => 'That username already exists',
-	'registration:usernametooshort' => 'Your username must be a minimum of 2 characters long.',
+	'registration:usernametooshort' => 'Your username must be a minimum of 4 characters long.',
 	'registration:passwordtooshort' => 'The password must be a minimum of 6 characters long.',
 	'registration:dupeemail' => 'This email address has already been registered.',
-	'registration:invalidchars' => 'Sorry, your username contains invalid characters.',
+	'registration:invalidchars' => 'Sorry, your username contains the following invalid character: %s.  All of these characters are invalid: %s',
 	'registration:emailnotvalid' => 'Sorry, the email address you entered is invalid on this system',
 	'registration:passwordnotvalid' => 'Sorry, the password you entered is invalid on this system',
 	'registration:usernamenotvalid' => 'Sorry, the username you entered is invalid on this system',
@@ -438,7 +435,7 @@ To remove a widget drag it back to the <b>Widget gallery</b>.",
 	'user:password:resetreq:success' => 'Successfully requested a new password, email sent',
 	'user:password:resetreq:fail' => 'Could not request a new password.',
 
-	'user:password:text' => 'To generate a new password, enter your username below. We will send the address of a unique verification page to you via email click on the link in the body of the message and a new password will be sent to you.',
+	'user:password:text' => 'To generate a new password, enter your username below. We will send the address of a unique verification page to you via email.  Click on the link in the body of the message and a new password will be sent to you.',
 
 	'user:persistent' => 'Remember me',
 /**
@@ -503,7 +500,7 @@ To remove a widget drag it back to the <b>Widget gallery</b>.",
 	'admin:user:unban:no' => "Can not unban user",
 	'admin:user:unban:yes' => "User un-banned.",
 	'admin:user:delete:no' => "Can not delete user",
-	'admin:user:delete:yes' => "User deleted",
+	'admin:user:delete:yes' => "The user %s has been deleted",
 
 	'admin:user:resetpassword:yes' => "Password reset, user notified.",
 	'admin:user:resetpassword:no' => "Password could not be reset.",

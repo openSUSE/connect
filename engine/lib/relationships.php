@@ -91,7 +91,7 @@ class ElggRelationship implements
 
 		$this->id = add_entity_relationship($this->guid_one, $this->relationship, $this->guid_two);
 		if (!$this->id) {
-			throw new IOException(sprintf(elgg_new('IOException:UnableToSaveNew'), get_class()));
+			throw new IOException(sprintf(elgg_echo('IOException:UnableToSaveNew'), get_class()));
 		}
 
 		return $this->id;
@@ -358,13 +358,16 @@ function add_entity_relationship($guid_one, $relationship, $guid_two) {
 	$guid_one = (int)$guid_one;
 	$relationship = sanitise_string($relationship);
 	$guid_two = (int)$guid_two;
+	$time = time();
 
 	// Check for duplicates
 	if (check_entity_relationship($guid_one, $relationship, $guid_two)) {
 		return false;
 	}
 
-	$result = insert_data("INSERT into {$CONFIG->dbprefix}entity_relationships (guid_one, relationship, guid_two) values ($guid_one, '$relationship', $guid_two)");
+	$result = insert_data("INSERT into {$CONFIG->dbprefix}entity_relationships 
+		(guid_one, relationship, guid_two, time_created)
+		values ($guid_one, '$relationship', $guid_two, $time)");
 
 	if ($result!==false) {
 		$obj = get_relationship($result);
@@ -499,6 +502,7 @@ function get_entity_relationships($guid, $inverse_relationship = FALSE) {
  * 	inverse_relationship => BOOL Inverse the relationship
  *
  * @return array
+ * @since 1.7.0
  */
 function elgg_get_entities_from_relationship($options) {
 	$defaults = array(
@@ -544,6 +548,7 @@ function elgg_get_entities_from_relationship($options) {
  * @param $relationship relationship string
  * @param $entity_guid entity guid to check
  * @return mixed
+ * @since 1.7.0
  */
 function elgg_get_entity_relationship_where_sql($table, $relationship = NULL, $relationship_guid = NULL, $inverse_relationship = FALSE) {
 	if ($relationship == NULL && $entity_guid == NULL) {
@@ -622,9 +627,7 @@ $count = false, $site_guid = 0) {
 		$options['owner_guid'] = $owner_guid;
 	}
 
-	if ($limit) {
-		$options['limit'] = $limit;
-	}
+	$options['limit'] = $limit;
 
 	if ($offset) {
 		$options['offset'] = $offset;

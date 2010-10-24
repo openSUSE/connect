@@ -71,9 +71,8 @@
 		// Save fields - note we always save latest description as both description and annotation
 		if (sizeof($input) > 0)
 		{
-			foreach($input as $shortname => $value) {
-				if ((!$pages_guid) || (($pages_guid) && ($shortname != 'title')))
-					$page->$shortname = $value;
+			foreach ($input as $shortname => $value) {
+				$page->$shortname = $value;
 			}
 		}
 		

@@ -15,7 +15,8 @@ $ENTITY_CACHE = NULL;
 /// Cache subtype searches
 $SUBTYPE_CACHE = NULL;
 
-/// Require the locatable interface TODO: Move this into start.php?
+/// Require the locatable interface
+// @todo Move this into start.php?
 require_once('location.php');
 
 /**
@@ -106,6 +107,7 @@ abstract class ElggEntity implements
 		$this->attributes['access_id'] = ACCESS_PRIVATE;
 		$this->attributes['time_created'] = "";
 		$this->attributes['time_updated'] = "";
+		$this->attributes['last_action'] = '';
 		$this->attributes['enabled'] = "yes";
 
 		// There now follows a bit of a hack
@@ -132,7 +134,7 @@ abstract class ElggEntity implements
 	 * method copies metadata but does not copy over annotations, or private settings.
 	 *
 	 * Note: metadata will have its owner and access id set when the entity is saved
-	 * and it will be the same as that off the entity.
+	 * and it will be the same as that of the entity.
 	 */
 	public function __clone() {
 
@@ -211,18 +213,23 @@ abstract class ElggEntity implements
 	 */
 	public function set($name, $value) {
 		if (array_key_exists($name, $this->attributes)) {
-			// Check that we're not trying to change the guid!
-			if ((array_key_exists('guid', $this->attributes)) && ($name=='guid')) {
-				return false;
+			// Certain properties should not be manually changed!
+			switch ($name) {
+				case 'guid':
+				case 'time_created':
+				case 'time_updated':
+				case 'last_action':
+					return FALSE;
+					break;
+				default:
+					$this->attributes[$name] = $value;
+					break;
 			}
-
-			$this->attributes[$name] = $value;
-		}
-		else {
+		} else {
 			return $this->setMetaData($name, $value);
 		}
 
-		return true;
+		return TRUE;
 	}
 
 	/**
@@ -299,7 +306,7 @@ abstract class ElggEntity implements
 	 * @param string $name Name of the metadata
 	 * @param mixed $value Value of the metadata
 	 * @param string $value_type Types supported: integer and string. Will auto-identify if not set
-	 * @param bool $multiple
+	 * @param bool $multiple (does not support associative arrays)
 	 * @return bool
 	 */
 	public function setMetaData($name, $value, $value_type = "", $multiple = false) {
@@ -333,10 +340,9 @@ abstract class ElggEntity implements
 		} else {
 			unset($this->temp_metadata[$name]);
 			if ((int) $this->guid > 0) {
-				return create_metadata($this->getGUID(), $name, $value, $value_type, $this->getOwner(), $this->getAccessID(), $multiple);
+				$result = create_metadata($this->getGUID(), $name, $value, $value_type, $this->getOwner(), $this->getAccessID(), $multiple);
+				return (bool)$result;
 			} else {
-				//$this->temp_metadata[$name] = $value;
-
 				if (($multiple) && (isset($this->temp_metadata[$name]))) {
 					if (!is_array($this->temp_metadata[$name])) {
 						$tmp = $this->temp_metadata[$name];
@@ -776,7 +782,8 @@ abstract class ElggEntity implements
 				throw new IOException(elgg_echo('IOException:BaseEntitySaveFailed'));
 			}
 
-			// Save any unsaved metadata TODO: How to capture extra information (access id etc)
+			// Save any unsaved metadata
+			// @todo How to capture extra information (access id etc)
 			if (sizeof($this->temp_metadata) > 0) {
 				foreach($this->temp_metadata as $name => $value) {
 					$this->$name = $value;
@@ -784,7 +791,8 @@ abstract class ElggEntity implements
 				}
 			}
 
-			// Save any unsaved annotations metadata. TODO: How to capture extra information (access id etc)
+			// Save any unsaved annotations metadata.
+			// @todo How to capture extra information (access id etc)
 			if (sizeof($this->temp_annotations) > 0) {
 				foreach($this->temp_annotations as $name => $value) {
 					$this->annotate($name, $value);
@@ -796,7 +804,9 @@ abstract class ElggEntity implements
 			$this->attributes['subtype'] = get_subtype_id($this->attributes['type'], $this->attributes['subtype']);
 
 			// Cache object handle
-			if ($this->attributes['guid']) cache_entity($this);
+			if ($this->attributes['guid']) {
+				cache_entity($this);
+			}
 
 			return $this->attributes['guid'];
 		}
@@ -1226,7 +1236,7 @@ function initialise_entity_cache() {
 	global $ENTITY_CACHE;
 
 	if (!$ENTITY_CACHE) {
-		//select_default_memcache('entity_cache'); // TODO: Replace with memcache?
+		//select_default_memcache('entity_cache'); // @todo Replace with memcache?
 		$ENTITY_CACHE = array();
 	}
 }
@@ -1299,7 +1309,7 @@ function retrieve_cached_entity_row($guid) {
 /**
  * Return the integer ID for a given subtype, or false.
  *
- * TODO: Move to a nicer place?
+ * @todo Move to a nicer place?
  *
  * @param string $type
  * @param string $subtype
@@ -1335,7 +1345,7 @@ function get_subtype_id($type, $subtype) {
 /**
  * For a given subtype ID, return its identifier text.
  *
- * TODO: Move to a nicer place?
+ * @todo Move to a nicer place?
  *
  * @param int $subtype_id
  */
@@ -1478,6 +1488,10 @@ function update_entity($guid, $owner_guid, $access_id, $container_guid = null) {
 
 	$entity = get_entity($guid);
 
+	if (!$entity) {
+		return FALSE;
+	}
+
 	if ($entity->canEdit()) {
 		if (trigger_elgg_event('update',$entity->type,$entity)) {
 			$ret = update_data("UPDATE {$CONFIG->dbprefix}entities set owner_guid='$owner_guid', access_id='$access_id', container_guid='$container_guid', time_updated='$time' WHERE guid=$guid");
@@ -1592,8 +1606,8 @@ function create_entity($type, $subtype, $owner_guid, $access_id, $site_guid = 0,
 	}
 
 	return insert_data("INSERT into {$CONFIG->dbprefix}entities
-		(type, subtype, owner_guid, site_guid, container_guid, access_id, time_created, time_updated) values
-		('$type',$subtype, $owner_guid, $site_guid, $container_guid, $access_id, $time, $time)");
+		(type, subtype, owner_guid, site_guid, container_guid, access_id, time_created, time_updated, last_action) values
+		('$type',$subtype, $owner_guid, $site_guid, $container_guid, $access_id, $time, $time, $time)");
 }
 
 /**
@@ -1642,6 +1656,7 @@ function entity_row_to_elggstar($row) {
 		return $new_entity;
 	}
 
+	// load class for entity if one is registered
 	$classname = get_subtype_class_from_id($row->subtype);
 	if ($classname!="") {
 		if (class_exists($classname)) {
@@ -1650,21 +1665,25 @@ function entity_row_to_elggstar($row) {
 			if (!($new_entity instanceof ElggEntity)) {
 				throw new ClassException(sprintf(elgg_echo('ClassException:ClassnameNotClass'), $classname, 'ElggEntity'));
 			}
-		}
-		else {
+		} else {
 			error_log(sprintf(elgg_echo('ClassNotFoundException:MissingClass'), $classname));
 		}
 	}
-	else {
+
+	if (!$new_entity) {
 		switch ($row->type) {
 			case 'object' :
-				$new_entity = new ElggObject($row); break;
+				$new_entity = new ElggObject($row);
+				break;
 			case 'user' :
-				$new_entity = new ElggUser($row); break;
+				$new_entity = new ElggUser($row);
+				break;
 			case 'group' :
-				$new_entity = new ElggGroup($row); break;
+				$new_entity = new ElggGroup($row);
+				break;
 			case 'site' :
-				$new_entity = new ElggSite($row); break;
+				$new_entity = new ElggSite($row);
+				break;
 			default:
 				throw new InstallationException(sprintf(elgg_echo('InstallationException:TypeNotSupported'), $row->type));
 		}
@@ -1686,6 +1705,11 @@ function entity_row_to_elggstar($row) {
 function get_entity($guid) {
 	static $newentity_cache;
 	$new_entity = false;
+
+	if (!is_numeric($guid)) {
+		return FALSE;
+	}
+
 	if ((!$newentity_cache) && (is_memcache_available())) {
 		$newentity_cache = new ElggMemcache('new_entity_cache');
 	}
@@ -1743,6 +1767,7 @@ function get_entity($guid) {
  *
  * @return 	if count, int
  * 			if not count, array or false if no entities
+ * @since 1.7.0
  */
 function elgg_get_entities(array $options = array()) {
 	global $CONFIG;
@@ -1771,10 +1796,18 @@ function elgg_get_entities(array $options = array()) {
 		'joins'					=>	array()
 	);
 
-
 	$options = array_merge($defaults, $options);
 
-	$singulars = array('type', 'subtype', 'owner_guid', 'container_guid', 'site_guid', 'type_subtype_pair');
+	// can't use helper function with type_subtype_pair because it's already an array...just need to merge it
+	if (isset($options['type_subtype_pair'])) {
+		if (isset($options['type_subtype_pairs'])) {
+			$options['type_subtype_pairs'] = array_merge($options['type_subtype_pairs'], $options['type_subtype_pair']);
+		} else {
+			$options['type_subtype_pairs'] = $options['type_subtype_pair'];
+		}
+	}
+
+	$singulars = array('type', 'subtype', 'owner_guid', 'container_guid', 'site_guid');
 	$options = elgg_normalise_plural_options_array($options, $singulars);
 
 	// evaluate where clauses
@@ -1951,11 +1984,11 @@ $count = false, $site_guid = 0, $container_guid = null, $timelower = 0, $timeupp
 	}
 
 	if ($timeupper) {
-		$options['time_upper'] = $timeupper;
+		$options['created_time_upper'] = $timeupper;
 	}
 
 	if ($timelower) {
-		$options['time_lower'] = $timelower;
+		$options['created_time_lower'] = $timelower;
 	}
 
 	$r = elgg_get_entities($options);
@@ -1970,6 +2003,7 @@ $count = false, $site_guid = 0, $container_guid = null, $timelower = 0, $timeupp
  * @param NULL|array $subtypes
  * @param NULL|array $pairs
  * @return FALSE|string
+ * @since 1.7.0
  */
 function elgg_get_entity_type_subtype_where_sql($table, $types, $subtypes, $pairs) {
 	// subtype depends upon type.
@@ -2123,6 +2157,7 @@ function elgg_get_entity_type_subtype_where_sql($table, $types, $subtypes, $pair
  * @param str $table
  * @param NULL|array $owner_guids
  * @return FALSE|str
+ * @since 1.7.0
  */
 function elgg_get_entity_owner_where_sql($table, $owner_guids) {
 	// short circuit if nothing requested
@@ -2160,6 +2195,7 @@ function elgg_get_entity_owner_where_sql($table, $owner_guids) {
  * @param string $table entity table prefix
  * @param NULL|array $container_guids
  * @return FALSE|string
+ * @since 1.7.0
  */
 function elgg_get_entity_container_where_sql($table, $container_guids) {
 	// short circuit if nothing is requested.
@@ -2201,6 +2237,7 @@ function elgg_get_entity_container_where_sql($table, $container_guids) {
  * @param NULL|int $time_updated_lower
  *
  * @return FALSE|str FALSE on fail, string on success.
+ * @since 1.7.0
  */
 function elgg_get_entity_time_where_sql($table, $time_created_upper = NULL, $time_created_lower = NULL,
 	$time_updated_upper = NULL, $time_updated_lower = NULL) {
@@ -2238,6 +2275,7 @@ function elgg_get_entity_time_where_sql($table, $time_created_upper = NULL, $tim
  * @param string $table entity table name
  * @param NULL|array $site_guids
  * @return FALSE|string
+ * @since 1.7.0
  */
 function elgg_get_entity_site_where_sql($table, $site_guids) {
 	// short circuit if nothing requested
@@ -2278,11 +2316,12 @@ function elgg_get_entity_site_where_sql($table, $site_guids) {
  * 	pagination => BOOL Display pagination links
  *
  * @return str
+ * @since 1.7.0
  */
 function elgg_list_entities($options) {
 	$defaults = array(
-		'offset' => 0,
-		'limit' => 10,
+		'offset' => (int) max(get_input('offset', 0), 0),
+		'limit' => (int) max(get_input('limit', 10), 0),
 		'full_view' => TRUE,
 		'view_type_toggle' => FALSE,
 		'pagination' => TRUE
@@ -2466,11 +2505,12 @@ function disable_entity($guid, $reason = "", $recursive = true) {
 		if (trigger_elgg_event('disable',$entity->type,$entity)) {
 			if ($entity->canEdit()) {
 				if ($reason) {
-					create_metadata($guid, 'disable_reason', $reason,'', 0, ACCESS_PUBLIC);
+					create_metadata($guid, 'disable_reason', $reason, '', 0, ACCESS_PUBLIC);
 				}
 
 				if ($recursive) {
-					// Temporary token overriding access controls TODO: Do this better.
+					// Temporary token overriding access controls
+					// @todo Do this better.
 					static $__RECURSIVE_DELETE_TOKEN;
 					// Make it slightly harder to guess
 					$__RECURSIVE_DELETE_TOKEN = md5(get_loggedin_userid());
@@ -2556,7 +2596,8 @@ function delete_entity($guid, $recursive = true) {
 
 				// Delete contained owned and otherwise releated objects (depth first)
 				if ($recursive) {
-					// Temporary token overriding access controls TODO: Do this better.
+					// Temporary token overriding access controls
+					// @todo Do this better.
 					static $__RECURSIVE_DELETE_TOKEN;
 					// Make it slightly harder to guess
 					$__RECURSIVE_DELETE_TOKEN = md5(get_loggedin_userid());
@@ -3189,6 +3230,7 @@ function list_registered_entities($owner_guid = 0, $limit = 10, $fullview = true
  * 	pagination => BOOL Display pagination links
  *
  * @return string A viewable list of entities
+ * @since 1.7.0
  */
 function elgg_list_registered_entities($options) {
 	$defaults = array(
@@ -3475,6 +3517,7 @@ function get_entities_from_private_setting_multi(array $name, $type = "", $subty
 		$i = 1;
 		foreach ($name as $k => $n) {
 			$k = sanitise_string($k);
+			$n = sanitise_string($n);
 			$s_join .= " JOIN {$CONFIG->dbprefix}private_settings s$i ON e.guid=s$i.entity_guid";
 			$where[] = "s$i.name = '$k'";
 			$where[] = "s$i.value = '$n'";
@@ -3667,7 +3710,7 @@ function entities_init() {
 	register_plugin_hook('unit_test', 'system', 'entities_test');
 
 	// Allow a permission override for recursive entity deletion
-	// TODO: Can this be done better?
+	// @todo Can this be done better?
 	register_plugin_hook('permissions_check','all','recursive_delete_permissions_check');
 	register_plugin_hook('permissions_check:metadata','all','recursive_delete_permissions_check');
 

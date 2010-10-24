@@ -204,8 +204,10 @@
 			if (get_context() == "profile") {
 				$page_owner = page_owner_entity();
 
-				add_submenu_item(elgg_echo('profile:editdetails'), $CONFIG->wwwroot . "pg/profile/{$page_owner->username}/edit/");
-				add_submenu_item(elgg_echo('profile:editicon'), $CONFIG->wwwroot . "pg/profile/{$page_owner->username}/editicon/");
+				if ($page_owner && $page_owner->canEdit()) {
+					add_submenu_item(elgg_echo('profile:editdetails'), $CONFIG->wwwroot . "pg/profile/{$page_owner->username}/edit/");
+					add_submenu_item(elgg_echo('profile:editicon'), $CONFIG->wwwroot . "pg/profile/{$page_owner->username}/editicon/");
+				}
 			}
 		}
 
@@ -287,11 +289,11 @@
 
 				$filehandler = new ElggFile();
 				$filehandler->owner_guid = $entity->getGUID();
-				$filehandler->setFilename("profile/" . $username . $size . ".jpg");
+				$filehandler->setFilename("profile/" . $entity->guid . $size . ".jpg");
 
 				if ($filehandler->exists()) {
 					//$url = $CONFIG->url . "pg/icon/$username/$size/$icontime.jpg";
-					return $CONFIG->wwwroot . 'mod/profile/icondirect.php?lastcache='.$icontime.'&username='.$entity->username.'&joindate=' . $entity->time_created . '&guid=' . $entity->guid . '&size='.$size;
+					return $CONFIG->wwwroot . 'mod/profile/icondirect.php?lastcache='.$icontime.'&joindate=' . $entity->time_created . '&guid=' . $entity->guid . '&size='.$size;
 				}
 			}
 		}

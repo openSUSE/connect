@@ -18,7 +18,8 @@ require_once('extender.php');
 /**
  * ElggAnnotation
  *
- * An annotation is similar to metadata each entity can contain more than one of each annotation.
+ * An annotation is similar to metadata.
+ * Each entity can have more than one of each type of annotation.
  *
  * @package Elgg
  * @subpackage Core
@@ -27,7 +28,7 @@ require_once('extender.php');
 class ElggAnnotation extends ElggExtender {
 
 	/**
-	 * Construct a new site object, optionally from a given id value or db row.
+	 * Construct a new annotation, optionally from a given id value or db object.
 	 *
 	 * @param mixed $id
 	 */
@@ -87,14 +88,14 @@ class ElggAnnotation extends ElggExtender {
 				$this->value_type, $this->owner_guid, $this->access_id);
 
 			if (!$this->id) {
-				throw new IOException(sprintf(elgg_new('IOException:UnableToSaveNew'), get_class()));
+				throw new IOException(sprintf(elgg_echo('IOException:UnableToSaveNew'), get_class()));
 			}
 			return $this->id;
 		}
 	}
 
 	/**
-	 * Delete a given site.
+	 * Delete the annotation.
 	 */
 	function delete() {
 		return delete_annotation($this->id);
@@ -125,7 +126,7 @@ class ElggAnnotation extends ElggExtender {
  * Convert a database row to a new ElggAnnotation
  *
  * @param stdClass $row
- * @return stdClass or ElggAnnotation
+ * @return ElggAnnotation
  */
 function row_to_elggannotation($row) {
 	if (!($row instanceof stdClass)) {
@@ -139,6 +140,7 @@ function row_to_elggannotation($row) {
  * Get a specific annotation.
  *
  * @param int $annotation_id
+ * @return ElggAnnotation
  */
 function get_annotation($annotation_id) {
 	global $CONFIG;
@@ -158,6 +160,7 @@ function get_annotation($annotation_id) {
  * @param string $value_type
  * @param int $owner_guid
  * @param int $access_id
+ * @return int|bool id on success or false on failure
  */
 function create_annotation($entity_guid, $name, $value, $value_type, $owner_guid, $access_id = ACCESS_PRIVATE) {
 	global $CONFIG;
@@ -203,7 +206,9 @@ function create_annotation($entity_guid, $name, $value, $value_type, $owner_guid
 			if (trigger_elgg_event('create', 'annotation', $obj)) {
 				return $result;
 			} else {
+				// plugin returned false to reject annotation
 				delete_annotation($result);
+				return FALSE;
 			}
 		}
 	}
@@ -220,6 +225,7 @@ function create_annotation($entity_guid, $name, $value, $value_type, $owner_guid
  * @param string $value_type
  * @param int $owner_guid
  * @param int $access_id
+ * @return bool
  */
 function update_annotation($annotation_id, $name, $value, $value_type, $owner_guid, $access_id) {
 	global $CONFIG;
@@ -259,6 +265,7 @@ function update_annotation($annotation_id, $name, $value, $value_type, $owner_gu
 		if (trigger_elgg_event('update', 'annotation', $obj)) {
 			return true;
 		} else {
+			// @todo add plugin hook that sends old and new annotation information before db access
 			delete_annotation($annotation_id);
 		}
 	}
@@ -433,6 +440,7 @@ $value = "", $owner_guid = 0, $limit = 10, $offset = 0, $order_by = "asc", $time
  *  annotation_owner_guids => NULL|ARR guids for annotaiton owners
  *
  * @return array
+ * @since 1.7.0
  */
 function elgg_get_entities_from_annotations(array $options = array()) {
 	$defaults = array(
@@ -502,7 +510,11 @@ $timelower = 0, $timeupper = 0) {
 	}
 
 	if ($owner_guid) {
-		$options['annotation_owner_guid'] = $owner_guid;
+		if (is_array($owner_guid)) {
+			$options['annotation_owner_guids'] = $owner_guid;
+		} else {
+			$options['annotation_owner_guid'] = $owner_guid;
+		}
 	}
 
 	if ($group_guid) {
@@ -551,11 +563,51 @@ function list_entities_from_annotations($entity_type = "", $entity_subtype = "",
 	} else {
 		$asc = "desc";
 	}
-	$count = get_entities_from_annotations($entity_type, $entity_subtype, $name,
-		$value, $owner_guid, $group_guid, null, null, $asc, true);
-	$offset = (int) get_input("offset",0);
-	$entities = get_entities_from_annotations($entity_type, $entity_subtype, $name,
-		$value, $owner_guid, $group_guid, $limit, $offset, $asc);
+
+	$options = array();
+
+	if ($entity_type) {
+		$options['types'] = $entity_type;
+	}
+
+	if ($entity_subtype) {
+		$options['subtypes'] = $entity_subtype;
+	}
+
+	if ($name) {
+		$options['annotation_names'] = $name;
+	}
+
+	if ($value) {
+		$options['annotation_values'] = $value;
+	}
+
+	if ($limit) {
+		$options['limit'] = $limit;
+	}
+
+	if ($owner_guid) {
+		$options['annotation_owner_guid'] = $owner_guid;
+	}
+
+	if ($group_guid) {
+		$options['container_guid'] = $group_guid;
+	}
+
+	if ($order_by) {
+		$options['order_by'] = "maxtime $asc";
+	}
+
+	$options['count'] = TRUE;
+
+	$count = elgg_get_entities_from_annotations($options);
+
+	$options['count'] = FALSE;
+	if ($offset = sanitise_int(get_input('offset', 0))) {
+		$options['offset'] = $offset;
+	}
+
+	$entities = elgg_get_entities_from_annotations($options);
 
 	return elgg_view_entity_list($entities, $count, $offset, $limit, $fullview, $viewtypetoggle);
 }

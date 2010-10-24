@@ -1,14 +1,14 @@
 <?php
 
-	/**
-	 * Elgg riverdashboard CSS
-	 * 
-	 * @package riverdashboard
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider <info@elgg.com>
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.org/
-	 */
+/**
+ * Elgg riverdashboard CSS
+ * 
+ * @package ElggRiverDash
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
+ * @author Curverider <info@elgg.com>
+ * @copyright Curverider Ltd 2008-2010
+ * @link http://elgg.org/
+ */
 
 ?>
 .sidebarBox #thewire_sidebarInputBox {
@@ -106,23 +106,6 @@
 /* IE7 */
 *:first-child+html .river_pagination { margin-top:17px; }
 
-.river_item_list {
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
-.river_item {
-  border:2px solid #cccccc;
-  border-radius: 8px;
-  padding: 5px;
-  margin:0 0 5px 0;
-  background: #ffffff;
-}
-
-.river_item:hover {
-  background:#dedede;
-}
-
 /* activity widget */
 .collapsable_box_content .river_item p {
 	color:#333333;
@@ -161,5 +144,4 @@
 	width:40px;
 	height:40px;
 }
-
 

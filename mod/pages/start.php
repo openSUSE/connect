@@ -82,12 +82,9 @@
 	}
 	
 	function pages_url($entity) {
-		
 		global $CONFIG;
-		
-		
-		return $CONFIG->url . "pg/pages/view/{$entity->guid}/";
-		
+		$title = elgg_get_friendly_title($entity->title);
+		return $CONFIG->url . "pg/pages/view/{$entity->guid}/$title";
 	}
 	
 	/**
@@ -124,23 +121,26 @@
 			// See what context we're using
 			switch($page[0])
 			{
-				case "new" :
+				case "new":
 					include($CONFIG->pluginspath . "pages/new.php");
           		break;
-          		case "welcome" :
+          		case "welcome":
+					if (isset($page[1])) {
+						set_input('username', $page[1]);
+					}
 					include($CONFIG->pluginspath . "pages/welcome.php");
           		break;
     			case "world":  
    					include($CONFIG->pluginspath . "pages/world.php");
           		break;
-    			case "owned" :
+    			case "owned":
     				// Owned by a user
     				if (isset($page[1]))
     					set_input('username',$page[1]);
     					
     				include($CONFIG->pluginspath . "pages/index.php");	
     			break;
-    			case "edit" :
+    			case "edit":
     				if (isset($page[1]))
     					set_input('page_guid', $page[1]);
     					
@@ -152,7 +152,7 @@
 
     				include($CONFIG->pluginspath . "pages/edit.php");
     			break;
-    			case "view" :
+    			case "view":
     				
     				if (isset($page[1]))
     					set_input('page_guid', $page[1]);
@@ -166,7 +166,7 @@
     					
     				include($CONFIG->pluginspath . "pages/view.php");
     			break;   
-    			case "history" :
+    			case "history":
     				if (isset($page[1]))
     					set_input('page_guid', $page[1]);
     					
@@ -214,7 +214,7 @@
 					$owner = $entity->getOwnerEntity();
 					return $owner->name . ' ' . elgg_echo("pages:via") . ': ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
 				}
-				if ($method == 'web') {
+				if ($method == 'site') {
 					$owner = $entity->getOwnerEntity();
 					return $owner->name . ' ' . elgg_echo("pages:via") . ': ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
 				}

@@ -173,7 +173,7 @@ function get_default_access(ElggUser $user = null) {
 		return $CONFIG->default_access;
 	}
 
-	if (!($user) || (!$user = get_loggedin_user())) {
+	if (!($user) && (!$user = get_loggedin_user())) {
 		return $CONFIG->default_access;
 	}
 
@@ -188,7 +188,7 @@ function get_default_access(ElggUser $user = null) {
  * Override the default behaviour and allow results to show hidden entities as well.
  * THIS IS A HACK.
  *
- * TODO: Replace this with query object!
+ * @todo Replace this with query object!
  */
 $ENTITY_SHOW_HIDDEN_OVERRIDE = false;
 
@@ -216,13 +216,13 @@ function access_get_show_hidden_status() {
  * Returns an SQL fragment that is true (or optionally false) if the given user has
  * added an annotation with the given name to the given entity.
  *
- * TODO: This is fairly generic so perhaps it could be moved to annotations.php
+ * @todo This is fairly generic so perhaps it could be moved to annotations.php
  *
  * @param string $annotation_name name of the annotation
-	* @param string $entity_guid SQL string that evaluates to the GUID of the entity the annotation should be attached to
-	* @param string $owner_guid SQL string that evaluates to the GUID of the owner of the annotation	 	 *
-	* @param boolean $exists If set to true, will return true if the annotation exists, otherwise returns false
-	* @return string An SQL fragment suitable for inserting into a WHERE clause
+ * @param string $entity_guid SQL string that evaluates to the GUID of the entity the annotation should be attached to
+ * @param string $owner_guid SQL string that evaluates to the GUID of the owner of the annotation	 	 *
+ * @param boolean $exists If set to true, will return true if the annotation exists, otherwise returns false
+ * @return string An SQL fragment suitable for inserting into a WHERE clause
  */
 function get_annotation_sql($annotation_name, $entity_guid, $owner_guid, $exists) {
 	global $CONFIG;
@@ -246,7 +246,7 @@ END;
 /**
  * Add access restriction sql code to a given query.
  * Note that if this code is executed in privileged mode it will return blank.
- * @TODO: DELETE once Query classes are fully integrated
+ * @todo DELETE once Query classes are fully integrated
  *
  * @param string $table_prefix Optional table. prefix for the access code.
  * @param int $owner
@@ -628,7 +628,7 @@ function get_user_access_collections($owner_guid, $site_guid = 0) {
  * @param true|false $idonly If set to true, will only return the members' IDs (default: false)
  * @return ElggUser entities if successful, false if not
  */
-function get_members_of_access_collection($collection, $idonly = false) {
+function get_members_of_access_collection($collection, $idonly = FALSE) {
 	global $CONFIG;
 	$collection = (int)$collection;
 
@@ -638,6 +638,9 @@ function get_members_of_access_collection($collection, $idonly = false) {
 	} else {
 		$query = "SELECT e.guid FROM {$CONFIG->dbprefix}access_collection_membership m JOIN {$CONFIG->dbprefix}entities e ON e.guid = m.user_guid WHERE m.access_collection_id = {$collection}";
 		$collection_members = get_data($query);
+		if (!$collection_members) {
+			return FALSE;
+		}
 		foreach($collection_members as $key => $val) {
 			$collection_members[$key] = $val->guid;
 		}
@@ -709,10 +712,11 @@ function get_entities_from_access_id($collection_id, $entity_type = "", $entity_
 		$options['order_by'] = sanitise_string("e.time_created, $order_by");
 	}
 
-	if ((is_array($owner_guid) && (count($owner_guid)))) {
-		$options['owner_guids'] = array();
-		foreach($owner_guid as $guid) {
-			$options['owner_guids'][] = $guid;
+	if ($owner_guid) {
+		if (is_array($owner_guid)) {
+			$options['owner_guids'] = $owner_guid;
+		} else {
+			$options['owner_guid'] = $owner_guid;
 		}
 	}
 
@@ -731,7 +735,7 @@ function get_entities_from_access_id($collection_id, $entity_type = "", $entity_
  * @param int $collection_id
  * @param array $options @see elgg_get_entities()
  * @return array
- * @since 1.7
+ * @since 1.7.0
  */
 function elgg_get_entities_from_access_id(array $options=array()) {
 	// restrict the resultset to access collection provided
@@ -782,7 +786,8 @@ function list_entities_from_access_id($collection_id, $entity_type = "", $entity
  *
  * @param $entity_accessid (int) The entity's access id
  * @return string e.g. Public, Private etc
- **/
+ * @since 1.7.0
+ */
 function get_readable_access_level($entity_accessid){
 	$access = (int) $entity_accessid;
 	//get the access level for object in readable string
@@ -801,6 +806,7 @@ function get_readable_access_level($entity_accessid){
  * Set if entity access system should be ignored.
  *
  * @return bool Previous ignore_access setting.
+ * @since 1.7.0
  */
 function elgg_set_ignore_access($ignore = true) {
 	$elgg_access = elgg_get_access_object();
@@ -811,6 +817,7 @@ function elgg_set_ignore_access($ignore = true) {
  * Get current ignore access setting.
  *
  * @return bool
+ * @since 1.7.0
  */
 function elgg_get_ignore_access() {
 	return elgg_get_access_object()->get_ignore_access();
@@ -820,6 +827,7 @@ function elgg_get_ignore_access() {
  * Decides if the access system is being ignored.
  *
  * @return bool
+ * @since 1.7.0
  */
 function elgg_check_access_overrides($user_guid = null) {
 	if (!$user_guid || $user_guid <= 0) {
@@ -835,6 +843,7 @@ function elgg_check_access_overrides($user_guid = null) {
  * Returns the ElggAccess object.
  *
  * @return ElggAccess
+ * @since 1.7.0
  */
 function elgg_get_access_object() {
 	static $elgg_access;
@@ -862,6 +871,7 @@ function access_init() {
  * Override permissions system
  *
  * @return true|null
+ * @since 1.7.0
  */
 function elgg_override_permissions_hook($hook, $type, $returnval, $params) {
 	$user_guid = get_loggedin_userid();

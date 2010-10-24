@@ -17,16 +17,14 @@
 * @param string $action The requested action
 * @param string $forwarder Optionally, the location to forward to
 */
-
 function action($action, $forwarder = "") {
 	global $CONFIG;
 
-	// set GET params
-	elgg_set_input_from_uri();
+	$action = rtrim($action, '/');
 
 	// @todo REMOVE THESE ONCE #1509 IS IN PLACE.
 	// Allow users to disable plugins without a token in order to
-	// remove plugins that are imcompatible.
+	// remove plugins that are incompatible.
 	// Installation cannot use tokens because it requires site secret to be
 	// working. (#1462)
 	// Login and logout are for convenience.
@@ -48,22 +46,23 @@ function action($action, $forwarder = "") {
 	$forwarder = str_replace("http://", "", $forwarder);
 	$forwarder = str_replace("@", "", $forwarder);
 
-	if (substr($forwarder,0,1) == "/") {
-		$forwarder = substr($forwarder,1);
+	if (substr($forwarder, 0, 1) == "/") {
+		$forwarder = substr($forwarder, 1);
 	}
 
 	if (isset($CONFIG->actions[$action])) {
 		if ((isadminloggedin()) || (!$CONFIG->actions[$action]['admin'])) {
-			if ($CONFIG->actions[$action]['public'] || $_SESSION['id'] != -1) {
+			if ($CONFIG->actions[$action]['public'] || get_loggedin_userid()) {
 
-				// Trigger action event TODO: This is only called before the primary action is called. We need to rethink actions for 1.5
+				// Trigger action event
+				// @todo This is only called before the primary action is called. We need to rethink actions for 1.5
 				$event_result = true;
 				$event_result = trigger_plugin_hook('action', $action, null, $event_result);
 
 				// Include action
 				// Event_result being false doesn't produce an error -
 				// since i assume this will be handled in the hook itself.
-				// TODO make this better!
+				// @todo make this better!
 				if ($event_result) {
 					if (!include($CONFIG->actions[$action]['file'])) {
 						register_error(sprintf(elgg_echo('actionundefined'),$action));
@@ -72,6 +71,8 @@ function action($action, $forwarder = "") {
 			} else {
 				register_error(elgg_echo('actionloggedout'));
 			}
+		} else {
+			register_error(elgg_echo('actionunauthorized'));
 		}
 	} else {
 		register_error(sprintf(elgg_echo('actionundefined'),$action));
@@ -90,6 +91,10 @@ function action($action, $forwarder = "") {
  */
 function register_action($action, $public = false, $filename = "", $admin_only = false) {
 	global $CONFIG;
+
+	// plugins are encouraged to call actions with a trailing / to prevent 301
+	// redirects but we store the actions without it
+	$action = rtrim($action, '/');
 
 	if (!isset($CONFIG->actions)) {
 		$CONFIG->actions = array();
@@ -125,9 +130,15 @@ function actions_init($event, $object_type, $object) {
  *
  * @return unknown
  */
-function validate_action_token($visibleerrors = true) {
-	$token = get_input('__elgg_token');
-	$ts = get_input('__elgg_ts');
+function validate_action_token($visibleerrors = TRUE, $token = NULL, $ts = NULL) {
+	if (!$token) {
+		$token = get_input('__elgg_token');
+	}
+
+	if (!$ts) {
+		$ts = get_input('__elgg_ts');
+	}
+
 	$session_id = session_id();
 
 	if (($token) && ($ts) && ($session_id)) {
@@ -197,14 +208,11 @@ function generate_action_token($timestamp) {
 	// Current session id
 	$session_id = session_id();
 
-	// Get user agent
-	$ua = $_SERVER['HTTP_USER_AGENT'];
-
 	// Session token
 	$st = $_SESSION['__elgg_session'];
 
 	if (($site_secret) && ($session_id)) {
-		return md5($site_secret.$timestamp.$session_id.$ua.$st);
+		return md5($site_secret.$timestamp.$session_id.$st);
 	}
 
 	return FALSE;
@@ -236,5 +244,5 @@ function get_site_secret() {
 	return $secret;
 }
 
-// Register some actions ***************************************************
+
 register_elgg_event_handler("init","system","actions_init");
