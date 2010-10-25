@@ -1,0 +1,35 @@
+--- a/mod/groups/views/default/groups/groupprofile.php
++++ b/mod/groups/views/default/groups/groupprofile.php
+@@ -61,7 +61,8 @@
+ 						echo ": </b>";
+ 
+ 						$options = array(
+-							'value' => $vars['entity']->$shortname
++							'value' => $vars['entity']->$shortname,
++							'internalname' => "groups:{$shortname}"
+ 						);
+ 
+ 						if ($valtype == 'tags') {
+--- a/mod/profile/views/default/profile/edit.php
++++ b/mod/profile/views/default/profile/edit.php
+@@ -27,7 +27,7 @@
+ 					$value = '';
+ 					foreach($metadata as $md) {
+ 						if (!empty($value)) $value .= ', ';
+-						$value .= $md->value;
++						$value .= str_replace(',', ',/',$md->value);
+ 						$access_id = $md->access_id;
+ 					}
+ 				} else {
+--- a/mod/profile/views/default/profile/userdetails.php
++++ b/mod/profile/views/default/profile/userdetails.php
+@@ -112,7 +112,8 @@
+ 							?>: </b>
+ 							<?php
+ 							$options = array(
+-								'value' => $vars['entity']->$shortname
++								'value' => $vars['entity']->$shortname,
++								'internalname' => "profile:{$shortname}"
+ 							);
+ 
+ 							if ($valtype == 'tags') {
