@@ -3,13 +3,6 @@
 # License http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
 # Link http://elgg.org/
 
-<IfModule !mod_rewrite.c>
-    # ugly ugly hack to detect missing mod_rewrite
-    # RedirectMatch must be to an absolute destination, so forces 500 error...
-    ErrorDocument 500 "Elgg error: Apache does not have mod_rewrite loaded. Please check your Apache setup."
-    RedirectMatch 302 .* index.php
-</IfModule>
-
 <Files "htaccess_dist">
     order allow,deny
     deny from all
@@ -28,18 +21,6 @@ DirectoryIndex index.php
 <IfModule mod_expires.c>
 	ExpiresActive On
 	ExpiresDefault "access plus 10 years"
-</IfModule>
-
-# php 4, apache 1.x
-<IfModule mod_php4.c>
-    ErrorDocument 500 "Elgg error: Elgg does not support PHP 4."
-    RedirectMatch 302 .* index.php
-</IfModule>
-
-# php 4, apache 2
-<IfModule sapi_apache2.c>
-    ErrorDocument 500 "Elgg error: Elgg does not support PHP 4."
-    RedirectMatch 302 .* index.php
 </IfModule>
 
 # php 5, apache 1 and 2
@@ -116,9 +97,9 @@ RewriteEngine on
 #
 #RewriteBase /
 
-RewriteRule ^action\/([A-Za-z0-9\_\-\/]+)$ engine/handlers/action_handler.php?action=$1
+RewriteRule ^action\/([A-Za-z0-9\_\-\/]+)$ engine/handlers/action_handler.php?action=$1&%{QUERY_STRING}
 
-RewriteRule ^services\/api\/([A-Za-z0-9\_\-]+)\/(.*)$ engine/handlers/service_handler.php?handler=$1&request=$2
+RewriteRule ^services\/api\/([A-Za-z0-9\_\-]+)\/(.*)$ engine/handlers/service_handler.php?handler=$1&request=$2&%{QUERY_STRING}
 
 RewriteRule ^export\/([A-Za-z]+)\/([0-9]+)$ services/export/handler.php?view=$1&guid=$2
 RewriteRule ^export\/([A-Za-z]+)\/([0-9]+)\/$ services/export/handler.php?view=$1&guid=$2
@@ -126,8 +107,8 @@ RewriteRule ^export\/([A-Za-z]+)\/([0-9]+)\/([A-Za-z]+)\/([A-Za-z0-9\_]+)\/$ ser
 
 RewriteRule ^\_css\/css\.css$ _css/css.php
 
-RewriteRule ^pg\/([A-Za-z0-9\_\-]+)\/(.*)$ engine/handlers/pagehandler.php?handler=$1&page=$2
-RewriteRule ^pg\/([A-Za-z0-9\_\-]+)$ engine/handlers/pagehandler.php?handler=$1
+RewriteRule ^pg\/([A-Za-z0-9\_\-]+)\/(.*)$ engine/handlers/pagehandler.php?handler=$1&page=$2&%{QUERY_STRING}
+RewriteRule ^pg\/([A-Za-z0-9\_\-]+)$ engine/handlers/pagehandler.php?handler=$1&%{QUERY_STRING}
 
 RewriteRule xml-rpc.php engine/handlers/xml-rpc_handler.php
 RewriteRule mt/mt-xmlrpc.cgi engine/handlers/xml-rpc_handler.php
