@@ -214,7 +214,7 @@ $english = array(
 	'PRIVATE' => "Private",
 	'LOGGED_IN' => "Logged in users",
 	'PUBLIC' => "Public",
-	'access:friends:label' => "People I follow",
+	'access:friends:label' => "Friends",
 	'access' => "Access",
 
 /**
@@ -265,34 +265,34 @@ To remove a widget drag it back to the <b>Widget gallery</b>.",
  * Friends
  */
 
-	'friends' => "People I follow",
-	'friends:yours' => "You follow",
-	'friends:owned' => "%s follows",
-	'friend:add' => "Start following",
-	'friend:remove' => "Stop following",
+	'friends' => "Friends",
+	'friends:yours' => "Your friends",
+	'friends:owned' => "%s's friends",
+	'friend:add' => "Add friend",
+	'friend:remove' => "Remove friend",
 
-	'friends:add:successful' => "You are now following %s.",
-	'friends:add:failure' => "We couldn't add %s to your follow list. Please try again.",
+	'friends:add:successful' => "You have successfully added %s as a friend.",
+	'friends:add:failure' => "We couldn't add %s as a friend. Please try again.",
 
-	'friends:remove:successful' => "You are not following %s anymore.",
-	'friends:remove:failure' => "We couldn't remove %s from your follow list. Please try again.",
+	'friends:remove:successful' => "You have successfully removed %s from your friends.",
+	'friends:remove:failure' => "We couldn't remove %s from your friends. Please try again.",
 
-	'friends:none' => "This user is not following anyone yet.",
-	'friends:none:you' => "You are not currently following anyone! Search for your interests to begin finding people to follow.",
+	'friends:none' => "This user hasn't added anyone as a friend yet.",
+	'friends:none:you' => "You haven't added anyone as a friend! Search for your interests to begin finding people to follow.",
 
-	'friends:none:found' => "You are not following anyone.",
+	'friends:none:found' => "No friends were found.",
 
-	'friends:of:none' => "Nobody is following this user yet.",
-	'friends:of:none:you' => "Nobody is following you yet. Start adding content and fill in your profile to let people find you!",
+	'friends:of:none' => "Nobody has added this user as a friend yet.",
+	'friends:of:none:you' => "Nobody has added you as a friend yet. Start adding content and fill in your profile to let people find you!",
 
-	'friends:of:owned' => "People who follow %s",
+	'friends:of:owned' => "People who have made %s a friend",
 
-	'friends:of' => "Followings of",
-	'friends:collections' => "Collections of followings",
-	'friends:collections:add' => "New followings collection",
-	'friends:addfriends' => "Add followings",
+	'friends:of' => "Friends of",
+	'friends:collections' => "Collections of friends",
+	'friends:collections:add' => "New friends collection",
+	'friends:addfriends' => "Add friends",
 	'friends:collectionname' => "Collection name",
-	'friends:collectionfriends' => "People in collection",
+	'friends:collectionfriends' => "Friends in collection",
 	'friends:collectionedit' => "Edit this collection",
 	'friends:nocollections' => "You do not yet have any collections.",
 	'friends:collectiondeleted' => "Your collection has been deleted.",
@@ -302,7 +302,7 @@ To remove a widget drag it back to the <b>Widget gallery</b>.",
 	'friends:collections:members' => "Collection members",
 	'friends:collections:edit' => "Edit collection",
 
-	'friends:river:add' => "%s is now following",
+	'friends:river:add' => "%s is now a friend with",
 
 	'friendspicker:chararray' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
 
@@ -323,7 +323,7 @@ To remove a widget drag it back to the <b>Widget gallery</b>.",
  * River
  */
 	'river' => "River",
-	'river:relationship:friend' => 'is now following',
+	'river:relationship:friend' => 'is now friends with',
 	'river:noaccess' => 'You do not have permission to view this item.',
 	'river:posted:generic' => '%s posted',
 	'riveritem:single:user' => 'a user',
@@ -375,7 +375,7 @@ To remove a widget drag it back to the <b>Widget gallery</b>.",
 	'group:search:startblurb' => "Groups matching '%s':",
 	'group:search:finishblurb' => "To view more, click here.",
 	'search:go' => 'Go',
-	'userpicker:only_friends' => 'Only people I follow',
+	'userpicker:only_friends' => 'Only friends',
 
 /**
  * Account
@@ -781,8 +781,8 @@ Alternatively, you can enter your database settings below and we will try and do
 	'email:save:success' => "New email address saved, verification requested.",
 	'email:save:fail' => "Your new email address could not be saved.",
 
-	'friend:newfriend:subject' => "%s is now following you!",
-	'friend:newfriend:body' => "%s is now following you!
+	'friend:newfriend:subject' => "%s has made you a friend!",
+	'friend:newfriend:body' => "%s has made you a friend!
 
 To view their profile, click here:
 
