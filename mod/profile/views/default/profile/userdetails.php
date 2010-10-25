@@ -96,6 +96,11 @@
 
 		if (is_array($vars['config']->profile) && sizeof($vars['config']->profile) > 0)
 			foreach($vars['config']->profile as $shortname => $valtype) {
+				// HACK: importing fields set access level to public
+				//       we don't want to show target email and contributions to everyone
+				//       hack can be removed after fixing access levels
+				if ($shortname == "email_target" || $shortname == "contributions") continue;
+				// END
 				if ($shortname != "description") {
 					$value = $vars['entity']->$shortname;
 					if (!empty($value)) {
