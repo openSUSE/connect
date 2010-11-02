@@ -1,0 +1,14 @@
+dn: dc=obs,dc=opensuse.org
+dc: obs
+description: obs LDAP repository
+objectClass: dcObject
+objectClass: organization
+o: openSUSE Build Service
+
+## FIRST Level hierarchy - users
+
+dn: ou=users, dc=obs,dc=opensuse.org
+ou: people
+description: All people using obs
+objectclass: organizationalunit
+

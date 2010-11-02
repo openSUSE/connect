@@ -1,0 +1,5 @@
+LDAP export plugin TODO:
+========================
+
+ * UI to set connection details
+ * react somehow to the errors
