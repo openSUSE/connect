@@ -447,8 +447,34 @@ a.toggle_customise_edit_panel {
 
 /* disable hover of navigation */
 
+#owner_block_submenu {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
 .navigation a:hover, .navigation a:focus {
   background: none;
   color: #3399CC;
 }
+
+.submenu_group_a li {
+  background-color: #eee;
+  padding: 5px 0;
+  
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  
+}
+.submenu_group_a li.selected {
+  background-color: #ccc;
+}
+.submenu_group_a li.selected a {
+  color: #069;
+}
+.submenu_group_a li a {
+  margin: 0 5px;
+}
+
+
 
