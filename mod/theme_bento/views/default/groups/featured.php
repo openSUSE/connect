@@ -7,7 +7,7 @@
 	
 ?>
 <div class="sidebarBox featuredgroups box box-shadow">
-<h3><?php echo elgg_echo("groups:featured"); ?></h3>
+<h2 class="box-header"><?php echo elgg_echo("groups:featured"); ?></h2>
 
 <?php
 	if($vars['featured']){
