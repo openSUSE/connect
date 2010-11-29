@@ -180,28 +180,8 @@ if ($owner && $owner->canEdit()) {
   
   </tr>
   </table>
-
-
-  <form action="<?php echo $vars['url']; ?>action/widgets/reorder" method="post">
-  <textarea type="textarea" value="Left widgets"   style="display:none" name="debugField1" id="debugField1" /><?php echo $leftcolumn_widgets; ?></textarea>
-  <textarea type="textarea" value="Middle widgets" style="display:none" name="debugField2" id="debugField2" /><?php echo $middlecolumn_widgets; ?></textarea>
-  <textarea type="textarea" value="Right widgets"  style="display:none" name="debugField3" id="debugField3" /><?php echo $rightcolumn_widgets; ?></textarea>
-
-  <input type="hidden" name="context" value="<?php echo get_context(); ?>" />
-  <input type="hidden" name="owner" value="<?php echo page_owner(); ?>" />
-
-  <?php
-  $ts = time();
-  $token = generate_action_token($ts);
-  ?>
-  <input type="hidden" name="__elgg_ts" value="<?php echo $ts; ?>" />
-  <input type="hidden" name="__elgg_token" value="<?php echo $token; ?>" />
-
-  <input type="submit" value="<?php echo elgg_echo('save'); ?>" class="submit_button" onclick="$('a.toggle_customise_edit_panel').click();" />
-  <input type="button" value="<?php echo elgg_echo('cancel'); ?>" class="cancel_button" onclick="$('a.toggle_customise_edit_panel').click();" />
-
-  </form>
-
+  
+  <!-- Original Position of Form -->
 
   </div><!-- /#customise_page_view -->
 
@@ -235,10 +215,34 @@ if ($owner && $owner->canEdit()) {
   }
 ?>
 
+
 <br /><!-- bit of space at the bottom of the widget gallery -->
 
 </div><!-- /#customise_editpanel_rhs -->
 </div><!-- /#widget_picker_gallery -->
+
+<div class="grid_16 clearfix aligncenter">
+  
+  <form action="<?php echo $vars['url']; ?>action/widgets/reorder" method="post">
+  <textarea type="textarea" value="Left widgets"   style="display:none" name="debugField1" id="debugField1" /><?php echo $leftcolumn_widgets; ?></textarea>
+  <textarea type="textarea" value="Middle widgets" style="display:none" name="debugField2" id="debugField2" /><?php echo $middlecolumn_widgets; ?></textarea>
+  <textarea type="textarea" value="Right widgets"  style="display:none" name="debugField3" id="debugField3" /><?php echo $rightcolumn_widgets; ?></textarea>
+
+  <input type="hidden" name="context" value="<?php echo get_context(); ?>" />
+  <input type="hidden" name="owner" value="<?php echo page_owner(); ?>" />
+
+  <?php
+  $ts = time();
+  $token = generate_action_token($ts);
+  ?>
+  <input type="hidden" name="__elgg_ts" value="<?php echo $ts; ?>" />
+  <input type="hidden" name="__elgg_token" value="<?php echo $token; ?>" />
+
+  <input type="submit" value="<?php echo elgg_echo('save'); ?>" class="submit_button button" onclick="$('a.toggle_customise_edit_panel').click();" />
+  <input type="button" value="<?php echo elgg_echo('cancel'); ?>" class="cancel_button button" onclick="$('a.toggle_customise_edit_panel').click();" />
+
+  </form>
+</div>
 
 
 </div><!-- /customise_editpanel -->
