@@ -306,7 +306,7 @@ if ($owner && $owner->canEdit()) {
     </div><!-- /#widgets_middle -->
 
 
-    <div class="grid_16">
+    <div class="grid_15 suffix_1 edit-panel">
       <?php
       if($_SESSION['user']->guid == page_owner()){
       ?>

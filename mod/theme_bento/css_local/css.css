@@ -391,6 +391,10 @@ a.toggle_customise_edit_panel {
 #customise_editpanel {
   background-color: #eee;
 }
+.edit-panel {
+  margin-bottom: 1em;
+  text-align: right;
+}
 
 #elgg_horizontal_tabbed_nav {
   border-bottom: 1px solid #ddd;
