@@ -265,6 +265,17 @@ a.button {
   margin: 0 1em;
 }
 
+form label {
+  
+}
+
+form .description {
+  font-size: 0.8em;
+  color: #666;
+}
+
+
+
 
 /* TEMP - Remove later */
 
