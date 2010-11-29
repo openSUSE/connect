@@ -261,7 +261,9 @@ a.button {
 
 }
 
-
+.river_item_useravatar {
+  margin: 0 1em;
+}
 
 
 /* TEMP - Remove later */
@@ -323,10 +325,10 @@ td.box {
   display: block;
 }
 .more-info {
-  background: blue;
+/*  background: blue;*/
 }
 .drag-handle {
-  background: fuchsia;
+/*  background: fuchsia;*/
 }
 
 .collapsable_box_editpanel {
@@ -378,7 +380,7 @@ a.toggle_customise_edit_panel {
 
 
 #customise_page_view table {
-  margin: 0;
+/*  margin: 0;*/
 }
 #customise_page_view table th,
 #customise_page_view table td {

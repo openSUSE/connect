@@ -98,4 +98,14 @@
 
 #customise_editpanel_rhs {}
 
+#customise_editpanel img.more_info {
+	background: url(<?php echo $vars['url']; ?>_graphics/icon_customise_info.gif) no-repeat top left;
+	cursor:pointer;
+}
+#customise_editpanel img.drag_handle {
+	background: url(<?php echo $vars['url']; ?>_graphics/icon_customise_drag.gif) no-repeat top left;
+	cursor:move;
+}
+
+
 <!-- .customise_page_view {} -->
