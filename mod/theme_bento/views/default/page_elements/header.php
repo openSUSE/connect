@@ -76,6 +76,7 @@ $release = get_version(true);
   <!-- include the default css file -->
   <link rel="stylesheet" href="<?php echo $vars['url']; ?>_css/css.css?lastcache=<?php echo $vars['config']->lastcache; ?>&amp;viewtype=<?php echo $vars['view']; ?>" type="text/css" />
 
+  <!-- include Bento Theme -->
   <link rel="stylesheet" href="<?php echo $CONFIG->bento_path ?>/css/style.css?lastcache=<?php echo $vars['config']->lastcache; ?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo $vars['url']; ?>mod/theme_bento/css_local/css.css?lastcache=<?php echo $vars['config']->lastcache; ?>" type="text/css" />
   <script type="text/javascript" src="<?php echo $CONFIG->bento_path ?>/js/script.js"></script>
