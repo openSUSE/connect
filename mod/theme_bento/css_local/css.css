@@ -220,11 +220,16 @@ a.button {
   margin: 0 1em 1em;
   overflow: hidden;
 }
-.contentWrapper h2,
-.contentWrapper h3 {
-  margin-left: 0;
-}
-
+  .contentWrapper h2,
+  .contentWrapper h3 {
+    margin-left: 0;
+  }
+  .contentWrapper table {
+    width: 100%;
+  }
+  .contentWrapper td {
+    border: none;
+  }
 #collapsable_box_editpanel {
   display: none;
 }
@@ -274,8 +279,12 @@ form .description {
   color: #666;
 }
 
+/* Event Calendar */
 
-
+#calendarmenu,
+.ui-datepicker {
+  margin: 0;
+}
 
 /* TEMP - Remove later */
 
