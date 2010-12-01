@@ -80,9 +80,7 @@ $release = get_version(true);
   <link rel="stylesheet" href="<?php echo $CONFIG->bento_path ?>/css/style.css?lastcache=<?php echo $vars['config']->lastcache; ?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo $vars['url']; ?>mod/theme_bento/css_local/css.css?lastcache=<?php echo $vars['config']->lastcache; ?>" type="text/css" />
   <script type="text/javascript" src="<?php echo $CONFIG->bento_path ?>/js/script.js"></script>
-  <script src="<?php echo $vars['url']; ?>mod/theme_bento/js_local/script.js?lastcache=<?php echo $vars['config']->lastcache; ?>" type="text/javascript" />
-
-
+  <script src="<?php echo $vars['url']; ?>mod/theme_bento/js_local/script.js?lastcache=<?php echo $vars['config']->lastcache; ?>" type="text/javascript"></script>
 
   <?php
     echo $feedref;
