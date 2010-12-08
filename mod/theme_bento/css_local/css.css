@@ -239,9 +239,7 @@ a.button {
   text-align: left;
 }
 
-.simplepie_blog_title h2 {
-  margin-top: -0.5em;
-}
+.simplepie_blog_title h2 {}
 
 .simplepie_title h4 a {
   color: #690;
@@ -298,6 +296,17 @@ background: #eee;
   background: #eee;
   margin-bottom: 0.5em;
 }
+
+/* Polls */
+
+.poll_edit_link {
+  margin: 0;
+}
+  .poll_edit_link a {
+    display: inline;
+    padding: 0;
+    margin-left: 0.5em;
+  }
 
 /* == Move to base.css of bento-theme ===================================== */
 
