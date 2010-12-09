@@ -20,6 +20,7 @@
 
 	// Get input data
 	$question = get_input('question');
+	$description = get_input('description');
 	$maxanswers = get_input('maxanswers',1);
 	$number_of_choices = (int) get_input('number_of_choices',0);
 	$tags = get_input('polltags');
@@ -28,6 +29,7 @@
 	
 	// Cache to the session
 	$_SESSION['question'] = $question;
+	$_SESSION['description'] = $description;
 	$_SESSION['polltags'] = $tags;
 	$_SESSION['maxanswers'] = $maxanswers;
 
@@ -69,6 +71,7 @@
 	
 		// Set its title and description appropriately
 		$poll->question = $question;
+		$poll->description = $description;
 		$poll->title = $question;
 		$poll->maxanswers = $maxanswers;
 			
@@ -92,11 +95,12 @@
 		system_message(elgg_echo("polls:posted"));
 		
 		// Remove the poll post cache
-		unset($_SESSION['question']); 
+		unset($_SESSION['question']);
+		unset($_SESSION['description']);
 		unset($_SESSION['polltags']);
 	
 		// Forward to the main poll page
-		forward($CONFIG->url."pg/polls/list/" . get_entity($container_guid)->username);			
+		forward($CONFIG->url."pg/polls/list/" . get_entity($container_guid)->username);
 	}
 		
 	// function for turning comma delimited strings 

@@ -14,12 +14,14 @@
 if (isset($vars['entity'])) {
 	$action = "polls/edit";
 	$question = $vars['entity']->question;
+	$description = $vars['entity']->description;
 	$maxanswers = $vars['entity']->maxanswers;
 	$tags = $vars['entity']->tags;
 	$access_id = $vars['entity']->access_id;
 } else  {
 	$action = "polls/add";
 	$question = "";
+	$description = "";
 	$maxanswers = 1;
 	$tags = "";
 	if (defined('ACCESS_DEFAULT')){
@@ -32,6 +34,7 @@ if (isset($vars['entity'])) {
 // Just in case we have some cached details
 if (isset($vars['question'])) {
 	$question = $vars['question'];
+	$description = $vars['description'];
 	$tags = $vars['polltags'];
 	$maxanswers = $vars['maxanswers'];
 }
@@ -40,6 +43,9 @@ if (isset($vars['question'])) {
 <?php
         $question_label = elgg_echo('polls:question');
         $question_textbox = elgg_view('input/text', array('internalname' => 'question', 'value' => $question));
+
+        $description_label = elgg_echo('polls:description');
+        $description_textbox = elgg_view('input/longtext', array('internalname' => 'description', 'value' => $description));
 
         $maxanswers_label = elgg_echo('polls:maxanswers'); 
         $maxanswers_textbox = elgg_view('input/pulldown', array('internalname' => 'maxanswers',
@@ -74,6 +80,10 @@ if (isset($vars['question'])) {
 		<p>
 			<label>$question_label</label><br />
                         $question_textbox
+		</p>
+		<p>
+			<label>$description_label</label><br />
+                        $description_textbox
 		</p>
 		<p>
 			<label>$maxanswers_label</label><br />

@@ -19,6 +19,7 @@
 
 	// Get input data
 	$question = get_input('question');
+	$description = get_input('description');
 	$number_of_choices = (int) get_input('number_of_choices',0);
 	$tags = get_input('polltags');
 	$access = get_input('access_id');
@@ -31,6 +32,7 @@
 	if ($poll->getSubtype() == "poll" && $poll->canEdit()) {
 	
 		$_SESSION['question'] = $question;
+		$_SESSION['description'] = $description;
 		$_SESSION['polltags'] = $tags;
 			
 		// Convert string of tags into a preformatted array
@@ -67,6 +69,7 @@
 		
 			// Set its question appropriately
 			$poll->question = $question;
+			$poll->description = $description;
 			$poll->title = $question;
 
 			if (!$poll->save()) {
@@ -83,6 +86,7 @@
 			
 			// Remove the poll post cache
 			unset($_SESSION['question']); 
+			unset($_SESSION['description']); 
 			unset($_SESSION['responses']); 
 			unset($_SESSION['polltags']);
 		

@@ -34,6 +34,11 @@
 		} else {
 			
 	?>
+	
+	<div class="box-header" id="content_area_user_title">
+    <h2><a href="<?php echo $url; ?>"><?php echo $vars['entity']->title; ?></a></h2>
+  </div>
+	
 		<!-- patches by webgalli -->
 	<div class="contentWrapper singleview">
 		<div class="poll_edit_link">
@@ -58,7 +63,7 @@
 			?>
 		</div>
 	<div class="poll_post">
-		<h3><a href="<?php echo $url; ?>"><?php echo $vars['entity']->title; ?></a></h3>
+    <h3><a href="<?php echo $url; ?>"><?php echo $vars['entity']->title; ?></a></h3>
 		<!-- display the user icon -->
 			<div class="poll_post_icon">
 				<?php					
@@ -96,6 +101,9 @@
 			<!-- display the actual poll post -->
 	<div class="contentWrapper">
 			<?php
+                echo "<p>";
+                echo $vars['entity']->description;
+                echo "</p>";
 				$priorVote = polls_check_for_previous_vote($vars['entity'], get_loggedin_userid());				
 				//if user has voted, show the results
 				if ($priorVote)	{

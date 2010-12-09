@@ -28,6 +28,7 @@
 			'item:object:poll' => 'Polls',
 			'item:object:poll_choice' => 'Poll choices',
 			'polls:question' => "Poll question",
+			'polls:description' => "Poll description",
 			'polls:responses' => "Response choices",
 			'polls:maxanswers' => "Poll type:",
 			'polls:maxansdesc' => "Choose up to %d options ...",

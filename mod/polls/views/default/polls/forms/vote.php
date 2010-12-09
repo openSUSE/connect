@@ -16,6 +16,7 @@
 		//set up our variables
 		$action = "polls/vote";
 		$question = $vars['entity']->question;
+		$description = $vars['entity']->description;
 		$tags = $vars['entity']->tags;
 		$access_id = $vars['entity']->access_id;
 		$maxanswers = $vars['entity']->maxanswers;
