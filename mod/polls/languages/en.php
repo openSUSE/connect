@@ -29,6 +29,8 @@
 			'item:object:poll_choice' => 'Poll choices',
 			'polls:question' => "Poll question",
 			'polls:description' => "Poll description",
+			'polls:enddate' => "Poll ending date",
+			'polls:is_secret' => "Is poll secret? (Show results only if the poll is finished)",
 			'polls:responses' => "Response choices",
 			'polls:maxanswers' => "Poll type:",
 			'polls:maxansdesc' => "Choose up to %d options ...",
