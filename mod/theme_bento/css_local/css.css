@@ -372,6 +372,7 @@ SYSTEM MESSSAGES
 
 #profile_info td {
   border: none;
+  vertical-align: top;
 }
 
 #profile_info_column_left {
