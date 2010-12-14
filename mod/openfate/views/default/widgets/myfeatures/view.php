@@ -1,8 +1,6 @@
 <div class="contentWrapper">
 
     <?php
-    // TODO: factor this stuff out to an ajax call
-
     $username = $_SESSION['user']->username;
     $host = "http://fatedmz.suse.de:9090/sxkeeper/feature/";
     $query = "/feature[partnercontext/organization='openSUSE.org' and actor[person[userid='" . $username .
