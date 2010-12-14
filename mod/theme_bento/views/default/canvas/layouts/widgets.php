@@ -57,6 +57,7 @@ if ($owner && $owner->canEdit()) {
   </tr>
   <tr>
     <td>
+      <!-- Left Column -->
       <h2><?php echo elgg_echo("widgets:leftcolumn"); ?></h2>
       <div id="leftcolumn_widgets" class="box alpha">
 
@@ -97,6 +98,7 @@ if ($owner && $owner->canEdit()) {
   </td>
 
   <td>
+  <!-- Middle Column -->
   <h2><?php echo elgg_echo("widgets:middlecolumn"); ?></h2>
   <div id="middlecolumn_widgets" class="box">
 
@@ -139,8 +141,9 @@ if ($owner && $owner->canEdit()) {
   
   <!-- <td align="left" valign="top"> -->
   <td>
+    <!-- Right Column -->
     <h2><?php echo elgg_echo("widgets:rightcolumn"); ?></h2>
-    <div id="rightcolumn_widgets" class="<?php if(get_context() == "profile") {echo "long";} else {echo "box";} ?>">
+    <div id="rightcolumn_widgets" class="<?php if(get_context() == "profile") {echo "long box";} else {echo "box";} ?>">
     <?php
       $rightcolumn_widgets = "";
       if (is_array($area3widgets) && sizeof($area3widgets) > 0) {
