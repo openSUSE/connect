@@ -19,7 +19,7 @@
 	}
 
 	// wrap all profile info
-	echo "<div id=\"profile_info\" class=\"box box-shadow\">";
+	echo "<div id=\"profile_info\" class=\"box box-shadow grid_16 alpha omega\">";
   echo '<div class="box-header"> <a class="header-edit" href="' . $vars['url'] . 'pg/profile/' . $vars['entity']->username . '/edit/">'. elgg_echo("profile:edit") . '</a></div>';
 ?>
 

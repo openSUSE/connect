@@ -174,8 +174,8 @@ padding: 10px;
 
 
 
-.collapsable_box {
-  margin-top: -15px;
+.collapsable_box .box-header {
+  margin-top: -15px !important;
 }
 .box-header h2 {
   margin-top: 0;
@@ -356,6 +356,7 @@ SYSTEM MESSSAGES
   PROFILE
 *************************************** */
 #profile_info {
+/*  margin-top: 1em;*/
 /* TODO: Remove this Original CSS
   margin:0 0 20px 0;
   padding:20px;
