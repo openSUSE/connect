@@ -260,6 +260,7 @@ if ($owner && $owner->canEdit()) {
 
 <!-- <table cellspacing="0" id="widget_table"> -->
 
+
 <div>
     <!-- profile box or 'dashboard info' notice -->
     <?php if (isset($vars['area1'])) echo $vars['area1']; ?>
