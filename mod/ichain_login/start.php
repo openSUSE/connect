@@ -45,7 +45,4 @@ function ichain_client_init() {
     }
 }
 
-
 register_elgg_event_handler('init','system','ichain_client_init');
-
-

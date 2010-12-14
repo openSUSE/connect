@@ -47,7 +47,7 @@
         ?>
       
         <!-- Link: Logout -->
-        <?php echo elgg_view('output/url', array('href' => "{$vars['url']}action/logout", 'text' => elgg_echo('logout'), 'is_action' => TRUE)); ?>
+        <?php echo elgg_view('output/url', array('href' => "https://" . $_SERVER['SERVER_NAME'] ."/ICHAINLogout/?%22https://connect.opensuse.org/cmd/ICSLogout%22-X", 'text' => elgg_echo('logout'), 'is_action' => TRUE)); ?>
 
       <?php } else { ?>
 
@@ -57,7 +57,7 @@
         <form action="https://<?php echo $_SERVER['SERVER_NAME'] ?>/ICSLogin/auth-up"
               method="post" enctype="application/x-www-form-urlencoded" id="login_form">
           <div class="hidden">
-            <input name="url" value="http://<?php echo $_SERVER['SERVER_NAME'] . '/' . $_SERVER['REQUEST_URI'] ?>" type="hidden" />
+            <input name="url" value="https://<?php echo $_SERVER['SERVER_NAME'] . '/' . $_SERVER['REQUEST_URI'] ?>" type="hidden" />
             <input name="context" value="default" type="hidden" />
             <input name="proxypath" value="reverse" type="hidden" />
             <input name="message" value="Please log In" type="hidden" />
