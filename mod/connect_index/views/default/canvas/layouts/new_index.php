@@ -32,24 +32,7 @@
 	        <?php
 	            //this displays some content when the user is logged out
 			    if (!isloggedin()){
-		    	
-			    				    	?>
-            			    	<style type="text/css" media="screen">
-                          #connect-beta {
-                            margin: 0em 1em;
-                            float: left;
-                          }
-                        </style>
-                        <img id="connect-beta" src="/beta.png" />
-            			    	<?php
-			    	
-				    echo "<h3 style=\"margin-bottom: -1ex; margin-top: 2em;\">Want to try out Connect?</h3><p style=\"margin: 1em 0 3em;\">Use the user <strong>geeko</strong> with password <strong>opensuse</strong>.</p>";
-            // echo "<div class=\"clearfloat\"></div>";
-			    	
-			    	//display the login form
-			    	echo $vars['area1'];
-
-			    	
+			        echo $vars['area1'];
 		        }
 	        ?>
         </div>

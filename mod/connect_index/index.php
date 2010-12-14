@@ -15,8 +15,8 @@
 
 	//get required data
 	set_context('search');//display results in search mode, which is list view
-	//grab the login form
-	$area1 = elgg_view("account/forms/login");
+	//
+	$area1 = '<p>Use the Login link in the upper right corner to log in ...</p>';
 	//get the newest members who have an avatar
 	$area2 = elgg_get_entities(array('type' => 'user', 'limit' => 25));
 	//grab the latest 4 blog posts. to display more, change 4 to something else
