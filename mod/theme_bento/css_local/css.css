@@ -308,6 +308,51 @@ background: #eee;
     margin-left: 0.5em;
   }
 
+/* ***************************************
+SYSTEM MESSSAGES
+*************************************** */
+  .messages,
+  .messages_error {
+    top: 42px;
+    width:969px;
+    z-index: 8000;
+    margin: 0;
+    position: fixed;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    cursor: pointer;
+    padding: 3px 10px 3px 10px;
+    color: #333;
+    
+    box-shadow: 0 1px 2px #999;
+    -moz-box-shadow: 0 1px 2px #999;
+    -webkit-box-shadow: 0 1px 2px #999;
+  }
+  .messages {
+    background: #efc;
+    border: 4px solid #690;
+  }
+  .messages_error {
+    border: 4px solid #D3322A;
+    background: #F7DAD8;
+  }
+  .closeMessages {
+    float:right;
+    margin-top:17px;
+  }
+  .closeMessages a {
+    color: #666;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 80%;
+  }
+  .closeMessages a:hover {
+    color: black;
+  }
+
+
 /* == Move to base.css of bento-theme ===================================== */
 
 #header #global-search-form input {
