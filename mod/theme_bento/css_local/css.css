@@ -172,8 +172,6 @@ padding: 10px;
   margin-left: 143px;
 }
 
-
-
 .collapsable_box .box-header {
   margin-top: -15px !important;
 }
@@ -217,7 +215,8 @@ a.button {
 
 .contentWrapper {
   background-color: transparent;
-  margin: 0 1em 1em;
+/*  margin: 0 1em 1em;*/
+  margin-bottom: 1em;
   overflow: hidden;
 }
   .contentWrapper h2,
@@ -587,6 +586,8 @@ a.toggle_customise_edit_panel {
 .collapsable_box_header {
 }
 .collapsable_box_content {
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 .collapsable_box_header h1 {
