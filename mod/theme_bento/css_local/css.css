@@ -283,6 +283,11 @@ form .description {
   margin: 0;
 }
 
+/* jQuery UI */
+/*.ui-sortable-helper {
+  background: fuchsia;
+}*/
+
 /* TEMP - Remove later */
 
 #customise_editpanel table.draggable_widget h3 {
@@ -376,9 +381,9 @@ SYSTEM MESSSAGES
 }
 
 #profile_info_column_left {
-  float:left;
+/*  float:left;*/
   padding: 0;
-  margin:0 20px 0 0;
+  margin: 0 20px 0 0;
 }
 #profile_info_column_middle {
   float:left;
