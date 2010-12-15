@@ -605,7 +605,9 @@ a.toggle_customise_edit_panel {
   margin-right: 1em;
 }
 
-
+.clearfloat {
+  clear: both;
+}
 
 #customise_page_view table {
 /*  margin: 0;*/
