@@ -16,24 +16,14 @@
 	//get required data
 	set_context('search');//display results in search mode, which is list view
 	//
-	$area1 = '<p>Use the Login link in the upper right corner to log in ...</p>';
+	$area1 = '<a href="https://' . $_SERVER['SERVER_NAME'] . '/ICSLogin/?%22' . $_SERVER['SERVER_NAME'] . '/' . $_SERVER['REQUEST_URI'] . '%22">Sign up</a>';
+	//newest actions in the river
+	$area2 = elgg_view_river_items(0, 0, '', '', '', '', 5, 0, 0, false);
 	//get the newest members who have an avatar
-	$area2 = elgg_get_entities(array('type' => 'user', 'limit' => 25));
-	//grab the latest 4 blog posts. to display more, change 4 to something else
-	$area3 = elgg_list_entities(array('type' => 'object', 'subtype' => 'blog', 'limit' => 2, 'full_view' => FALSE, 'pagination' => FALSE));
-	//grab the latest bookmarks
-	$area4 = elgg_list_entities(array('type' => 'object', 'subtype' => 'bookmarks', 'limit' => 4, 'full_view' => FALSE, 'pagination' => FALSE));
-	//grab the latest files
-	$area5 = elgg_list_entities(array('type' => 'object', 'subtype' => 'file', 'limit' => 4, 'full_view' => FALSE, 'pagination' => FALSE));
+	$area3 = elgg_get_entities(array('type' => 'user', 'limit' => 25));
 	//newest groups
-	$area6 = elgg_list_entities(array('type' => 'group', 'limit' => 4, 'full_view' => FALSE, 'pagination' => FALSE));
-	//newest polls
-	$area7 = elgg_list_entities(array('type' => 'object', 'subtype' => 'poll', 'limit' => 4, 'full_view' => FALSE, 'pagination' => FALSE));
-	//newest events
-	$area8 = elgg_list_entities(array('type' => 'object', 'subtype' => 'event_calendar', 'limit' => 3, 'full_view' => FALSE, 'pagination' => FALSE));
-	//newest actions
-	$area9 = elgg_view_river_items(0, 0, '', '', '', '', 10, 0, 0, false) . "</div>";
+	$area4 = elgg_list_entities(array('type' => 'group', 'limit' => 4, 'full_view' => FALSE, 'pagination' => FALSE));
 	//display the contents in our new canvas layout
-	$body = elgg_view_layout('new_index',$area1, $area2, $area3, $area4, $area5, $area6, $area7, $area8, $area9);
+	$body = elgg_view_layout('new_index',$area1, $area2, $area3, $area4);
 	page_draw($title, $body);
 ?>

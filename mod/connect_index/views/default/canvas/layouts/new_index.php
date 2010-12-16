@@ -20,9 +20,8 @@
         <div class="box box-shadow"> <!-- id="index_welcome" --> 
         	<?php
         		if (isloggedin()){
-	        		echo "<h2>" . elgg_echo("welcome") . " ";
-        			echo $vars['user']->name;
-        			echo "</h2>";
+	        		echo "<h2 class=\"box-header\">" . elgg_echo("welcome") . "</h2>";
+        			echo "<p>Hello " . $vars['user']->name . " how are you today?</p>";
     			}
         	?>
             <?php
@@ -32,53 +31,23 @@
 	        <?php
 	            //this displays some content when the user is logged out
 			    if (!isloggedin()){
-			        echo $vars['area1'];
+			    	echo "<h2 class=\"box-header\">" . elgg_echo("signup:header") . "</h2>";
+			        echo "<p>" . $vars['area1'] . elgg_echo("signup:text") . "</p>";
+				echo "<em>" . elgg_echo("signup:footer") . "</em>";
 		        }
 	        ?>
         </div>
 <?php
-    if(is_plugin_enabled('file')){
-?> 	
-        <!-- display latest files -->
-        <div class="box box-shadow">
-            <h2 class="box-header"><?php echo elgg_echo("custom:files"); ?></h2>
-            <?php 
-                if (!empty($vars['area5'])) {
-                    echo $vars['area5'];//this will display files
-                }else{
-                    echo "<p>" . elgg_echo('custom:nofiles') . "</p>";
-                }
-            ?>
-        </div>
-<?php
-	}
-	
-    if(is_plugin_enabled('groups')){
+    if(is_plugin_enabled('riverdashboard')){
 ?> 
-        <!-- display latest groups -->
-	    <div class="box box-shadow">
-            <h2 class="box-header"><?php echo elgg_echo("custom:groups"); ?></h2>
-        <?php 
-                if (!empty($vars['area6'])) {
-                    echo $vars['area6'];//this will display groups
-                }else{
-                    echo "<p>". elgg_echo('custom:nogroups') . "</p>";
-                }
-            ?>
-    	</div>
-<?php
-        }
-
-    if(is_plugin_enabled('polls')){
-?>
-        <!-- display latest groups -->
-            <div class="box box-shadow">
-            <h2 class="box-header"><?php echo elgg_echo("custom:polls"); ?></h2>
-        <?php
-                if (!empty($vars['area7'])) {
-                    echo $vars['area7'];//this will display groups
-                }else{
-                    echo "<p>" . elgg_echo('custom:nopolls') . "</p>";
+        <!-- display river -->
+        <div class="box box-shadow">
+          <h2 class="box-header"><?php echo elgg_echo("river:header"); ?></h2>
+            <?php
+                if (isset($vars['area2'])){
+                    echo $vars['area2'];
+                } else {
+                    echo "<p>" . elgg_echo('river:noriver') . "</p>";
                 }
             ?>
         </div>
@@ -96,80 +65,38 @@
         ?>
         <!-- latest members -->
       <div class="box box-shadow">
-            <h2 class="box-header"><?php echo elgg_echo("custom:members"); ?></h2>
+            <h2 class="box-header"><?php echo elgg_echo("members:header"); ?></h2>
             <div class="contentWrapper">
             <?php
-                if(isset($vars['area2'])) {
+                if(isset($vars['area3'])) {
                     //display member avatars
-                    foreach($vars['area2'] as $members){
+                    foreach($vars['area3'] as $members){
                         echo "<div class=\"index_members\">";
                         echo elgg_view("profile/icon",array('entity' => $members, 'size' => 'small'));
                         echo "</div>";
                     }
                 }else{
-		              echo "<p>" . elgg_echo('custom:nousers') . "</p>";
+		              echo "<p>" . elgg_echo('members:nousers') . "</p>";
 		            }
             ?>
-            <div class="clearfloat"></div>
+            <div class="clearfloat"><?php echo "<br><em>" . elgg_echo("members:footer") . "</em>"?></div>
         </div>
       </div>
 
 <?php
-    if(is_plugin_enabled('blog')){
-?> 
-        <!-- latest blogs -->
-        <div class="box box-shadow">
-            <h2 class="box-header"><?php echo elgg_echo("custom:blogs"); ?></h2>
-            <?php 
-                if (isset($vars['area3'])) 
-                    echo $vars['area3']; //display blog posts
-            ?>
-        </div>
-<?php
-	}
-
-    if(is_plugin_enabled('bookmarks')){
+    if(is_plugin_enabled('groups')){
 ?>
-        <!-- display latest bookmarks -->
-    	<div class="box box-shadow">
-            <h2 class="box-header"><?php echo elgg_echo("custom:bookmarks"); ?></h2>
-            <?php 
-                if (isset($vars['area4'])) 
-                    echo $vars['area4']; //display bookmarks
-            ?>
-        </div>
-<?php
-	}
-    if(is_plugin_enabled('event_calendar')){
-?>
-        <!-- display latest bookmarks -->
-        <div class="box box-shadow">
-          <h2 class="box-header"><?php echo elgg_echo("custom:events"); ?></h2>
-            <?php
-                if (isset($vars['area8'])){
-                    echo $vars['area8']; //display bookmarks
-		} else {
-                    echo "<p>" . elgg_echo('custom:noevents') . "</p>";
+        <!-- display latest groups -->
+            <div class="box box-shadow">
+            <h2 class="box-header"><?php echo elgg_echo("groups:header"); ?></h2>
+        <?php
+                if (!empty($vars['area4'])) {
+                    echo $vars['area4'];//this will display groups
+                }else{
+                    echo "<p>". elgg_echo('groups:nogroups') . "</p>";
                 }
             ?>
         </div>
-
-<?php
-        }
-    if(is_plugin_enabled('riverdashboard')){
-?>
-        <!-- display river -->
-        <div class="box box-shadow">
-          <h2 class="box-header"><?php echo elgg_echo("custom:river"); ?></h2>
-            <?php
-                if (isset($vars['area9'])){
-                    echo $vars['area9'];
-		} else {
-                    echo "<p>" . elgg_echo('custom:noriver') . "</p>";
-                }
-            ?>
-        </div>
-
 <?php
         }
 ?>
