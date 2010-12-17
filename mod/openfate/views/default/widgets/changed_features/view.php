@@ -1,12 +1,12 @@
 <div class="contentWrapper">
 
     <?php
+    global $feature_host;
+    
     $username = $_SESSION['user']->username;
-    $host = "http://fatedmz.suse.de:9090/sxkeeper/feature/";
     $query = "/feature[partnercontext/organization='openSUSE.org' and productcontext[not(status/done or status/rejected or status/duplicate)] ]";
     $query = 'let $hits:= (for $i in ' . $query . 'order by $i/k:versioningsummary/k:lastmodifydate descending return $i) return subsequence($hits, 1, 10)';
-
-    $url = $host . "?query=" . urlencode($query) . "&client=openfate";
+    $url = $feature_host . "?query=" . urlencode($query) . "&client=openfate";
     $headers = array(headers => array("x-username" => $username, "user-agent" => "openfate"));
     $feature_xml = http_parse_message(http_get($url, $headers))->body;
 
@@ -16,13 +16,11 @@
 
     <?php
     foreach ($result as $node) {
-
-        //error_log(print_r($result));
         $feature = simplexml_import_dom($node);
-        $title = $feature->xpath('/feature/title');
-        $id = $feature->xpath('/feature/@k:id');
-
-        echo $feature->title . "<br/>";
+        $attributes = $feature->attributes("http://inttools.suse.de/sxkeeper/schema/keeper");
+        $feature_id = $attributes['id'];
+        //error_log( var_dump( $attributes['id'] ) ) ;
+        echo "#<a href='https://features.opensuse.org/" . $feature_id . "'>" . $feature_id .  "</a> " . $feature->title . "<br/>";
     }
     ?>
 
