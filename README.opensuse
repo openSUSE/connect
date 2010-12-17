@@ -1,0 +1,9 @@
+Please read the Connect homepage:
+http://wiki.opensuse.org/openSUSE:Connect
+
+Installation is explained here: 
+http://wiki.opensuse.org/openSUSE:Connect_installation
+
+Please set:
+date.timezone = "Europe/Berlin";
+in your php.ini to avoid lots of warnings. 
