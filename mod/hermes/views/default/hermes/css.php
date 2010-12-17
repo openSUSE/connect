@@ -9,7 +9,6 @@
 	 * @copyright Curverider Ltd 2008-2010
 	 * @link http://elgg.com/
 	 */
-    elgg_echo( "Fuck you!" ); 
 ?>
 
 #hermes_update_list {
@@ -34,8 +33,6 @@
 #hermes_widget li span {
 	color:#666666;
 	background:white;
-	-webkit-border-radius: 8px; 
-	-moz-border-radius: 8px;
 	padding:5px;
 	display:block;
 }
@@ -46,8 +43,6 @@ p.visit_hermes a {
 }
 .visit_hermes {
 	background:white;
-	-webkit-border-radius: 8px; 
-	-moz-border-radius: 8px;
 	padding:2px;
 	margin:0 0 5px 0;
 }
