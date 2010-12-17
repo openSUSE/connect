@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin_manifest>
+	<field key="author" value="Klaas Freitag" />
+	<field key="version" value="1.0" />
+	<field key="description" value="Hermes integration for ellg" />
+	<field key="website" value="http://en.opensuse.org/openSUSE:Hermes/" />
+	<field key="copyright" value="(C) Curverider 2010" />
+	<field key="licence" value="GNU Public License version 2" />
+</plugin_manifest>
