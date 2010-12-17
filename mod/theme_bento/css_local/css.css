@@ -172,10 +172,8 @@ padding: 10px;
   margin-left: 143px;
 }
 
-
-
-.collapsable_box {
-  margin-top: -15px;
+.collapsable_box .box-header {
+  margin-top: -15px !important;
 }
 .box-header h2 {
   margin-top: 0;
@@ -217,7 +215,8 @@ a.button {
 
 .contentWrapper {
   background-color: transparent;
-  margin: 0 1em 1em;
+/*  margin: 0 1em 1em;*/
+  margin-bottom: 1em;
   overflow: hidden;
 }
   .contentWrapper h2,
@@ -284,6 +283,11 @@ form .description {
   margin: 0;
 }
 
+/* jQuery UI */
+/*.ui-sortable-helper {
+  background: fuchsia;
+}*/
+
 /* TEMP - Remove later */
 
 #customise_editpanel table.draggable_widget h3 {
@@ -307,6 +311,199 @@ background: #eee;
     padding: 0;
     margin-left: 0.5em;
   }
+
+/* ***************************************
+SYSTEM MESSSAGES
+*************************************** */
+  .messages,
+  .messages_error {
+    top: 42px;
+    width:969px;
+    z-index: 8000;
+    margin: 0;
+    position: fixed;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    cursor: pointer;
+    padding: 3px 10px 3px 10px;
+    color: #333;
+    
+    box-shadow: 0 1px 2px #999;
+    -moz-box-shadow: 0 1px 2px #999;
+    -webkit-box-shadow: 0 1px 2px #999;
+  }
+  .messages {
+    background: #efc;
+    border: 4px solid #690;
+  }
+  .messages_error {
+    border: 4px solid #D3322A;
+    background: #F7DAD8;
+  }
+  .closeMessages {
+    float:right;
+    margin-top:17px;
+  }
+  .closeMessages a {
+    color: #666;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 80%;
+  }
+  .closeMessages a:hover {
+    color: black;
+  }
+
+/* ***************************************
+  PROFILE
+*************************************** */
+#profile_info {
+/*  margin-top: 1em;*/
+/* TODO: Remove this Original CSS
+  margin:0 0 20px 0;
+  padding:20px;
+  border-bottom:1px solid #cccccc;
+  border-right:1px solid #cccccc;
+  background: #fefefe;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+*/}
+
+#profile_icon_wrapper {
+  margin-bottom: 1em;
+}
+
+#profile_info td {
+  border: none;
+  vertical-align: top;
+}
+
+#profile_info_column_left {
+/*  float:left;*/
+  padding: 0;
+  margin: 0 20px 0 0;
+}
+#profile_info_column_middle {
+  float:left;
+  width:365px;
+  padding: 0;
+}
+#profile_info_column_right {
+  width:578px;
+  margin:0 0 0 0;
+  background:#dedede;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  padding:4px;
+}
+#dashboard_info {
+  margin:0px 0px 0 0px;
+  padding:20px;
+  border-bottom:1px solid #cccccc;
+  border-right:1px solid #cccccc;
+  background: #bbdaf7;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+}
+#profile_menu_wrapper {
+  margin:10px 0 10px 0;
+  width:200px;
+}
+#profile_menu_wrapper p {
+  border-bottom:1px solid #cccccc;
+}
+#profile_menu_wrapper p:first-child {
+  border-top:1px solid #cccccc;
+}
+#profile_menu_wrapper a {
+  display:block;
+  padding:0 0 0 3px;
+}
+#profile_menu_wrapper a:hover {
+  color:#ffffff;
+  background:#4690d6;
+  text-decoration:none;
+}
+p.user_menu_friends, p.user_menu_profile,
+p.user_menu_removefriend,
+p.user_menu_friends_of {
+  margin:0;
+}
+#profile_menu_wrapper .user_menu_admin {
+  border-top:none;
+}
+
+#profile_info_column_middle p {
+  margin:7px 0 7px 0;
+  padding:2px 4px 2px 4px;
+}
+/* profile owner name */
+#profile_info_column_middle h2 {
+  padding:0 0 14px 0;
+  margin:0;
+}
+#profile_info_column_middle .profile_status {
+  background:#bbdaf7;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  padding:2px 4px 2px 4px;
+  line-height:1.2em;
+}
+#profile_info_column_middle .profile_status span {
+  display:block;
+  font-size:90%;
+  color:#666666;
+}
+#profile_info_column_middle a.status_update {
+  float:right;
+}
+#profile_info_column_middle .odd,
+#profile_info_column_middle .even {
+  border-top: 1px solid #eee;
+}
+#profile_info_column_middle .odd {
+  background: transparent;
+}
+#profile_info_column_middle .even {
+  background: transparent;
+}
+#profile_info_column_right p {
+  margin:0 0 7px 0;
+}
+#profile_info_column_right .profile_aboutme_title {
+  margin:0;
+  padding:0;
+  line-height:1em;
+}
+/* edit profile button */
+.profile_info_edit_buttons {
+  float: none;
+  margin:0  !important;
+  padding:0 !important;
+}
+.profile_info_edit_buttons a {
+/*  font: 12px/100% Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #ffffff;
+  background:#4690d6;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  width: auto;
+  padding: 2px 6px 2px 6px;
+  margin:0;
+  cursor: pointer;*/
+}
+.profile_info_edit_buttons a:hover {
+  background: #0054a7;
+  text-decoration: none;
+  color:white;
+}
+
+.header-edit {
+  float: right;
+}
 
 /* == Move to base.css of bento-theme ===================================== */
 
@@ -394,6 +591,8 @@ a.toggle_customise_edit_panel {
 .collapsable_box_header {
 }
 .collapsable_box_content {
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 .collapsable_box_header h1 {
@@ -406,7 +605,9 @@ a.toggle_customise_edit_panel {
   margin-right: 1em;
 }
 
-
+.clearfloat {
+  clear: both;
+}
 
 #customise_page_view table {
 /*  margin: 0;*/

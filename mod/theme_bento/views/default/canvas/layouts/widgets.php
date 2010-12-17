@@ -57,6 +57,7 @@ if ($owner && $owner->canEdit()) {
   </tr>
   <tr>
     <td>
+      <!-- Left Column -->
       <h2><?php echo elgg_echo("widgets:leftcolumn"); ?></h2>
       <div id="leftcolumn_widgets" class="box alpha">
 
@@ -97,6 +98,7 @@ if ($owner && $owner->canEdit()) {
   </td>
 
   <td>
+  <!-- Middle Column -->
   <h2><?php echo elgg_echo("widgets:middlecolumn"); ?></h2>
   <div id="middlecolumn_widgets" class="box">
 
@@ -139,8 +141,9 @@ if ($owner && $owner->canEdit()) {
   
   <!-- <td align="left" valign="top"> -->
   <td>
+    <!-- Right Column -->
     <h2><?php echo elgg_echo("widgets:rightcolumn"); ?></h2>
-    <div id="rightcolumn_widgets" class="<?php if(get_context() == "profile") {echo "long";} else {echo "box";} ?>">
+    <div id="rightcolumn_widgets" class="<?php if(get_context() == "profile") {echo "long box";} else {echo "box";} ?>">
     <?php
       $rightcolumn_widgets = "";
       if (is_array($area3widgets) && sizeof($area3widgets) > 0) {
@@ -257,64 +260,52 @@ if ($owner && $owner->canEdit()) {
 
 <!-- <table cellspacing="0" id="widget_table"> -->
 
+
 <div>
     <!-- profile box or 'dashboard info' notice -->
     <?php if (isset($vars['area1'])) echo $vars['area1']; ?>
 </div>
 
-    <div id="widgets-right" class="grid_5 alpha">
+
+  <!-- left widgets -->
+  <div id="widgets-left" class="grid_5 alpha">
+  <?php
+    if (is_array($area1widgets) && sizeof($area1widgets) > 0)
+    foreach($area1widgets as $widget) {
+      echo elgg_view_entity($widget);
+    }
+  ?>
+  </div><!-- /#widgets_left -->
+
+  <!-- widgets middle -->
+  <div id="widgets-middle" class="grid_5">
+
+  <?php if (isset($vars['area2'])) echo $vars['area2']; ?>
+  <?php
+    if (is_array($area2widgets) && sizeof($area2widgets) > 0)
+    foreach($area2widgets as $widget) {
+      echo elgg_view_entity($widget);
+    }
+  ?>
+  </div><!-- /#widgets_middle -->
+
+  <div id="widgets-right" class="grid_5 omega">
+  <?php
+    if (is_array($area3widgets) && sizeof($area3widgets) > 0)
+    foreach($area3widgets as $widget) {
+      echo elgg_view_entity($widget);
+    }
+  ?>
+  </div><!-- /#widgets_right -->
+
+  <div class="grid_15 suffix_1 edit-panel">
     <?php
-
-      if (is_array($area3widgets) && sizeof($area3widgets) > 0)
-      foreach($area3widgets as $widget) {
-        echo elgg_view_entity($widget);
-      }
-
-    ?>
-
-    </div><!-- /#widgets_right -->
-
-
-    <!-- left widgets -->
-    <div id="widgets-left" class="grid_5">
-
-    <?php
-
-      if (is_array($area1widgets) && sizeof($area1widgets) > 0)
-      foreach($area1widgets as $widget) {
-        echo elgg_view_entity($widget);
-      }
-
-    ?>
-
-    </div><!-- /#widgets_left -->
-
-
-    <!-- widgets middle -->
-    <div id="widgets-middle" class="grid_5 omega">
-
-    <?php if (isset($vars['area2'])) echo $vars['area2']; ?>
-    <?php
-
-      if (is_array($area2widgets) && sizeof($area2widgets) > 0)
-      foreach($area2widgets as $widget) {
-        echo elgg_view_entity($widget);
-      }
-
-    ?>
-
-    </div><!-- /#widgets_middle -->
-
-
-    <div class="grid_15 suffix_1 edit-panel">
-      <?php
       if($_SESSION['user']->guid == page_owner()){
-      ?>
+    ?>
       <!-- customise page button -->
       <a href="javascript:void(0);" class="toggle_customise_edit_panel button"><?php echo(elgg_echo('dashboard:configure')); ?></a>
       <!-- <div style="clear:both;"></div> -->
-      <?php
+    <?php
       }
-      ?>
-
-    </div>
+    ?>
+  </div>

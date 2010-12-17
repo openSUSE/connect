@@ -17,6 +17,8 @@
 		$action = "polls/vote";
 		$question = $vars['entity']->question;
 		$description = $vars['entity']->description;
+		$enddate = $vars['entity']->enddate;
+		$is_secret = $vars['entity']->is_secret;
 		$tags = $vars['entity']->tags;
 		$access_id = $vars['entity']->access_id;
 		$maxanswers = $vars['entity']->maxanswers;
