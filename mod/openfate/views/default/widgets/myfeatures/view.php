@@ -3,7 +3,7 @@
     <?php
     global $feature_host;
 
-    $username = 'digitaltomm'; //$_SESSION['user']->username;
+    $username = $_SESSION['user']->username;
     $query = "/feature[partnercontext/organization='openSUSE.org' and actor[person[userid='" . $username .
             "']] and productcontext[not(status/done or status/rejected or status/duplicate)] ]";
     $query = 'let $hits:= (for $i in ' . $query . 'order by $i/k:versioningsummary/k:lastmodifydate descending return $i) return subsequence($hits, 1, 10)';
