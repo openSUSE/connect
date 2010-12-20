@@ -726,6 +726,7 @@ a.toggle_customise_edit_panel {
 .river_item_time {
   display: block;
   text-align: right;
+  margin-bottom: 0.3em;
 }
 
 
