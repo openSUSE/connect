@@ -16,7 +16,8 @@
 	//get required data
 	set_context('search');//display results in search mode, which is list view
 	//
-	$area1 = '<a href="https://' . $_SERVER['SERVER_NAME'] . '/ICSLogin/?%22' . $_SERVER['SERVER_NAME'] . '/' . $_SERVER['REQUEST_URI'] . '%22">Sign up</a>';
+  $area1 = '<a href="https://' . $_SERVER['SERVER_NAME'] . '/ICSLogin/?%22' . $_SERVER['SERVER_NAME'] . '/' . $_SERVER['REQUEST_URI'] . '%22">Sign up</a>';
+  // $area1 = elgg_view("account/forms/login");
 	//newest actions in the river
 	$area2 = elgg_view_river_items(0, 0, '', '', '', '', 5, 0, 0, false);
 	//get the newest members who have an avatar
