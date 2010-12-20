@@ -634,6 +634,8 @@ a.toggle_customise_edit_panel {
 
 #elgg_horizontal_tabbed_nav ul {
   margin: 0;
+  list-style: none inside;
+  padding: 0;
 }
 
 #elgg_horizontal_tabbed_nav li {
@@ -655,6 +657,194 @@ a.toggle_customise_edit_panel {
 #two_column_left_sidebar_maincontent_boxes {
   min-height: 25em;
 }
+
+/* Event Calendar - Date Picker */
+
+.table-top {
+  vertical-align: top;
+}
+#my_datepicker {
+  margin-top: 2.5em;
+}
+#ui-datepicker-div {
+  background-color: #f6f6f6;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 2px #999;
+  -moz-box-shadow: 0 1px 2px #999;
+  -webkit-box-shadow: 0 1px 2px #999;
+}
+
+.ui-datepicker-clear {
+  margin-left: 2px;
+}
+.ui-datepicker-close {
+  margin-right: 2px;
+}
+
+.ui-datepicker-control {
+  background-color: #eee;
+}
+  .ui-datepicker-control * {
+    font-size: 0.9em;
+  }
+
+.ui-datepicker-header select{
+  margin-top: 2px;
+  margin-right: 5px;
+}
+
+
+
+
+.ui-datepicker-links {
+  border-top: 1px solid #eee;
+}
+#ui-datepicker-div, .ui-datepicker-inline {
+}
+
+.ui-datepicker-inline {
+    border: 0 none;
+    display: block;
+    float: left;
+}
+
+.ui-datepicker-control, .ui-datepicker-links {
+  font-size: 0.9em;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.ui-datepicker-links {
+    padding: 2px 0;
+}
+
+.ui-datepicker-control a,
+.ui-datepicker-links a {
+    color: #999;
+}
+
+.ui-datepicker-control,
+.ui-datepicker-links,
+.ui-datepicker-header,
+.ui-datepicker {
+    clear: both;
+    float: left;
+    width: 100%;
+}
+
+.ui-datepicker-clear, .ui-datepicker-prev {
+    float: left;
+    width: 34%;
+    text-align: left;
+}
+
+.ui-datepicker-current {
+    float: left;
+    text-align: center;
+    width: 30%;
+}
+
+.ui-datepicker-close, .ui-datepicker-next {
+    float: right;
+    text-align: right;
+    width: 34%;
+}
+
+.ui-datepicker-days-cell a {
+  color: #ccc;
+}
+
+.ui-datepicker-current-day,
+.ui-datepicker-current-day a {
+      color: #999;
+}
+
+
+
+.ui-datepicker-current-day.ui-datepicker-today a {
+  font-weight: bold;
+  color: #069;
+}
+.ui-datepicker-header {
+    background: none repeat scroll 0 0 #eee;
+    color: #999;
+    font-weight: bold;
+    height: 1.3em;
+    padding: 1px 0 3px;
+    text-align: center;
+}
+
+.ui-datepicker {
+
+}
+
+  .ui-datepicker-title-row {
+
+  }
+  .ui-datepicker-title-row .ui-datepicker-week-end-cell {
+      background: none repeat scroll 0 0 #E3E3E3;
+  }
+  .ui-datepicker-days-row {
+      background: none repeat scroll 0 0 #FFFFFF;
+  }
+  td.ui-datepicker-unselectable {
+      background-color: #FFFFFF !important;
+      color: #888888 !important;
+  }
+  .ui-datepicker-week-end-cell {
+      background: none repeat scroll 0 0 #F5F5F5;
+  }
+
+
+ul#calendarmenu {
+    list-style: none outside none;
+    position: relative;
+}
+ul#calendarmenu li {
+    background-color: #F5F5F5;
+    border-bottom: 1px solid #969696;
+    border-left: 1px solid #969696;
+    border-top: 1px solid #969696;
+    float: left;
+}
+
+ul#calendarmenu li a {
+    float: left;
+    text-decoration: none;
+}
+
+ul#calendarmenu li a,
+ul#calendarmenu li a:hover,
+ul#calendarmenu li.sys_selected a {
+  background: none;
+  padding: 2px 9px;
+  border: none;
+}
+ul#calendarmenu li a:hover {
+  text-decoration: underline;
+  color: #069;
+}
+
+ul#calendarmenu li.sys_selected a {
+  color: #690;
+  font-weight: bold;
+}
+
+ul#calendarmenu li {
+  border: none;
+  background: none;
+}
+
+/*ul#calendarmenu li a:hover,
+ul#calendarmenu li.sys_selected a {
+  
+    color: #FFFFFF;
+    float: left;
+    padding: 1px;
+    text-decoration: none;
+}*/
+
+/* /Event Calendar - Date Picker */
 
 .search_listing {
   background-color: #efefef;
