@@ -90,7 +90,8 @@
 			'polls:deleted' => "Your poll was successfully deleted.",
 			'polls:totalvotes' => "Total number of people voting: ",
 			'polls:voted' => "Your vote has been cast for this poll. Thank you for voting on this poll.",
-			
+			'polls:secret' => "The results of this poll are secret.",
+			'polls:secretdate' => "The results of this poll will be shown on %s.",
 	
 		/**
 		 * Error messages

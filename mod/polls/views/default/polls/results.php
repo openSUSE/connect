@@ -13,7 +13,15 @@
 	 
 
 	if (isset($vars['entity'])) {
-		
+
+		if ($vars['entity']->is_secret && (!$vars['entity']->enddate || (strtotime($vars['entity']->enddate)>time()))) {
+			if ($vars['entity']->enddate) {
+				echo sprintf(elgg_echo('polls:secretdate'),$vars['entity']->enddate);
+			} else {
+				echo elgg_echo('polls:secret');
+			}
+		} else {
+
 		//set img src
 		$img_src = $vars['url'] . "mod/polls/graphics/poll.gif";
 		
@@ -64,6 +72,7 @@
 		
 	<?php
 		
+	}
 	}
 	else
 	{
