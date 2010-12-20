@@ -680,6 +680,35 @@ a.toggle_customise_edit_panel {
   width: 10em;
 }
 
+.sidebarBox .input-text {
+  margin-bottom: 1em;
+}
+
+.sidebarBox small {
+  color: #999;
+}
+.sidebarBox small a {
+  text-decoration: underline;
+}
+.sidebarBox small a.delete-trigger {
+  float: right;
+}
+
+.river-message {
+  background-color: #eee;
+  padding: 2px 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  
+  font-style: italic;
+}
+
+.sidebarBox form p {
+  margin: 0 !important;
+  
+}
 
 /* disable hover of navigation */
 
