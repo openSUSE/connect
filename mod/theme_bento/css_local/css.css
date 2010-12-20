@@ -694,7 +694,8 @@ a.toggle_customise_edit_panel {
   float: right;
 }
 
-.river-message {
+.river-message,
+.river_content_display {
   background-color: #eee;
   padding: 2px 5px;
   border-radius: 5px;
@@ -704,11 +705,45 @@ a.toggle_customise_edit_panel {
   
   font-style: italic;
 }
+.river_content_display {
+  border: none;
+}
+.river_item_time {
+  font-size: 0.8em;
+  color: #999;
+}
+
+.river_item {
+  border-bottom: 1px dotted #eee;
+}
+.river_content_display {
+  margin: 0;
+}
+.river_item_list p {
+  margin-left: 0;
+  margin-right: 0;
+}
+.river_item_time {
+  display: block;
+  text-align: right;
+}
+
+
+.river_object_event_calendar_create a:first-child {
+  margin-left: 20px;
+}
 
 .sidebarBox form p {
   margin: 0 !important;
   
 }
+
+
+.river_item_list a {
+  display: inline;
+}
+
+
 
 /* disable hover of navigation */
 
