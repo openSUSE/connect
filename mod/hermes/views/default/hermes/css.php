@@ -11,9 +11,12 @@
 	 */
 ?>
 
+#hermes_status {
+        margin: 0;
+}
+
 #hermes_update_list {
-    margin:0 10px 0 10px;
-    background-color:#ea23ae;
+    margin:0 2px 0 2px;
 }
 
 #hermes_widget ul {
@@ -25,7 +28,7 @@
 	list-style-image:none;
 	list-style-position:outside;
 	list-style-type:none;
-	margin:0 0 5px 0;
+	margin:0 0 1px 0;
 	padding:0;
 	overflow-x: hidden;
 }
