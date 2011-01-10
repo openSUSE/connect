@@ -23,6 +23,7 @@
 	$description = get_input('description');
 	$enddate = get_input('enddate');
 	$is_secret = get_input('is_secret');
+	$allowcomments = get_input('allowcomments',1);
 	$maxanswers = get_input('maxanswers',1);
 	$number_of_choices = (int) get_input('number_of_choices',0);
 	$tags = get_input('polltags');
@@ -34,6 +35,7 @@
 	$_SESSION['description'] = $description;
 	$_SESSION['enddate'] = $enddate;
 	$_SESSION['is_secret'] = $is_secret;
+	$_SESSION['allowcomments'] = $allowcomments;
 	$_SESSION['polltags'] = $tags;
 	$_SESSION['maxanswers'] = $maxanswers;
 
@@ -78,6 +80,7 @@
 		$poll->description = $description;
 		$poll->enddate = $enddate;
 		$poll->is_secret = $is_secret;
+		$poll->allowcomments = $allowcomments;
 		$poll->title = $question;
 		$poll->maxanswers = $maxanswers;
 			
@@ -105,7 +108,9 @@
 		unset($_SESSION['description']);
 		unset($_SESSION['enddate']);
 		unset($_SESSION['is_secret']);
+		unset($_SESSION['allowcomments']);
 		unset($_SESSION['polltags']);
+		unset($_SESSION['maxanswers']);
 	
 		// Forward to the main poll page
 		forward($CONFIG->url."pg/polls/list/" . get_entity($container_guid)->username);

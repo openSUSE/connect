@@ -92,6 +92,7 @@
 			'polls:voted' => "Your vote has been cast for this poll. Thank you for voting on this poll.",
 			'polls:secret' => "The results of this poll are secret.",
 			'polls:secretdate' => "The results of this poll will be shown on %s.",
+			'polls:allowcomments' => "Allow adding comments to this poll",
 	
 		/**
 		 * Error messages

@@ -75,6 +75,7 @@
 				<?php echo elgg_echo('by'); ?> <a href="<?php echo $vars['url']; ?>pg/polls/list/<?php echo $vars['entity']->getOwnerEntity()->username; ?>"><?php echo $vars['entity']->getOwnerEntity()->name; ?></a> 
 				<!-- display the comments link -->
 				<?php
+			    if ($vars['entity']->allowcomments) {
 			    //get the number of responses
 				$num_responses = $vars['entity']->countAnnotations('vote');
 				//get the number of comments
@@ -82,6 +83,7 @@
 			    ?>
 			    <?php echo "(" . $num_responses . " " . sprintf(elgg_echo('polls:votes')) . ")"; ?> 
 			<a href="<?php echo $vars['entity']->getURL(); ?>"><?php echo sprintf(elgg_echo("comments")) . " (" . $num_comments . ")"; ?></a><BR>		
+			    <?php } ?>
 			</p>
 			<!-- display tags -->
 				<?php
@@ -166,7 +168,7 @@
 <?php
 
 			// If we've been asked to display the full view
-			if (isset($vars['full']) && $vars['full'] == true) {
+			if ($vars['entity']->allowcomments && isset($vars['full']) && $vars['full'] == true) {
 				echo elgg_view_comments($vars['entity']);
 			}
 				

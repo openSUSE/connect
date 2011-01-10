@@ -17,6 +17,7 @@ if (isset($vars['entity'])) {
 	$description = $vars['entity']->description;
 	$enddate = $vars['entity']->enddate;
 	$is_secret = $vars['entity']->is_secret;
+	$allowcomments = $vars['entity']->allowcomments;
 	$maxanswers = $vars['entity']->maxanswers;
 	$tags = $vars['entity']->tags;
 	$access_id = $vars['entity']->access_id;
@@ -26,6 +27,7 @@ if (isset($vars['entity'])) {
 	$description = "";
 	$enddate = "";
 	$is_secret = 0;
+	$allowcomments = 1;
 	$maxanswers = 1;
 	$tags = "";
 	if (defined('ACCESS_DEFAULT')){
@@ -41,6 +43,7 @@ if (isset($vars['question'])) {
 	$description = $vars['description'];
 	$enddate = $vars['enddate'];
 	$is_secret = $vars['is_secret'];
+	$allowcomments = $vars['allowcomments'];
 	$tags = $vars['polltags'];
 	$maxanswers = $vars['maxanswers'];
 }
@@ -61,7 +64,10 @@ if (isset($vars['question'])) {
                 'options_values' => array('0' => elgg_echo('option:no'), '1' => elgg_echo('option:yes') ),
                 'value' => $is_secret));
 
-
+        $allowcomments_label = elgg_echo('polls:allowcomments');
+        $allowcomments_textbox = elgg_view('input/pulldown', array('internalname' => 'allowcomments',
+                'options_values' => array('0' => elgg_echo('option:no'), '1' => elgg_echo('option:yes') ),
+                'value' => $allowcomments));
 
         $maxanswers_label = elgg_echo('polls:maxanswers'); 
         $maxanswers_textbox = elgg_view('input/pulldown', array('internalname' => 'maxanswers',
@@ -108,6 +114,10 @@ if (isset($vars['question'])) {
 		<p>
 			<label>$is_secret_label</label><br />
                         $is_secret_textbox
+		</p>
+		<p>
+			<label>$allowcomments_label</label><br />
+                        $allowcomments_textbox
 		</p>
 		<p>
 			<label>$maxanswers_label</label><br />
