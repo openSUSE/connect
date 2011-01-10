@@ -304,13 +304,22 @@ background: #eee;
 /* Polls */
 
 .poll_edit_link {
-  margin: 0;
+    margin: 0.5em;
 }
-  .poll_edit_link a {
+.poll_edit_link a {
     display: inline;
     padding: 0;
     margin-left: 0.5em;
-  }
+}
+
+#new_choices_area, #add_choice, .poll_post {
+    margin-left: 1em;
+}
+
+#poll_vote_form label {
+    margin-left: 1em;
+}
+
 
 /* ***************************************
 SYSTEM MESSSAGES
