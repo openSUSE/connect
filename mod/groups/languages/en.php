@@ -186,7 +186,7 @@ or click below to view the group's join requests:
 			*/
 
 			'groups:river:member' => '%s is now a member of',
-			'groups:river:create' => '%s has created the group',
+			'groups:river:create' => '%s has joined the group',
 			'groupforum:river:updated' => '%s has updated',
 			'groupforum:river:update' => 'this discussion topic',
 			'groupforum:river:created' => '%s has created',
