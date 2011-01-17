@@ -51,7 +51,7 @@
 
       <?php } else { ?>
 
-        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/ICSLogin/?%22<?php echo $_SERVER['SERVER_NAME'] . '/' . $_SERVER['REQUEST_URI'] ?>%22">Sign up</a>| <a href="#" id="login-trigger">Login</a>
+        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/ICSLogin/?%22https://<?php echo $_SERVER['SERVER_NAME'] . '/' . $_SERVER['REQUEST_URI'] ?>%22">Sign up</a>| <a href="#" id="login-trigger">Login</a>
 
       <div id="login-form">
         <form action="https://<?php echo $_SERVER['SERVER_NAME'] ?>/ICSLogin/auth-up"
