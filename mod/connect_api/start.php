@@ -205,6 +205,8 @@
                 add_to_river('river/group/create','join',$user->guid,$group->guid);
 
                 elgg_set_ignore_access($ia);
+		add_user_to_access_collection($user->guid, $group->group_acl);
+
                 return connect_user_groups_get($login);
             }
          elgg_set_ignore_access($ia);
