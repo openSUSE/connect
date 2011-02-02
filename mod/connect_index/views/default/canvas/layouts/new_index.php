@@ -79,7 +79,7 @@
 		              echo "<p>" . elgg_echo('members:nousers') . "</p>";
 		            }
             ?>
-            <div class="clearfloat"><?php echo "<br><em>" . elgg_echo("members:footer") . "</em>"?></div>
+            <div class="clearfloat"><?php echo "<p><br/><em>" . elgg_echo("members:footer") . "</em></p>"?></div>
         </div>
       </div>
 

@@ -166,6 +166,7 @@ padding: 10px;
   float: left;
   width: 40px;
   margin-right: 0.5em;
+  margin-left: 15px;
 }
 
 .loginbox {
@@ -919,8 +920,10 @@ ul#calendarmenu li.sys_selected a {
   margin: 0;
 }
 .river_item_list p {
-  margin-left: 0;
+  margin-left: 15px;
   margin-right: 0;
+  margin-top: 3px;
+  margin-bottom:0;
 }
 .river_item_time {
   display: block;
