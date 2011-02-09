@@ -979,5 +979,16 @@ ul#calendarmenu li.sys_selected a {
   margin: 0 5px;
 }
 
+.messages, .messages_error {
+    top: 35px;
+    width: 905px;
+}
 
+.river_item {
+    margin-left: 15px;
+    margin-right: 15px;
+}
 
+.nav_avatar {
+    margin-right: 2px !important;
+}
