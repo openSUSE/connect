@@ -30,7 +30,7 @@
               <a href="<?php echo $_SESSION['user']->getURL(); ?>"><img class="user_mini_avatar" src="<?php echo $_SESSION['user']->getIcon('topbar'); ?>" alt="User avatar" /></a>
               <strong class="grey-medium spacer1"><a href="<?php echo $_SESSION['user']->getURL(); ?>"><?php echo $_SESSION['username']; ?></a></strong>
           <ul class="navlist">
-            <li><a href="<?php echo $vars['url']; ?>pg/settings/" class="usersettings"><?php echo elgg_echo('settings'); ?></a></li>
+            <li><a href="<?php echo $_SESSION['user']->getURL(); ?>">Profile</a></li>
             <?php if ($vars['user']->isAdmin()) { ?>
             <li> <a href="<?php echo $vars['url']; ?>pg/admin/" class="usersettings"><?php echo elgg_echo("admin"); ?></a></li>
             <?php } ?>

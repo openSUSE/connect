@@ -21,11 +21,12 @@
       
       <?php if (isloggedin()) { // Loggedin users only ?>
 
-        <!-- Link: User Image -->
-        <!-- <a href="<?php echo $_SESSION['user']->getURL(); ?>"><img class="user_mini_avatar" src="<?php echo $_SESSION['user']->getIcon('topbar'); ?>" alt="User avatar" /></a> -->
-      
         <!-- Link: Dashboard -->
         <a href="<?php echo $vars['url']; ?>pg/dashboard/" class="pagelinks"><?php echo elgg_echo('dashboard'); ?></a>
+
+        <!-- Link: User Image -->
+        <a href="<?php echo $_SESSION['user']->getURL(); ?>" class="nav_avatar"><img class="user_mini_avatar" src="<?php echo $_SESSION['user']->getIcon('topbar'); ?>" alt="User avatar"/></a>
+        <a href="<?php echo $_SESSION['user']->getURL(); ?>">Profile</a>
       
         <?php
           // Tools Dropdown-Menu
@@ -36,7 +37,7 @@
         ?>
       
         <!-- Link: Settings -->
-        <a href="<?php echo $vars['url']; ?>pg/settings/" class="usersettings"><?php echo elgg_echo('settings'); ?></a>
+        <!-- <a href="<?php echo $vars['url']; ?>pg/settings/" class="usersettings"><?php echo elgg_echo('settings'); ?></a> -->
       
         <?php // Link: Administration
           if ($vars['user']->isAdmin()) { // The administration link is for admin or site admin users only
