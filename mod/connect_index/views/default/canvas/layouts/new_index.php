@@ -32,7 +32,7 @@
 	            //this displays some content when the user is logged out
 			    if (!isloggedin()){
 			    	echo "<h2 class=\"box-header\">" . elgg_echo("signup:header") . "</h2>";
-				echo "<a href=\"https://" . $_SERVER['SERVER_NAME'] . "/ICSLogin/?%22" . $_SERVER['SERVER_NAME'] . "/" . $_SERVER['REQUEST_URI'] . "%22\">";
+				echo "<a href=\"https://" . $_SERVER['SERVER_NAME'] . "/ICSLogin/?%22https://" . $_SERVER['SERVER_NAME'] . "/" . $_SERVER['REQUEST_URI'] . "%22\">";
 				echo "<img src=\"" . $vars['url'] ."mod/connect_index/graphics/signup.png\" border=\"0\" style=\"position:relative; left:-32px;\" alt=\"Sign Up\">";
 				echo "</a>";
 				echo "<p>" . elgg_echo("signup:footer") . "</p>";
