@@ -10,8 +10,7 @@
 			'river:header' => "What is the community up to?",
 			'river:noriver' => "Huh? It seems nothing as of yet",
 			'signup:header' => "New to connect?",
-			'signup:text' => " and mingle with your openSUSE friends today!",
-			'signup:footer' => "<a href=\"http://en.opensuse.org/openSUSE:Connect\">Want to know more?</a>",
+			'signup:footer' => "<em>Connect is the social network of the openSUSE community. It helps you to hook up and collaborate with your friends!</em>",
 	);
 
 	add_translation("en",$english);
