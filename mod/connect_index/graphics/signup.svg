@@ -15,9 +15,24 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.47 r22583"
-   sodipodi:docname="signup.svg">
+   sodipodi:docname="signup.svg"
+   inkscape:export-filename="/srv/www/vhosts/elgg/htdocs/mod/connect_index/graphics/signup.png"
+   inkscape:export-xdpi="37.580002"
+   inkscape:export-ydpi="37.580002">
   <defs
      id="defs4">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient5199">
+      <stop
+         style="stop-color:#4c7321;stop-opacity:1;"
+         offset="0"
+         id="stop5201" />
+      <stop
+         style="stop-color:#4c7321;stop-opacity:0;"
+         offset="1"
+         id="stop5203" />
+    </linearGradient>
     <linearGradient
        id="linearGradient3783">
       <stop
@@ -115,15 +130,6 @@
        x2="256.51807"
        y2="-873.94611"
        gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3744"
-       id="linearGradient3757"
-       gradientUnits="userSpaceOnUse"
-       x1="384.48932"
-       y1="564.56897"
-       x2="386.69904"
-       y2="350.77966" />
     <filter
        inkscape:collect="always"
        id="filter3827">
@@ -131,6 +137,161 @@
          inkscape:collect="always"
          stdDeviation="0.8022375"
          id="feGaussianBlur3829" />
+    </filter>
+    <inkscape:perspective
+       id="perspective5086"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <filter
+       inkscape:collect="always"
+       id="filter5185"
+       x="-0.021844865"
+       width="1.0436897"
+       y="-0.10226824"
+       height="1.2045365">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.2033562"
+         id="feGaussianBlur5187" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3744"
+       id="linearGradient5227"
+       gradientUnits="userSpaceOnUse"
+       x1="384.48932"
+       y1="564.56897"
+       x2="386.69904"
+       y2="350.77966" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5199"
+       id="linearGradient5232"
+       gradientUnits="userSpaceOnUse"
+       x1="151.40926"
+       y1="428.61948"
+       x2="178.89117"
+       y2="428.61948" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3744"
+       id="linearGradient5267"
+       gradientUnits="userSpaceOnUse"
+       x1="384.48932"
+       y1="564.56897"
+       x2="386.69904"
+       y2="350.77966" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5199"
+       id="linearGradient5269"
+       gradientUnits="userSpaceOnUse"
+       x1="151.40926"
+       y1="428.61948"
+       x2="178.89117"
+       y2="428.61948" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5199"
+       id="linearGradient5272"
+       gradientUnits="userSpaceOnUse"
+       x1="151.40926"
+       y1="428.61948"
+       x2="178.89117"
+       y2="428.61948" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3744"
+       id="linearGradient5307"
+       gradientUnits="userSpaceOnUse"
+       x1="384.48932"
+       y1="564.56897"
+       x2="386.69904"
+       y2="350.77966" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5199"
+       id="linearGradient5309"
+       gradientUnits="userSpaceOnUse"
+       x1="151.40926"
+       y1="428.61948"
+       x2="178.89117"
+       y2="428.61948" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5199"
+       id="linearGradient5312"
+       gradientUnits="userSpaceOnUse"
+       x1="151.40926"
+       y1="428.61948"
+       x2="178.89117"
+       y2="428.61948" />
+    <inkscape:perspective
+       id="perspective5491"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <filter
+       inkscape:collect="always"
+       id="filter5519">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.50708513"
+         id="feGaussianBlur5521" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter5531"
+       x="-0.038012032"
+       width="1.0760241"
+       y="-0.12602451"
+       height="1.252049">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.7710488"
+         id="feGaussianBlur5533" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3744"
+       id="linearGradient5537"
+       gradientUnits="userSpaceOnUse"
+       x1="384.48932"
+       y1="564.56897"
+       x2="386.69904"
+       y2="350.77966" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3744"
+       id="linearGradient5542"
+       gradientUnits="userSpaceOnUse"
+       x1="384.48932"
+       y1="564.56897"
+       x2="386.69904"
+       y2="350.77966"
+       gradientTransform="translate(87.310437,-96.807975)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3744"
+       id="linearGradient5546"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0098437,0,0,1.0489535,84.836177,-120.93001)"
+       x1="384.48932"
+       y1="564.56897"
+       x2="386.69904"
+       y2="350.77966" />
+    <filter
+       inkscape:collect="always"
+       id="filter5584">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="2.3682826"
+         id="feGaussianBlur5586" />
     </filter>
   </defs>
   <sodipodi:namedview
@@ -141,8 +302,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.28"
-     inkscape:cx="271.57363"
-     inkscape:cy="521.90696"
+     inkscape:cx="381.49938"
+     inkscape:cy="673.23267"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -150,7 +311,9 @@
      inkscape:window-height="1001"
      inkscape:window-x="1680"
      inkscape:window-y="0"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -159,7 +322,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -167,110 +330,6 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <rect
-       style="fill:#73ba25;fill-opacity:1;stroke:none"
-       id="rect3765"
-       width="54.963837"
-       height="158.30493"
-       x="60.784252"
-       y="471.83029"
-       rx="9.6736364"
-       ry="9.3268862" />
-    <rect
-       style="fill:#73ba25;fill-opacity:1;stroke:none;stroke-width:1.10886228000000009;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-       id="rect2816"
-       width="441.35938"
-       height="112.01807"
-       x="63.531635"
-       y="471.82935"
-       ry="56.009033"
-       rx="43.641762" />
-    <g
-       id="g3752"
-       transform="translate(-3.314563,-1.1048543)">
-      <rect
-         ry="34.464344"
-         rx="24.306803"
-         y="492.75345"
-         x="251.35437"
-         height="71.815529"
-         width="238.09612"
-         id="rect2962"
-         style="fill:url(#linearGradient3757);fill-opacity:1;stroke:none" />
-      <text
-         transform="scale(1.1494244,0.87000068)"
-         id="text3608"
-         y="627.55994"
-         x="231.42029"
-         style="font-size:34.80002975px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-         xml:space="preserve"><tspan
-           style="font-size:55.68004608px;fill:#ffffff;font-family:FifthLeg;-inkscape-font-specification:FifthLeg"
-           y="627.55994"
-           x="231.42029"
-           id="tspan3610"
-           sodipodi:role="line">SIGN UP</tspan></text>
-    </g>
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="83.128769"
-       y="533.76715"
-       id="text3761"><tspan
-         sodipodi:role="line"
-         id="tspan3763"
-         x="83.128769"
-         y="533.76715"
-         style="font-size:10px;fill:#ffffff;font-family:FifthLeg;-inkscape-font-specification:FifthLeg">Mingle with your</tspan><tspan
-         sodipodi:role="line"
-         x="83.128769"
-         y="546.26715"
-         style="font-size:10px;fill:#ffffff;font-family:FifthLeg;-inkscape-font-specification:FifthLeg"
-         id="tspan3791">openSUSE friends</tspan><tspan
-         sodipodi:role="line"
-         x="83.128769"
-         y="558.76715"
-         style="font-size:10px;fill:#ffffff;font-family:FifthLeg;-inkscape-font-specification:FifthLeg"
-         id="tspan3793">today!</tspan></text>
-    <text
-       id="text3799"
-       y="517.61267"
-       x="77.339806"
-       style="font-size:40px;font-style:normal;font-weight:normal;fill:#2e3436;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         style="font-family:FifthLeg;-inkscape-font-specification:FifthLeg;fill:#2e3436;stroke:none;stroke-opacity:1"
-         y="517.61267"
-         x="77.339806"
-         id="tspan3801"
-         sodipodi:role="line">connect</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;fill:#2e3436;fill-opacity:1;stroke:none;filter:url(#filter3827);font-family:Bitstream Vera Sans"
-       x="78.706993"
-       y="519.37048"
-       id="text3803"><tspan
-         sodipodi:role="line"
-         id="tspan3805"
-         x="78.706993"
-         y="519.37048"
-         style="fill:#2e3436;stroke:none;font-family:FifthLeg;-inkscape-font-specification:FifthLeg">connect</tspan></text>
-    <rect
-       style="opacity:0;fill:#2e3436;fill-opacity:1;stroke:none"
-       id="rect3831"
-       width="93.912621"
-       height="125.95339"
-       x="103.85631"
-       y="670.08258"
-       rx="43.641762"
-       ry="56.009033" />
-    <rect
-       style="opacity:0;fill:#ffff66;fill-opacity:1;stroke:none"
-       id="rect3833"
-       width="174.56699"
-       height="130.37282"
-       x="110.48544"
-       y="706.54279"
-       rx="43.641762"
-       ry="56.009033" />
     <rect
        style="opacity:0;fill:#ff4d4d;fill-opacity:1;stroke:none"
        id="rect3835"
@@ -280,32 +339,156 @@
        y="44.73502"
        rx="43.641762"
        ry="56.009033" />
+    <path
+       style="fill:#416d11;fill-opacity:1;stroke:none"
+       d="m 145.76899,474.65963 31.35373,27.4862 0.26147,-27.33667 -31.6152,-0.14953 z"
+       id="path5113"
+       inkscape:export-filename="/srv/www/vhosts/elgg/htdocs/mod/connect_index/graphics/signup.png"
+       inkscape:export-xdpi="80.040001"
+       inkscape:export-ydpi="80.040001" />
     <rect
-       style="opacity:0;fill:#ff4d4d;fill-opacity:1;stroke:none"
-       id="rect3837"
-       width="46.680096"
-       height="43.917961"
-       x="154.12718"
-       y="592.46655"
-       rx="43.641762"
-       ry="43.917961" />
+       style="fill:#73ba25;fill-opacity:1;stroke:none"
+       id="rect3765"
+       width="54.963837"
+       height="112.01587"
+       x="151.40926"
+       y="372.61154"
+       rx="9.6736364"
+       ry="6.5996637"
+       inkscape:export-filename="/srv/www/vhosts/elgg/htdocs/mod/connect_index/graphics/signup.png"
+       inkscape:export-xdpi="80.040001"
+       inkscape:export-ydpi="80.040001" />
     <rect
-       style="opacity:0;fill:#ff4d4d;fill-opacity:1;stroke:none"
-       id="rect3839"
-       width="37.288834"
-       height="40.603397"
-       x="158.82281"
-       y="606.27722"
+       style="fill:#73ba25;fill-opacity:1;stroke:none"
+       id="rect2816"
+       width="441.35938"
+       height="112.01807"
+       x="154.15663"
+       y="372.6106"
+       ry="56.009033"
        rx="43.641762"
-       ry="40.603397" />
+       inkscape:export-filename="/srv/www/vhosts/elgg/htdocs/mod/connect_index/graphics/signup.png"
+       inkscape:export-xdpi="80.040001"
+       inkscape:export-ydpi="80.040001" />
     <rect
-       style="opacity:0;fill:#91d007;fill-opacity:1;stroke:none"
-       id="rect3855"
-       width="98.332039"
-       height="61.595631"
-       x="149.43155"
-       y="601.5816"
-       rx="43.641762"
-       ry="40.603397" />
+       style="fill:url(#linearGradient5542);fill-opacity:1;stroke:none"
+       id="rect2962"
+       width="238.09612"
+       height="71.815529"
+       x="338.66479"
+       y="395.94547"
+       rx="24.306803"
+       ry="34.464344"
+       inkscape:export-filename="/srv/www/vhosts/elgg/htdocs/mod/connect_index/graphics/signup.png"
+       inkscape:export-xdpi="80.040001"
+       inkscape:export-ydpi="80.040001" />
+    <rect
+       ry="36.151493"
+       rx="24.546072"
+       y="395.94547"
+       x="338.66479"
+       height="75.331154"
+       width="240.43987"
+       id="rect5544"
+       style="fill:url(#linearGradient5546);fill-opacity:1;stroke:none;filter:url(#filter5584)"
+       transform="matrix(0.99844868,0,0,0.97747235,0.51654795,8.7916866)"
+       inkscape:export-filename="/srv/www/vhosts/elgg/htdocs/mod/connect_index/graphics/signup.png"
+       inkscape:export-xdpi="80.040001"
+       inkscape:export-ydpi="80.040001" />
+    <text
+       xml:space="preserve"
+       style="font-size:34.80002975px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="307.38043"
+       y="516.2865"
+       id="text3608"
+       transform="scale(1.1494244,0.87000068)"
+       inkscape:export-filename="/srv/www/vhosts/elgg/htdocs/mod/connect_index/graphics/signup.png"
+       inkscape:export-xdpi="80.040001"
+       inkscape:export-ydpi="80.040001"><tspan
+         sodipodi:role="line"
+         id="tspan3610"
+         x="307.38043"
+         y="516.2865"
+         style="font-size:55.68004608px;fill:#ffffff;font-family:FifthLeg;-inkscape-font-specification:FifthLeg">SIGN UP</tspan></text>
+    <text
+       inkscape:export-ydpi="80.040001"
+       inkscape:export-xdpi="80.040001"
+       inkscape:export-filename="/srv/www/vhosts/elgg/htdocs/mod/connect_index/graphics/signup.png"
+       transform="matrix(1.0028317,0,0,0.9971763,-15.763107,1.933495)"
+       id="text5511"
+       y="439.60605"
+       x="189.26762"
+       style="font-size:52.99304581px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter5519);font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         id="tspan5513"
+         style="font-size:20px;font-weight:bold;fill:#000000;stroke:none;font-family:FifthLeg;-inkscape-font-specification:FifthLeg Bold"
+         y="439.60605"
+         x="189.26762"
+         sodipodi:role="line">Mingle         Today</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:52.99304581px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Bitstream Vera Sans"
+       x="172.64899"
+       y="440.55179"
+       id="text3761"
+       transform="scale(1.0028317,0.9971763)"
+       inkscape:export-filename="/srv/www/vhosts/elgg/htdocs/mod/connect_index/graphics/signup.png"
+       inkscape:export-xdpi="80.040001"
+       inkscape:export-ydpi="80.040001"><tspan
+         sodipodi:role="line"
+         x="172.64899"
+         y="440.55179"
+         style="font-size:20px;font-weight:bold;fill:#ffffff;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:FifthLeg;-inkscape-font-specification:FifthLeg Bold"
+         id="tspan3793">Mingle         Today</tspan></text>
+    <text
+       id="text3799"
+       y="417.4346"
+       x="171.67575"
+       style="font-size:40px;font-style:normal;font-weight:normal;fill:#2e3436;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       xml:space="preserve"
+       inkscape:export-filename="/srv/www/vhosts/elgg/htdocs/mod/connect_index/graphics/signup.png"
+       inkscape:export-xdpi="80.040001"
+       inkscape:export-ydpi="80.040001"><tspan
+         style="fill:#2e3436;stroke:none;font-family:FifthLeg;-inkscape-font-specification:FifthLeg"
+         y="417.4346"
+         x="171.67575"
+         id="tspan3801"
+         sodipodi:role="line">connect</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;fill:#2e3436;fill-opacity:1;stroke:none;filter:url(#filter5185);font-family:Bitstream Vera Sans"
+       x="172.06638"
+       y="418.8688"
+       id="text3803"
+       inkscape:export-filename="/srv/www/vhosts/elgg/htdocs/mod/connect_index/graphics/signup.png"
+       inkscape:export-xdpi="80.040001"
+       inkscape:export-ydpi="80.040001"><tspan
+         sodipodi:role="line"
+         id="tspan3805"
+         x="172.06638"
+         y="418.8688"
+         style="fill:#2e3436;stroke:none;font-family:FifthLeg;-inkscape-font-specification:FifthLeg">connect</tspan></text>
+    <rect
+       ry="6.5996637"
+       rx="9.6736364"
+       y="372.61154"
+       x="151.40926"
+       height="112.01587"
+       width="54.963837"
+       id="rect5189"
+       style="fill:url(#linearGradient5312);fill-opacity:1;stroke:none"
+       inkscape:export-filename="/srv/www/vhosts/elgg/htdocs/mod/connect_index/graphics/signup.png"
+       inkscape:export-xdpi="80.040001"
+       inkscape:export-ydpi="80.040001" />
+    <image
+       y="418.68381"
+       x="232.63513"
+       id="image5493"
+       height="31.401638"
+       width="31.401638"
+       xlink:href="file:///home/hvogel/Downloads/Geeko-button.png"
+       inkscape:export-filename="/srv/www/vhosts/elgg/htdocs/mod/connect_index/graphics/signup.png"
+       inkscape:export-xdpi="80.040001"
+       inkscape:export-ydpi="80.040001" />
   </g>
 </svg>
