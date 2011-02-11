@@ -130,14 +130,6 @@
        x2="256.51807"
        y2="-873.94611"
        gradientUnits="userSpaceOnUse" />
-    <filter
-       inkscape:collect="always"
-       id="filter3827">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="0.8022375"
-         id="feGaussianBlur3829" />
-    </filter>
     <inkscape:perspective
        id="perspective5086"
        inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
@@ -244,18 +236,6 @@
          stdDeviation="0.50708513"
          id="feGaussianBlur5521" />
     </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter5531"
-       x="-0.038012032"
-       width="1.0760241"
-       y="-0.12602451"
-       height="1.252049">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="3.7710488"
-         id="feGaussianBlur5533" />
-    </filter>
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3744"
@@ -301,9 +281,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.28"
-     inkscape:cx="381.49938"
-     inkscape:cy="673.23267"
+     inkscape:zoom="3.6203867"
+     inkscape:cx="288.44157"
+     inkscape:cy="604.02161"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -322,7 +302,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -414,7 +394,7 @@
        inkscape:export-ydpi="80.040001"
        inkscape:export-xdpi="80.040001"
        inkscape:export-filename="/srv/www/vhosts/elgg/htdocs/mod/connect_index/graphics/signup.png"
-       transform="matrix(1.0028317,0,0,0.9971763,-15.763107,1.933495)"
+       transform="matrix(1.0028317,0,0,0.9971763,-16.153732,5.839745)"
        id="text5511"
        y="439.60605"
        x="189.26762"
@@ -428,16 +408,16 @@
     <text
        xml:space="preserve"
        style="font-size:52.99304581px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Bitstream Vera Sans"
-       x="172.64899"
-       y="440.55179"
+       x="172.25946"
+       y="444.46909"
        id="text3761"
        transform="scale(1.0028317,0.9971763)"
        inkscape:export-filename="/srv/www/vhosts/elgg/htdocs/mod/connect_index/graphics/signup.png"
        inkscape:export-xdpi="80.040001"
        inkscape:export-ydpi="80.040001"><tspan
          sodipodi:role="line"
-         x="172.64899"
-         y="440.55179"
+         x="172.25946"
+         y="444.46909"
          style="font-size:20px;font-weight:bold;fill:#ffffff;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:FifthLeg;-inkscape-font-specification:FifthLeg Bold"
          id="tspan3793">Mingle         Today</tspan></text>
     <text
@@ -481,8 +461,8 @@
        inkscape:export-xdpi="80.040001"
        inkscape:export-ydpi="80.040001" />
     <image
-       y="418.68381"
-       x="232.63513"
+       y="422.59006"
+       x="232.24451"
        id="image5493"
        height="31.401638"
        width="31.401638"

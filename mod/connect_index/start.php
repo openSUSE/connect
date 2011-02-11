@@ -13,6 +13,8 @@
     function indexCustom_init() {
       // Extend system CSS with our own styles
       elgg_extend_view('css','custom_index/css');
+      // Extend system header with our own headers
+      elgg_extend_view('metatags','custom_index/metatags');
        // Replace the default index page
       register_plugin_hook('index','system','custom_index');
     }
