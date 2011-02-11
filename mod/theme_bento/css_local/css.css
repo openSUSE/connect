@@ -1005,3 +1005,7 @@ ul#calendarmenu li.sys_selected a {
 .river_content_display {
     margin: 8px;
 }
+
+.river_item_list p {
+    margin-left: 20px;
+}
