@@ -12,6 +12,8 @@
 function indexConnect_init() {
     // Extend system CSS with our own styles
     elgg_extend_view('css', 'custom_index/css');
+    // Extend system headers with our own 
+    elgg_extend_view('metatags','custom_index/metatags');
     // Replace the default index page
     register_plugin_hook('index', 'system', 'connect_index');
 }

@@ -35,7 +35,13 @@
 				echo "<a href=\"https://" . $_SERVER['SERVER_NAME'] . "/ICSLogin/?%22https://" . $_SERVER['SERVER_NAME'] . "/" . $_SERVER['REQUEST_URI'] . "%22\">";
 				echo "<img src=\"" . $vars['url'] ."mod/connect_index/graphics/signup.png\" border=\"0\" style=\"position:relative; left:-28px;\" alt=\"Sign Up\">";
 				echo "</a>";
-				echo "<p>" . elgg_echo("signup:footer") . "</p>";
+				echo "<p>" . elgg_echo("signup:footer");
+				echo "<a href=\"" . $vars['url'] . "mod/connect_index/graphics/about_friends.png\" rel=\"prettyPhoto[pp_gal]\">Learn More...</a>";
+				echo "<a href=\"" . $vars['url'] . "mod/connect_index/graphics/about_groups.png\" rel=\"prettyPhoto[pp_gal]\"></a>";
+				echo "<a href=\"" . $vars['url'] . "mod/connect_index/graphics/about_connect.png\" rel=\"prettyPhoto[pp_gal]\"></a>";
+				echo "</p>";
+
+
 		        }
 	        ?>
         </div>
