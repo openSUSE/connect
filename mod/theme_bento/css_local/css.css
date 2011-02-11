@@ -997,3 +997,11 @@ ul#calendarmenu li.sys_selected a {
     background: url("../graphics/unfold-indicator-single.png") no-repeat scroll 2.8em 0.4em transparent;
     padding-right: 1.2em;
 }
+
+.river_item_useravatar {
+    float: left;
+}
+
+.river_content_display {
+    margin: 8px;
+}
