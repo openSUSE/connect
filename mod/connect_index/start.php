@@ -22,6 +22,10 @@ function connect_index() {
     return true;
 }
 
-// Make sure the
-register_elgg_event_handler('init', 'system', 'indexConnect_init');
+
+if (!isloggedin()) {
+    register_elgg_event_handler('init', 'system', 'indexConnect_init');
+}
+
+
 ?>

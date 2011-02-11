@@ -22,7 +22,8 @@
       <?php if (isloggedin()) { // Loggedin users only ?>
 
         <!-- Link: Dashboard -->
-        <a href="<?php echo $vars['url']; ?>pg/dashboard/" class="pagelinks"><?php echo elgg_echo('dashboard'); ?></a>
+        <!-- Home is the dashboard for logged in users
+        <a href="<?php echo $vars['url']; ?>pg/dashboard/" class="pagelinks"><?php echo elgg_echo('dashboard'); ?></a> -->
 
         <!-- Link: User Image -->
         <a href="<?php echo $_SESSION['user']->getURL(); ?>" class="nav_avatar"><img class="user_mini_avatar" src="<?php echo $_SESSION['user']->getIcon('topbar'); ?>" alt="User avatar"/></a>
