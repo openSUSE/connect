@@ -992,3 +992,8 @@ ul#calendarmenu li.sys_selected a {
 .nav_avatar {
     margin-right: 2px !important;
 }
+
+.menuitemtools {
+    background: url("../graphics/unfold-indicator-single.png") no-repeat scroll 2.8em 0.4em transparent;
+    padding-right: 1.2em;
+}
