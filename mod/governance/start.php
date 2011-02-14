@@ -25,7 +25,6 @@ register_elgg_event_handler('init', 'system', 'governance_init');
  * @return true|false Depending on success
  */
 function governance_page_handler($page) {
-    error_log($page[0]);
     if (isset($page[0])) {
         switch ($page[0]) {
             case "index": @include(dirname(__FILE__) . "/pages/index.php");
