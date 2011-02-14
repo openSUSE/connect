@@ -27,6 +27,7 @@ if (is_array($menu) && sizeof($menu) > 0) {
   <ul class="submenuitemtools">
   <?php
     foreach($alphamenu as $item) {
+      if( $item->name == "Members" ) $item->name = "Users";
       echo "<li><a href=\"{$item->value}\">" . $item->name . "</a></li>";
     }
   ?>

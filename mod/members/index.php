@@ -62,7 +62,7 @@ $members_nav = elgg_view("members/members_sort_menu", array("count" => $members,
 $content = $members_nav . $filter_content;
 
 // title
-$main_content = elgg_view_title(elgg_echo("members:members"));
+$main_content = elgg_view_title(elgg_echo("Users"));
 
 $main_content .= elgg_view('page_elements/contentwrapper', array('body' => $content, 'subclass' => 'members'));
 
