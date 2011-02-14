@@ -1,5 +1,5 @@
 <div class="contentWrapper">
 
-    Governance
+    Blank Governance widget
 
 </div>
