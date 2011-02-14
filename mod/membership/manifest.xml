@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin_manifest>
+	<field key="author" value="Thomas Schmidt, openSUSE.org" />
+	<field key="version" value="0.1" />
+	<field key="description" value="Page and widget for membership requests" />
+	<field key="website" value="http://connect.opensuse.org/" />
+	<field key="copyright" value="(C) openSUSE.org 2010" />
+	<field key="licence" value="GNU Public License version 2" />
+	<field key="elgg_version" value="2009021601" />
+</plugin_manifest>
