@@ -1009,3 +1009,15 @@ ul#calendarmenu li.sys_selected a {
 .river_item_list p {
     margin-left: 20px;
 }
+
+div.progress-container {
+    border: 1px solid #ccc;
+    margin: 2px 5px 2px 0;
+    padding: 1px;
+    background: white;
+}
+
+div.progress-container > div {
+    background-color: #99CC00;
+    height: 14px
+}
