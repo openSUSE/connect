@@ -30,6 +30,10 @@
 		forward($vars['url']."pg/polls/all");
 	}
 
+	if ($vars['entity']->enddate && (strtotime($vars['entity']->enddate)<=time())) {
+		echo '<p><b>'.elgg_echo('polls:closed').'</b></p>';
+	} else {
+
 	//convert $responses to radio/checkboxes inputs for form display
 	$responses = polls_get_choice_array($vars['entity']);
 	if ($maxanswers > 1) {
@@ -59,6 +63,8 @@
     } 
     echo elgg_view('input/form', array('action' => "{$vars['url']}action/$action", 'body' => $form_body,'internalid'=>'poll_vote_form'));
     echo '</div>';
+
+	}
 
     if (!$vars['full']) {
 ?>

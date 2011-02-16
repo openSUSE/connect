@@ -101,6 +101,7 @@
 			'polls:save:failure' => "Your poll could not be saved. Please try again.",
 			'polls:blank' => "Sorry: you need to fill in both the question and responses before you can make a poll.",
 			'polls:novote' => "Sorry: you need to choose an option to vote in this poll.",
+			'polls:closed' => "Sorry: the poll is already closed.",
 			'polls:wrongnumanswers' => "Sorry: you have to provide at most %d answers.",
 			'polls:notfound' => "Please log in (in the top right corner) to see this poll or the poll does not exist.",
 			'polls:nonefound' => "No polls were found from %s",
