@@ -37,12 +37,7 @@ function polls_init() {
 	// TODO: create these settings
 		$group_polls = get_plugin_setting('group_polls', 'polls');
 		if (!$group_polls || $group_polls != 'no') {
-			$group_profile_display = get_plugin_setting('group_profile_display', 'polls');
-			if (!$group_profile_display || $group_profile_display == 'right') {
-				extend_view('groups/right_column', 'groups/grouppolls',1);
-			} else if ($group_profile_display == 'left') {
-				extend_view('groups/left_column', 'groups/grouppolls',1);
-			}
+			extend_view('groups/left_column', 'groups/grouppolls',1);
 		}
 	
 		if (!$group_polls || ($group_polls == 'yes_default')) {
