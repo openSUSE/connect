@@ -68,7 +68,14 @@
 		?>
 		
 		<p>
-			<?php echo elgg_echo('polls:totalvotes') . $user_responses_count; ?>
+			<?php
+				$acl = get_members_of_access_collection($vars['entity']->access_id, true);
+				if ($acl && count($acl) > 0) {
+					echo sprintf(elgg_echo('polls:totalvotesoutof'), $user_responses_count, count($acl));
+				} else {
+					echo sprintf(elgg_echo('polls:totalvotes'), $user_responses_count);
+				}
+			?>
 		</p>
 		
 	<?php
