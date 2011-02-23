@@ -119,6 +119,8 @@ if (get_input('settings') == 'go') {
 			enable_plugin('apiadmin', $site->getGUID());
 			enable_plugin('following', $site->getGUID());
 			enable_plugin('openfate', $site->getGUID());
+                        enable_plugin('membership', $site->getGUID());
+                        enable_plugin('governance', $site->getGUID());
 		}
 
 		// reset the views path in case of installing over an old data dir.
