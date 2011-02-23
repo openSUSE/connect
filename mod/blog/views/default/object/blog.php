@@ -4,11 +4,6 @@
 	 * Elgg blog individual post view
 	 * 
 	 * @package ElggBlog
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Ben Werdmuller <ben@curverider.co.uk>
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.com/
-	 * 
 	 * @uses $vars['entity'] Optionally, the blog post to view
 	 */
 		if (isset($vars['entity'])) {
@@ -64,7 +59,7 @@
 					);
 				
 				?>
-				<?php echo elgg_echo('by'); ?> <a href="<?php echo $vars['url']; ?>pg/blog/<?php echo $owner->username; ?>"><?php echo $owner->name; ?></a> &nbsp; 
+				<?php echo elgg_echo('by'); ?> <a href="<?php echo $vars['url']; ?>pg/blog/owner/<?php echo $owner->username; ?>"><?php echo $owner->name; ?></a> &nbsp;
 				<!-- display the comments link -->
 				<?php
 					if($comments_on && $vars['entity'] instanceof ElggObject){
@@ -117,7 +112,7 @@
 				if ($canedit) {
 					
 				?>
-					<a href="<?php echo $vars['url']; ?>mod/blog/edit.php?blogpost=<?php echo $vars['entity']->getGUID(); ?>"><?php echo elgg_echo("edit"); ?></a>  &nbsp; 
+					<a href="<?php echo $vars['url']; ?>pg/blog/edit/<?php echo $vars['entity']->getGUID(); ?>"><?php echo elgg_echo("edit"); ?></a>  &nbsp;
 					<?php
 					
 						echo elgg_view("output/confirmlink", array(

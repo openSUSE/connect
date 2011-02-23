@@ -3,9 +3,6 @@
 	 * Elgg file browser uploader/edit action
 	 * 
 	 * @package ElggFile
-	 * @author Curverider Ltd
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.com/
 	 */
 
 	global $CONFIG;
@@ -161,7 +158,7 @@
 		}
 	
 		$container_user = get_entity($container_guid);
-		forward($CONFIG->wwwroot . "pg/file/" . $container_user->username);
+		forward($CONFIG->wwwroot . "pg/file/owner/" . $container_user->username);
 	
 	} else {
 		if ($guid) {

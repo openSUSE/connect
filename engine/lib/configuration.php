@@ -5,8 +5,6 @@
  *
  * @package Elgg
  * @subpackage Core
- * @author Curverider Ltd
- * @link http://elgg.org/
  */
 
 /**
@@ -39,8 +37,16 @@ function unset_config($name, $site_guid = 0) {
 function set_config($name, $value, $site_guid = 0) {
 	global $CONFIG;
 
+	$name = trim($name);
+
+	// cannot store anything longer than 32 characters in db, so catch before we set
+	if (elgg_strlen($name) > 32) {
+		elgg_log("The name length for configuration variables cannot be greater than 32", "ERROR");
+		return false;
+	}
+
 	// Unset existing
-	unset_config($name,$site_guid);
+	unset_config($name, $site_guid);
 
 	$name = sanitise_string($name);
 	$value = sanitise_string($value);
@@ -58,8 +64,8 @@ function set_config($name, $value, $site_guid = 0) {
  * Gets a configuration value
  *
  * @param string $name The name of the config value
- * @param int $site_guid Optionally, the GUID of the site (current site is assumed by default)
- * @return mixed|false Depending on success
+ * @param int $site_guid Optionally, the GUID of the site (current site is the default)
+ * @return mixed|null Depending on success
  */
 function get_config($name, $site_guid = 0) {
 	global $CONFIG;
@@ -80,7 +86,7 @@ function get_config($name, $site_guid = 0) {
 		return $result;
 	}
 
-	return false;
+	return null;
 }
 
 /**

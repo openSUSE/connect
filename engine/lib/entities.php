@@ -1,18 +1,18 @@
 <?php
 /**
  * Elgg entities.
- * Functions to manage all elgg entities (sites, collections, objects and users).
+ * Functions to manage all elgg entities (sites, groups, objects and users).
  *
  * @package Elgg
  * @subpackage Core
- * @author Curverider Ltd <info@elgg.com>
- * @link http://elgg.org/
  */
 
 /// Cache objects in order to minimise database access.
+global $ENTITY_CACHE;
 $ENTITY_CACHE = NULL;
 
 /// Cache subtype searches
+global $SUBTYPE_CACHE;
 $SUBTYPE_CACHE = NULL;
 
 /// Require the locatable interface
@@ -23,7 +23,6 @@ require_once('location.php');
  * ElggEntity The elgg entity superclass
  * This class holds methods for accessing the main entities table.
  *
- * @author Curverider Ltd <info@elgg.com>
  * @package Elgg
  * @subpackage Core
  */
@@ -1764,6 +1763,8 @@ function get_entity($guid) {
  * 	wheres => array() Additional where clauses to AND together
  *
  * 	joins => array() Additional joins
+ *	
+ *	callback => string A callback function to pass each row through 
  *
  * @return 	if count, int
  * 			if not count, array or false if no entities
@@ -1793,7 +1794,8 @@ function elgg_get_entities(array $options = array()) {
 		'count'					=>	FALSE,
 		'selects'				=>	array(),
 		'wheres'				=>	array(),
-		'joins'					=>	array()
+		'joins'					=>	array(),
+		'callback'				=>	'entity_row_to_elggstar',
 	);
 
 	$options = array_merge($defaults, $options);
@@ -1898,7 +1900,7 @@ function elgg_get_entities(array $options = array()) {
 			$query .= " LIMIT $offset, $limit";
 		}
 
-		$dt = get_data($query, "entity_row_to_elggstar");
+		$dt = get_data($query, $options['callback']);
 
 		//@todo normalize this to array()
 		return $dt;
@@ -3091,7 +3093,7 @@ function default_entity_icon_hook($hook, $entity_type, $returnvalue, $params) {
  * @param string $subtype The subtype to register (may be blank)
  * @return true|false Depending on success
  */
-function register_entity_type($type, $subtype) {
+function register_entity_type($type, $subtype=null) {
 	global $CONFIG;
 
 	$type = strtolower($type);
@@ -3122,13 +3124,13 @@ function register_entity_type($type, $subtype) {
  * @param string $type The type of entity (object, site, user, group) or blank for all
  * @return array|false Depending on whether entities have been registered
  */
-function get_registered_entity_types($type = '') {
+function get_registered_entity_types($type = null) {
 	global $CONFIG;
 
 	if (!isset($CONFIG->registered_entities)) {
 		return false;
 	}
-	if (!empty($type)) {
+	if ($type) {
 		$type = strtolower($type);
 	}
 	if (!empty($type) && empty($CONFIG->registered_entities[$type])) {
@@ -3149,20 +3151,26 @@ function get_registered_entity_types($type = '') {
  * @param string $subtype The subtype (may be blank)
  * @return true|false Depending on whether or not the type has been registered
  */
-function is_registered_entity_type($type, $subtype) {
+function is_registered_entity_type($type, $subtype=null) {
 	global $CONFIG;
 
 	if (!isset($CONFIG->registered_entities)) {
 		return false;
 	}
+
 	$type = strtolower($type);
-	if (empty($CONFIG->registered_entities[$type])) {
+
+	// @todo registering a subtype implicitly registers the type.
+	// see #2684
+	if (!isset($CONFIG->registered_entities[$type])) {
 		return false;
 	}
-	if (in_array($subtype, $CONFIG->registered_entities[$type])) {
-		return true;
+
+	if ($subtype && !in_array($subtype, $CONFIG->registered_entities[$type])) {
+		return false;
 	}
 
+	return true;
 }
 
 /**

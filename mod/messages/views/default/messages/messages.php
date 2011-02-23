@@ -4,10 +4,6 @@
 	 * Elgg messages individual view
 	 *
 	 * @package ElggMessages
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider Ltd <info@elgg.com>
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.com/
 	 *
 	 *
 	 * @uses $vars['entity'] Optionally, the message to view
@@ -18,7 +14,7 @@
 	if(get_input("type") == "sent"){
 
 		// send back to the users sentbox
-		$url = $vars['url'] . "mod/messages/sent.php";
+		$url = $vars['url'] . "pg/messages/sent/";
 
 		//this is used on the delete link so we know which type of message it is
 		$type = "sent";
@@ -26,7 +22,7 @@
 	} else {
 
 		//send back to the users inbox
-		$url = $vars['url'] . "pg/messages/" . $vars['user']->username;
+		$url = $vars['url'] . "pg/messages/inbox/" . $vars['user']->username;
 
 		//this is used on the delete link so we know which type of message it is
 		$type = "inbox";

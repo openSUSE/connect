@@ -4,10 +4,6 @@
 	 * Elgg bookmark view
 	 *
 	 * @package ElggBookmarks
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider <info@elgg.com>
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.org/
 	 */
 
 	$owner = $vars['entity']->getOwnerEntity();
@@ -20,6 +16,9 @@
 		$title = elgg_echo('bookmarks:no_title');
 	}
 
+	$a_tag_visit = filter_tags("<a href=\"{$address}\">" . elgg_echo('bookmarks:visit') . "</a>");
+	$a_tag_title = filter_tags("<a href=\"{$address}\">$title</a>");
+
 	if (get_context() == "search") {
 
 		if (get_input('search_viewtype') == "gallery") {
@@ -27,8 +26,8 @@
 			$parsed_url = parse_url($address);
 			$faviconurl = $parsed_url['scheme'] . "://" . $parsed_url['host'] . "/favicon.ico";
 
-			$info = "<p class=\"shares_gallery_title\">". elgg_echo("bookmarks:shared") . ": <a href=\"{$vars['entity']->getURL()}\">$title</a> (<a href=\"{$address}\">". elgg_echo('bookmarks:visit')."</a>)</p>";
-			$info .= "<p class=\"shares_gallery_user\">By: <a href=\"{$vars['url']}pg/bookmarks/{$owner->username}\">{$owner->name}</a> <span class=\"shared_timestamp\">{$friendlytime}</span></p>";
+			$info = "<p class=\"shares_gallery_title\">". elgg_echo("bookmarks:shared") . ": <a href=\"{$vars['entity']->getURL()}\">$title</a> ($a_tag_visit)</p>";
+			$info .= "<p class=\"shares_gallery_user\">By: <a href=\"{$vars['url']}pg/bookmarks/owner/{$owner->username}\">{$owner->name}</a> <span class=\"shared_timestamp\">{$friendlytime}</span></p>";
 			$numcomments = elgg_count_comments($vars['entity']);
 			if ($numcomments)
 				$info .= "<p class=\"shares_gallery_comments\"><a href=\"{$vars['entity']->getURL()}\">".sprintf(elgg_echo("comments")). " (" . $numcomments . ")</a></p>";
@@ -54,8 +53,8 @@
 				);
 			}
 
-			$info = "<p class=\"shares_gallery_title\">". elgg_echo("bookmarks:shared") .": <a href=\"{$vars['entity']->getURL()}\">{$title}</a> (<a href=\"{$address}\">".elgg_echo('bookmarks:visit')."</a>)</p>";
-			$info .= "<p class=\"owner_timestamp\"><a href=\"{$vars['url']}pg/bookmarks/{$owner->username}\">{$owner->name}</a> {$friendlytime}";
+			$info = "<p class=\"shares_gallery_title\">". elgg_echo("bookmarks:shared") .": <a href=\"{$vars['entity']->getURL()}\">{$title}</a> ($a_tag_visit)</p>";
+			$info .= "<p class=\"owner_timestamp\"><a href=\"{$vars['url']}pg/bookmarks/owner/{$owner->username}\">{$owner->name}</a> {$friendlytime}";
 			$numcomments = elgg_count_comments($vars['entity']);
 			if ($numcomments)
 				$info .= ", <a href=\"{$vars['entity']->getURL()}\">".sprintf(elgg_echo("comments")). " (" . $numcomments . ")</a>";
@@ -73,12 +72,12 @@
 
 		<div class="sharing_item_title">
 			<h3>
-				<a href="<?php echo $address; ?>"><?php echo $title; ?></a>
+				<?php echo $a_tag_title; ?>
 			</h3>
 		</div>
 		<div class="sharing_item_owner">
 			<p>
-				<b><a href="<?php echo $vars['url']; ?>pg/bookmarks/<?php echo $owner->username; ?>"><?php echo $owner->name; ?></a></b>
+				<b><a href="<?php echo $vars['url']; ?>pg/bookmarks/owner/<?php echo $owner->username; ?>"><?php echo $owner->name; ?></a></b>
 				<?php echo $friendlytime; ?>
 			</p>
 		</div>
@@ -103,12 +102,7 @@
 ?>
 		<div class="sharing_item_address">
 			<p>
-				<?php
-
-					//echo elgg_view('output/url',array('value' => $address));
-
-				?>
-				<a href="<?php echo $address; ?>"><?php echo elgg_echo('bookmarks:visit'); ?></a>
+				<?php echo $a_tag_visit; ?>
 			</p>
 		</div>
 		<?php
@@ -118,7 +112,7 @@
 		?>
 		<div class="sharing_item_controls">
 			<p>
-				<a href="<?php echo $vars['url']; ?>mod/bookmarks/add.php?bookmark=<?php echo $vars['entity']->getGUID(); ?>"><?php echo elgg_echo('edit'); ?></a> &nbsp;
+				<a href="<?php echo $vars['url']; ?>pg/bookmarks/edit/<?php echo $vars['entity']->getGUID(); ?>"><?php echo elgg_echo('edit'); ?></a> &nbsp;
 				<?php
 						echo elgg_view('output/confirmlink',array(
 

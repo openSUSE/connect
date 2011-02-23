@@ -5,15 +5,12 @@
  *
  * @package Elgg
  * @subpackage Core
- * @author Curverider Ltd <info@elgg.com>
- * @link http://elgg.org/
  */
 
 /**
  * ElggMetadata
  * This class describes metadata that can be attached to ElggEntities.
  *
- * @author Curverider Ltd <info@elgg.com>
  * @package Elgg
  * @subpackage Core
  */
@@ -157,7 +154,7 @@ function get_metadata($id) {
  * @param int $entity_guid The entity GUID
  * @param string $name The name of the metadata
  * @param string $value The optional value of the item (useful for removing a single item in a multiple set)
- * @return true|false Depending on success
+ * @return true|false False if no metadata match or a delete fails
  */
 function remove_metadata($entity_guid, $name, $value = "") {
 	global $CONFIG;
@@ -170,11 +167,13 @@ function remove_metadata($entity_guid, $name, $value = "") {
 		$query .= " and value_id=" . add_metastring($value);
 	}
 
-	if ($existing = get_data($query)) {
+	$existing = get_data($query);
+	if ($existing) {
+		$result = true;
 		foreach($existing as $ex) {
-			delete_metadata($ex->id);
+			$result = $result && delete_metadata($ex->id);
 		}
-		return true;
+		return $result;
 	}
 
 	return false;
@@ -397,10 +396,10 @@ function delete_metadata($id) {
 }
 
 /**
- * Return the metadata values that match your query.
+ * Get metadata objects by name
  *
  * @param string $meta_name
- * @return mixed either a value, an array of ElggMetadata or false.
+ * @return mixed ElggMetadata object, an array of ElggMetadata or false.
  */
 function get_metadata_byname($entity_guid,  $meta_name) {
 	global $CONFIG;

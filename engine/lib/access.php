@@ -5,10 +5,6 @@
  *
  * @package Elgg
  * @subpackage Core
-
- * @author Curverider Ltd
-
- * @link http://elgg.org/
  */
 
 /**
@@ -54,7 +50,7 @@ class ElggAccess {
  * @return string A list of access collections suitable for injection in an SQL call
  */
 function get_access_list($user_id = 0, $site_id = 0, $flush = false) {
-	global $CONFIG, $init_finished, $SESSION;
+	global $CONFIG, $init_finished;
 	static $access_list;
 
 	if (!isset($access_list) || !$init_finished) {
@@ -62,7 +58,7 @@ function get_access_list($user_id = 0, $site_id = 0, $flush = false) {
 	}
 
 	if ($user_id == 0) {
-		$user_id = $SESSION['id'];
+		$user_id = get_loggedin_userid();
 	}
 
 	if (($site_id == 0) && (isset($CONFIG->site_id))) {
@@ -511,7 +507,7 @@ function delete_access_collection($collection_id) {
  * Get a specified access collection
  *
  * @param int $collection_id The collection ID
- * @return array|false Depending on success
+ * @return object|false Depending on success
  */
 function get_access_collection($collection_id) {
 	global $CONFIG;
@@ -727,6 +723,18 @@ function get_entities_from_access_id($collection_id, $entity_type = "", $entity_
 	$options['access_id'] = $collection_id;
 
 	return elgg_get_entities_from_access_id($options);
+}
+
+/**
+ * @deprecated 1.7
+ */
+function get_entities_from_access_collection($collection_id, $entity_type = "", $entity_subtype = "",
+	$owner_guid = 0, $limit = 10, $offset = 0, $order_by = "", $site_guid = 0, $count = false) {
+
+	elgg_deprecated_notice('get_entities_from_access_collection() was deprecated by elgg_get_entities()', 1.7);
+
+	return get_entities_from_access_id($collection_id, $entity_type, $entity_subtype,
+			$owner_guid, $limit, $offset, $order_by, $site_guid, $count);
 }
 
 /**

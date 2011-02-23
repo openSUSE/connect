@@ -3,9 +3,6 @@
 	 * Elgg file browser save action
 	 * 
 	 * @package ElggFile
-	 * @author Curverider Ltd
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.com/
 	 */
 
 	global $CONFIG;
@@ -20,7 +17,7 @@
 	
 	if (!$file = get_entity($guid)) {
 		register_error(elgg_echo("file:uploadfailed"));
-		forward($CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username);
+		forward($CONFIG->wwwroot . "pg/file/owner/" . $_SESSION['user']->username);
 		exit;
 	}
 	
@@ -47,5 +44,5 @@
 	else
 		register_error(elgg_echo("file:uploadfailed"));
 	
-	forward($CONFIG->wwwroot . "pg/file/" . $container->username);
+	forward($CONFIG->wwwroot . "pg/file/owner/" . $container->username);
 ?>

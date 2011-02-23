@@ -5,14 +5,11 @@
  *
  * @package Elgg
  * @subpackage Core
- * @author Curverider Ltd <info@elgg.com>
- * @link http://elgg.org/
  */
 
 /**
  * ElggSite
  * Representation of a "site" in the system.
- * @author Curverider Ltd <info@elgg.com>
  * @package Elgg
  * @subpackage Core
  */
@@ -220,7 +217,7 @@ class ElggSite extends ElggEntity {
 	}
 
 	/**
-	 * Get the collections associated with a site.
+	 * This function does not work and will be removed.
 	 *
 	 * @param string $type
 	 * @param int $limit
@@ -451,7 +448,7 @@ function get_site_objects($site_guid, $subtype = "", $limit = 10, $offset = 0) {
 }
 
 /**
- * Add a collection to a site.
+ * The collection functionality does not work and will be removed.
  *
  * @param int $site_guid
  * @param int $collection_guid
@@ -466,7 +463,7 @@ function add_site_collection($site_guid, $collection_guid) {
 }
 
 /**
- * Remove a collection from a site.
+ * The collection functionality does not work and will be removed.
  *
  * @param int $site_guid
  * @param int $collection_guid
@@ -479,7 +476,7 @@ function remove_site_collection($site_guid, $collection_guid) {
 }
 
 /**
- * Get the collections belonging to a site.
+ * The collection functionality does not work and will be removed.
  *
  * @param int $site_guid
  * @param string $subtype

@@ -4,10 +4,6 @@
 	 * Elgg send a message action page
 	 * 
 	 * @package ElggMessages
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider Ltd <info@elgg.com>
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.com/
 	 */
 	 
 	 // Make sure we're logged in (send us to the front page if not)
@@ -26,19 +22,19 @@
 
 		if (empty($send_to)) {
 			register_error(elgg_echo("messages:user:blank"));
-			forward("mod/messages/send.php");
+			forward("pg/messages/compose/");
 		}
 		
 		$user = get_user($send_to);
 		if (!$user) {
 			register_error(elgg_echo("messages:user:nonexist"));
-			forward("mod/messages/send.php");
+			forward("pg/messages/compose/");
 		}
 
 	// Make sure the message field, send to field and title are not blank
 		if (empty($message_contents) || empty($title)) {
 			register_error(elgg_echo("messages:blank"));
-			forward("mod/messages/send.php");
+			forward("pg/messages/compose/");
 		}
 		
 	// Otherwise, 'send' the message 
@@ -47,7 +43,7 @@
 	// Save 'send' the message
 		if (!$result) {
 			register_error(elgg_echo("messages:error"));
-			forward("mod/messages/send.php");
+			forward("pg/messages/compose/");
 		}
 
 	// successful so uncache form values
@@ -59,6 +55,6 @@
 		system_message(elgg_echo("messages:posted"));
 	
 	// Forward to the users inbox
-		forward('pg/messages/' . get_loggedin_user()->username);
+		forward('pg/messages/inbox/' . get_loggedin_user()->username);
 
 ?>

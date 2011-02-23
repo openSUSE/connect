@@ -5,14 +5,14 @@
  *
  * @package Elgg
  * @subpackage Core
- * @author Curverider Ltd
- * @link http://elgg.org/
  */
 
 /// Map a username to a cached GUID
+global $USERNAME_TO_GUID_MAP_CACHE;
 $USERNAME_TO_GUID_MAP_CACHE = array();
 
 /// Map a user code to a cached GUID
+global $CODE_TO_GUID_MAP_CACHE;
 $CODE_TO_GUID_MAP_CACHE = array();
 
 /**
@@ -377,18 +377,6 @@ class ElggUser extends ElggEntity
 	 */
 	public function countObjects($subtype = "") {
 		return count_user_objects($this->getGUID(), $subtype);
-	}
-
-	/**
-	 * Get the collections associated with a user.
-	 *
-	 * @param string $subtype Optionally, the subtype of result we want to limit to
-	 * @param int $limit The number of results to return
-	 * @param int $offset Any indexing offset
-	 * @return unknown
-	 */
-	public function getCollections($subtype="", $limit = 10, $offset = 0) {
-		return get_user_collections($this->getGUID(), $subtype, $limit, $offset);
 	}
 
 	/**
@@ -1410,7 +1398,7 @@ function validate_username($username) {
 
 	// Basic, check length
 	if (!isset($CONFIG->minusername)) {
-		$CONFIG->minusername = 2;
+		$CONFIG->minusername = 4;
 	}
 
 	if (strlen($username) < $CONFIG->minusername) {

@@ -4,10 +4,6 @@
 	 * Elgg profile edit form
 	 * 
 	 * @package ElggProfile
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider Ltd <info@elgg.com>
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.com/
 	 * 
 	 * @uses $vars['entity'] The user entity
 	 * @uses $vars['profile'] Profile items from $CONFIG->profile, defined in profile/start.php for now 
@@ -27,7 +23,7 @@
 					$value = '';
 					foreach($metadata as $md) {
 						if (!empty($value)) $value .= ', ';
-						$value .= str_replace(',', ',/',$md->value);
+						$value .= $md->value;
 						$access_id = $md->access_id;
 					}
 				} else {

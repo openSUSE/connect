@@ -4,8 +4,6 @@
  *
  * @package Elgg
  * @subpackage Core
- * @author Curverider Ltd
- * @link http://elgg.org/
  *
  */
 
@@ -14,7 +12,7 @@ if (!isset($vars['offset'])) {
 } else {
 	$offset = $vars['offset'];
 }
-if ((!isset($vars['limit'])) || (!$vars['limit'])) {
+if (!isset($vars['limit'])) {
 	$limit = 10;
 } else {
 	$limit = (int)$vars['limit'];
@@ -33,6 +31,11 @@ if (isset($vars['nonefound'])) {
 	$nonefound = $vars['nonefound'];
 } else {
 	$nonefound = true;
+}
+
+// if displaying all entities, we do not need pagination
+if ($limit == 0) {
+	return true;
 }
 
 $totalpages = ceil($count / $limit);

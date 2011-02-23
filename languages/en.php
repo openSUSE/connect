@@ -4,8 +4,6 @@
  *
  * @package Elgg
  * @subpackage Core
- * @author Curverider Ltd
- * @link http://elgg.org/
  */
 
 $english = array(
@@ -190,6 +188,7 @@ $english = array(
 	'deprecatedfunction' => 'Warning: This code uses the deprecated function \'%s\' and is not compatible with this version of Elgg',
 
 	'pageownerunavailable' => 'Warning: The page owner %d is not accessible!',
+	'changebookmark' => 'Please change your bookmark for this page',
 /**
  * API
  */
@@ -415,12 +414,14 @@ To remove a widget drag it back to the <b>Widget gallery</b>.",
 	'user:name:fail' => "Could not change your name on the system.  Please make sure your name isn't too long and try again.",
 
 	'user:set:password' => "Account password",
+	'user:current_password:label' => 'Current password',
 	'user:password:label' => "Your new password",
 	'user:password2:label' => "Your new password again",
 	'user:password:success' => "Password changed",
 	'user:password:fail' => "Could not change your password on the system.",
 	'user:password:fail:notsame' => "The two passwords are not the same!",
 	'user:password:fail:tooshort' => "Password is too short!",
+	'user:password:fail:incorrect_current_password' => 'The current password entered is incorrect.',
 	'user:resetpassword:unknown_user' => 'Invalid user.',
 	'user:resetpassword:reset_password_confirm' => 'Resetting your password will email a new password to your registered email address.',
 

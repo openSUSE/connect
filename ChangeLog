@@ -1,6 +1,197 @@
+2011-02-01  brettp
+
+	* .: Tagged 1.7.7.
+	* Credited reporter with user validation by email admin bug.
+
+2011-02-01  cash
+
+	* need admin privilege to see unvalidated users
+	* Fixes #2835 removed user collection method and added comments to
+	  partially implemented site collection functionality
+	* Fixes #2836 cleaned up the more language strings in bookmarks
+
+2011-01-31  cash
+
+	* Bumping version to 1.7.7 and updated changes
+	* removed deprecation notice in code merged from trunk to 1.7
+	  branch
+	* Fixes #2787 group icons are deleted when group is deleted
+	* Fixes #2697 added groups and users back to activity filter
+	* Fixes #2833 adds parameter to control action timeout
+	* fixed regression test for image resizing
+	* Fixes #2779 can now call get_widget_types() more than once
+	* Fixes #2672 deleting pages is now also controlled more tightly
+	* Fixes #2749 treating deprecated_version as a number rather than
+	  string
+	* Fixes #2790 added a preg_match in get_context() that checks for
+	  /pg/<context>
+	* Fixes #2793 added logic to handle variable names longer than 32
+	  characters
+	* Fixes #2813 returning null if a configuration value is not set
+	  instead of false
+	* Fixes #2828 remove_metadata() now returns false if any of the
+	  delete_metadata() calls fail
+	* Fixes #2818 pagination not showing when limit = 0
+
+2011-01-24  cash
+
+	* Fixes #2617 fixed exception message if email address is not
+	  passed to elgg_send_email()
+	* Fixes #2686 can now blank external pages
+	* Fixes #2672 creating subpages is restricted
+
+2011-01-23  cash
+
+	* added catch for no comments in group forum river view
+	* Fixes #2805 #2804 forcing globals to be globals for when
+	  start.php is included in a function
+
+2011-01-13  cash
+
+	* Fixes #2746 displaying the no file notice only when elgg_list*
+	  returns nothing
+	* Fixes #2757 setting charset to utf-8 in unit tests reporter
+	* Fixes #2791 moved widget strings into language file
+
+2011-01-07  brettp
+
+	* Merged r7585 to 1.7 branch. Can now specificy callback to
+	  elgg_get_entities() using the 'callback' option.
+
+2011-01-05  cash
+
+	* Fixes #2557 moves register_entity call on groups to groups plugin
+	* Fixes #2744 removed duplicate strings
+	* Fixes #2767 - fixing WSOD on a bad delete
+	* Fixes #2765 group menu for file plugin turned off when group
+	  files is disabled
+
+2010-12-31  brettp
+
+	* Fixes #2745: Removed debug statements.
+
+2010-12-23  brettp
+
+	* Merged previous from tag.
+	* Updated changes.
+	* Fixes potential SQL injection in simplecache.
+
+2010-12-22  brettp
+
+	* Forgot to add the change I just made...
+	* Version bump to 1.7.6. Updated changes.
+	* Fixes #2684: is_registered_entity_type() returns correctly for
+	  types without a subtype. Note: registering a subtype implicitly
+	  registers a type.
+
+2010-12-21  cash
+
+	* corrected documentation on get access collection
+
+2010-12-01  cash
+
+	* Refs #2430 adds get_entities_from_access_collection() back in in
+	  1.7 branch
+
+2010-11-30  cash
+
+	* Refs #2630 fixed url in messages delete action
+
+2010-11-28  cash
+
+	* Refs #2630 supporting pg/messages/<username>
+
+2010-11-27  cash
+
+	* Fixes #2691 fixes all pages link on all site pages page
+
+2010-11-26  brettp
+
+	* Updated Changes for 1.7.5.
+	* Version bump (and correction) in README.txt.
+	* Version bump to 1.7.5.
+	* Using get_input() for widget save action.
+	* Fixes #2583: Added deprecated notice for
+	  list_entities_from_relationship(). Accidentally included the
+	  actual fix in r7445.
+	* Fixes #2572: Removed license, copyright, author, and link
+	  docblock tags in all files. License and copyright are covered by
+	  LICENSE.txt and COPYRIGHT.txt in root. Updated the
+	  CONTRIBUTOR.txt file.
+
+2010-11-22  cash
+
+	* so we don't need to the global $SESSION
+	* removed use of session class for get_loggedin_userid()
+	* Fixes #2673 fixes warning in plugins.php
+	* Fixes #2671 conversation pulled out to language file
+
+2010-11-22  brettp
+
+	* Fixes #2659: Pulled out styles into a css view for
+	  uservalidationbyemail.
+	* Fixes #2565: Wrapped twitterOAuth's include for OAuth in
+	  class_exists().
+	* Refs #2660: Corrected docblock for remove_group_tool_option().
+	* Fixes #2660: Added remove_group_tool_option().
+
+2010-11-21  brettp
+
+	* Fixed possible XSS in bookmarks plugin.
+	* Fixes #2669: Require a user to enter his current password before
+	  being able to change it.
+	* Fixes #2612: Corrected language string go to search:go.
+	* Refs #2670: Fixed profile XFN in user listing view.
+	* Fixes #2670: Rel links are correct for XFN in profile pages.
+
+2010-11-11  cash
+
+	* Fixes #2643 - do not load view path cache when plugins are
+	  disabled
+	* Fixes #2635 caching view types so that plugins can define new
+	  view types when caching is turned on
+	* Fixes #2641 was not checking for arrays in singular test
+	* fixed tools url for files
+
+2010-11-09  cash
+
+	* cleans up previous commit
+	* Fixes #2609 - walking group profile field arrays for encoding
+	* Fixes #2626 - adding default annotation view
+	* Fixes #2632 - documentation was incorrect for get_metadata_byname
+	  - it does not return a metadata value
+	* Fixes #2630 updated 1.7 file urls
+
+2010-11-07  cash
+
+	* Refs #2630 messages 1.7 plugin uses page handler urls now
+	* Refs #2630 invite friends plugin in 1.7 branch now uses page
+	  handler
+	* Refs #2630 - groups plugin in 1.7 uses page handler for all URLs
+
+2010-11-06  cash
+
+	* fixed language string from previous commit
+	* Fixes #2564 Refs #2630 1.7's thewire plugin has better urls and
+	  links to users
+	* Refs #2630 - updated 1.7 pages urls
+	* Refs #2630 - fixed 1.7 members urls
+	* Refs #2630 - fixed 1.7 bookmarks urls
+	* Refs #2630 - fixed 1.7 blog urls
+
+2010-11-03  brettp
+
+	* Fixes #2582. Using the correct language string.
+
+2010-10-27  cash
+
+	* Refs #2592 - large profile icons are now being created when
+	  cropped
+	* Fixes #2589 - user add action now checks password before creating
+	  user entity
+
 2010-10-14  brettp
 
-	* .: Tagging 1.7.4 for real this time.
 	* Forgot to include Twitter oAuth instructions in changes. #Fail.
 	* Bah forgot to add the release date in CHANGES.
 	* Updated changes for the bookmarks bugfix while in beta.

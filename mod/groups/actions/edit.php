@@ -3,21 +3,29 @@
  * Elgg groups plugin edit action.
  *
  * @package ElggGroups
- * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
- * @author Curverider Ltd
- * @copyright Curverider Ltd 2008-2010
- * @link http://elgg.com/
  */
 
 // Load configuration
 global $CONFIG;
 
+/**
+ * wrapper for recursive array walk decoding
+ */
+function profile_array_decoder(&$v) {
+	$v = html_entity_decode($v, ENT_COMPAT, 'UTF-8');
+}
+
 // Get group fields
 $input = array();
 foreach ($CONFIG->group as $shortname => $valuetype) {
-	$input[$shortname] = get_input($shortname);
 	// another work around for Elgg's encoding problems: #561, #1963
-	$input[$shortname] = html_entity_decode($input[$shortname], ENT_COMPAT, 'UTF-8');
+	$input[$shortname] = get_input($shortname);
+	if (is_array($input[$shortname])) {
+		array_walk_recursive($input[$shortname], 'profile_array_decoder');
+	} else {
+		$input[$shortname] = html_entity_decode($input[$shortname], ENT_COMPAT, 'UTF-8');
+	}
+
 	if ($shortname == 'name') {
 		$input[$shortname] = strip_tags($input[$shortname]);
 	}

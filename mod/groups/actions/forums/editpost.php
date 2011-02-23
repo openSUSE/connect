@@ -4,10 +4,6 @@
 	 * Elgg groups plugin edit post action.
 	 * 
 	 * @package ElggGroups
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.com/
 	 */
 
 		
@@ -21,7 +17,7 @@
 		$annotation = get_annotation($post);
 		$commentOwner = $annotation->owner_guid;
 		$access_id = $annotation->access_id;
-		$topic = get_input("topic");
+		$topic_guid = get_input("topic");
 		
 		if ($annotation) {
 			
@@ -40,9 +36,8 @@
 				system_message(elgg_echo("groups:forumpost:error"));
 		}
 		
-		// Forward to the group forum page
-	    $url = $CONFIG->wwwroot . "mod/groups/topicposts.php?topic={$topic}&group_guid={$group_guid}/";
-		forward($url);
+    $topic = get_entity($topic_guid);
+	forward($topic->getURL());
   
 		
 ?>

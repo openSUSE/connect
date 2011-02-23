@@ -6,10 +6,6 @@
 	 * the same message, messages don't actually delete, they are just removed from view for the user who deletes
 	 * 
 	 * @package ElggMessages
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider Ltd <info@elgg.com>
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.com/
 	 */
 	 
 	// Need to be logged in to do this
@@ -60,9 +56,9 @@
         	}
 			// check to see if it is a sent message to be deleted
 		    if($type == 'sent'){
-			    forward("mod/messages/sent.php?offset={$offset}");
+			    forward("pg/messages/sent/?offset={$offset}");
 		    }else{
-    		    forward("mod/messages/?username=" . get_loggedin_user()->username . "&offset={$offset}");
+    		    forward("pg/messages/inbox/" . get_loggedin_user()->username . "?offset={$offset}");
 		    }
         } else {
         	register_error(elgg_echo("messages:notfound"));

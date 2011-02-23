@@ -4,17 +4,17 @@
  * Elgg site message: delete
  *
  * @package ElggRiverDash
- * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
- * @author Curverider Ltd <info@elgg.com>
- * @copyright Curverider Ltd 2008-2010
- * @link http://elgg.org/
  */
 
 // Get input data
 $guid = (int) get_input('message_guid');
 
-// Make sure we actually have permission to edit
+// Make sure it exists and we have permission to edit
 $message = get_entity($guid);
+if (!$message) {
+	register_error(elgg_echo("sitemessage:notdeleted"));
+	forward(REFERER);
+}
 if ($message->getSubtype() != "sitemessage" || !$message->canEdit()) {
 	register_error(elgg_echo("sitemessage:notdeleted"));
 	forward(REFERER);

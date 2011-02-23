@@ -4,10 +4,6 @@
 	 * Elgg blog: delete post action
 	 * 
 	 * @package ElggBlog
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider Ltd <info@elgg.com>
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.org/
 	 */
 
 	// Make sure we're logged in (send us to the front page if not)
@@ -31,7 +27,7 @@
 					register_error(elgg_echo("blog:notdeleted"));
 				}
 		// Forward to the main blog page
-				forward("pg/blog/$container->username/");
+				forward("pg/blog/owner/$container->username/");
 		
 		}
 		

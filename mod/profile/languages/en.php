@@ -3,10 +3,6 @@
 	 * Elgg profile plugin language pack
 	 *
 	 * @package ElggProfile
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider Ltd
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.com/
 	 */
 
 	$english = array(
@@ -52,8 +48,8 @@
 		'profile:banned' => 'This user account has been suspended.',
 		'profile:deleteduser' => 'Deleted user',
 
-		'profile:river:update' => "%s updated the profile",
-		'profile:river:iconupdate' => "%s updated the profile icon",
+		'profile:river:update' => "%s updated their profile",
+		'profile:river:iconupdate' => "%s updated their profile icon",
 
 		'profile:label' => "Profile label",
 		'profile:type' => "Profile type",
