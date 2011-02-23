@@ -100,6 +100,25 @@ if (get_input('settings') == 'go') {
 			enable_plugin('uservalidationbyemail', $site->getGUID());
 			enable_plugin('htmlawed', $site->getGUID());
 			enable_plugin('search', $site->getGUID());
+			enable_plugin('members', $site->getGUID());
+			enable_plugin('riverdashboard', $site->getGUID());
+			enable_plugin('event_calendar', $site->getGUID());
+			enable_plugin('defaultwidgets', $site->getGUID());
+			enable_plugin('simplepie', $site->getGUID());
+			enable_plugin('profile', $site->getGUID());
+			enable_plugin('gravatar', $site->getGUID());
+			enable_plugin('polls', $site->getGUID());
+			enable_plugin('friends', $site->getGUID());
+			enable_plugin('connect_fields', $site->getGUID());
+			enable_plugin('profile_cards', $site->getGUID());
+			enable_plugin('groups', $site->getGUID());
+			enable_plugin('theme_bento', $site->getGUID());
+			enable_plugin('connect_index', $site->getGUID());
+			enable_plugin('group_operators', $site->getGUID());
+			enable_plugin('connect_api', $site->getGUID());
+			enable_plugin('apiadmin', $site->getGUID());
+			enable_plugin('following', $site->getGUID());
+			enable_plugin('openfate', $site->getGUID());
 		}
 
 		// reset the views path in case of installing over an old data dir.
