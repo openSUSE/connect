@@ -7,7 +7,7 @@ function governance_init() {
 
     // Set up the menu for logged in users
     if (isloggedin ()) {
-        add_menu(elgg_echo('Governance'), $CONFIG->wwwroot . "pg/governance");
+        add_menu(elgg_echo('Governance'), $CONFIG->wwwroot . "pg/groups/10501/opensuse-board/");
     }
 
     register_page_handler('governance', 'governance_page_handler');
