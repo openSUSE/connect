@@ -22,28 +22,6 @@ if (empty($vars['title'])) {
   $title = $vars['config']->sitename . ": " . $vars['title'];
 }
 
-global $autofeed;
-if (isset($autofeed) && $autofeed == true) {
-  $url = $url2 = full_url();
-  if (substr_count($url,'?')) {
-    $url .= "&view=rss";
-  } else {
-    $url .= "?view=rss";
-  }
-  if (substr_count($url2,'?')) {
-    $url2 .= "&view=odd";
-  } else {
-    $url2 .= "?view=opendd";
-  }
-  $feedref = <<<END
-
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="{$url}" />
-  <link rel="alternate" type="application/odd+xml" title="OpenDD" href="{$url2}" />
-
-END;
-} else {
-  $feedref = "";
-}
 
 // we won't trust server configuration but specify utf-8
 header('Content-type: text/html; charset=utf-8');
