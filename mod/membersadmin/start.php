@@ -2,6 +2,7 @@
   function membersadmin_init($event, $object_type, $object = null) {
 
     global $CONFIG;
+    $CONFIG->MembersGroupID = 111;
 
     register_page_handler('membersadmin','membersadmin_page_handler');
 
@@ -24,6 +25,8 @@
     {
       switch ($page[0])
       {
+        case 'csv': include($CONFIG->pluginspath . "membersadmin/csv.php"); break;
+        case 'txt': include($CONFIG->pluginspath . "membersadmin/txt.php"); break;
         default : include($CONFIG->pluginspath . "membersadmin/index.php");
       }
     }
