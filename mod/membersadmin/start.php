@@ -5,7 +5,7 @@
 
     register_page_handler('membersadmin','membersadmin_page_handler');
 
-    // register actions here
+    register_action('membersadmin/mark', false, $CONFIG->pluginspath . "membersadmin/actions/mark.php", true);
   }
 
   function membersadmin_pagesetup()
