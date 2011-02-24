@@ -8,7 +8,7 @@
   header('Content-Disposition: attachment; filename="opensuse_cloaks.txt"');
 
   foreach ($members as $m) {
-      echo "{$m->freenode_nick}\t{$m->freenode_cloak}";
+      echo "{$m->freenode_nick}\t{$m->freenode_cloak}\n";
   }
 
 ?>
