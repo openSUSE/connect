@@ -4,7 +4,7 @@
 
   $membersgroup = new ElggGroup(MEMBERSID);
 
-  $members = $membersgroup->getMembers();
+  $members = $membersgroup->getMembers(0);
 
   echo "<pre>\n";
   echo "username;email_target;email_nick;email_full;freenode_nick;freenode_cloak\n";
