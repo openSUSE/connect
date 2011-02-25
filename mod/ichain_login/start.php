@@ -16,8 +16,8 @@ global $CONFIG;
 function ichain_client_init() {
     // use the following 3 lines to fake a login:
     // logout();
-    $_SERVER['HTTP_X_USERNAME'] = "rio";
-    $_SERVER['HTTP_X_EMAIL'] = "rio@scherben.de";
+    // $_SERVER['HTTP_X_USERNAME'] = "rio";
+    // $_SERVER['HTTP_X_EMAIL'] = "rio@scherben.de";
 
     $username = $_SERVER['HTTP_X_USERNAME'];
     if (isset($username) && !isloggedin()) {
