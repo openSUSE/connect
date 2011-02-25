@@ -2,9 +2,9 @@
 
   <?php
     $username = get_loggedin_user();
-    $username = 'kfreitag';
-    $passwd = 'secret';
     if ($username) {
+       elgg_log("Hermes: User logged in : " + $username, 'NOTICE' ); 
+    }
   ?>
 
 <script type="text/javascript">

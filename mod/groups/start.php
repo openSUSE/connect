@@ -78,10 +78,38 @@
 
 		// add the forum tool option
 		add_group_tool_option('forum',elgg_echo('groups:enableforum'),true);
+ 
+                // add the auto subscribe to mailinglist option
+                add_group_tool_option('enable_ml', elgg_echo('groups:enablemailinglist'),true);
 
 		// Now override icons
 		register_plugin_hook('entity:icon:url', 'group', 'groups_groupicon_hook');
 	}
+
+	/**
+	 * Hermes notificator, FIXME move to more general place, ie. to make it useable from
+	 * other places
+         */
+         function notify_hermes( $function, $options )
+         {
+		$runmode = "notify";
+       		if( $function == 'subscribe_ml' ) {
+			$runmode = 'subscribe_ml';
+		}
+
+		# do the hermes http call
+                $host = "http://notify.opensuse.org";
+  		$query = "rm=". $runmode;
+		foreach( $options as $option_name => $value ) {
+			$query .= "&" . $option_name . "=" . $value;
+		}
+		$url = $host . "?" . urlencode( $query );
+                elgg_log("Hermes: notify_hermes : " . $url, 'NOTICE' );
+		$headers = array(headers => array("x-username" => $options->username, "user-agent" => "connect"));
+		$result = http_parse_message( http_get( $url, $headers ))->body;
+
+         }
+
 
 	/**
 	 * Event handler for group forum posts

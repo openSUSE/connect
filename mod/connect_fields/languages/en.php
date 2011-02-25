@@ -36,6 +36,7 @@
       'groups:blog'              => 'Blog',
       'groups:irc'               => 'IRC channel',
       'groups:twitter'           => 'Twitter',
+      'groups:mailinglist'       => 'Mailinglist',
       'groups:identica'          => 'identi.ca',
       'groups:facebook'          => 'Facebook',
       'groups:obs'               => 'Build Service repository',

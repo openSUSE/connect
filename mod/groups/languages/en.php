@@ -95,6 +95,7 @@
 			'groups:enablepages' => 'Enable group pages',
 			'groups:enableforum' => 'Enable group discussion',
 			'groups:enablefiles' => 'Enable group files',
+                        'groups:enablemailinglist' => 'Enable autosubscription on mailinglist',
 			'groups:yes' => 'yes',
 			'groups:no' => 'no',
 

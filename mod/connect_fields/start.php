@@ -43,6 +43,7 @@
         $return_value["obs"] = "connect_multitext";
         $return_value["ohloh"] = "connect_url";
         $return_value["bugtracker"] = "url";
+        $return_value["mailinglist"] = "text";
         return $return_value;
     }
 
