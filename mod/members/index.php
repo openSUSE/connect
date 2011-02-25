@@ -4,10 +4,6 @@
  * Elgg members index page - called from filter or search
  * 
  * @package ElggMembers
- * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
- * @author Curverider <info@elgg.com>
- * @copyright Curverider Ltd 2008-2010
- * @link http://elgg.com/
  */
 
 require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
@@ -62,7 +58,7 @@ $members_nav = elgg_view("members/members_sort_menu", array("count" => $members,
 $content = $members_nav . $filter_content;
 
 // title
-$main_content = elgg_view_title(elgg_echo("Users"));
+$main_content = elgg_view_title(elgg_echo("members:members"));
 
 $main_content .= elgg_view('page_elements/contentwrapper', array('body' => $content, 'subclass' => 'members'));
 

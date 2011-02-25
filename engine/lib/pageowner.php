@@ -5,8 +5,6 @@
  *
  * @package Elgg
  * @subpackage Core
- * @author Curverider Ltd
- * @link http://elgg.org/
  */
 
 /**
@@ -161,6 +159,9 @@ function get_context() {
 	global $CONFIG;
 	if (isset($CONFIG->context) && !empty($CONFIG->context)) {
 		return $CONFIG->context;
+	}
+	if (preg_match("/\/pg\/([\w\-\_]+)/", $_SERVER['REQUEST_URI'], $matches)) {
+		return $matches[1];
 	}
 	if ($context = get_plugin_name(true)) {
 		return $context;

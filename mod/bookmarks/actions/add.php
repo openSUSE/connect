@@ -4,10 +4,6 @@
 	 * Elgg bookmarks add/save action
 	 *
 	 * @package ElggBookmarks
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider <info@elgg.com>
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.org/
 	 */
 
 	gatekeeper();
@@ -20,6 +16,14 @@
 		$shares = get_input('shares',array());
 
 		if (!$title || !$address) {
+			register_error(elgg_echo('bookmarks:save:failed'));
+			forward(REFERER);
+		}
+
+		// don't allow malicious code.
+		// put this in a context of a link so HTMLawed knows how to filter correctly.
+		$xss_test = "<a href=\"$address\"></a>";
+		if ($xss_test != filter_tags($xss_test)) {
 			register_error(elgg_echo('bookmarks:save:failed'));
 			forward(REFERER);
 		}

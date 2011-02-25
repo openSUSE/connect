@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin_manifest>
+	<field key="author" value="openSUSE" />
+	<field key="version" value="1.0" />
+	<field key="description" value="Members Administration" />
+	<field key="website" value="http://opensuse.org/" />
+	<field key="copyright" value="GPLv2" />
+	<field key="elgg_version" value="2011020101" />
+</plugin_manifest>

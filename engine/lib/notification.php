@@ -16,12 +16,11 @@
  * @package Elgg
  * @subpackage API
 
- * @author Curverider Ltd
 
- * @link http://elgg.org/
  */
 
 /** Notification handlers */
+global $NOTIFICATION_HANDLERS;
 $NOTIFICATION_HANDLERS = array();
 
 /**
@@ -214,7 +213,6 @@ function set_user_notification_setting($user_guid, $method, $value) {
 
 /**
  * Notification exception.
- * @author Curverider Ltd
  */
 class NotificationException extends Exception {}
 
@@ -278,11 +276,11 @@ function elgg_send_email($from, $to, $subject, $body, array $params = NULL) {
 	global $CONFIG;
 
 	if (!$from) {
-		throw new NotificationException(sprintf(elgg_echo('NotificationException:NoEmailAddress'), 'from'));
+		throw new NotificationException(sprintf(elgg_echo('NotificationException:MissingParameter'), 'from'));
 	}
 
 	if (!$to) {
-		throw new NotificationException(sprintf(elgg_echo('NotificationException:NoEmailAddress'), 'to'));
+		throw new NotificationException(sprintf(elgg_echo('NotificationException:MissingParameter'), 'to'));
 	}
 
 	// return TRUE/FALSE to stop elgg_send_email() from sending

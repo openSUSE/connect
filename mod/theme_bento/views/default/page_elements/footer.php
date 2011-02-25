@@ -43,6 +43,8 @@
         <strong class="grey-medium spacer1">Locations</strong>
         <ul>
           <li><a href="<?php echo $vars['url']; ?>pg/dashboard/"><?php echo elgg_echo('dashboard'); ?></a></li>
+          <li><a href="<?php echo $vars['url']; ?>pg/governance/"><?php echo elgg_echo('Governance'); ?></a></li>
+          <li><a href="<?php echo $vars['url']; ?>pg/membership/"><?php echo elgg_echo('Membership'); ?></a></li>
         </ul>
       </div>
 

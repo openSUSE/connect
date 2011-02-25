@@ -1,3 +1,82 @@
+Version 1.7.7
+(January 31, 2011 from http://code.elgg.org/branches/1.7)
+
+ Security Enhancements:
+  * Only admins can view the unvalidated users page (Thanks to Manacim 
+    Medriano for the report!)
+
+ Bugfixes:
+  * Fixed deprecation notices for locales that use comma as radix point.
+  * Groups - Files can be completely disabled per group.
+  * Pages - Deleting and creating subpages is restricted to owner or group member.
+  * Groups - group icons deleted when group is deleted.
+  * Pagination will not display when all content id displayed.
+  * Fixed issue with get_context() when trailing slash is missing.
+
+ API Changes:
+  * Added $CONFIG->action_token_timeout.
+  * Added callback option to elgg_get_entities().
+
+
+Version 1.7.6
+(December 23, 2010 from http://code.elgg.org/branches/1.7)
+
+ Security Enhancements:
+  * Fixed a possible SQL injection attack when using a crafted
+    URL.  Thanks to Gerrit Venema from Gol Gol (golgol.nl) for
+    the report.
+
+ Bugfixes:
+  * Pages - Fixed "All Pages" link on "All Site Pages" page.
+  * Messages - Fixed invalid URLs when using old-style
+    pg/messages/<username> links.
+  * Messages - Fixed redirect after deleting a message.
+
+ API Changes:
+  * Added get_entities_from_access_collection() and deprecated it.
+  * is_registered_entity_type() returns correctly when requesting
+    just a type and not a subtype.
+
+
+Version 1.7.5
+(November 26, 2010 from http://code.elgg.org/branches/1.7)
+ 
+ Security Enhancements:
+  * Fixed a security flaw in the Bookmarks plugin that could
+    allow an XSS attack using crafted URLs.  Thanks to Akhilesh 
+    Gupta for the bug report.
+  * Fixed a security flaw in the widgets system that could allow
+    an XSS acttack using crafted URLs.
+
+ Bugfixes:
+  * Checking for mismatched passwords before creating user when
+    manually adding users. 
+  * 'large' size profile icons created when cropped.
+  * Fixed menu entry for user's files link.
+  * Fixed caching issues with plugin-added view types.
+  * Fixed XFN links on profile page and user lists.
+  * Fixed PHP warnings about invalid foreaches in plugins.php
+  * Fixed problems in elgg_get_entities_*() when using an array
+    for owner_guid.
+  * Group profile edit action correctly encodes and saves array input.
+  * Language string corrections.
+
+ UI/UX Changes:
+  * Users must verify their current password before they can changing
+    passwords.
+  * Using pagehandlers instead of mod/mod_name/ calls in Blogs,
+    Bookmarks, Members, Pages, The Wire, Groups, Invite Friends,
+    and Messages.
+  * Added a page to view Wire posts by user.
+ 
+ API Changes:
+  * Added remove_group_tool_option().
+  * Wrapped Twitter Service's vendor's oAuth lib in class_exists().
+  * Added elgg_list_entities_from_relationship().
+  * Exposed order_by param in list_entities_from_relationship().
+  * Added a default annotation view.
+
+
 Version 1.7.4
 (October 14, 2010 from http://code.elgg.org/branches/1.7)
 

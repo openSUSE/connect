@@ -16,11 +16,12 @@
  *
  * @package Elgg
  * @subpackage Core
- * @author Curverider Ltd
- * @link http://elgg.org/
  */
 
+global $_PAM_HANDLERS;
 $_PAM_HANDLERS = array();
+
+global $_PAM_HANDLERS_MSG;
 $_PAM_HANDLERS_MSG = array();
 
 /**

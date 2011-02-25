@@ -3,10 +3,6 @@
 	 * Elgg Pages
 	 * 
 	 * @package ElggPages
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider Ltd
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.com/
 	 */
 
 	/**
@@ -24,7 +20,7 @@
 		}
 		else
 		{
-			add_menu(elgg_echo('pages'), $CONFIG->wwwroot . "mod/pages/world.php");
+			add_menu(elgg_echo('pages'), $CONFIG->wwwroot . "pg/pages/all/");
 		}
 		
 		// Extend hover-over menu	
@@ -130,7 +126,7 @@
 					}
 					include($CONFIG->pluginspath . "pages/welcome.php");
           		break;
-    			case "world":  
+    			case "all":
    					include($CONFIG->pluginspath . "pages/world.php");
           		break;
     			case "owned":
@@ -333,6 +329,26 @@
 			}
 		}
 		
+	}
+
+	/**
+	 * Does user have permissions to create subpage or delete
+	 * 
+	 * @param ElggEntity $container_entity
+	 * @return bool
+	 */
+	function pages_has_full_permissions($container_entity) {
+		if (!isloggedin()) {
+			return false;
+		}
+
+		if (get_loggedin_userid() == $container_entity->guid) {
+			return true;
+		} elseif ($container_entity instanceof ElggGroup) {
+			return $container_entity->isMember();
+		}
+
+		return false;
 	}
 	
 	// write permission plugin hooks

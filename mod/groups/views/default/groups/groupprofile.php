@@ -3,10 +3,6 @@
 	 * Elgg groups plugin full profile view.
 	 *
 	 * @package ElggGroups
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.com/
 	 */
 
 	if ($vars['full'] == true) {
@@ -61,8 +57,7 @@
 						echo ": </b>";
 
 						$options = array(
-							'value' => $vars['entity']->$shortname,
-							'internalname' => "groups:{$shortname}"
+							'value' => $vars['entity']->$shortname
 						);
 
 						if ($valtype == 'tags') {
@@ -89,7 +84,7 @@
 
 ?>
 
-		<a href="<?php echo $vars['url']; ?>mod/groups/edit.php?group_guid=<?php echo $vars['entity']->getGUID(); ?>"><?php echo elgg_echo("edit"); ?></a>
+		<a href="<?php echo $vars['url']; ?>pg/groups/edit/<?php echo $vars['entity']->getGUID(); ?>"><?php echo elgg_echo("edit"); ?></a>
 
 
 <?php

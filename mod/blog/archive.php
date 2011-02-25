@@ -4,10 +4,6 @@
 	 * Elgg blog archive page
 	 * 
 	 * @package ElggBlog
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider Ltd <info@elgg.com>
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.com/
 	 */
 
 	// Load Elgg engine
@@ -24,7 +20,7 @@
 		$timelower = (int) get_input('param2');
 		$timeupper = (int) get_input('param3');
 		if (empty($timelower)) {
-			forward('pg/blog/'.$page_owner->username);
+			forward('pg/blog/owner/'.$page_owner->username);
 			exit;
 		}
 		if (empty($timeupper)) {

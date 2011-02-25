@@ -5,8 +5,6 @@
  *
  * @package Elgg
  * @subpackage Core
- * @author Curverider Ltd
- * @link http://elgg.org/
  */
 
 /**
@@ -93,7 +91,9 @@ function current_page_url() {
 function elgg_get_filepath_cache() {
 	global $CONFIG;
 	static $FILE_PATH_CACHE;
-	if (!$FILE_PATH_CACHE) $FILE_PATH_CACHE = new ElggFileCache($CONFIG->dataroot);
+	if (!$FILE_PATH_CACHE) {
+		$FILE_PATH_CACHE = new ElggFileCache($CONFIG->dataroot);
+	}
 
 	return $FILE_PATH_CACHE;
 }
@@ -104,20 +104,24 @@ function elgg_get_filepath_cache() {
  */
 function elgg_filepath_cache_reset() {
 	$cache = elgg_get_filepath_cache();
-	return $cache->delete('view_paths');
+	$view_types_result = $cache->delete('view_types');
+	$views_result = $cache->delete('views');
+	return $view_types_result && $views_result;
 }
 
 /**
  * Saves a filepath cache.
  *
- * @param mixed $data
+ * @param string $type
+ * @param string $data
+ * @return bool
  */
-function elgg_filepath_cache_save($data) {
+function elgg_filepath_cache_save($type, $data) {
 	global $CONFIG;
 
 	if ($CONFIG->viewpath_cache_enabled) {
 		$cache = elgg_get_filepath_cache();
-		return $cache->save('view_paths', $data);
+		return $cache->save($type, $data);
 	}
 
 	return false;
@@ -126,16 +130,18 @@ function elgg_filepath_cache_save($data) {
 /**
  * Retrieve the contents of the filepath cache.
  *
+ * @param string $type
+ * @return string
  */
-function elgg_filepath_cache_load() {
+function elgg_filepath_cache_load($type) {
 	global $CONFIG;
 
 	if ($CONFIG->viewpath_cache_enabled) {
 		$cache = elgg_get_filepath_cache();
-		$cached_view_paths = $cache->load('view_paths');
+		$cached_data = $cache->load($type);
 
-		if ($cached_view_paths) {
-			return $cached_view_paths;
+		if ($cached_data) {
+			return $cached_data;
 		}
 	}
 
@@ -1074,13 +1080,21 @@ $DATALIST_CACHE = array();
  * Get the value of a particular piece of data in the datalist
  *
  * @param string $name The name of the datalist
- * @return string|false Depending on success
+ * @return string|null|false String if value exists, null if doesn't, false on error
  */
 function datalist_get($name) {
 	global $CONFIG, $DATALIST_CACHE;
 
 	// We need this, because sometimes datalists are received before the database is created
 	if (!is_db_installed()) {
+		return false;
+	}
+
+	$name = trim($name);
+
+	// cannot store anything longer than 32 characters in db, so catch here
+	if (elgg_strlen($name) > 32) {
+		elgg_log("The name length for configuration variables cannot be greater than 32", "ERROR");
 		return false;
 	}
 
@@ -1129,7 +1143,7 @@ function datalist_get($name) {
 		return $row->value;
 	}*/
 
-	return false;
+	return null;
 }
 
 /**
@@ -1137,11 +1151,19 @@ function datalist_get($name) {
  *
  * @param string $name The name of the datalist
  * @param string $value The new value
- * @return true
+ * @return bool
  */
 function datalist_set($name, $value) {
 
 	global $CONFIG, $DATALIST_CACHE;
+
+	$name = trim($name);
+
+	// cannot store anything longer than 32 characters in db, so catch before we set
+	if (elgg_strlen($name) > 32) {
+		elgg_log("The name length for configuration variables cannot be greater than 32", "ERROR");
+		return false;
+	}
 
 	$name = sanitise_string($name);
 	$value = sanitise_string($value);
@@ -1156,7 +1178,6 @@ function datalist_set($name, $value) {
 		$datalist_memcache->delete($name);
 	}
 
-	//delete_data("delete from {$CONFIG->dbprefix}datalists where name = '{$name}'");
 	insert_data("INSERT into {$CONFIG->dbprefix}datalists set name = '{$name}', value = '{$value}' ON DUPLICATE KEY UPDATE value='{$value}'");
 
 	$DATALIST_CACHE[$name] = $value;
@@ -1170,15 +1191,22 @@ function datalist_set($name, $value) {
  * if the function was executed before or on $timelastupdatedcheck, this
  * function will run it again.
  *
+ * @warning The function name cannot be longer than 32 characters long due to
+ * the current schema for the datalist table.
+ *
  * @param string $functionname The name of the function you want to run.
  * @param int $timelastupdatedcheck Optionally, the UNIX epoch timestamp of the execution threshold
  * @return true|false Depending on success.
  */
 function run_function_once($functionname, $timelastupdatedcheck = 0) {
-	if ($lastupdated = datalist_get($functionname)) {
+	$lastupdated = datalist_get($functionname);
+	if ($lastupdated) {
 		$lastupdated = (int) $lastupdated;
-	} else {
+	} elseif ($lastupdated !== false) {
 		$lastupdated = 0;
+	} else {
+		// unable to check datalist
+		return false;
 	}
 	if (is_callable($functionname) && $lastupdated <= $timelastupdatedcheck) {
 		$functionname();
@@ -1191,19 +1219,19 @@ function run_function_once($functionname, $timelastupdatedcheck = 0) {
 
 /**
  * Sends a notice about deprecated use of a function, view, etc.
- * Note: This will ALWAYS at least log a warning.  Don't use to pre-deprecate things.
+ * Note: This will ALWAYS at least log a warning. Don't use to pre-deprecate things.
  * This assumes we are releasing in order and deprecating according to policy.
  *
- * @param str $msg Message to log / display.
- * @param str $version human-readable *release* version the function was deprecated. No bloody A, B, (R)C, or D.
+ * @param str   $msg Message to log / display.
+ * @param float $version human-readable *release* version the function was deprecated. No bloody A, B, (R)C, or D.
  *
  * @return bool
  * @since 1.7.0
  */
 function elgg_deprecated_notice($msg, $dep_version) {
 	// if it's a major release behind, visual and logged
-	// if it's a 2 minor releases behind, visual and logged
-	// if it's 1 minor release behind, logged.
+	// if it's a 1 minor release behind, visual and logged
+	// if it's for current minor release, logged.
 	// bugfixes don't matter because you're not deprecating between them, RIGHT?
 
 	if (!$dep_version) {
@@ -1212,24 +1240,20 @@ function elgg_deprecated_notice($msg, $dep_version) {
 
 	$elgg_version = get_version(TRUE);
 	$elgg_version_arr = explode('.', $elgg_version);
-	$elgg_major_version = $elgg_version_arr[0];
-	$elgg_minor_version = $elgg_version_arr[1];
+	$elgg_major_version = (int)$elgg_version_arr[0];
+	$elgg_minor_version = (int)$elgg_version_arr[1];
 
-	$dep_version_arr = explode('.', $dep_version);
-	$dep_major_version = $dep_version_arr[0];
-	$dep_minor_version = $dep_version_arr[1];
-
-	$last_working_version = $dep_minor_version - 1;
+	$dep_major_version = (int)$dep_version;
+	$dep_minor_version = 10 * ($dep_version - $dep_major_version);
 
 	$visual = FALSE;
 
-	// use version_compare to account for 1.7a < 1.7
-	if (($dep_major_version < $elgg_major_version)
-	|| (($elgg_minor_version - $last_working_version) > 1)) {
+	if (($dep_major_version < $elgg_major_version) ||
+	    ($dep_minor_version < $elgg_minor_version)) {
 		$visual = TRUE;
 	}
 
-	$msg = "Deprecated in $dep_version: $msg";
+	$msg = "Deprecated in $dep_major_version.$dep_minor_version: $msg";
 
 	if ($visual) {
 		register_error($msg);
@@ -1435,7 +1459,12 @@ function elgg_normalise_plural_options_array($options, $singulars) {
 			if ($options[$singular] === ELGG_ENTITIES_ANY_VALUE) {
 				$options[$plural] = $options[$singular];
 			} else {
-				$options[$plural] = array($options[$singular]);
+				// Test for array refs #2641
+				if (!is_array($options[$singular])) {
+					$options[$plural] = array($options[$singular]);
+				} else {
+					$options[$plural] = $options[$singular];
+				}
 			}
 		}
 		 

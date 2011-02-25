@@ -35,6 +35,16 @@
 				forward($poll->getUrl());
 			}
 		}
+		// Make sure the poll is still open
+		if ($poll->enddate && (strtotime($poll->enddate)<=time())) {
+			if (get_input('callback')) {
+				echo elgg_view('polls/poll_widget_content',array('entity'=>$poll,'msg'=>elgg_echo("polls:closed")));
+				exit;
+			} else {
+				register_error(elgg_echo("polls:closed"));
+				forward($poll->getUrl());
+			}
+		}
 		if (!is_array($response)) $response = array($response);
 		// check max number of answers if defined
 		if ($poll->maxanswers > 0 && count($response) > $poll->maxanswers) {

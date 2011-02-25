@@ -4,10 +4,6 @@
 	 * Elgg user display (details)
 	 *
 	 * @package ElggProfile
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider Ltd <info@elgg.com>
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.com/
 	 *
 	 * @uses $vars['entity'] The user entity
 	 */
@@ -76,14 +72,19 @@
 	<?php
 
 	// Simple XFN
-	$rel = "";
-	if (page_owner() == $vars['entity']->guid)
-		$rel = 'me';
-	else if (check_entity_relationship(page_owner(), 'friend', $vars['entity']->guid))
-		$rel = 'friend';
+	$rel_type = "";
+	if (get_loggedin_userid() == $vars['entity']->guid) {
+		$rel_type = 'me';
+	} elseif (check_entity_relationship(get_loggedin_userid(), 'friend', $vars['entity']->guid)) {
+		$rel_type = 'friend';
+	}
+
+	if ($rel_type) {
+		$rel = "rel=\"$rel_type\"";
+	}
 
 	// display the users name
-	echo "<h2><a href=\"" . $vars['entity']->getUrl() . "\" rel=\"$rel\">" . $vars['entity']->name . "</a></h2>";
+	echo "<h2><a href=\"" . $vars['entity']->getUrl() . "\" $rel>" . $vars['entity']->name . "</a></h2>";
 
 	//insert a view that can be extended
 	echo elgg_view("profile/status", array("entity" => $vars['entity']));
@@ -96,11 +97,6 @@
 
 		if (is_array($vars['config']->profile) && sizeof($vars['config']->profile) > 0)
 			foreach($vars['config']->profile as $shortname => $valtype) {
-				// HACK: importing fields set access level to public
-				//       we don't want to show target email and contributions to everyone
-				//       hack can be removed after fixing access levels
-				if ($shortname == "email_target" || $shortname == "contributions") continue;
-				// END
 				if ($shortname != "description") {
 					$value = $vars['entity']->$shortname;
 					if (!empty($value)) {
@@ -117,8 +113,7 @@
 							?>: </b>
 							<?php
 							$options = array(
-								'value' => $vars['entity']->$shortname,
-								'internalname' => "profile:{$shortname}"
+								'value' => $vars['entity']->$shortname
 							);
 
 							if ($valtype == 'tags') {

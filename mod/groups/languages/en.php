@@ -3,10 +3,6 @@
 	 * Elgg groups plugin language pack
 	 *
 	 * @package ElggGroups
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider Ltd
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.com/
 	 */
 
 	$english = array(
@@ -187,7 +183,7 @@ or click below to view the group's join requests:
 			*/
 
 			'groups:river:member' => '%s is now a member of',
-			'groups:river:create' => '%s has joined the group',
+			'groups:river:create' => '%s has created the group',
 			'groupforum:river:updated' => '%s has updated',
 			'groupforum:river:update' => 'this discussion topic',
 			'groupforum:river:created' => '%s has created',

@@ -1,5 +1,6 @@
 <div class="contentWrapper">
-
-    Governance
+    <img src="<?php echo $vars['url']; ?>mod/governance/graphics/boards.jpg" alt="Board"/><br/>
+    The <a href="/pg/groups/10501/opensuse-board/">openSUSE board</a> acts as a central
+    point of contact for the community.<br/>[<a href="http://en.opensuse.org/openSUSE:Board">learn more</a>]
 
 </div>

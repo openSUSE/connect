@@ -4,10 +4,6 @@
 	 * Elgg blog edit/add page
 	 *
 	 * @package ElggBlog
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider Ltd <info@elgg.com>
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.com/
 	 *
 	 * @uses $vars['object'] Optionally, the blog post to edit
 	 */
@@ -67,7 +63,7 @@
 
 		$access_input = elgg_view('input/access', array('internalname' => 'access_id', 'value' => $access_id));
 		$submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('publish')));
-		$conversation = elgg_echo('Conversation');
+		$conversation = elgg_echo('blog:conversation');
 		$publish = elgg_echo('publish');
 		$cat = elgg_echo('categories');
 		$preview = elgg_echo('blog:preview');

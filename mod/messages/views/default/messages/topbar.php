@@ -4,10 +4,6 @@
 	 * Elgg messages topbar extender
 	 * 
 	 * @package ElggMessages
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider Ltd <info@elgg.com>
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.com/
 	 */
 	 
 	 //need to be logged in to send a message
@@ -25,13 +21,13 @@
 
 ?>
 
-<a href="<?php echo $vars['url']; ?>pg/messages/<?php echo get_loggedin_user()->username; ?>" class="privatemessages" >&nbsp;</a>
+<a href="<?php echo $vars['url']; ?>pg/messages/inbox/<?php echo get_loggedin_user()->username; ?>" class="privatemessages" >&nbsp;</a>
 	
 <?php
     }else{
 ?>
 
-<a href="<?php echo $vars['url']; ?>pg/messages/<?php echo get_loggedin_user()->username; ?>" class="privatemessages_new" >[<?php echo $num; ?>]</a>
+<a href="<?php echo $vars['url']; ?>pg/messages/inbox/<?php echo get_loggedin_user()->username; ?>" class="privatemessages_new" >[<?php echo $num; ?>]</a>
 	
 <?php
     }

@@ -13,15 +13,9 @@
 		$owner = $vars['entity']->getOwnerEntity();
 		$friendlytime = friendly_time($vars['entity']->time_created);
 		$responses = $vars['entity']->countAnnotations('vote');
-		//
-		$icon = elgg_view(
-						"profile/icon", array(
-										'entity' => $owner,
-										'size' => 'medium',
-									  		)
-						);
-		$info = "<a href=\"{$vars['entity']->getURL()}\">{$vars['entity']->question}</a><br>";
-		$info .= "{$responses} responses<br>";
+		//$icon = elgg_view("profile/icon", array( 'entity' => $owner, 'size' => 'medium', ) );
+                $info = "<p><a href=\"{$vars['entity']->getURL()}\">{$vars['entity']->question}</a></p>";
+		$info .= "<p>{$responses} responses</p>";
 		$info .= "<p class=\"owner_timestamp\"><a href=\"{$owner->getURL()}\">{$owner->name}</a> {$friendlytime}</p>";
-		echo elgg_view_listing($icon,$info);//elgg_view_listing($icon,$info); elgg_echo($info);
+		echo elgg_view_listing($info);
 ?>
