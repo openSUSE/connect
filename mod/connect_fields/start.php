@@ -4,6 +4,7 @@
         $return_value["blog"] = "url";
         $return_value["lizards_blog"] = "profile_dropdown";
         $return_value["country"] = "profile_dropdown";
+        $return_value["languages"] = "text";
         $return_value["gender"] = "profile_dropdown";
         $return_value["birthday"] = "calendar";
         $return_value["xmpp"] = "connect_url";

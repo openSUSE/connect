@@ -11,6 +11,7 @@
       'profile:gender'           => 'Gender',
       'profile:birthday'         => 'Birthday',
       'profile:country'          => 'Current country',
+      'profile:languages'        => 'Spoken languages',
       'profile:xmpp'             => 'Jabber (XMPP)',
       'profile:freenode_nick'    => 'Freenode IRC nick',
       'profile:freenode_cloak'   => 'Freenode IRC cloak',
