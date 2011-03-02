@@ -92,6 +92,11 @@
          */
          function notify_hermes( $function, $options )
          {
+                # ichain fun: only the username is set in the header of the request to 
+                # notify.opensuse.org. Since we come through internal network, the user
+                # is trusted.
+                $username = 'connect_hermes'; # must exist in the hermes person table.
+
 		$runmode = "notify";
        		if( $function == 'subscribe_ml' ) {
 			$runmode = 'subscribe_ml';
@@ -99,15 +104,16 @@
 
 		# do the hermes http call
                 $host = "http://notify.opensuse.org";
+
   		$query = "rm=". $runmode;
 		foreach( $options as $option_name => $value ) {
 			$query .= "&" . $option_name . "=" . $value;
 		}
 		$url = $host . "?" . urlencode( $query );
                 elgg_log("Hermes: notify_hermes : " . $url, 'NOTICE' );
-		$headers = array(headers => array("x-username" => $options->username, "user-agent" => "connect"));
+		$headers = array( headers => array("x-username" => $username, "user-agent" => "connect"));
 		$result = http_parse_message( http_get( $url, $headers ))->body;
-
+		elgg_log("Hermes notify result: " . $result );
          }
 
 
