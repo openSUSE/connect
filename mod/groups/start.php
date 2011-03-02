@@ -103,13 +103,13 @@
 		}
 
 		# do the hermes http call
-                $host = "http://notify.opensuse.org";
+                $host = "http://notify.opensuse.org/index.cgi";
 
   		$query = "rm=". $runmode;
 		foreach( $options as $option_name => $value ) {
-			$query .= "&" . $option_name . "=" . $value;
+			$query .= "&" . urlencode($option_name) . "=" . urlencode($value);
 		}
-		$url = $host . "?" . urlencode( $query );
+		$url = $host . "?" . $query;
                 elgg_log("Hermes: notify_hermes : " . $url, 'NOTICE' );
 		$headers = array( headers => array("x-username" => $username, "user-agent" => "connect"));
 		$result = http_parse_message( http_get( $url, $headers ))->body;
