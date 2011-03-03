@@ -1,6 +1,9 @@
 <?php
 
-   $non_public = true;
+   $require_api_auth = true;
+   
+   require_once(dirname(__FILE__) . "/widget_settings_api.php");
+
 
    // Tries to find your key in detebase and get description for it
    function get_key_description() {
@@ -235,7 +238,10 @@
     }
 
 
-    // Register our API
+    // Expose our api methods
+    // expose_function ($method, $function, array $parameters=NULL,
+    //                  $description="", $call_method="GET", $require_api_auth=false,
+    //                  $require_user_auth=false)
 
     expose_function("connect.user.groups.get",
                     "connect_user_groups_get",
@@ -244,7 +250,7 @@
                            'required' => true)),
                  'Returns groups that user is a member of',
                  'GET',
-                 $non_public,
+                 $require_api_auth,
                  false
                 );
 
@@ -258,7 +264,7 @@
                            'required' => true)),
                  'Add user to the group',
                  'POST',
-                 $non_public,
+                 $require_api_auth,
                  false
                 );
 
@@ -272,7 +278,7 @@
                            'required' => true)),
                  'Add join request user to the group',
                  'POST',
-                 $non_public,
+                 $require_api_auth,
                  false
                 );
 
@@ -287,7 +293,7 @@
                        ),
                  'Returns user attribute',
                  'GET',
-                 $non_public,
+                 $require_api_auth,
                  false
                 );
 
@@ -302,7 +308,7 @@
                        ),
                  'Returns attribute of any entity',
                  'GET',
-                 $non_public,
+                 $require_api_auth,
                  false
                 );
 
@@ -335,7 +341,7 @@
                        ),
                  'Returns attribute of any entity',
                  'POST',
-                 $non_public,
+                 $require_api_auth,
                  false
                 );
 
@@ -353,7 +359,7 @@
                        ),
                  'Sets user attribute',
                  'POST',
-                 $non_public,
+                 $require_api_auth,
                  false
                 );
 
@@ -371,7 +377,7 @@
                        ),
                  'Sets attribute of any entity',
                  'POST',
-                 $non_public,
+                 $require_api_auth,
                  false
                 );
 
