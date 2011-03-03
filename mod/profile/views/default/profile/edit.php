@@ -23,7 +23,7 @@
 					$value = '';
 					foreach($metadata as $md) {
 						if (!empty($value)) $value .= ', ';
-						$value .= $md->value;
+						$value .= str_replace(',', ',/',$md->value);
 						$access_id = $md->access_id;
 					}
 				} else {
