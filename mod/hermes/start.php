@@ -9,5 +9,3 @@
   
   register_elgg_event_handler('init','system','hermes_init');       
 ?>
-
-
