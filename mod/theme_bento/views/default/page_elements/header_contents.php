@@ -27,7 +27,7 @@
 
         <!-- Link: User Image -->
         <a href="<?php echo $_SESSION['user']->getURL(); ?>" class="nav_avatar"><img class="user_mini_avatar" src="<?php echo $_SESSION['user']->getIcon('topbar'); ?>" alt="User avatar"/></a>
-        <a href="<?php echo $_SESSION['user']->getURL(); ?>">Profile</a>
+        <a href="<?php echo $_SESSION['user']->getURL(); ?>"><?php echo $_SESSION['user']->username; ?></a>
       
         <?php
           // Tools Dropdown-Menu
@@ -49,7 +49,7 @@
         ?>
       
         <!-- Link: Logout -->
-        <?php echo elgg_view('output/url', array('href' => "https://" . $_SERVER['SERVER_NAME'] ."/ICHAINLogout/?%22https://connect.opensuse.org/cmd/ICSLogout%22-X", 'text' => elgg_echo('logout '. $vars['user']->username), 'is_action' => TRUE)); ?>
+        <?php echo elgg_view('output/url', array('href' => "https://" . $_SERVER['SERVER_NAME'] ."/ICHAINLogout/?%22https://connect.opensuse.org/cmd/ICSLogout%22-X", 'text' => elgg_echo('logout'), 'is_action' => TRUE)); ?>
 
       <?php } else { ?>
 
