@@ -1,12 +1,5 @@
 <div class="contentWrapper">
 
-  <?php
-    $username = get_loggedin_user();
-    if ($username) {
-       elgg_log("Hermes: User logged in : " + $username, 'NOTICE' ); 
-    }
-  ?>
-
 <script type="text/javascript">
 
   function hermesCallback(list_of_subscriptions) {
@@ -47,14 +40,36 @@
 
 </script>
 
+  <?php
+    $username = $_SESSION['user']->username;
+
+    if ($username) {
+       elgg_log("Hermes: User logged in : " + $username, 'NOTICE' ); 
+    }
+
+    # ichain fun: only the username is set in the header of the request to 
+    # notify.opensuse.org. Since we come through internal network, the user
+    # is trusted.
+
+    # do the hermes http call
+    $host = "http://notify.opensuse.org/index.cgi";
+
+    $query = "rm=subscriptions&person=". $username ."&contenttype=text/json";
+    $url = $host . "?" . $query;
+    elgg_log("Hermes: notify_hermes : " . $url, 'NOTICE' );
+    $headers = array( 'headers' => array("x-username" => $username, "user-agent" => "connect"));
+    $result = http_parse_message( http_get( $url, $headers ))->body;
+    elgg_log("Hermes result: " . $result );
+
+    echo "<script language=javascript>hermesCallback($result)</script>";
+
+  ?>
+
 <div id="hermes_widget">
   <p id="hermes_status" style="padding-bottom:8px;vertical-align:bottom;padding-left: 50px; height:32px;background-image:url(<?php echo $vars['url']; ?>/mod/hermes/graphics/hermes.png); background-repeat:no-repeat;">
         Calling Hermes API...</p>
         <ul id="hermes_update_list"></ul>
-        <script type="text/javascript" src="http://<?php echo $username;?>:<?php echo $passwd;?>@notify.opensuse.org/index.cgi?rm=subscriptions&person=<?php echo $username; ?>&callback=hermesCallback&contenttype=text/json"></script>
 </div>
-<?php
-}
-?>
+
 </div>
 
