@@ -12,6 +12,8 @@ function membership_init() {
 
     register_page_handler('membership', 'membership_page_handler');
 
+    register_action('membership/request', false, $CONFIG->pluginspath . "membership/actions/request.php", false);
+
     add_widget_type('membership', 'Membership', 'Widget showing membership stuff');
 }
 
