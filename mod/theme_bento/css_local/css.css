@@ -265,7 +265,8 @@ a.button {
 }
 
 .river_item_useravatar {
-  margin: 0 1em;
+  margin: 0 1em 1em 0;
+  float: left;
 }
 
 form label {
@@ -998,10 +999,6 @@ ul#calendarmenu li.sys_selected a {
     padding-right: 1.2em;
 }
 
-.river_item_useravatar {
-    float: left;
-}
-
 .river_content_display {
     margin: 8px;
 }
@@ -1020,4 +1017,13 @@ div.progress-container {
 div.progress-container > div {
     background-color: #99CC00;
     height: 14px
+}
+
+.generic_comment_icon {
+    float: left;
+    margin: 10px;
+}
+
+.groupicon {
+    margin: 10px 10px 10px 0;
 }
