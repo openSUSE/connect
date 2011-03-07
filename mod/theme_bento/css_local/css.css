@@ -8,12 +8,12 @@ Overwriting elgg specific styles here
 }
 
 #subheader {
-/*  overflow: visible;*/
+    /*  overflow: visible;*/
 }
 
 h1, h2, h3, h4, h5, h6, p, ul, ol, table, pre, blockquote, .box small {
-/*    margin-left: 0px;*/
-/*    margin-right: 0px;*/
+    /*    margin-left: 0px;*/
+    /*    margin-right: 0px;*/
 }
 
 h3 {
@@ -22,57 +22,57 @@ h3 {
 
 ul.dropdown,
 ul.dropdown ul {
-  list-style: none outside;
-  margin: 0;
+    list-style: none outside;
+    margin: 0;
 }
 
 #two_column_left_sidebar_maincontent {
--moz-border-radius:8px 8px 8px 8px;
-background: #fefefe;
-float:left;
-margin:0;
-min-height:360px;
-padding:0 0 5px;
+    -moz-border-radius:8px 8px 8px 8px;
+    background: #fefefe;
+    float:left;
+    margin:0;
+    min-height:360px;
+    padding:0 0 5px;
 }
 
 #two_column_left_sidebar_maincontent.grid_13 {
-  width: 760px;
+    width: 760px;
 }
 
 .contentIntro p {
-  margin: 0 1.5em 2em 0;
-  float: left;
+    margin: 0 1.5em 2em 0;
+    float: left;
 }
 
 #content_area_user_title.box-header {
-  margin-top: 1px;
+    margin-top: 1px;
 }
 #content_area_user_title.box-header h2 {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 .navigation ul {
-  list-style: none inside;
-  margin: 0;
-  padding: 0;
+    list-style: none inside;
+    margin: 0;
+    padding: 0;
 }
 
 #owner_block_rss_feed {
-  border-bottom: 1px dotted #ccc;
-  padding-bottom: 1em;
-  padding-top: 0.5em;
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 1em;
+    padding-top: 0.5em;
 }
 
 .admin_statistics, .admin_users_online, .usersettings_statistics, .admin_adduser_link, #add-box, #search-box, #logbrowser_search_area {
 
-border-radius: 5px;
--moz-border-radius: 5px;
--webkit-border-radius: 5px;
--khtml-border-radius: 5px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
 
-background: white;
-border: 1px solid #ddd;
-margin: 0 10px 10px;
-padding: 10px;
+    background: white;
+    border: 1px solid #ddd;
+    margin: 0 10px 10px;
+    padding: 10px;
 
 }
 
@@ -81,183 +81,183 @@ padding: 10px;
 .menuitemtools {}
 
 .submenuitemtools {
-  box-shadow: 0 2px 1px #ddd;
-  -moz-box-shadow: 0 2px 2px #ddd;
-  -webkit-box-shadow: 0 2px 2px #ddd;
-  background: #f6f6f6 url("../css/images/gradient-light-short-02.png") repeat-x scroll 0 -23px;
-  border-color: transparent #F6F6F6 #EEEEEE;
-  border-color: transparent #e6e6e6 #ccc;
-  border-style: solid;
-  border-width: 1px;
-  display: none;
-  font-size: 12px;
-  list-style: none inside none;
-  margin: 0;
-  padding: 5px 0 0.5em;
-  position: absolute;
-  z-index: 9999;
-  
-  border-bottom-left: 5px;
-  -moz-border-radius-bottomleft: 5px;
-  -webkit-border-bottom-left: 5px;
-  -khtml-border-bottom-left: 5px;
-  
-  border-bottom-right: 5px;
-  -moz-border-radius-bottomright: 5px;
-  -webkit-border-bottom-right: 5px;
-  -khtml-border-bottom-right: 5px;
+    box-shadow: 0 2px 1px #ddd;
+    -moz-box-shadow: 0 2px 2px #ddd;
+    -webkit-box-shadow: 0 2px 2px #ddd;
+    background: #f6f6f6 url("../css/images/gradient-light-short-02.png") repeat-x scroll 0 -23px;
+    border-color: transparent #F6F6F6 #EEEEEE;
+    border-color: transparent #e6e6e6 #ccc;
+    border-style: solid;
+    border-width: 1px;
+    display: none;
+    font-size: 12px;
+    list-style: none inside none;
+    margin: 0;
+    padding: 5px 0 0.5em;
+    position: absolute;
+    z-index: 9999;
+
+    border-bottom-left: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -webkit-border-bottom-left: 5px;
+    -khtml-border-bottom-left: 5px;
+
+    border-bottom-right: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -webkit-border-bottom-right: 5px;
+    -khtml-border-bottom-right: 5px;
 }
-  .submenuitemtools li {
+.submenuitemtools li {
     margin: 0 10px;
     padding: 2px 0;
-  }
+}
 /* ================ */
 #page_container {
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #page_wrapper.grid_13 {
-  width: 760px;
+    width: 760px;
 }
 #page_wrapper.grid_16 {
-  width: 940px;
+    width: 940px;
 }
 #page_wrapper {
-  margin: 0 auto;
-  min-height: 300px;
-  padding: 15px 0;
+    margin: 0 auto;
+    min-height: 300px;
+    padding: 15px 0;
 }
 
 #layout_canvas {
-  /* override original style*/
-  border-radius: inherit;
-  -moz-border-radius: inherit;
-  -webkit-border-radius: inherit;
-  -khtml-border-radius: inherit;
-  
-  background: transparent;
-  border-bottom: none;
-  border-right: none;
-  margin: 0;
-  min-height: 360px;
-  padding: 0;
+    /* override original style*/
+    border-radius: inherit;
+    -moz-border-radius: inherit;
+    -webkit-border-radius: inherit;
+    -khtml-border-radius: inherit;
+
+    background: transparent;
+    border-bottom: none;
+    border-right: none;
+    margin: 0;
+    min-height: 360px;
+    padding: 0;
 }
 
 #dashboard_info {
-  background: none repeat scroll 0 0 #BBDAF7;
-  border-bottom: none;
-  border-right: none;
-  margin: 0 0 0;
-  padding: 2px 5px;
+    background: none repeat scroll 0 0 #BBDAF7;
+    border-bottom: none;
+    border-right: none;
+    margin: 0 0 0;
+    padding: 2px 5px;
 }
 
 #persistent_login {
-  margin-top: -2.5em;
-  margin-right: 9em;
+    margin-top: -2.5em;
+    margin-right: 9em;
 }
 
 
 .search_listing {
-  margin-bottom: 2em;
+    margin-bottom: 2em;
 }
 
 .index_members {
-  float: left;
-  width: 40px;
-  margin-right: 0.5em;
-  margin-left: 15px;
+    float: left;
+    width: 40px;
+    margin-right: 0.5em;
+    margin-left: 15px;
 }
 
 .loginbox {
-  margin-left: 143px;
+    margin-left: 143px;
 }
 
 .collapsable_box .box-header {
-  margin-top: -15px !important;
+    margin-top: -15px !important;
 }
 .box-header h2 {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.2em;
 }
 .toggle_box_contents,
 .toggle_box_edit_panel {
-  float: right;
+    float: right;
 }
 
 .collapsable_box_editpanel {
-  border: none;
-  padding: 0;
-  margin: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 
 /* == Widgest ============================================================= */
 #widgets_left,
 #widgets_right,
 #widgets_middle {
-  float: left;
-  width: 280px;
+    float: left;
+    width: 280px;
 }
 
 a.button {
-  padding: 0.3em 0.8em;
-  text-decoration: none;
+    padding: 0.3em 0.8em;
+    text-decoration: none;
 }
 .pluginsettings,
 .manifest_file {
-  display: none;
+    display: none;
 }
 
 .box-header-edit {
-  float: right;
-  display: inline;
+    float: right;
+    display: inline;
 }
 
 .contentWrapper {
-  background-color: transparent;
-/*  margin: 0 1em 1em;*/
-  margin-bottom: 1em;
-  overflow: hidden;
+    background-color: transparent;
+    /*  margin: 0 1em 1em;*/
+    margin-bottom: 1em;
+    overflow: hidden;
 }
-  .contentWrapper h2,
-  .contentWrapper h3 {
+.contentWrapper h2,
+.contentWrapper h3 {
     margin-left: 0;
-  }
-  .contentWrapper table {
+}
+.contentWrapper table {
     width: 100%;
-  }
-  .contentWrapper td {
+}
+.contentWrapper td {
     border: none;
-  }
+}
 #collapsable_box_editpanel {
-  display: none;
+    display: none;
 }
 
 
 .simplepie_blog_title {
-  text-align: left;
+    text-align: left;
 }
 
 .simplepie_blog_title h2 {}
 
 .simplepie_title h4 a {
-  color: #690;
+    color: #690;
 }
 .simplepie_blog_title h2,
 .simplepie_title h4 {
-  margin-left: 0!important;
-  margin-bottom: 0.5em;
+    margin-left: 0!important;
+    margin-bottom: 0.5em;
 }
 
 .simplepie_item {
-  border-bottom: 1px dotted #ccc;
-  padding-bottom: 1em;
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 1em;
 }
 .simplepie_item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-  margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 .plugin_details {
@@ -265,24 +265,24 @@ a.button {
 }
 
 .river_item_useravatar {
-  margin: 0 1em 1em 0;
-  float: left;
+    margin: 0 1em 1em 0;
+    float: left;
 }
 
 form label {
-  
+
 }
 
 form .description {
-  font-size: 0.8em;
-  color: #666;
+    font-size: 0.8em;
+    color: #666;
 }
 
 /* Event Calendar */
 
 #calendarmenu,
 .ui-datepicker {
-  margin: 0;
+    margin: 0;
 }
 
 /* jQuery UI */
@@ -293,14 +293,14 @@ form .description {
 /* TEMP - Remove later */
 
 #customise_editpanel table.draggable_widget h3 {
-width: 100%;
-background: #eee;
+    width: 100%;
+    background: #eee;
 }
 
 .draggable_widget {
-  width: 85%;
-  background: #eee;
-  margin-bottom: 0.5em;
+    width: 85%;
+    background: #eee;
+    margin-bottom: 0.5em;
 }
 
 /* Polls */
@@ -326,8 +326,8 @@ background: #eee;
 /* ***************************************
 SYSTEM MESSSAGES
 *************************************** */
-  .messages,
-  .messages_error {
+.messages,
+.messages_error {
     top: 42px;
     width:969px;
     z-index: 8000;
@@ -340,193 +340,193 @@ SYSTEM MESSSAGES
     cursor: pointer;
     padding: 3px 10px 3px 10px;
     color: #333;
-    
+
     box-shadow: 0 1px 2px #999;
     -moz-box-shadow: 0 1px 2px #999;
     -webkit-box-shadow: 0 1px 2px #999;
-  }
-  .messages {
+}
+.messages {
     background: #efc;
     border: 4px solid #690;
-  }
-  .messages_error {
+}
+.messages_error {
     border: 4px solid #D3322A;
     background: #F7DAD8;
-  }
-  .closeMessages {
+}
+.closeMessages {
     float:right;
     margin-top:17px;
-  }
-  .closeMessages a {
+}
+.closeMessages a {
     color: #666;
     cursor: pointer;
     text-decoration: none;
     font-size: 80%;
-  }
-  .closeMessages a:hover {
+}
+.closeMessages a:hover {
     color: black;
-  }
+}
 
 /* ***************************************
   PROFILE
 *************************************** */
 #profile_info {
-/*  margin-top: 1em;*/
-/* TODO: Remove this Original CSS
-  margin:0 0 20px 0;
-  padding:20px;
-  border-bottom:1px solid #cccccc;
-  border-right:1px solid #cccccc;
-  background: #fefefe;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-*/}
+    /*  margin-top: 1em;*/
+    /* TODO: Remove this Original CSS
+      margin:0 0 20px 0;
+      padding:20px;
+      border-bottom:1px solid #cccccc;
+      border-right:1px solid #cccccc;
+      background: #fefefe;
+      -webkit-border-radius: 8px;
+      -moz-border-radius: 8px;
+    */}
 
 #profile_icon_wrapper {
-  margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 
 #profile_info td {
-  border: none;
-  vertical-align: top;
+    border: none;
+    vertical-align: top;
 }
 
 #profile_info_column_left {
-/*  float:left;*/
-  padding: 0;
-  margin: 0 20px 0 0;
+    /*  float:left;*/
+    padding: 0;
+    margin: 0 20px 0 0;
 }
 #profile_info_column_middle {
-  float:left;
-  width:365px;
-  padding: 0;
+    float:left;
+    width:365px;
+    padding: 0;
 }
 #profile_info_column_right {
-  width:578px;
-  margin:0 0 0 0;
-  background:#dedede;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  padding:4px;
+    width:578px;
+    margin:0 0 0 0;
+    background:#dedede;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    padding:4px;
 }
 #dashboard_info {
-  margin:0px 0px 0 0px;
-  padding:20px;
-  border-bottom:1px solid #cccccc;
-  border-right:1px solid #cccccc;
-  background: #bbdaf7;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
+    margin:0px 0px 0 0px;
+    padding:20px;
+    border-bottom:1px solid #cccccc;
+    border-right:1px solid #cccccc;
+    background: #bbdaf7;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
 }
 #profile_menu_wrapper {
-  margin:10px 0 10px 0;
-  width:200px;
+    margin:10px 0 10px 0;
+    width:200px;
 }
 #profile_menu_wrapper p {
-  border-bottom:1px solid #cccccc;
+    border-bottom:1px solid #cccccc;
 }
 #profile_menu_wrapper p:first-child {
-  border-top:1px solid #cccccc;
+    border-top:1px solid #cccccc;
 }
 #profile_menu_wrapper a {
-  display:block;
-  padding:0 0 0 3px;
+    display:block;
+    padding:0 0 0 3px;
 }
 #profile_menu_wrapper a:hover {
-  color:#ffffff;
-  background:#4690d6;
-  text-decoration:none;
+    color:#ffffff;
+    background:#4690d6;
+    text-decoration:none;
 }
 p.user_menu_friends, p.user_menu_profile,
 p.user_menu_removefriend,
 p.user_menu_friends_of {
-  margin:0;
+    margin:0;
 }
 #profile_menu_wrapper .user_menu_admin {
-  border-top:none;
+    border-top:none;
 }
 
 #profile_info_column_middle p {
-  margin:7px 0 7px 0;
-  padding:2px 4px 2px 4px;
+    margin:7px 0 7px 0;
+    padding:2px 4px 2px 4px;
 }
 /* profile owner name */
 #profile_info_column_middle h2 {
-  padding:0 0 14px 0;
-  margin:0;
+    padding:0 0 14px 0;
+    margin:0;
 }
 #profile_info_column_middle .profile_status {
-  background:#bbdaf7;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  padding:2px 4px 2px 4px;
-  line-height:1.2em;
+    background:#bbdaf7;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    padding:2px 4px 2px 4px;
+    line-height:1.2em;
 }
 #profile_info_column_middle .profile_status span {
-  display:block;
-  font-size:90%;
-  color:#666666;
+    display:block;
+    font-size:90%;
+    color:#666666;
 }
 #profile_info_column_middle a.status_update {
-  float:right;
+    float:right;
 }
 #profile_info_column_middle .odd,
 #profile_info_column_middle .even {
-  border-top: 1px solid #eee;
+    border-top: 1px solid #eee;
 }
 #profile_info_column_middle .odd {
-  background: transparent;
+    background: transparent;
 }
 #profile_info_column_middle .even {
-  background: transparent;
+    background: transparent;
 }
 #profile_info_column_right p {
-  margin:0 0 7px 0;
+    margin:0 0 7px 0;
 }
 #profile_info_column_right .profile_aboutme_title {
-  margin:0;
-  padding:0;
-  line-height:1em;
+    margin:0;
+    padding:0;
+    line-height:1em;
 }
 /* edit profile button */
 .profile_info_edit_buttons {
-  float: none;
-  margin:0  !important;
-  padding:0 !important;
+    float: none;
+    margin:0  !important;
+    padding:0 !important;
 }
 .profile_info_edit_buttons a {
-/*  font: 12px/100% Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  color: #ffffff;
-  background:#4690d6;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  width: auto;
-  padding: 2px 6px 2px 6px;
-  margin:0;
-  cursor: pointer;*/
+    /*  font: 12px/100% Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      color: #ffffff;
+      background:#4690d6;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      width: auto;
+      padding: 2px 6px 2px 6px;
+      margin:0;
+      cursor: pointer;*/
 }
 .profile_info_edit_buttons a:hover {
-  background: #0054a7;
-  text-decoration: none;
-  color:white;
+    background: #0054a7;
+    text-decoration: none;
+    color:white;
 }
 
 .header-edit {
-  float: right;
+    float: right;
 }
 
 /* == Move to base.css of bento-theme ===================================== */
 
 #header #global-search-form input {
-  font: inherit;
+    font: inherit;
 }
 
 /*  this is also in siki local css => style.css Line 35 
     Should be merged into base.css */
 #local-user-actions a {
-  margin-right: 10px;
-  text-decoration: none;
+    margin-right: 10px;
+    text-decoration: none;
 }
 
 .textleft { text-align: left; }
@@ -535,51 +535,51 @@ p.user_menu_friends_of {
 
 
 .box-header.top-zero {
-  margin-top: -15px !important;
+    margin-top: -15px !important;
 }
 
 .box.box-settings {
-  background-color: #eee;
+    background-color: #eee;
 }
 
 #customise_page_view td {
-  vertical-align: top;
+    vertical-align: top;
 }
 
 td.box {
-  margin: 0 0.5em;
+    margin: 0 0.5em;
 }
 
 .ui-droppable {
-  min-height: 20em;
-  margin: 0 0.5em;
-  width: 16.3em;
+    min-height: 20em;
+    margin: 0 0.5em;
+    width: 16.3em;
 }
 .drag-handle,
 .more-info {
-  width: 100%;
-  height: 100%;
-  display: block;
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 .more-info {
-/*  background: blue;*/
+    /*  background: blue;*/
 }
 .drag-handle {
-/*  background: fuchsia;*/
+    /*  background: fuchsia;*/
 }
 
 .collapsable_box_editpanel {
-  border-bottom: 1px solid #eee;
-  display: none;
-  padding: 0.5em 0 0.5em;
-  position: relative;
+    border-bottom: 1px solid #eee;
+    display: none;
+    padding: 0.5em 0 0.5em;
+    position: relative;
 }
 
 .collapsable_box_editpanel .submit_button {
-/*  position: absolute;
-  bottom: 1em;
-  right: 1em;*/
-  margin-top: 1.5em;
+    /*  position: absolute;
+      bottom: 1em;
+      right: 1em;*/
+    margin-top: 1.5em;
 }
 
 
@@ -587,128 +587,128 @@ td.box {
 .toggle_box_contents,
 .toggle_box_edit_panel {}
 .toggle_box_edit_panel {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 a.toggle_customise_edit_panel {
-  width: auto;
+    width: auto;
 }
 
 .collapsable_box_header,
 .collapsable_box_content {
-  height: auto;
+    height: auto;
 }
 
 .collapsable_box_header {
 }
 .collapsable_box_content {
-  margin-left: 1em;
-  margin-right: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .collapsable_box_header h1 {
-  margin: 0;
-  padding: 0.5em 0;
+    margin: 0;
+    padding: 0.5em 0;
 }
 
 .collapsable_box_editpanel p {
-  margin-left: 1em;
-  margin-right: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .clearfloat {
-  clear: both;
+    clear: both;
 }
 
 #customise_page_view table {
-/*  margin: 0;*/
+    /*  margin: 0;*/
 }
 #customise_page_view table th,
 #customise_page_view table td {
-  border: none;
+    border: none;
 }
 
 
 #customise_editpanel {
-  background-color: #eee;
+    background-color: #eee;
 }
 .edit-panel {
-  margin-bottom: 1em;
-  text-align: right;
+    margin-bottom: 1em;
+    text-align: right;
 }
 
 #elgg_horizontal_tabbed_nav {
-  border-bottom: 1px solid #ddd;
-  overflow: hidden;
-  margin-bottom: 1em;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+    margin-bottom: 1em;
 }
 
 #elgg_horizontal_tabbed_nav ul {
-  margin: 0;
-  list-style: none inside;
-  padding: 0;
+    margin: 0;
+    list-style: none inside;
+    padding: 0;
 }
 
 #elgg_horizontal_tabbed_nav li {
-  float: left;
-  margin: 0.5em;
+    float: left;
+    margin: 0.5em;
 }
 #elgg_horizontal_tabbed_nav li.selected a {
-  color: #690;
-  font-weight: bold;
+    color: #690;
+    font-weight: bold;
 }
-  #elgg_horizontal_tabbed_nav li a:hover {
+#elgg_horizontal_tabbed_nav li a:hover {
     background: none;
-  }
+}
 #elgg_horizontal_tabbed_nav + div.group_count {
-  clear: both;
+    clear: both;
 }
 
 
 #two_column_left_sidebar_maincontent_boxes {
-  min-height: 25em;
+    min-height: 25em;
 }
 
 /* Event Calendar - Date Picker */
 
 .table-top {
-  vertical-align: top;
+    vertical-align: top;
 }
 #my_datepicker {
-  margin-top: 2.5em;
+    margin-top: 2.5em;
 }
 #ui-datepicker-div {
-  background-color: #f6f6f6;
-  border: 1px solid #ccc;
-  box-shadow: 0 1px 2px #999;
-  -moz-box-shadow: 0 1px 2px #999;
-  -webkit-box-shadow: 0 1px 2px #999;
+    background-color: #f6f6f6;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 2px #999;
+    -moz-box-shadow: 0 1px 2px #999;
+    -webkit-box-shadow: 0 1px 2px #999;
 }
 
 .ui-datepicker-clear {
-  margin-left: 2px;
+    margin-left: 2px;
 }
 .ui-datepicker-close {
-  margin-right: 2px;
+    margin-right: 2px;
 }
 
 .ui-datepicker-control {
-  background-color: #eee;
+    background-color: #eee;
 }
-  .ui-datepicker-control * {
+.ui-datepicker-control * {
     font-size: 0.9em;
-  }
+}
 
 .ui-datepicker-header select{
-  margin-top: 2px;
-  margin-right: 5px;
+    margin-top: 2px;
+    margin-right: 5px;
 }
 
 
 
 
 .ui-datepicker-links {
-  border-top: 1px solid #eee;
+    border-top: 1px solid #eee;
 }
 #ui-datepicker-div, .ui-datepicker-inline {
 }
@@ -720,9 +720,9 @@ a.toggle_customise_edit_panel {
 }
 
 .ui-datepicker-control, .ui-datepicker-links {
-  font-size: 0.9em;
-  font-weight: bold;
-  letter-spacing: 1px;
+    font-size: 0.9em;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 .ui-datepicker-links {
@@ -762,19 +762,19 @@ a.toggle_customise_edit_panel {
 }
 
 .ui-datepicker-days-cell a {
-  color: #ccc;
+    color: #ccc;
 }
 
 .ui-datepicker-current-day,
 .ui-datepicker-current-day a {
-      color: #999;
+    color: #999;
 }
 
 
 
 .ui-datepicker-current-day.ui-datepicker-today a {
-  font-weight: bold;
-  color: #069;
+    font-weight: bold;
+    color: #069;
 }
 .ui-datepicker-header {
     background: none repeat scroll 0 0 #eee;
@@ -789,22 +789,22 @@ a.toggle_customise_edit_panel {
 
 }
 
-  .ui-datepicker-title-row {
+.ui-datepicker-title-row {
 
-  }
-  .ui-datepicker-title-row .ui-datepicker-week-end-cell {
-      background: none repeat scroll 0 0 #E3E3E3;
-  }
-  .ui-datepicker-days-row {
-      background: none repeat scroll 0 0 #FFFFFF;
-  }
-  td.ui-datepicker-unselectable {
-      background-color: #FFFFFF !important;
-      color: #888888 !important;
-  }
-  .ui-datepicker-week-end-cell {
-      background: none repeat scroll 0 0 #F5F5F5;
-  }
+}
+.ui-datepicker-title-row .ui-datepicker-week-end-cell {
+    background: none repeat scroll 0 0 #E3E3E3;
+}
+.ui-datepicker-days-row {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+td.ui-datepicker-unselectable {
+    background-color: #FFFFFF !important;
+    color: #888888 !important;
+}
+.ui-datepicker-week-end-cell {
+    background: none repeat scroll 0 0 #F5F5F5;
+}
 
 
 ul#calendarmenu {
@@ -827,28 +827,28 @@ ul#calendarmenu li a {
 ul#calendarmenu li a,
 ul#calendarmenu li a:hover,
 ul#calendarmenu li.sys_selected a {
-  background: none;
-  padding: 2px 9px;
-  border: none;
+    background: none;
+    padding: 2px 9px;
+    border: none;
 }
 ul#calendarmenu li a:hover {
-  text-decoration: underline;
-  color: #069;
+    text-decoration: underline;
+    color: #069;
 }
 
 ul#calendarmenu li.sys_selected a {
-  color: #690;
-  font-weight: bold;
+    color: #690;
+    font-weight: bold;
 }
 
 ul#calendarmenu li {
-  border: none;
-  background: none;
+    border: none;
+    background: none;
 }
 
 /*ul#calendarmenu li a:hover,
 ul#calendarmenu li.sys_selected a {
-  
+
     color: #FFFFFF;
     float: left;
     padding: 1px;
@@ -858,93 +858,93 @@ ul#calendarmenu li.sys_selected a {
 /* /Event Calendar - Date Picker */
 
 .search_listing {
-  background-color: #efefef;
-  margin-bottom: 1em !important;
-  border-width: 1px !important;
-  border-color: #fff !important;
-  margin: 0.5em 1em 1em;
+    background-color: #efefef;
+    margin-bottom: 1em !important;
+    border-width: 1px !important;
+    border-color: #fff !important;
+    margin: 0.5em 1em 1em;
 }
 .search_listing .groupicon {
-  margin: 1em 0 0 15px;
+    margin: 1em 0 0 15px;
 }
-  .search_listing .groupicon img {
-      border: 1px solid #fff;
-      }
-      
-      
+.search_listing .groupicon img {
+    border: 1px solid #fff;
+}
+
+
 #memberssearchform {
-  border: none;
+    border: none;
 }
 
 
 .sidebarBox .search_input {
-  width: 10em;
+    width: 10em;
 }
 
 .sidebarBox .input-text {
-  margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 
 .sidebarBox small {
-  color: #999;
+    color: #999;
 }
 .sidebarBox small a {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 .sidebarBox small a.delete-trigger {
-  float: right;
+    float: right;
 }
 
 .river-message,
 .river_content_display {
-  background-color: #eee;
-  padding: 2px 5px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  
-  font-style: italic;
+    background-color: #eee;
+    padding: 2px 5px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+
+    font-style: italic;
 }
 .river_content_display {
-  border: none;
+    border: none;
 }
 .river_item_time {
-  font-size: 0.8em;
-  color: #999;
+    font-size: 0.8em;
+    color: #999;
 }
 
 .river_item {
-  border-bottom: 1px dotted #eee;
+    border-bottom: 1px dotted #eee;
 }
 .river_content_display {
-  margin: 0;
+    margin: 0;
 }
 .river_item_list p {
-  margin-left: 15px;
-  margin-right: 0;
-  margin-top: 3px;
-  margin-bottom:0;
+    margin-left: 15px;
+    margin-right: 0;
+    margin-top: 3px;
+    margin-bottom:0;
 }
 .river_item_time {
-  display: block;
-  text-align: right;
-  margin-bottom: 0.3em;
+    display: block;
+    text-align: right;
+    margin-bottom: 0.3em;
 }
 
 
 .river_object_event_calendar_create a:first-child {
-  margin-left: 20px;
+    margin-left: 20px;
 }
 
 .sidebarBox form p {
-  margin: 0 !important;
-  
+    margin: 0 !important;
+
 }
 
 
 .river_item_list a {
-  display: inline;
+    display: inline;
 }
 
 
@@ -952,32 +952,32 @@ ul#calendarmenu li.sys_selected a {
 /* disable hover of navigation */
 
 #owner_block_submenu {
-  margin-left: 0.5em;
-  margin-right: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
 .navigation a:hover, .navigation a:focus {
-  background: none;
-  color: #3399CC;
+    background: none;
+    color: #3399CC;
 }
 
 .submenu_group_a li {
-  background-color: #eee;
-  padding: 5px 0;
-  
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  
+    background-color: #eee;
+    padding: 5px 0;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+
 }
 .submenu_group_a li.selected {
-  background-color: #ccc;
+    background-color: #ccc;
 }
 .submenu_group_a li.selected a {
-  color: #069;
+    color: #069;
 }
 .submenu_group_a li a {
-  margin: 0 5px;
+    margin: 0 5px;
 }
 
 .messages, .messages_error {
@@ -1026,4 +1026,27 @@ div.progress-container > div {
 
 .groupicon {
     margin: 10px 10px 10px 0;
+    float: left;
+}
+
+.search_listing_icon > .usericon {
+    float: left;
+    margin-right: 10px;
+}
+
+#owner_block_rss_feed {
+    background: url("../graphics/rss.png") no-repeat scroll 0em 0.4em transparent;
+    padding-left: 1.5em;
+}
+
+.submenu_group_ical > ul > li {
+    margin: 0px;
+}
+
+
+#owner_block_ical, .submenu_group_ical {
+    background: url("../graphics/calendar.png") no-repeat scroll 0em 0.0em transparent;
+    padding-left: 1.5em;
+    border-bottom: 1px dotted #CCCCCC;
+    padding-bottom: 1em;
 }

@@ -92,8 +92,10 @@
 		if ($page_owner instanceof ElggGroup && $context == 'groups') {
 			if (event_calendar_activated_for_group($page_owner)) {
 				add_submenu_item(elgg_echo("event_calendar:group"), $CONFIG->wwwroot . "pg/event_calendar/group/" . $page_owner->getGUID());
+                                add_submenu_item('Export as iCal File', $CONFIG->wwwroot . "pg/event_calendar/group/" . $page_owner->getGUID() . "/?view=ical", 'ical');
 			}
 		} else if ($context == 'event_calendar'){
+                        add_submenu_item('Export as iCal File', $CONFIG->wwwroot . "pg/event_calendar/?view=ical", 'ical');
 			add_submenu_item(elgg_echo("event_calendar:site_wide_link"), $CONFIG->wwwroot . "pg/event_calendar/");
 			$site_calendar = get_plugin_setting('site_calendar', 'event_calendar');
 			if (!$site_calendar || $site_calendar == 'admin') {
