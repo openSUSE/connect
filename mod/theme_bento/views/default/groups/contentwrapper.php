@@ -1,5 +1,7 @@
-<div class='contentWrapper groups'><?php
+<div class='contentWrapper groups'>
+<p><?php
 
 	echo $vars['body'];
 
-?></div>
+?>
+</p></div>
