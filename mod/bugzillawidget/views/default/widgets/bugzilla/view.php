@@ -7,10 +7,10 @@
   echo "<table>\n";
   echo "<tr><th>bnc#</th><th>summary</th></tr>\n";
   foreach ($csv as $line) {
-    $d = str_getcsv($line);
+    $d = explode(',' ,$line, 8);
     $bnc = $d[0];
     $url = 'https://bugzilla.novell.com/show_bug.cgi?id=' . $bnc;
-    $summary = $d[7];
+    $summary = substr( $d[7], 1, -1 );
     if (strlen($summary) > 30) {
       $summary = substr_replace($summary, ' ...', 27);
     }
