@@ -1054,3 +1054,7 @@ div.progress-container > div {
 .members_online {
     overflow: visible;
 }
+
+.pagination_number {
+    display: inline;
+}
