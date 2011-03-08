@@ -1056,5 +1056,5 @@ div.progress-container > div {
 }
 
 .pagination_number {
-    display: inline;
+    display: inline !important;
 }
