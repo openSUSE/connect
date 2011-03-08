@@ -104,7 +104,7 @@
                     echo "<p>". elgg_echo('groups:nogroups') . "</p>";
                 }
             ?>
-            <p><a href="/pg/groups">More groups</a></p>
+            <p><a href="<?php echo $vars['url']; ?>/pg/groups/world/?filter=pop">More groups</a></p>
         </div>
 <?php
         }

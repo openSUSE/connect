@@ -46,7 +46,7 @@
             <li><a href="<?php echo $vars['url']; ?>pg/governance/"><?php echo elgg_echo('Governance'); ?></a></li>
             <li><a href="<?php echo $vars['url']; ?>pg/membership/"><?php echo elgg_echo('Membership'); ?></a></li>
 <?php } ?>
-            <li><a href="<?php echo $vars['url']; ?>/pg/groups"><?php echo elgg_echo('Groups'); ?></a></li>
+            <li><a href="<?php echo $vars['url']; ?>/pg/groups/world/?filter=pop"><?php echo elgg_echo('Groups'); ?></a></li>
             <li><a href="<?php echo $vars['url']; ?>/pg/polls/all"><?php echo elgg_echo('Polls'); ?></a></li>
             <li><a href="<?php echo $vars['url']; ?>/pg/event_calendar/"><?php echo elgg_echo('Event Calendar'); ?></a></li>
             <li><a href="<?php echo $vars['url']; ?>/pg/members/all/"><?php echo elgg_echo('Users'); ?></a></li>
