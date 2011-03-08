@@ -1055,6 +1055,6 @@ div.progress-container > div {
     overflow: visible;
 }
 
-.pagination_number {
+.pagination_number, .pagination_next, .pagination_previous {
     display: inline !important;
 }
