@@ -74,7 +74,7 @@
         <!-- latest members -->
       <div class="box box-shadow">
             <h2 class="box-header"><?php echo elgg_echo("members:header"); ?></h2>
-            <div class="contentWrapper">
+            <div class="contentWrapper members_online">
             <?php
                 if(isset($vars['area3'])) {
                     //display member avatars
@@ -104,6 +104,7 @@
                     echo "<p>". elgg_echo('groups:nogroups') . "</p>";
                 }
             ?>
+            <p><a href="/pg/groups">More groups</a></p>
         </div>
 <?php
         }

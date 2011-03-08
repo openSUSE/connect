@@ -1024,7 +1024,7 @@ div.progress-container > div {
     margin: 10px;
 }
 
-.groupicon {
+.groupicon, .search_listing .groupicon {
     margin: 10px 10px 10px 0;
     float: left;
 }
@@ -1049,4 +1049,8 @@ div.progress-container > div {
     padding-left: 1.5em;
     border-bottom: 1px dotted #CCCCCC;
     padding-bottom: 1em;
+}
+
+.members_online {
+    overflow: visible;
 }
