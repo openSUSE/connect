@@ -27,6 +27,7 @@
       {
         case 'csv': include($CONFIG->pluginspath . "membersadmin/csv.php"); break;
         case 'txt': include($CONFIG->pluginspath . "membersadmin/txt.php"); break;
+        case 'maildump': include($CONFIG->pluginspath . "membersadmin/maildump.php"); break;
         default : include($CONFIG->pluginspath . "membersadmin/index.php");
       }
     }

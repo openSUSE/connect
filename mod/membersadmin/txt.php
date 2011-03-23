@@ -4,7 +4,7 @@
 
   $members = $membersgroup->getMembers(0);
 
-  header('Content-type: text/plain');
+  header('Content-type: text/plain; charset=utf-8');
   header('Content-Disposition: attachment; filename="opensuse_cloaks.txt"');
 
   foreach ($members as $m) {

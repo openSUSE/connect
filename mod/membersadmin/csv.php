@@ -4,7 +4,7 @@
 
   $members = $membersgroup->getMembers(0);
 
-  header('Content-type: text/csv');
+  header('Content-type: text/csv; charset=utf-8');
   header('Content-Disposition: attachment; filename="opensuse_members.csv"');
 
   echo "username;email_target;email_nick;email_full;freenode_nick;freenode_cloak;cloak_applied\n";
