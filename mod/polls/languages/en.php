@@ -104,7 +104,7 @@
 			'polls:novote' => "Sorry: you need to choose an option to vote in this poll.",
 			'polls:closed' => "Sorry: the poll is already closed.",
 			'polls:wrongnumanswers' => "Sorry: you have to provide at most %d answers.",
-			'polls:notfound' => "Please log in (in the top right corner) to see this poll or the poll does not exist. Also it might be available only to specific group you are not member of.",
+			'polls:notfound' => "Please log in (in the top right corner) to see this poll or the poll does not exist. Also it might be available only to specific group you are not member of (for example openSUSE Members).",
 			'polls:nonefound' => "No polls were found from %s",
 			'polls:notdeleted' => "Sorry: we could not delete this poll.",
 
