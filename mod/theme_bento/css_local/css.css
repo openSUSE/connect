@@ -1058,3 +1058,11 @@ div.progress-container > div {
 .pagination_number, .pagination_next, .pagination_previous {
     display: inline !important;
 }
+
+.toggle_editor_container, .input-access {
+    margin-left: 15px;
+}
+
+.input-text {
+    width: 300px;
+}
