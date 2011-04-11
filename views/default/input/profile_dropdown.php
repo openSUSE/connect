@@ -39,7 +39,7 @@ if (isset($vars['options'])) {
 
 ?>
 
-<select style="width: 100%;" <?php if ($disabled) echo ' disabled="yes" '; ?> <?php echo $vars['js']; ?> name="<?php echo $vars['internalname']; ?>" <?php if (isset($vars['internalid'])) echo "id=\"{$vars['internalid']}\""; ?> class="<?php echo $class; ?>" size=1>
+<select <?php if ($disabled) echo ' disabled="yes" '; ?> <?php echo $vars['js']; ?> name="<?php echo $vars['internalname']; ?>" <?php if (isset($vars['internalid'])) echo "id=\"{$vars['internalid']}\""; ?> class="<?php echo $class; ?>" size=1>
 		<option value=""  <?php if($vars['value']=="")   echo "selected";?>><?php
 			echo elgg_echo("checkbox:empty");
 		?></option>

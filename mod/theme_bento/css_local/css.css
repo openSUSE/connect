@@ -1066,3 +1066,12 @@ div.progress-container > div {
 .input-text {
     width: 300px;
 }
+
+.input-poll-choice {
+    margin-left: 15px;
+}
+
+textarea {
+    width: 550px;
+    height: 200px;
+}
