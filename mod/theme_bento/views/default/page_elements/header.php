@@ -73,8 +73,8 @@ $release = get_version(true);
   <script type="text/javascript">
       var _paq = _paq || [];
       (function(){
-          var u=(("https:" == document.location.protocol) ? "https://features.opensuse.org/piwik/" : "http://features.opensuse.org/piwik/");
-          _paq.push(['setSiteId', 4]);
+          var u=(("https:" == document.location.protocol) ? "https://beans.opensuse.org/piwik/" : "http://beans.opensuse.org/piwik/");
+          _paq.push(['setSiteId', 6]);
           _paq.push(['setTrackerUrl', u+'piwik.php']);
           _paq.push(['trackPageView']);
           _paq.push([ 'setDomains', ["*.opensuse.org"]]);
