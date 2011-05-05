@@ -41,6 +41,7 @@ function ichain_client_init() {
     } elseif (!isset($username) && isloggedin()) {
         error_log("Automatically logging out elgg user " . $username);
         logout();
+        session_destroy();
         return false;
     }
 }
