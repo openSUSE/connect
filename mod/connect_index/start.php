@@ -25,9 +25,6 @@ function connect_index() {
 }
 
 
-if (!isloggedin()) {
-    register_elgg_event_handler('init', 'system', 'indexConnect_init');
-}
-
+register_elgg_event_handler('init', 'system', 'indexConnect_init');
 
 ?>
