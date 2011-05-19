@@ -1,9 +1,9 @@
 <?php
 
    $require_api_auth = true;
-   
-   require_once(dirname(__FILE__) . "/widget_settings_api.php");
 
+   require_once(dirname(__FILE__) . "/widget_settings_api.php");
+   require_once(dirname(__FILE__) . "/membersadmin_api.php");
 
    // Tries to find your key in detebase and get description for it
    function get_key_description() {
