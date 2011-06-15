@@ -49,6 +49,7 @@
 		register_action("groups/killinvitation",false,$CONFIG->pluginspath . "groups/actions/groupskillinvitation.php");
 		register_action("groups/addtogroup",false, $CONFIG->pluginspath . "groups/actions/addtogroup.php");
 		register_action("groups/invite",false, $CONFIG->pluginspath . "groups/actions/invite.php");
+		register_action("groups/thumbvote",false,$CONFIG->pluginspath . "groups/actions/thumbvote.php");
 
 		// Use group widgets
 		use_widgets('groups');

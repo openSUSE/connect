@@ -227,6 +227,9 @@ or click below to view the group's join requests:
 
 			'groups:invitekilled' => 'The invite has been deleted.',
 			'groups:joinrequestkilled' => 'The join request has been deleted.',
+
+			'groups:joinrequestaccept' => 'Accept',
+			'groups:joinrequestdecline' => 'Decline',
 	);
 
 	add_translation("en",$english);
