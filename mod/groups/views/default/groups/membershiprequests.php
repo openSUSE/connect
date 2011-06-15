@@ -41,6 +41,8 @@
 						$vote_down[] = $ann->owner;
 					}
 				}
+				$vote_up = array_unique($vote_up);
+				$vote_down = array_unique($vote_down);
 			?>
 			<div style="float: left; width: 40%; height: 100px; overflow:scroll;">
 			<?php
