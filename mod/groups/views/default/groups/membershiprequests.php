@@ -9,7 +9,7 @@
 ?>
 	<div class="reportedcontent_content active_report">
 		<div class="groups_membershiprequest_buttons">
-			<div style="float: left; width: 30%;">
+			<div style="float: left; width: 20%;">
 			<?php
 				echo "<div class=\"member_icon\"><a href=\"" . $request->getURL() . "\">";
 				echo elgg_view("profile/icon", array(
@@ -42,7 +42,7 @@
 					}
 				}
 			?>
-			<div style="float: left; width: 20%;">
+			<div style="float: left; width: 40%; height: 100px; overflow:scroll;">
 			<?php
 				echo $request->contributions;
 			?>
