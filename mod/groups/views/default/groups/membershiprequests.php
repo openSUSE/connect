@@ -9,7 +9,7 @@
 ?>
 	<div class="reportedcontent_content active_report">
 		<div class="groups_membershiprequest_buttons">
-			<div style="float: left; width: 40%;">
+			<div style="float: left; width: 30%;">
 			<?php
 				echo "<div class=\"member_icon\"><a href=\"" . $request->getURL() . "\">";
 				echo elgg_view("profile/icon", array(
@@ -42,6 +42,11 @@
 					}
 				}
 			?>
+			<div style="float: left; width: 20%;">
+			<?php
+				echo $request->contributions;
+			?>
+			</div>
 			<div style="float: left;">
 				<div><a href="<?php echo $thumburl . '&vote=up:noreason'; ?>"><img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_up.png" alt="thumb up" /></a>
 			<?php
