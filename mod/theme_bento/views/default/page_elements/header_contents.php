@@ -49,7 +49,13 @@
         ?>
       
         <!-- Link: Logout -->
-        <?php echo elgg_view('output/url', array('href' => "https://" . $_SERVER['SERVER_NAME'] ."/ICHAINLogout/?%22https://connect.opensuse.org/cmd/ICSLogout%22-X", 'text' => elgg_echo('logout'), 'is_action' => TRUE)); ?>
+        <?php
+            if (is_plugin_enabled('ichain_login')) {
+                echo elgg_view('output/url', array('href' => "https://" . $_SERVER['SERVER_NAME'] ."/ICHAINLogout/?%22https://connect.opensuse.org/cmd/ICSLogout%22-X", 'text' => elgg_echo('logout'), 'is_action' => TRUE));
+            } else {
+                echo elgg_view('output/url', array('href' => "{$vars['url']}action/logout", 'text' => elgg_echo('logout'), 'is_action' => TRUE));
+            }
+        ?>
 
       <?php } else { ?>
 
