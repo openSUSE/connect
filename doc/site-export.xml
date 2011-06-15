@@ -157,7 +157,7 @@
   </plugin>
   <plugin>
    <name>tinymce</name>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
   </plugin>
   <plugin>
    <name>categories</name>
@@ -351,6 +351,10 @@
   </plugin>
   <plugin>
    <name>group_kick</name>
+   <enabled>true</enabled>
+  </plugin>
+  <plugin>
+   <name>obs</name>
    <enabled>true</enabled>
   </plugin>
  </plugins>
