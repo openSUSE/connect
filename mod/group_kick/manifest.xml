@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin_manifest>
+	<field key="author" value="ColdTrick IT Solutions" />
+	<field key="version" value="1.1" />
+	<field key="description" value="Ability to kick a group member from your group" />
+	<field key="website" value="http://www.coldtrick.com/" />
+	<field key="copyright" value="(C) ColdTrick IT Solutions 2009" />
+	<field key="licence" value="GNU Public License version 2" />
+	<field key="elgg_version" value="2009031301" />
+</plugin_manifest>
+<!-- 
+
+=========================
+Version Information
+=========================
+1.1:	
+	- added: dutch translation
+	- fixed: group admin can't kick a user
+	- fixed: group admin blank page
+1.0:
+	- initial version
+
+-->
