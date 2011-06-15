@@ -16,8 +16,7 @@
 	//get required data
 	set_context('search');//display results in search mode, which is list view
 	//
-  	$area1 = '';
-	// $area1 = elgg_view("account/forms/login");
+	$area1 = elgg_view("account/forms/login");
 	//newest actions in the river
 	$area2 = elgg_view_river_items(0, 0, '', '', '', '', 8, 0, 0, false);
 	//get the newest members who have an avatar

@@ -40,8 +40,12 @@
 				echo "<a href=\"" . $vars['url'] . "mod/connect_index/graphics/about_groups.png\" rel=\"prettyPhoto[pp_gal]\"></a>";
 				echo "<a href=\"" . $vars['url'] . "mod/connect_index/graphics/about_connect.png\" rel=\"prettyPhoto[pp_gal]\"></a>";
 				echo "</p>";
-
-
+				if (!is_plugin_enabled('ichain_login')) {
+				   if (!isloggedin()){
+                                      echo $vars['area1'];
+                                      echo "<div class=\"clearfloat\"></div>";
+                                   }
+                                }
 		        }
 	        ?>
         </div>

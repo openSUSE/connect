@@ -244,6 +244,7 @@
 
 		// Submenu items for all group pages
 			if ($page_owner instanceof ElggGroup && get_context() == 'groups') {
+                                add_submenu_item(elgg_echo('groups:members'),$CONFIG->wwwroot . "pg/groups/memberlist/" . $page_owner->getGUID(), '1groupsactions');
 				if (isloggedin()) {
 					if ($page_owner->canEdit()) {
 						add_submenu_item(elgg_echo('groups:edit'),$CONFIG->wwwroot . "pg/groups/edit/" . $page_owner->getGUID(), '1groupsactions');
