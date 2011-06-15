@@ -34,7 +34,6 @@
 				$vote_up = array();
 				$vote_down = array();
 				foreach ($annotations as $ann) {
-					print_r($ann);
 					if (substr($ann->value, 0, 3) == 'up:') {
 						$vote_up[] = $ann->owner;
 					} else
