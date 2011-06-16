@@ -1034,6 +1034,15 @@ div.progress-container > div {
     margin-right: 10px;
 }
 
+.groups_membershiprequest_buttons {}
+
+.groups_membershiprequest_buttons .groupe-user {
+  float: left;
+  width: 20%;
+}
+.groups_membershiprequest_buttons .member_icon {
+  margin: 0 0.5em;
+}
 #owner_block_rss_feed {
     background: url("../graphics/rss.png") no-repeat scroll 0em 0.4em transparent;
     padding-left: 1.5em;
@@ -1074,4 +1083,11 @@ div.progress-container > div {
 textarea {
     width: 550px;
     height: 200px;
+}
+
+.green {
+  color: #690 !important;
+}
+.red {
+  color: #c00 !important;
 }
