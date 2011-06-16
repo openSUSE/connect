@@ -1043,6 +1043,18 @@ div.progress-container > div {
 .groups_membershiprequest_buttons .member_icon {
   margin: 0 0.5em;
 }
+.reportedcontent_content .groups-contributions {
+  height: 100px;
+  overflow: auto;
+}
+.reportedcontent_content .groups-contributions strong {
+  color: #ccc;
+}
+
+.reportedcontent_content:first-child { /* more space to page headline */
+  padding-top: 2em;
+}
+
 #owner_block_rss_feed {
     background: url("../graphics/rss.png") no-repeat scroll 0em 0.4em transparent;
     padding-left: 1.5em;

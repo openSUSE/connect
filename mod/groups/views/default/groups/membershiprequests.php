@@ -45,30 +45,42 @@
 				$vote_up = array_unique($vote_up);
 				$vote_down = array_unique($vote_down);
 			?>
-			<div style="float: left; width: 40%; height: 100px; overflow:scroll;">
-			<?php
-				echo $request->contributions;
-			?>
-			</div>
-			<div style="float: left;">
-				<div><a href="<?php echo $thumburl . '&vote=up:noreason'; ?>"><img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_up.png" alt="thumb up" /></a>
-			<?php
-				echo count($vote_up);
-				foreach ($vote_up as $voter) {
-					echo elgg_view("profile/icon", array('entity' => $voter, 'size' => 'small', 'override' => 'true' )) . ' ';
-				}
-			?>
-				</div>
-				<br/>
-				<div><a href="<?php echo $thumburl . '&vote=dn:noreason'; ?>"><img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_down.png" alt="thumb down" /></a>
-			<?php
-				echo count($vote_down);
-				foreach ($vote_down as $voter) {
-					echo elgg_view("profile/icon", array('entity' => $voter, 'size' => 'small', 'override' => 'true' )) . ' ';
-				}
-			?>
-				</div>
-			</div>
+
+			<?php if ($request->contributions == true): // check if there are any contributions ?>
+
+        <div class="groups-contributions grid_7">
+  			<?php
+  				echo $request->contributions;
+  			?>
+  			</div>
+        <div style="float: left;">
+
+  				<div><a href="<?php echo $thumburl . '&vote=up:noreason'; ?>"><img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_up.png" alt="thumb up" /></a>
+  			<?php
+  				echo count($vote_up);
+  				foreach ($vote_up as $voter) {
+  					echo elgg_view("profile/icon", array('entity' => $voter, 'size' => 'small', 'override' => 'true' )) . ' ';
+  				}
+  			?>
+  				</div>
+  				<br/>
+  				<div><a href="<?php echo $thumburl . '&vote=dn:noreason'; ?>"><img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_down.png" alt="thumb down" /></a>
+  			<?php
+  				echo count($vote_down);
+  				foreach ($vote_down as $voter) {
+  					echo elgg_view("profile/icon", array('entity' => $voter, 'size' => 'small', 'override' => 'true' )) . ' ';
+  				}
+  			?>
+  				</div>
+		    </div>
+  			
+			<?php else : ?>
+  			<div class="groups-contributions grid_7">
+          <strong>No ontributions.</strong>
+  			</div>
+			<?php endif ?>
+	
+
 			<?php } ?>
 			<hr style="clear: both;" />
 		</div>
