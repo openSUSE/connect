@@ -9,7 +9,7 @@
 ?>
 	<div class="reportedcontent_content active_report">
 		<div class="groups_membershiprequest_buttons">
-			<div class="groupe-user grid_5">
+			<div class="group-user grid_3">
 			<?php
 			  // Add User Icon
 				echo "<div class=\"member_icon\"><a href=\"" . $request->getURL() . "\">";
@@ -48,16 +48,16 @@
 
 			<?php if ($request->contributions == true): // check if there are any contributions ?>
 
-        <div class="groups-contributions grid_7">
+        <div class="groups-contributions grid_5">
   			<?php
   				echo $request->contributions;
   			?>
   			</div>
-        <div style="float: left;">
+        <div style="float: left;" class="grid_4">
 
   				<div><a href="<?php echo $thumburl . '&vote=up:noreason'; ?>"><img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_up.png" alt="thumb up" /></a>
   			<?php
-  				echo count($vote_up);
+  				echo '<span style="font-size: xx-large; margin: 4px;">' . count($vote_up) . '</span>';
   				foreach ($vote_up as $voter) {
   					echo elgg_view("profile/icon", array('entity' => $voter, 'size' => 'small', 'override' => 'true' )) . ' ';
   				}
@@ -66,7 +66,7 @@
   				<br/>
   				<div><a href="<?php echo $thumburl . '&vote=dn:noreason'; ?>"><img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_down.png" alt="thumb down" /></a>
   			<?php
-  				echo count($vote_down);
+  				echo '<span style="font-size: xx-large; margin: 4px;">' . count($vote_down) . '</span>';
   				foreach ($vote_down as $voter) {
   					echo elgg_view("profile/icon", array('entity' => $voter, 'size' => 'small', 'override' => 'true' )) . ' ';
   				}
@@ -75,8 +75,8 @@
 		    </div>
   			
 			<?php else : ?>
-  			<div class="groups-contributions grid_7">
-          <strong>No ontributions.</strong>
+  			<div class="groups-contributions grid_5">
+          <strong>No given contributions.</strong>
   			</div>
 			<?php endif ?>
 	

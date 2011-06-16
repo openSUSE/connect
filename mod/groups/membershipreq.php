@@ -23,7 +23,7 @@
 		
 		$requests = elgg_get_entities_from_relationship(array('relationship' => 'membership_request', 'relationship_guid' => $group_guid, 'inverse_relationship' => TRUE, 'limit' => 9999));
 		$extended = ($group_guid == $CONFIG->MembersGroupID);
-    // $extended = true; // to activate this view activate this snippet
+//		$extended = true; // to activate this view activate this snippet
 		$area2 .= elgg_view('groups/membershiprequests',array('requests' => $requests, 'entity' => $group, 'extended' => $extended ) );
 
 	} else {
