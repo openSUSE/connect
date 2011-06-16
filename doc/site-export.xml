@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<elgg timestamp="1299161870" version="" release="">
+<elgg timestamp="1308222988" version="" release="">
  <core>
   <database table_prefix="elgg_" split_connections="false">
    <connection type="readwrite">
@@ -286,6 +286,14 @@
    <enabled>true</enabled>
   </plugin>
   <plugin>
+   <name>group_operators</name>
+   <enabled>true</enabled>
+  </plugin>
+  <plugin>
+   <name>group_kick</name>
+   <enabled>true</enabled>
+  </plugin>
+  <plugin>
    <name>file</name>
    <enabled>false</enabled>
   </plugin>
@@ -295,10 +303,6 @@
   </plugin>
   <plugin>
    <name>connect_index</name>
-   <enabled>true</enabled>
-  </plugin>
-  <plugin>
-   <name>group_operators</name>
    <enabled>true</enabled>
   </plugin>
   <plugin>
@@ -350,12 +354,12 @@
    <enabled>true</enabled>
   </plugin>
   <plugin>
-   <name>group_kick</name>
+   <name>obs</name>
    <enabled>true</enabled>
   </plugin>
   <plugin>
-   <name>obs</name>
-   <enabled>true</enabled>
+   <name>openid_server</name>
+   <enabled>false</enabled>
   </plugin>
  </plugins>
 </elgg>
