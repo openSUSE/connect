@@ -28,6 +28,31 @@
 			$url = elgg_add_action_tokens_to_url("{$vars['url']}action/groups/addtogroup?user_guid={$request->guid}&group_guid={$vars['entity']->guid}");
 			?>
 			<strong><a href="<?php echo $url; ?>" class="archive_report_button green"><?php echo elgg_echo('groups:joinrequestaccept'); ?></a></strong>
+			<br/><br/>
+			<a href="#" id="vallinks_<?php echo $request->guid; ?>">validation links</a>
+			<script>
+			<?php
+				echo "$('#vallinks_{$request->guid}').click(function(){ $('#vallinks_div_{$request->guid}').toggle(); return false; });";
+			?>
+			</script>
+			<div class="voter-container" id="vallinks_div_<?php echo $request->guid; ?>">
+			<ul>
+			<?php
+			  $val_username = urlencode($request->username);
+			  $val_email = urlencode($request->email);
+			  $val_name = urlencode($request->name);
+			?>
+				<li><a href="https://bugzilla.novell.com/buglist.cgi?query_format=advanced&classification=openSUSE&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=NEEDINFO&bug_status=REOPENED&bug_status=RESOLVED&bug_status=VERIFIED&bug_status=CLOSED&emailassigned_to1=1&emailreporter1=1&emailinfoprovider1=1&emailqa_contact1=1&emailcc1=1&emaillongdesc1=1&emailtype1=exact&email1=<?php echo $val_email;  ?>&bugidtype=include&cmdtype=doit&order=Reuse+same+sort+as+last+time" target="_blank">Bugzilla by Email</a></li>
+				<li><a href="https://bugzilla.novell.com/userlookup.cgi?matchstr=<?php echo $val_name;  ?>&matchtype=substr" target="_blank">Search Bugzilla User</a></li>
+				<li><a href="http://en.opensuse.org/User:<?php echo $val_username;  ?>" target="_blank">Wiki User Page</a></li>
+				<li><a href="http://en.opensuse.org/Special:Contributions/<?php echo $val_username;  ?>" target="_blank">Wiki Contributions</a></li>
+				<li><a href="http://lists.opensuse.org/cgi-bin/search.cgi?query=%22<?php echo $val_name;  ?>%22&list=all" target="_blank">Mailinglist Archive by Fullname</a></li>
+				<li><a href="http://lists.opensuse.org/cgi-bin/search.cgi?query=<?php echo $val_email;  ?>&list=all" target="_blank">Mailinglist Archive by Email</a></li>
+				<li><a href="http://www.google.com/search?q=opensuse+%22<?php echo $val_name;  ?>%22" target="_blank">Google the Fullname</a></li>
+				<li><a href="https://build.opensuse.org/home/list_my?user=<?php echo $val_username;  ?>" target="_blank">Build Service</a></li>
+				<li><a href="http://forums.opensuse.org/members/<?php echo $val_username;  ?>.html" target="_blank">Forums</a></li>
+			</ul>
+			</div>
 			</div>
 			<?php if ($vars['extended']) {
 				$thumburl = elgg_add_action_tokens_to_url("{$vars['url']}action/groups/thumbvote?mode=add&user_guid={$request->guid}&group_guid={$vars['entity']->guid}");
