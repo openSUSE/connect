@@ -63,8 +63,8 @@
     				echo '<span style="font-size: xx-large; margin: 4px;"><a href="#" id="votesup_' . $request->guid . '">+' . count($vote_up) . '</a> / <a href="#" id="votesdn_' . $request->guid . '">-' . count($vote_down) . '</a></span>';
   			  ?>
   					<script>
-  					$('#votesup_<?php echo $request->guid; ?>').click(function(){ $('#voter-up_<?php echo $request->guid; ?>').toggle(); });
-  					$('#votesdn_<?php echo $request->guid; ?>').click(function(){ $('#voter-dn_<?php echo $request->guid; ?>').toggle(); });
+  					$('#votesup_<?php echo $request->guid; ?>').click(function(){ $('#voter-up_<?php echo $request->guid; ?>').toggle(); return false; });
+  					$('#votesdn_<?php echo $request->guid; ?>').click(function(){ $('#voter-dn_<?php echo $request->guid; ?>').toggle(); return false; });
   					</script>
     				  <a class="voting vote-dn" href="<?php echo $thumburl . '&vote=dn:reason'; ?>">
                         <img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_down.png" alt="thumb down" /></a>
