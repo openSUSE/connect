@@ -53,25 +53,52 @@
   				echo $request->contributions;
   			?>
   			</div>
+  			
         <div class="grid_4">
+          <!-- <div> -->
 
-  				<div><a href="<?php echo $thumburl . '&vote=up:noreason'; ?>"><img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_up.png" alt="thumb up" /></a>
+        <form action="membershiprequests_submit" method="get" accept-charset="utf-8">
+          
+  				  <a class="voting vote-up" href="<?php echo $thumburl . '&vote=up:noreason'; ?>">
+              <img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_up.png" alt="thumb up" />
+  				  </a>
   			<?php
   				echo '<span style="font-size: xx-large; margin: 4px;">' . count($vote_up) . '</span>';
-  				foreach ($vote_up as $voter) {
-  					echo elgg_view("profile/icon", array('entity' => $voter, 'size' => 'small', 'override' => 'true' )) . ' ';
-  				}
   			?>
-  				</div>
-  				<br/>
-  				<div><a href="<?php echo $thumburl . '&vote=dn:noreason'; ?>"><img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_down.png" alt="thumb down" /></a>
+  			  <div id="voter-up" class="voter-container">
+    			<?php
+    				foreach ($vote_up as $voter) {
+    					echo elgg_view("profile/icon", array('entity' => $voter, 'size' => 'small', 'override' => 'true' )) . ' ';
+    				}
+    			?>
+ 				  </div>
+          <!-- </div> -->
+  				
+          <!-- <br/> -->
+  				
+          <!-- <div> -->
+  				  <a class="voting vote-dn" href="<?php echo $thumburl . '&vote=dn:noreason'; ?>">
+              <img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_down.png" alt="thumb down" />
+  				  </a>
   			<?php
   				echo '<span style="font-size: xx-large; margin: 4px;">' . count($vote_down) . '</span>';
+			  ?>
+  				<div id="voter-dn" class="voter-container">
+    			<?php
   				foreach ($vote_down as $voter) {
   					echo elgg_view("profile/icon", array('entity' => $voter, 'size' => 'small', 'override' => 'true' )) . ' ';
   				}
   			?>
-  				</div>
+          </div>
+          <!-- </div> -->
+          
+          <!-- <label for="comment">Comment</label> -->
+          <input type="text" name="comment" value="" id="comment">
+
+          <!-- <p><input type="submit" value="Continue &rarr;"></p> -->
+        </form>
+          
+          
 		    </div>
   			
 			<?php else : ?>

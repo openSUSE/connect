@@ -1055,6 +1055,24 @@ div.progress-container > div {
   padding-top: 2em;
 }
 
+.voter-container {
+  display: none;
+}
+
+/* Voting Buttons */
+/*.button.voting {}
+.button.vote-up {
+  background-color: #690;
+}
+.button.vote-dn {
+  background-color: #600;
+}*/
+
+/* /Voting Buttons */
+
+
+
+
 #owner_block_rss_feed {
     background: url("../graphics/rss.png") no-repeat scroll 0em 0.4em transparent;
     padding-left: 1.5em;

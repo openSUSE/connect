@@ -24,4 +24,17 @@ $(document).ready(function() {
     return true;
   }
   
+  
+  // == Membership Request Page ==
+  
+  $('a.vote-up').click(function() {
+    // Act on the event
+    console.log('vote-up');
+  });
+  
+  $('a.vote-dn').click(function() {
+    // Act on the event
+    console.log('vote-up');
+  });
+  
 });
