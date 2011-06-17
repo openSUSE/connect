@@ -53,7 +53,7 @@
   				echo $request->contributions;
   			?>
   			</div>
-        <div style="float: left;" class="grid_4">
+        <div class="grid_4">
 
   				<div><a href="<?php echo $thumburl . '&vote=up:noreason'; ?>"><img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_up.png" alt="thumb up" /></a>
   			<?php
