@@ -60,16 +60,16 @@
   			  <a class="voting vote-up" href="<?php echo $thumburl . '&vote=up:reason'; ?>">
             <img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_up.png" alt="thumb up" /></a>
   			  <?php
-    				echo '<span style="font-size: xx-large; margin: 4px;"><a href="#" id="votesup">+' . count($vote_up) . '</a> / <a href="#" id="votesdn">-' . count($vote_down) . '</a></span>';
+    				echo '<span style="font-size: xx-large; margin: 4px;"><a href="#" id="votesup_{$request->guid}">+' . count($vote_up) . '</a> / <a href="#" id="votesdn_{$request->guid}">-' . count($vote_down) . '</a></span>';
   			  ?>
   					<script>
-  					$('#votesup').click(function(){ $('#voter-up').toggle(); });
-  					$('#votesdn').click(function(){ $('#voter-dn').toggle(); });
+  					$('#votesup_<?php echo $request->guid; ?>').click(function(){ $('#voter-up_<?php echo $request->guid; ?>').toggle(); });
+  					$('#votesdn_<?php echo $request->guid; ?>').click(function(){ $('#voter-dn_<?php echo $request->guid; ?>').toggle(); });
   					</script>
     				  <a class="voting vote-dn" href="<?php echo $thumburl . '&vote=dn:reason'; ?>">
                         <img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_down.png" alt="thumb down" /></a>
 			  
-    			  <div id="voter-up" class="voter-container">
+    			  <div id="voter-up_<?php echo $request->guid; ?>" class="voter-container">
       			<?php // show voters-avatars (pro vote)
       				foreach ($vote_up as $ann) {
       					echo elgg_view("profile/icon", array('entity' => $ann->owner, 'size' => 'small', 'override' => 'true' )) . ' ';
@@ -77,7 +77,7 @@
       				}
       			?>
    				  </div>
-    			<div id="voter-dn" class="voter-container">
+    			<div id="voter-dn_<?php echo $request->guid; ?>" class="voter-container">
       		<?php // show voters-avatars (contra vote)
     			foreach ($vote_down as $ann) {
     				echo elgg_view("profile/icon", array('entity' => $ann->owner, 'size' => 'small', 'override' => 'true' )) . ' ';
