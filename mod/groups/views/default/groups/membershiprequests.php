@@ -59,41 +59,37 @@
 
         <form action="membershiprequests_submit" method="get" accept-charset="utf-8">
           
-  				  <a class="voting vote-up" href="<?php echo $thumburl . '&vote=up:noreason'; ?>">
-              <img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_up.png" alt="thumb up" />
-  				  </a>
-  			<?php
-  				echo '<span style="font-size: xx-large; margin: 4px;">' . count($vote_up) . '</span>';
-  			?>
-  			  <div id="voter-up" class="voter-container">
-    			<?php
-    				foreach ($vote_up as $voter) {
-    					echo elgg_view("profile/icon", array('entity' => $voter, 'size' => 'small', 'override' => 'true' )) . ' ';
-    				}
+  			  <a class="voting vote-up" href="<?php echo $thumburl . '&vote=up:noreason'; ?>">
+            <img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_up.png" alt="thumb up" />
+  			  </a>
+  			  <?php
+    				echo '<span style="font-size: xx-large; margin: 4px;">' . count($vote_up) . '</span>';
     			?>
- 				  </div>
-          <!-- </div> -->
-  				
-          <!-- <br/> -->
-  				
-          <!-- <div> -->
-  				  <a class="voting vote-dn" href="<?php echo $thumburl . '&vote=dn:noreason'; ?>">
-              <img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_down.png" alt="thumb down" />
-  				  </a>
-  			<?php
-  				echo '<span style="font-size: xx-large; margin: 4px;">' . count($vote_down) . '</span>';
-			  ?>
-  				<div id="voter-dn" class="voter-container">
+    			  <div id="voter-up" class="voter-container">
+      			<?php // show voters-avatars (pro vote)
+      				foreach ($vote_up as $voter) {
+      					echo elgg_view("profile/icon", array('entity' => $voter, 'size' => 'small', 'override' => 'true' )) . ' ';
+      				}
+      			?>
+   				  </div>
+
+    				  <a class="voting vote-dn" href="<?php echo $thumburl . '&vote=dn:noreason'; ?>">
+                <img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_down.png" alt="thumb down" />
+    				  </a>
     			<?php
-  				foreach ($vote_down as $voter) {
-  					echo elgg_view("profile/icon", array('entity' => $voter, 'size' => 'small', 'override' => 'true' )) . ' ';
-  				}
-  			?>
+    				echo '<span style="font-size: xx-large; margin: 4px;">' . count($vote_down) . '</span>';
+  			  ?>
+			  
+    			<div id="voter-dn" class="voter-container">
+      		<?php // show voters-avatars (contra vote)
+    			foreach ($vote_down as $voter) {
+    				echo elgg_view("profile/icon", array('entity' => $voter, 'size' => 'small', 'override' => 'true' )) . ' ';
+    			}
+    			?>
           </div>
-          <!-- </div> -->
           
           <!-- <label for="comment">Comment</label> -->
-          <input type="text" name="comment" value="" id="comment">
+          <input type="text" name="comment" value="" id="vote-comment">
 
           <!-- <p><input type="submit" value="Continue &rarr;"></p> -->
         </form>

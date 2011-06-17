@@ -27,14 +27,40 @@ $(document).ready(function() {
   
   // == Membership Request Page ==
   
+  // TODO: the comment getting could be moved into a singel function
+  // function getComment (argument) {
+  //   ...
+  // }
+  
+  
+  
   $('a.vote-up').click(function() {
-    // Act on the event
-    console.log('vote-up');
+    var comment = $('input#vote-comment').val();
+    var url = $(this).attr('href');
+    var urlNew = url.replace('noreason', comment);
+    
+    $(this).attr('href', urlNew);
+    
+    // DEBUG
+    // console.log('vote-up' + ' url ' + url + ' val: ' + $('input#vote-comment').val());
+    // alert($(this).attr('href'));
+    
+    return true;
   });
-  
+
   $('a.vote-dn').click(function() {
-    // Act on the event
-    console.log('vote-up');
+    var comment = $('input#vote-comment').val();
+    var url = $(this).attr('href');
+    var urlNew = url.replace('noreason', comment);
+    
+    $(this).attr('href', urlNew);
+    
+    // DEBUG
+    // console.log('vote-up' + ' url ' + url + ' val: ' + $('input#vote-comment').val());
+    // alert($(this).attr('href'));
+    
+    return true;
   });
   
+
 });
