@@ -1056,7 +1056,11 @@ div.progress-container > div {
 }
 
 .voter-container {
-  display: none;
+    display: none; 
+    border: 1px solid #888;
+    background: #eee;
+    position: absolute;
+    z-index: 10;
 }
 
 /* Voting Buttons */

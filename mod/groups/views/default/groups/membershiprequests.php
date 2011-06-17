@@ -36,14 +36,12 @@
 				$vote_down = array();
 				foreach ($annotations as $ann) {
 					if (substr($ann->value, 0, 3) == 'up:') {
-						$vote_up[] = $ann->owner;
+						$vote_up[] = $ann;
 					} else
 					if (substr($ann->value, 0, 3) == 'dn:') {
-						$vote_down[] = $ann->owner;
+						$vote_down[] = $ann;
 					}
 				}
-				$vote_up = array_unique($vote_up);
-				$vote_down = array_unique($vote_down);
 			?>
 
 			<?php if ($request->contributions == true): // check if there are any contributions ?>
@@ -59,37 +57,37 @@
 
         <form action="membershiprequests_submit" method="get" accept-charset="utf-8">
           
-  			  <a class="voting vote-up" href="<?php echo $thumburl . '&vote=up:noreason'; ?>">
-            <img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_up.png" alt="thumb up" />
-  			  </a>
+  			  <a class="voting vote-up" href="<?php echo $thumburl . '&vote=up:reason'; ?>">
+            <img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_up.png" alt="thumb up" /></a>
   			  <?php
-    				echo '<span style="font-size: xx-large; margin: 4px;">' . count($vote_up) . '</span>';
-    			?>
+    				echo '<span style="font-size: xx-large; margin: 4px;"><a href="#" id="votesup">+' . count($vote_up) . '</a> / <a href="#" id="votesdn">-' . count($vote_down) . '</a></span>';
+  			  ?>
+  					<script>
+  					$('#votesup').click(function(){ $('#voter-up').toggle(); });
+  					$('#votesdn').click(function(){ $('#voter-dn').toggle(); });
+  					</script>
+    				  <a class="voting vote-dn" href="<?php echo $thumburl . '&vote=dn:reason'; ?>">
+                        <img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_down.png" alt="thumb down" /></a>
+			  
     			  <div id="voter-up" class="voter-container">
       			<?php // show voters-avatars (pro vote)
-      				foreach ($vote_up as $voter) {
-      					echo elgg_view("profile/icon", array('entity' => $voter, 'size' => 'small', 'override' => 'true' )) . ' ';
+      				foreach ($vote_up as $ann) {
+      					echo elgg_view("profile/icon", array('entity' => $ann->owner, 'size' => 'small', 'override' => 'true' )) . ' ';
+    					echo ' ' . substr($ann->value, 3) . ' <br/>';
       				}
       			?>
    				  </div>
-
-    				  <a class="voting vote-dn" href="<?php echo $thumburl . '&vote=dn:noreason'; ?>">
-                <img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_down.png" alt="thumb down" />
-    				  </a>
-    			<?php
-    				echo '<span style="font-size: xx-large; margin: 4px;">' . count($vote_down) . '</span>';
-  			  ?>
-			  
     			<div id="voter-dn" class="voter-container">
       		<?php // show voters-avatars (contra vote)
-    			foreach ($vote_down as $voter) {
-    				echo elgg_view("profile/icon", array('entity' => $voter, 'size' => 'small', 'override' => 'true' )) . ' ';
+    			foreach ($vote_down as $ann) {
+    				echo elgg_view("profile/icon", array('entity' => $ann->owner, 'size' => 'small', 'override' => 'true' )) . ' ';
+  					echo ' ' . substr($ann->value, 3) . ' <br/>';
     			}
     			?>
           </div>
           
           <!-- <label for="comment">Comment</label> -->
-          <input type="text" name="comment" value="" id="vote-comment">
+          <input type="text" name="comment" value="reason" id="vote-comment" class="grid_4">
 
           <!-- <p><input type="submit" value="Continue &rarr;"></p> -->
         </form>
