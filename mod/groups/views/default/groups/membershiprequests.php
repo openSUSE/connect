@@ -9,7 +9,7 @@
 ?>
 	<div class="reportedcontent_content active_report">
 		<div class="groups_membershiprequest_buttons">
-			<div class="group-user grid_3">
+			<div class="group-user grid_3" id="vote_<?php echo $request->guid; ?>">
 			<?php
 			  // Add User Icon
 				echo "<div class=\"member_icon\"><a href=\"" . $request->getURL() . "\">";
@@ -74,7 +74,7 @@
     			  <div id="voter-up_<?php echo $request->guid; ?>" class="voter-container">
       			<?php // show voters-avatars (pro vote)
       				foreach ($vote_up as $ann) {
-      				$delurl = elgg_add_action_tokens_to_url("{$vars['url']}action/groups/thumbvote?mode=del&group_guid={$vars['entity']->guid}&ann_id={$ann->id}");
+      				$delurl = elgg_add_action_tokens_to_url("{$vars['url']}action/groups/thumbvote?mode=del&user_guid={$request->guid}&group_guid={$vars['entity']->guid}&ann_id={$ann->id}");
     				echo elgg_view("profile/icon", array('entity' => $ann->owner, 'size' => 'small', 'override' => 'true' )) . ' ';
   					echo ' ' . substr($ann->value, 3) . ' <a href="' . $delurl . '">[x]</a><br/>';
       				}
@@ -83,7 +83,7 @@
     			<div id="voter-dn_<?php echo $request->guid; ?>" class="voter-container">
       		<?php // show voters-avatars (contra vote)
     			foreach ($vote_down as $ann) {
-    				$delurl = elgg_add_action_tokens_to_url("{$vars['url']}action/groups/thumbvote?mode=del&group_guid={$vars['entity']->guid}&ann_id={$ann->id}");
+    				$delurl = elgg_add_action_tokens_to_url("{$vars['url']}action/groups/thumbvote?mode=del&user_guid={$request->guid}&group_guid={$vars['entity']->guid}&ann_id={$ann->id}");
     				echo elgg_view("profile/icon", array('entity' => $ann->owner, 'size' => 'small', 'override' => 'true' )) . ' ';
   					echo ' ' . substr($ann->value, 3) . ' <a href="' . $delurl . '">[x]</a><br/>';
     			}
