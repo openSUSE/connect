@@ -34,7 +34,11 @@
 				$annotations = $request->getAnnotations('join_vote_' . ($vars['entity']->guid));
 				$vote_up = array();
 				$vote_down = array();
+				$already_voted = false;
 				foreach ($annotations as $ann) {
+					if ($ann->owner_guid == get_loggedin_userid()) {
+						$already_voted = true;
+					}
 					if (substr($ann->value, 0, 3) == 'up:') {
 						$vote_up[] = $ann;
 					} else
@@ -56,10 +60,11 @@
           <!-- <div> -->
 
         <form action="membershiprequests_submit" method="get" accept-charset="utf-8">
-          
+          <?php if (!$already_voted) { ?>
   			  <a class="voting vote-up" href="<?php echo $thumburl . '&vote=up:reason'; ?>" id="#voteup_<?php echo $request->guid; ?>">
             <img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_up.png" alt="thumb up" /></a>
   			  <?php
+                }
     				echo '<span style="font-size: xx-large; margin: 4px;"><a href="#" id="votesup_' . $request->guid . '">+' . count($vote_up) . '</a> / <a href="#" id="votesdn_' . $request->guid . '">-' . count($vote_down) . '</a></span>';
   			  ?>
   					<script>
@@ -68,8 +73,10 @@
   						echo "$('#votesdn_{$request->guid}').click(function(){ $('#voter-dn_{$request->guid}').toggle(); $('#voter-up_{$request->guid}').hide(); return false; });";
   					?>
   					</script>
+  					<?php if (!$already_voted) { ?>
     				  <a class="voting vote-dn" href="<?php echo $thumburl . '&vote=dn:reason'; ?>" id="#votedn_<?php echo $request->guid; ?>">
                         <img src="<?php echo $vars['url']; ?>mod/groups/graphics/thumb_down.png" alt="thumb down" /></a>
+                    <?php } ?>
 			  
     			  <div id="voter-up_<?php echo $request->guid; ?>" class="voter-container">
       			<?php // show voters-avatars (pro vote)
@@ -89,11 +96,9 @@
     			}
     			?>
           </div>
-          
-          <!-- <label for="comment">Comment</label> -->
+          <?php if (!$already_voted) { ?>
           <input type="text" name="comment" value="reason" id="vote-comment_<?php echo $request->guid; ?>" class="grid_4">
-
-          <!-- <p><input type="submit" value="Continue &rarr;"></p> -->
+          <?php } ?>
         </form>
           
           
