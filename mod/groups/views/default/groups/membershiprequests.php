@@ -110,8 +110,9 @@
     				echo elgg_view("profile/icon", array('entity' => get_entity($ann->owner_guid), 'size' => 'small', 'override' => 'true' )) . ' ';
     				echo ' ' . substr($ann->value, 3);
     				if ($ann->owner_guid == get_loggedin_userid()) {
-  						echo ' <a href="' . $delurl . '">[x]</a><br/>';
+  						echo ' <a href="' . $delurl . '">[x]</a>';
   					}
+  					echo '<br/>';
       				}
       			?>
    				  </div>
@@ -122,8 +123,9 @@
     				echo elgg_view("profile/icon", array('entity' => get_entity($ann->owner_guid), 'size' => 'small', 'override' => 'true' )) . ' ';
     				echo ' ' . substr($ann->value, 3);
     				if ($ann->owner_guid == get_loggedin_userid()) {
-  						echo ' <a href="' . $delurl . '">[x]</a><br/>';
+  						echo ' <a href="' . $delurl . '">[x]</a>';
   					}
+  					echo '<br/>';
     			}
     			?>
           </div>
