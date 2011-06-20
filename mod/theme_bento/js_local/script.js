@@ -32,6 +32,8 @@ $(document).ready(function() {
   //   ...
   // }
   
+  // TODO: disable 
+  
   
   
   $('a.vote-up').click(function() {
