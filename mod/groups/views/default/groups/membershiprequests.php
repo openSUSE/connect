@@ -108,8 +108,9 @@
       				foreach ($vote_up as $ann) {
       				$delurl = elgg_add_action_tokens_to_url("{$vars['url']}action/groups/thumbvote?mode=del&user_guid={$request->guid}&group_guid={$vars['entity']->guid}&ann_id={$ann->id}");
     				echo elgg_view("profile/icon", array('entity' => get_entity($ann->owner_guid), 'size' => 'small', 'override' => 'true' )) . ' ';
+    				echo ' ' . substr($ann->value, 3);
     				if ($ann->owner_guid == get_loggedin_userid()) {
-  						echo ' ' . substr($ann->value, 3) . ' <a href="' . $delurl . '">[x]</a><br/>';
+  						echo ' <a href="' . $delurl . '">[x]</a><br/>';
   					}
       				}
       			?>
@@ -119,8 +120,9 @@
     			foreach ($vote_down as $ann) {
     				$delurl = elgg_add_action_tokens_to_url("{$vars['url']}action/groups/thumbvote?mode=del&user_guid={$request->guid}&group_guid={$vars['entity']->guid}&ann_id={$ann->id}");
     				echo elgg_view("profile/icon", array('entity' => get_entity($ann->owner_guid), 'size' => 'small', 'override' => 'true' )) . ' ';
+    				echo ' ' . substr($ann->value, 3);
     				if ($ann->owner_guid == get_loggedin_userid()) {
-  						echo ' ' . substr($ann->value, 3) . ' <a href="' . $delurl . '">[x]</a><br/>';
+  						echo ' <a href="' . $delurl . '">[x]</a><br/>';
   					}
     			}
     			?>
