@@ -38,6 +38,17 @@
 
 				// add to river
 				add_to_river('river/relationship/member/create','join',$user->guid,$group->guid);
+				$options = array( "mailinglist" => $group->mailinglist,
+                                                  "email" => $user->email,
+                                                  "username" => $user->name );
+                                elgg_log("Enable mailinglist: " . $group->enable_ml_enable, 'NOTICE' );
+                                if( $group->enable_ml_enable == 'yes' ) {
+                                  elgg_log( "Hermes: do notification!", 'NOTICE' );
+                                  notify_hermes( 'subscribe_ml', $options );
+				} else {
+                                  # no hermes notification needed.
+                                  elgg_log( "Hermes: notify_hermes : not needed as ml subscription not wanted.", 'NOTICE' );
+				}
 
 				forward($group->getURL());
 				exit;

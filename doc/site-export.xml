@@ -294,6 +294,10 @@
    <enabled>true</enabled>
   </plugin>
   <plugin>
+   <name>connect_groups</name>
+   <enabled>true</enabled>
+  </plugin>
+  <plugin>
    <name>group_operators</name>
    <enabled>true</enabled>
   </plugin>

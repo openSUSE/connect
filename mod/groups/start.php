@@ -49,7 +49,6 @@
 		register_action("groups/killinvitation",false,$CONFIG->pluginspath . "groups/actions/groupskillinvitation.php");
 		register_action("groups/addtogroup",false, $CONFIG->pluginspath . "groups/actions/addtogroup.php");
 		register_action("groups/invite",false, $CONFIG->pluginspath . "groups/actions/invite.php");
-		register_action("groups/thumbvote",false,$CONFIG->pluginspath . "groups/actions/thumbvote.php");
 
 		// Use group widgets
 		use_widgets('groups');
@@ -79,44 +78,10 @@
 
 		// add the forum tool option
 		add_group_tool_option('forum',elgg_echo('groups:enableforum'),true);
- 
-                // add the auto subscribe to mailinglist option
-                add_group_tool_option('enable_ml', elgg_echo('groups:enablemailinglist'),true);
 
 		// Now override icons
 		register_plugin_hook('entity:icon:url', 'group', 'groups_groupicon_hook');
 	}
-
-	/**
-	 * Hermes notificator, FIXME move to more general place, ie. to make it useable from
-	 * other places
-         */
-         function notify_hermes( $function, $options )
-         {
-                # ichain fun: only the username is set in the header of the request to 
-                # notify.opensuse.org. Since we come through internal network, the user
-                # is trusted.
-                $username = 'connect_hermes'; # must exist in the hermes person table.
-
-		$runmode = "notify";
-       		if( $function == 'subscribe_ml' ) {
-			$runmode = 'subscribe_ml';
-		}
-
-		# do the hermes http call
-                $host = "http://notify.opensuse.org/index.cgi";
-
-  		$query = "rm=". $runmode;
-		foreach( $options as $option_name => $value ) {
-			$query .= "&" . urlencode($option_name) . "=" . urlencode($value);
-		}
-		$url = $host . "?" . $query;
-                elgg_log("Hermes: notify_hermes : " . $url, 'NOTICE' );
-		$headers = array( headers => array("x-username" => $username, "user-agent" => "connect"));
-		$result = http_parse_message( http_get( $url, $headers ))->body;
-		elgg_log("Hermes notify result: " . $result );
-         }
-
 
 	/**
 	 * Event handler for group forum posts
@@ -245,7 +210,6 @@
 
 		// Submenu items for all group pages
 			if ($page_owner instanceof ElggGroup && get_context() == 'groups') {
-                                add_submenu_item(elgg_echo('groups:members'),$CONFIG->wwwroot . "pg/groups/memberlist/" . $page_owner->getGUID(), '1groupsactions');
 				if (isloggedin()) {
 					if ($page_owner->canEdit()) {
 						add_submenu_item(elgg_echo('groups:edit'),$CONFIG->wwwroot . "pg/groups/edit/" . $page_owner->getGUID(), '1groupsactions');

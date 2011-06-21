@@ -5,8 +5,6 @@
 	 * @package ElggGroups
 	 */
 
-	global $CONFIG;
-
 	require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 	gatekeeper();
 	
@@ -17,15 +15,13 @@
 	$title = elgg_echo('groups:membershiprequests');
 
 	$area2 = elgg_view_title($title);
-
+	
 	if (($group) && ($group->canEdit()))
 	{	
 		
 		$requests = elgg_get_entities_from_relationship(array('relationship' => 'membership_request', 'relationship_guid' => $group_guid, 'inverse_relationship' => TRUE, 'limit' => 9999));
-		$extended = ($group_guid == $CONFIG->MembersGroupID);
-//		$extended = true; // to activate this view activate this snippet
-		$area2 .= elgg_view('groups/membershiprequests',array('requests' => $requests, 'entity' => $group, 'extended' => $extended ) );
-
+		$area2 .= elgg_view('groups/membershiprequests',array('requests' => $requests, 'entity' => $group));
+			 
 	} else {
 		$area2 .= elgg_echo("groups:noaccess");
 	}

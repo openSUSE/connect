@@ -5,6 +5,7 @@
 	 * 
 	 * @package ElggGroups
 	 */
+	 
 ?>
 
 <div id="group_members">

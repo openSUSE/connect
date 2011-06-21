@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin_manifest>
+	<field key="author" value="openSUSE.org" />
+	<field key="version" value="1.7" />
+	<field key="description" value="Connect extensions to groups module" />
+	<field key="website" value="http://www.opensuse.org/" />
+	<field key="copyright" value="(C) openSUSE 2011" />
+	<field key="licence" value="GNU Public License version 2" />
+	<field key="elgg_version" value="2010030101" />
+</plugin_manifest>
