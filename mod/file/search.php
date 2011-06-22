@@ -13,10 +13,14 @@
 		
 	// Get input
 		$md_type = 'simpletype';
-		$tag = get_input('tag');
+		// avoid XSS attacks.
+		$tag = strip_tags(get_input('tag'));
+		$tag_display = mb_convert_encoding($tag, 'HTML-ENTITIES', 'UTF-8');
+		$tag_display = htmlspecialchars($tag_display, ENT_QUOTES, 'UTF-8', false);
+		
 		$search_viewtype = get_input('search_viewtype');
 
-		$friends = (int) get_input('friends_guid',0);
+		$friends = (int) get_input('friends_guid', 0);
 		if ($friends) {
 			if ($owner_guid = get_user_friends($user_guid, "", 999999, 0)) {
 				foreach($owner_guid as $key => $friend)
@@ -25,12 +29,15 @@
 				$owner_guid = array();
 			}
 		} else {
-			$owner_guid = get_input('owner_guid',0);
-			if (substr_count($owner_guid,',')) {
+			$owner_guid = get_input('owner_guid', 0);
+			if (substr_count($owner_guid, ',')) {
 				$owner_guid = explode(",",$owner_guid);
+				$owner_guid = array_map('sanitise_int', $owner_guid);
+			} else {
+				$owner_guid = (int)$owner_guid;
 			}
 		}
-		$page_owner = get_input('page_owner',0);
+		$page_owner = (int)get_input('page_owner', 0);
 		if ($page_owner) { 
 			set_page_owner($page_owner);
 		} else {
@@ -48,13 +55,13 @@
 			$title = elgg_echo('file:type:all');
 			$area2 = elgg_view_title(elgg_echo('file:type:all'));
 		} else {
-			$title = sprintf(elgg_echo('searchtitle'),$tag);
+			$title = sprintf(elgg_echo('searchtitle'), $tag_display);
 			if (is_array($owner_guid)) {
-				$area2 = elgg_view_title(elgg_echo("file:friends:type:" . $tag));
+				$area2 = elgg_view_title(elgg_echo("file:friends:type:" . $tag_display));
 			} else if (page_owner() && page_owner() != $_SESSION['guid']) {
-				$area2 = elgg_view_title(sprintf(elgg_echo("file:user:type:" . $tag),page_owner_entity()->name));
+				$area2 = elgg_view_title(sprintf(elgg_echo("file:user:type:" . $tag_display),page_owner_entity()->name));
 			} else{
-				$area2 = elgg_view_title(elgg_echo("file:type:" . $tag));
+				$area2 = elgg_view_title(elgg_echo("file:type:" . $tag_display));
 			}
 		}
 		if ($friends) {

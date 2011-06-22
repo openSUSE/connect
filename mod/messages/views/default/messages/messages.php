@@ -55,13 +55,19 @@
 				// from their inbox or sentbox. If it is the inbox, then the icon and name will be the person who sent
 				// the message. If it is the sentbox, the icon and name will be the user the message was sent to
 				if ($type == "sent") {
+
 					//get an instance of the user who the message has been sent to so we can access the name and icon
 					$user_object = get_entity($vars['entity']->toId);
 					echo " " . elgg_view("profile/icon",array('entity' => $user_object, 'size' => 'tiny'));
 					echo "<br class=\"clearfloat\" /><p>".elgg_echo('messages:to').": <b>" . $user_object->name . "</b><br />";
 				} else {
-					echo " " . elgg_view("profile/icon",array('entity' => get_entity($vars['entity']->fromId), 'size' => 'tiny'));
-					echo "<br class=\"clearfloat\" /><p>".elgg_echo('messages:from').": <b>" . get_entity($vars['entity']->fromId)->name . "</b><br />";
+					$entity = get_entity($vars['entity']->fromId);
+					if ($entity) {
+						echo " " . elgg_view("profile/icon", array('entity' => $entity, 'size' => 'tiny'));
+						echo "<br class=\"clearfloat\" /><p>".elgg_echo('messages:from').": <b>" . $entity->name . "</b><br />";
+					} else {
+						echo "<br class=\"clearfloat\" /><p>".elgg_echo('messages:from').": <b>" . elgg_echo('messages:deleted_sender') . "</b><br />";
+					}
 				}
 			?>
 			<!-- get the time the message was sent -->
@@ -111,16 +117,29 @@
 		</script>
 
 
-			<p><?php if($type != "sent")echo "<a href=\"javascript:void(0);\" class='message_reply'>".elgg_echo('messages:answer')."</a> &nbsp; "; ?> <?php echo elgg_view("output/confirmlink", array(
-																'href' => $vars['url'] . "action/messages/delete?message_id=" . $vars['entity']->getGUID() . "&type={$type}&submit=" . elgg_echo('delete'),
-																'text' => elgg_echo('delete'),
-																'confirm' => elgg_echo('deleteconfirm'),
-															)); ?>
+			<p>
+			<?php
+			if($type != "sent") {
+				if ($entity) {
+					echo "<a href=\"javascript:void(0);\" class='message_reply'>"
+						. elgg_echo('messages:answer') . "</a> &nbsp; ";
+				}
+
+				echo elgg_view("output/confirmlink", array(
+					'href' => $vars['url'] . "action/messages/delete?message_id=" . $vars['entity']->getGUID() . "&type={$type}&submit=" . urlencode(elgg_echo('delete')),
+					'text' => elgg_echo('delete'),
+					'confirm' => elgg_echo('deleteconfirm'),
+				));
+			}
+				?>
 			</p>
 		</div><!-- end of the message_options div -->
 
 		</div><!-- end of div message_body -->
-
+<?php
+	// only show reply form if the sender hasn't been deleted.
+	if ($entity) {
+?>
 		<!-- display the reply form -->
 		<div id="message_reply_form">
 			<form action="<?php echo $vars['url']; ?>action/messages/send" method="post" name="messageForm">
@@ -152,7 +171,10 @@
 				</p>
 			</form>
 		</div><!-- end of div reply_form -->
-
+<?php
+	// end if for if user was deleted
+	}
+?>
 	</div><!-- end of the message div -->
 
 <?php
