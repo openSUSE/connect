@@ -2,10 +2,10 @@
     function connect_fields_profile_setup($hook_name, $entity_type, $return_value, $parameters) {
         global $CONFIG;
         $return_value["blog"] = "url";
-        $return_value["lizards_blog"] = "profile_dropdown";
-        $return_value["country"] = "profile_dropdown";
+        $return_value["lizards_blog"] = "connect_dropdown";
+        $return_value["country"] = "connect_dropdown";
         $return_value["languages"] = "text";
-        $return_value["gender"] = "profile_dropdown";
+        $return_value["gender"] = "connect_dropdown";
         $return_value["birthday"] = "calendar";
         $return_value["xmpp"] = "connect_url";
         $return_value["contactemail"] = "connect_multitext";
