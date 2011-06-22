@@ -83,8 +83,11 @@ if ($event_action == 'add_event' || $event_action == 'manage_event') {
 	if (($event_id = get_input('event_id',0)) && ($event = get_entity($event_id))) {
 		$user_id = $_SESSION['user']->getGUID();
 		if (!event_calendar_has_personal_event($event_id,$user_id)) {
-			event_calendar_add_personal_event($event_id,$user_id);		
-			system_message(elgg_echo('event_calendar:add_to_my_calendar_response'));
+			if (event_calendar_add_personal_event($event_id,$user_id)) {
+				system_message(elgg_echo('event_calendar:add_to_my_calendar_response'));		
+			} else {
+				register_error(elgg_echo('event_calendar:add_to_my_calendar_error'));
+			}
 			forward($event->getUrl());
 		}
 	}	

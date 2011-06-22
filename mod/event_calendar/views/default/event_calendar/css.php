@@ -145,3 +145,6 @@ table.event_calendar_paged_table th {
 	padding:3px 3px 3px 3px;
 }
 
+.event_calendar_strapline {
+	font-size: 85%;
+}

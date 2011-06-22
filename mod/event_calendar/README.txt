@@ -9,6 +9,10 @@
  * 
  */
  
+ Note: this README.txt file is a bit outdated because it does not describe numerous
+ recently added features. For more information, check the CHANGES.txt file
+ or look at the event calendar settings available through Tools Administration.
+ 
 Version: 0.8
 
 Requires: Elgg 1.5 or higher

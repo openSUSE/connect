@@ -15,8 +15,10 @@ $event = $vars['entity'];
 
 
 if ($vars['full']) {
+	$body = elgg_view('event_calendar/strapline',$vars);
 	$event_items = event_calendar_get_formatted_full_items($event);
-	$body = '<div class="contentWrapper" >';
+	$body .= '<div class="contentWrapper" >';
+	
 	foreach($event_items as $item) {
 		$value = $item->value;
 		if (!empty($value)) {
@@ -36,6 +38,9 @@ if ($vars['full']) {
 		echo '<p>'.$event->description.'</p>';
 	}
 	echo '</div>';
+	if (get_plugin_setting('add_to_group_calendar', 'event_calendar') == 'yes') {
+		echo elgg_view('event_calendar/forms/add_to_group',array('event' => $event));
+	}
 } else {
 	$time_bit = event_calendar_get_formatted_time($event);
 	$icon = elgg_view(

@@ -52,9 +52,6 @@ if ($event_id = get_input('event_id',0)) {
 
 $body = elgg_view('event_calendar/forms/manage_event', array('event'=>$event,'event_id'=>$event_id,'group_guid'=>$group_guid));
 
-
-//TODO: add appropriate submenu links
-
 page_draw($title,elgg_view_layout("two_column_left_sidebar", '', elgg_view_title($title) . $body));
 
 ?>

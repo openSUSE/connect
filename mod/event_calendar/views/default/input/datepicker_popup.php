@@ -10,12 +10,17 @@
  * @link http://radagast.biz/
  * 
  */
+if ($vars['dateformat']) {
+	$date_format = $vars['dateformat'];
+} else {
+	$date_format = "DD, MM d, yy";
+}
 ?>
 
 <script language="javascript">
 $(document).ready(function(){
 $("#<?php echo $vars['internalname']; ?>").datepicker({ 
-    dateFormat: "DD, MM d, yy", 
+    dateFormat: "<?php echo $date_format; ?>", 
     showOn: "both", 
     buttonImage: "<?php echo $vars['url']; ?>mod/event_calendar/images/calendar.gif", 
     buttonImageOnly: true 

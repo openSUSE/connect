@@ -9,6 +9,7 @@ $nav = elgg_view('navigation/pagination',array(
 			
 														));
 $event_calendar_times = get_plugin_setting('times', 'event_calendar');
+$event_calendar_personal_manage = get_plugin_setting('personal_manage', 'event_calendar');
 $events = $vars['events'];
 $html = '';
 $date_format = 'F Y';
@@ -20,11 +21,11 @@ if ($events) {
 			if ($html) {
 				$html .= elgg_view('event_calendar/paged_footer');
 			}
-			$html .= elgg_view('event_calendar/paged_header',array('date'=>$month));
+			$html .= elgg_view('event_calendar/paged_header',array('date'=>$month,'personal_manage'=>$event_calendar_personal_manage));
 			
 			$current_month = $month;
 		}
-		$html .= elgg_view('event_calendar/paged_item_view',array('event'=>$event,'times'=>$event_calendar_times));
+		$html .= elgg_view('event_calendar/paged_item_view',array('event'=>$event,'times'=>$event_calendar_times,'personal_manage'=>$event_calendar_personal_manage));
 	}
 	$html .= elgg_view('event_calendar/paged_footer');
 }
@@ -35,6 +36,16 @@ echo $html;
 ?>
 <script type="text/javascript">
 function event_calendar_personal_toggle(guid) {
-	$('#event_calendar_paged_messages').load("<?php echo $vars['url'].'action/event_calendar/toggle_personal_calendar?'.event_calendar_security_fields().'&event_id='; ?>"+guid);
+	$.get("<?php echo $vars['url'].'action/event_calendar/toggle_personal_calendar?'.event_calendar_security_fields().'&event_id='; ?>"+guid,
+		function (res) {
+			var flag = res.substring(0,3);
+			var msg = res.substring(3);
+			$('#event_calendar_paged_messages').html(msg);
+			if (flag == '@f@') {
+				// action failed so toggle checkbox
+				$("#event_calendar_paged_checkbox_"+guid).attr('checked',!$("#event_calendar_paged_checkbox_"+guid).attr('checked'));
+			}
+	    }
+	);
 }
 </script>

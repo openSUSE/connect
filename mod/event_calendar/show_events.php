@@ -22,10 +22,13 @@ set_context('event_calendar');
 
 global $CONFIG;
 
+global $autofeed;
+$autofeed = true;
+
 $event = '';
 
 $event_calendar_listing_format = get_plugin_setting('listing_format', 'event_calendar');
-
+$event_calendar_spots_display = trim(get_plugin_setting('spots_display', 'event_calendar'));
 $event_calendar_first_date = trim(get_plugin_setting('first_date', 'event_calendar'));
 $event_calendar_last_date = trim(get_plugin_setting('last_date', 'event_calendar'));
 
@@ -119,13 +122,30 @@ if ($group_guid && $group = get_entity($group_guid)) {
 	}
 }
 
-$offset = (int) get_input('offset',0);
-$limit = 4;
-$filter = get_input('filter','all');
+$offset = get_input('offset');
+
+if ($offset !=  NULL) {
+	// don't allow ajax magic during pagination
+	$offset = (int) $offset;
+	$callback='';
+} else {
+	$offset = 0;
+	$callback = get_input('callback','');
+}
+
+$limit = 15;
+if ($event_calendar_spots_display == 'yes') {
+	$filter = get_input('filter','open');
+} else {
+	$filter = get_input('filter','all');
+}
 $region = get_input('region','-');
 if ($filter == 'all') {
 	$count = event_calendar_get_events_between($start_ts,$end_ts,true,$limit,$offset,$group_guid,$region);
 	$events = event_calendar_get_events_between($start_ts,$end_ts,false,$limit,$offset,$group_guid,$region);
+} else if ($filter == 'open') {
+	$count = event_calendar_get_open_events_between($start_ts,$end_ts,true,$limit,$offset,$group_guid,$region);
+	$events = event_calendar_get_open_events_between($start_ts,$end_ts,false,$limit,$offset,$group_guid,$region);
 } else if ($filter == 'friends') {
 	$user_guid = get_loggedin_userid();
 	$count = event_calendar_get_events_for_friends_between($start_ts,$end_ts,true,$limit,$offset,$user_guid,$group_guid,$region);
@@ -153,8 +173,6 @@ $vars = array(	'original_start_date' => $original_start_date,
 			'region'		=> $region,
 			'listing_format' => $event_calendar_listing_format,
 );
-
-$callback = get_input('callback','');
 
 if ($callback) {
 	if (isloggedin()) {

@@ -24,7 +24,7 @@
 	$description = '<p>'.implode('<br />',$items).'</p>';
 	
 	if ($vars['entity']->long_description) {
-		$description .= autop($vars['entity']->long_description);
+		$description .= '<p>'.autop($vars['entity']->long_description).'</p>';
 	} else {
 		$description .=  '<p>'.$vars['entity']->description.'</p>';
 	}

@@ -16,7 +16,12 @@
 $(document).ready(function(){
 var done_loading = false;
 $("#<?php echo $vars['internalname']; ?>").datepicker({ 
-	onChangeMonthYear: function(year, month) {
+	onChangeMonthYear: function(year, month, inst) {
+ 		if(inst.onChangeToday){
+ 			day=inst.selectedDay;
+ 		}else{
+ 			day=1;
+ 		}
 		if (done_loading) {
 			// in this case the mode is forced to month
 			document.location.href = "<?php echo $vars['url'].'mod/event_calendar/show_events.php?mode=month&group_guid='.$vars['group_guid'].'&start_date='; ?>" + year+'-'+month+'-1';

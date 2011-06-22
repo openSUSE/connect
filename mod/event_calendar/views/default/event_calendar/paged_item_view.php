@@ -20,7 +20,9 @@ $info .= '<td class="event_calendar_paged_date">'.$date_bit.'</td>';
 $info .= '<td class="event_calendar_paged_time">'.$time_bit.'</td>';
 $info .= '<td class="event_calendar_paged_title"><a href="'.$event->getUrl().'">'.$event->title.'</a></td>';
 $info .= '<td class="event_calendar_paged_venue">'.$event->venue.'</td>';
-$info .= '<td class="event_calendar_paged_calendar"><input type="checkbox" '.$calendar_bit.' /></td>';
+if ($vars['personal_manage'] != 'no') {
+	$info .= '<td class="event_calendar_paged_calendar"><input id="event_calendar_paged_checkbox_'.$event->guid.'" type="checkbox" '.$calendar_bit.' /></td>';
+}
 $info .= '</tr>';
 
 echo $info;

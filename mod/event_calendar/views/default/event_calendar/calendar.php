@@ -15,13 +15,14 @@ $last_date = $vars['last_date'];
 if ($last_date) {
 	$range_bit .= 'maxDate: $.datepicker.parseDate("yy-mm-dd", "'.$last_date.'"),'."\n";
 }
-
-if (substr($first_date,0,7) == substr($last_date,0,7)) {
-	$range_bit .= "changeMonth: false,\n";
-}
-
-if (substr($first_date,0,4) == substr($last_date,0,4)) {
-	$range_bit .= "changeYear: false,\n";
+if ($first_date || $last_date) {
+	if (substr($first_date,0,7) == substr($last_date,0,7)) {
+		$range_bit .= "changeMonth: false,\n";
+	}
+	
+	if (substr($first_date,0,4) == substr($last_date,0,4)) {
+		$range_bit .= "changeYear: false,\n";
+	}
 }
 
 $body .= elgg_view("input/datepicker_inline",

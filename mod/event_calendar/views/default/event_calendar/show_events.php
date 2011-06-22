@@ -10,8 +10,6 @@
  * 
  */
 
-// TODO: paged listing should use pagination nav and should be segmented by month
-
 $listing_format = $vars['listing_format'];
 
 if ($vars['events']) {

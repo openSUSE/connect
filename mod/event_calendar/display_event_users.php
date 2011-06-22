@@ -29,7 +29,9 @@ if (($event_id = get_input('event_id', 0)) && $event = get_entity($event_id)) {
 	set_input('search_viewtype','gallery');
 	$count = event_calendar_get_users_for_event($event_id,$limit,$offset,true);
 	$users = event_calendar_get_users_for_event($event_id,$limit,$offset,false);
-	$body = elgg_view_entity_list($users, $count, $offset, $limit, true, false);
+	$body = event_calendar_view_entity_list($users, $count, $offset, $limit, true, false);
+	
+	$body .= elgg_view('event_calendar/personal_toggle_js');
 	
 	$title = sprintf(elgg_echo('event_calendar:users_for_event_title'),$event->title);
 	page_draw($title,elgg_view_layout("two_column_left_sidebar", '', elgg_view_title($title) . $body));

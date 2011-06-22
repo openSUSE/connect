@@ -3,11 +3,50 @@ $yn_options = array(elgg_echo('event_calendar:settings:yes')=>'yes',
 	elgg_echo('event_calendar:settings:no')=>'no',
 );
 
+$access_options = array(	ACCESS_PRIVATE => elgg_echo("PRIVATE"),
+								ACCESS_LOGGED_IN => elgg_echo("LOGGED_IN"),
+								ACCESS_PUBLIC => elgg_echo("PUBLIC"));
+
+// TODO - merge the agenda view into the list format options
+
 $listing_options = array(elgg_echo('event_calendar:settings:paged')=>'paged',
 	elgg_echo('event_calendar:settings:month')=>'month',
 );
 
 $body = '';
+
+$event_calendar_hide_access = get_plugin_setting('hide_access', 'event_calendar');
+if (!$event_calendar_hide_access) {
+	$event_calendar_hide_access = 'no';
+}
+
+$body .= elgg_echo('event_calendar:settings:hide_access:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio',array('internalname'=>'params[hide_access]','value'=>$event_calendar_hide_access,'options'=>$yn_options));
+
+$body .= '<br />';
+
+$event_calendar_default_access = get_plugin_setting('default_access', 'event_calendar');
+if (!$event_calendar_default_access) {
+	$event_calendar_default_access = ACCESS_LOGGED_IN;
+}
+
+$body .= elgg_echo('event_calendar:settings:default_access:title');
+$body .= '<br />';
+$body .= elgg_view('input/pulldown',array('internalname'=>'params[default_access]','value'=>$event_calendar_default_access,'options_values'=>$access_options));
+
+$body .= '<br /><br />';
+
+$event_calendar_hide_end = get_plugin_setting('hide_end', 'event_calendar');
+if (!$event_calendar_hide_end) {
+	$event_calendar_hide_end = 'no';
+}
+
+$body .= elgg_echo('event_calendar:settings:hide_end:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio',array('internalname'=>'params[hide_end]','value'=>$event_calendar_hide_end,'options'=>$yn_options));
+
+$body .= '<br />';
 
 $event_calendar_listing_format = get_plugin_setting('listing_format', 'event_calendar');
 if (!$event_calendar_listing_format) {
@@ -50,6 +89,17 @@ if (!$event_calendar_autogroup) {
 $body .= elgg_echo('event_calendar:settings:autogroup:title');
 $body .= '<br />';
 $body .= elgg_view('input/radio',array('internalname'=>'params[autogroup]','value'=>$event_calendar_autogroup,'options'=>$yn_options));
+
+$body .= '<br />';
+
+$event_calendar_add_to_group_calendar = get_plugin_setting('add_to_group_calendar', 'event_calendar');
+if (!$event_calendar_add_to_group_calendar) {
+	$event_calendar_add_to_group_calendar = 'no';
+}
+
+$body .= elgg_echo('event_calendar:settings:add_to_group_calendar:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio',array('internalname'=>'params[add_to_group_calendar]','value'=>$event_calendar_add_to_group_calendar,'options'=>$yn_options));
 
 $body .= '<br />';
 
@@ -146,6 +196,72 @@ $body .= elgg_view('input/radio',array('internalname'=>'params[group_profile_dis
 
 $body .= '<br />';
 
+$event_calendar_add_users = get_plugin_setting('add_users', 'event_calendar');
+if (!$event_calendar_add_users) {
+	$event_calendar_add_users = 'no';
+}
+
+$body .= elgg_echo('event_calendar:settings:add_users:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio',array('internalname'=>'params[add_users]','value'=>$event_calendar_add_users,'options'=>$yn_options));
+
+$body .= '<br />';
+
+$event_calendar_add_users_notify = get_plugin_setting('add_users_notify', 'event_calendar');
+if (!$event_calendar_add_users_notify) {
+	$event_calendar_add_users_notify = 'no';
+}
+
+$body .= elgg_echo('event_calendar:settings:add_users_notify:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio',array('internalname'=>'params[add_users_notify]','value'=>$event_calendar_add_users_notify,'options'=>$yn_options));
+
+$body .= '<br />';
+
+$event_calendar_personal_manage = get_plugin_setting('personal_manage', 'event_calendar');
+if (!$event_calendar_personal_manage) {
+	$event_calendar_personal_manage = 'yes';
+}
+
+$body .= elgg_echo('event_calendar:settings:personal_manage:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio',array('internalname'=>'params[personal_manage]','value'=>$event_calendar_personal_manage,'options'=>$yn_options));
+
+$body .= '<br />';
+
+$event_calendar_spots_display = get_plugin_setting('spots_display', 'event_calendar');
+if (!$event_calendar_spots_display) {
+	$event_calendar_spots_display = 'no';
+}
+
+$body .= elgg_echo('event_calendar:settings:spots_display:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio',array('internalname'=>'params[spots_display]','value'=>$event_calendar_spots_display,'options'=>$yn_options));
+
+$body .= '<br />';
+
+$event_calendar_no_collisions = get_plugin_setting('no_collisions', 'event_calendar');
+if (!$event_calendar_no_collisions) {
+	$event_calendar_no_collisions = 'no';
+}
+
+$body .= elgg_echo('event_calendar:settings:no_collisions:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio',array('internalname'=>'params[no_collisions]','value'=>$event_calendar_no_collisions,'options'=>$yn_options));
+
+$body .= '<br />';
+
+$event_calendar_collision_length = get_plugin_setting('collision_length', 'event_calendar');
+if (!$event_calendar_collision_length) {
+	$event_calendar_collision_length = '3600';
+}
+
+$body .= elgg_echo('event_calendar:settings:collision_length:title');
+$body .= '<br />';
+$body .= elgg_view('input/text',array('internalname'=>'params[collision_length]','value'=>$event_calendar_collision_length));
+
+$body .= '<br /><br />';
+
 $event_calendar_region_display = get_plugin_setting('region_display', 'event_calendar');
 if (!$event_calendar_region_display) {
 	$event_calendar_region_display = 'no';
@@ -166,7 +282,18 @@ $body .= elgg_echo('event_calendar:settings:region_list:title');
 $body .= '<br />';
 $body .= elgg_view('event_calendar/input/longtext',array('internalname'=>'params[region_list]','value'=>$event_calendar_region_list));
 
-$body .= '<br /><br />';
+$body .= '<br />';
+
+$event_calendar_region_list_handles = get_plugin_setting('region_list_handles', 'event_calendar');
+if (!$event_calendar_region_list_handles) {
+	$event_calendar_region_list_handles = 'no';
+}
+
+$body .= elgg_echo('event_calendar:settings:region_list_handles:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio',array('internalname'=>'params[region_list_handles]','value'=>$event_calendar_region_list_handles,'options'=>$yn_options));
+
+$body .= '<br />';
 
 $event_calendar_type_display = get_plugin_setting('type_display', 'event_calendar');
 if (!$event_calendar_type_display) {
@@ -188,7 +315,18 @@ $body .= elgg_echo('event_calendar:settings:type_list:title');
 $body .= '<br />';
 $body .= elgg_view('event_calendar/input/longtext',array('internalname'=>'params[type_list]','value'=>$event_calendar_type_list));
 
-$body .= '<br /><br />';
+$body .= '<br />';
+
+$event_calendar_type_list_handles = get_plugin_setting('type_list_handles', 'event_calendar');
+if (!$event_calendar_type_list_handles) {
+	$event_calendar_type_list_handles = 'no';
+}
+
+$body .= elgg_echo('event_calendar:settings:type_list_handles:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio',array('internalname'=>'params[type_list_handles]','value'=>$event_calendar_type_list_handles,'options'=>$yn_options));
+
+$body .= '<br />';
 
 $event_calendar_first_date = get_plugin_setting('first_date', 'event_calendar');
 if (!$event_calendar_first_date) {
@@ -209,6 +347,17 @@ if (!$event_calendar_last_date) {
 $body .= elgg_echo('event_calendar:settings:last_date:title');
 $body .= '<br />';
 $body .= elgg_view('input/text',array('internalname'=>'params[last_date]','value'=>$event_calendar_last_date));
+
+$body .= '<br /><br />';
+
+$event_calendar_more_required = get_plugin_setting('more_required', 'event_calendar');
+if (!$event_calendar_more_required) {
+	$event_calendar_more_required = 'no';
+}
+
+$body .= elgg_echo('event_calendar:settings:more_required:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio',array('internalname'=>'params[more_required]','value'=>$event_calendar_more_required,'options'=>$yn_options));
 
 echo $body;
 ?>

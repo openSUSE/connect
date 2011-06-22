@@ -43,6 +43,10 @@
 				add_menu(elgg_echo('item:object:event_calendar'), $CONFIG->wwwroot . "pg/event_calendar/");
 			}
 		}
+		// make tags searchable for Elgg 1.7.4
+		if (function_exists('elgg_register_tag_metadata_name')) {
+			elgg_register_tag_metadata_name('event_tags');
+		}
 		
 		//add to group profile page
 		$group_calendar = get_plugin_setting('group_calendar', 'event_calendar');
@@ -92,9 +96,8 @@
 		if ($page_owner instanceof ElggGroup && $context == 'groups') {
 			if (event_calendar_activated_for_group($page_owner)) {
 				add_submenu_item(elgg_echo("event_calendar:group"), $CONFIG->wwwroot . "pg/event_calendar/group/" . $page_owner->getGUID());
-                        }
+			}
 		} else if ($context == 'event_calendar'){
-                        add_submenu_item('Export as iCal File', $CONFIG->wwwroot . "pg/event_calendar/?view=ical", 'ical');
 			add_submenu_item(elgg_echo("event_calendar:site_wide_link"), $CONFIG->wwwroot . "pg/event_calendar/");
 			$site_calendar = get_plugin_setting('site_calendar', 'event_calendar');
 			if (!$site_calendar || $site_calendar == 'admin') {
@@ -123,6 +126,10 @@
 				if ($event->canEdit()) {
 					add_submenu_item(elgg_echo("event_calendar:edit_link"), $CONFIG->wwwroot . "mod/event_calendar/manage_event.php?event_id=" . $event_id,'0eventcalendaradmin');
 					add_submenu_item(elgg_echo("event_calendar:delete_link"), $CONFIG->wwwroot . "mod/event_calendar/delete_confirm.php?event_id=" . $event_id,'0eventcalendaradmin');
+					$event_calendar_personal_manage = get_plugin_setting('personal_manage', 'event_calendar');
+					if ($event_calendar_personal_manage == 'no') {
+						add_submenu_item(elgg_echo('event_calendar:review_requests_title'), $CONFIG->wwwroot . "pg/event_calendar/review_requests/".$event_id, '0eventcalendaradmin');
+					}
 				}				
 			}
 		}
@@ -152,6 +159,9 @@
 				@include(dirname(__FILE__) . "/show_event.php");
 			} else if ($page[0] == 'new') {
 				@include(dirname(__FILE__) . "/manage_event.php");
+			} else if ($page[0] == 'review_requests' && isset($page[1])) {
+				set_input('event_id',$page[1]);
+				@include(dirname(__FILE__) . "/pages/review_requests.php");
 			} else if (in_array($page[0],array('all','friends','mine'))) {
 				set_input('filter',$page[0]);
 				@include(dirname(__FILE__) . "/show_events.php");
@@ -170,6 +180,11 @@
 
 	global $CONFIG;
 	register_action("event_calendar/manage",false,$CONFIG->pluginspath . "event_calendar/actions/manage.php");
+	register_action("event_calendar/request_personal_calendar",false,$CONFIG->pluginspath . "event_calendar/actions/request_personal_calendar.php");
 	register_action("event_calendar/toggle_personal_calendar",false,$CONFIG->pluginspath . "event_calendar/actions/toggle_personal_calendar.php");
+	register_action("event_calendar/killrequest",false,$CONFIG->pluginspath . "event_calendar/actions/killrequest.php");
+	register_action("event_calendar/addtocalendar",false,$CONFIG->pluginspath . "event_calendar/actions/addtocalendar.php");
+	register_action("event_calendar/add_to_group",false,$CONFIG->pluginspath . "event_calendar/actions/add_to_group.php");
+	register_action("event_calendar/remove_from_group",false,$CONFIG->pluginspath . "event_calendar/actions/remove_from_group.php");
 
 ?>

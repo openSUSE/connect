@@ -1,4 +1,53 @@
 CHANGE LOG
+0.84
+
+Fixed tag search so it works for Elgg 1.7.x.
+
+Added French and Spanish language files provided by UNESCO. These are not
+quite complete and additions are welcome.
+
+There is now an option to allow group admins to add any existing event to a
+group calendar
+
+Fixed a bug which incorrectly removed the ability to change the date and year.
+
+Renamed a date picker view to avoid a conflict with the Profile Manager.
+
+Added unpacked js for ease in customisation and localisation.
+
+Restored the vanished RSS feed link.
+
+Fixed a bug in the region dropdown behaviour on listing pages.
+
+Fixed a case where the page was not properly displayed when clicking on a
+pagination link.
+
+Added a sanity check for date formats.
+
+Changed the listing limit from 4 events to a more reasonable 15 events.
+
+Added real_end_time as an internal metadata value to compute collisions.
+
+Added three features that are turned off by default but can be enabled
+through plugin settings:
+
+The spots feature allows you to specify how many users can add an event to
+their personal calendars. This also adds an "open" filter to the show events page
+so that you can see how many events are not full.
+
+The no collisions feature prevents someone from adding an event
+if they already have another event on their personal calendar within
+the same time period. (This will only work with new events or events that
+you have resaved after updating this plugin as it needs the new real_end_time
+field.)
+
+The add users feature provides a magic JavaScript field that
+allows an event creator to add the event to the personal calendars of other users.
+This appears on the event edit form. (Requires the separate autocomplete plugin.)
+
+There is a separate option (turned off by default) to send notifications to 
+users who have events added to their calendars through the add users feature.
+
 0.83
 
 Fixed a bug that prevented region filtering with embedded blanks from

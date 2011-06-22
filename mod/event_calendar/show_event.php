@@ -35,10 +35,19 @@ if ($event_id && ($event = get_entity($event_id))) {
 		add_submenu_item(sprintf(elgg_echo('event_calendar:personal_event_calendars_link'),$count), $CONFIG->url . "mod/event_calendar/display_event_users.php?event_id=".$event_id, '0eventnonadmin');
 	}
 	if (isloggedin()) {
-		if (event_calendar_has_personal_event($event_id,$_SESSION['user']->getGUID())) {
-			add_submenu_item(elgg_echo('event_calendar:remove_from_my_calendar'), $CONFIG->url . "action/event_calendar/manage?event_action=remove_personal&event_id=".$event_id.'&'.event_calendar_security_fields(), '0eventnonadmin');
+		$user_id = get_loggedin_userid();
+		if (event_calendar_personal_can_manage($event,$user_id)) {
+			if (event_calendar_has_personal_event($event_id,$user_id)) {
+				add_submenu_item(elgg_echo('event_calendar:remove_from_my_calendar'), $CONFIG->url . "action/event_calendar/manage?event_action=remove_personal&event_id=".$event_id.'&'.event_calendar_security_fields(), '0eventnonadmin');
+			} else {
+				if (!event_calendar_is_full($event_id) && !event_calendar_has_collision($event_id,$user_id)) {
+					add_submenu_item(elgg_echo('event_calendar:add_to_my_calendar'), $CONFIG->url . "action/event_calendar/manage?event_action=add_personal&event_id=".$event_id.'&'.event_calendar_security_fields(), '0eventnonadmin');
+				}
+			}
 		} else {
-			add_submenu_item(elgg_echo('event_calendar:add_to_my_calendar'), $CONFIG->url . "action/event_calendar/manage?event_action=add_personal&event_id=".$event_id.'&'.event_calendar_security_fields(), '0eventnonadmin');
+			if (!check_entity_relationship($user_id, 'event_calendar_request', $event_id)) {
+				add_submenu_item(elgg_echo('event_calendar:make_request_title'), $CONFIG->url . "action/event_calendar/request_personal_calendar?event_id=".$event_id.'&'.event_calendar_security_fields(), '0eventnonadmin');
+			}		
 		}
 	}
 	$body = elgg_view('object/event_calendar',array('entity'=>$event,'full'=>true));
