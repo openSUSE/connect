@@ -23,7 +23,7 @@
                 $page_owner = page_owner_entity();
                 if ($page_owner instanceof ElggGroup && get_context() == "groups" && $page_owner->canEdit()) {
                         add_submenu_item(elgg_echo("group_operators:addoperators"),
-                                        $CONFIG->wwwroot . "pg/group_operators/add/".$page_owner->getGUID(), 0);
+                                        $CONFIG->wwwroot . "pg/group_operators/add/".$page_owner->getGUID());
                 }
         }
 

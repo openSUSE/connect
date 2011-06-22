@@ -1,4 +1,6 @@
 add-multitext_and_special_url.patch
 fix-default-views.patch
 fix-dont-show-private-fields.patch
+fix-mod_event_calendar_submenu_css.patch
+fix-mod_groups_submenu_css.patch
 fix-set-minlen-to-2.patch
