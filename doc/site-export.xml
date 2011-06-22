@@ -254,6 +254,10 @@
    <enabled>true</enabled>
   </plugin>
   <plugin>
+   <name>connect_inout</name>
+   <enabled>true</enabled>
+  </plugin>
+  <plugin>
    <name>connect_fields</name>
    <enabled>true</enabled>
   </plugin>
