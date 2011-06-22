@@ -1,6 +1,189 @@
+2011-06-15  brettp
+
+	* .: Tagged 1.7.10. This is the last thing we do in SVN! Onward to
+	  git! Woot!
+	* Version bump to 1.7.10. Updated changes.
+	* Refs #3544. Fix XSS exploit in embed plugin.
+
+2011-06-14  brettp
+
+	* Refs #3544. Checking for valid types and subtypes in
+	  riverdashboard filtering to prevent XSS exploits.
+
+2011-06-14  cash
+
+	* Refs #3544 fixes XSS vector in pages plugin menus
+
+2011-06-14  brettp
+
+	* Fixed wrong variable name.
+
+2011-06-14  cash
+
+	* Refs #3544 better filtering of container_guid in pages plugin
+
+2011-06-14  brettp
+
+	* Refs #3544. Better XSS protection for tags in file search.
+	* Refs #3544. Fixed XSS vector in file's search.
+	* Refs #1932. Pulled in Russell's patches for 1.7. Still need to
+	  merge on GH for 1.8.
+	* Fixes #3530. $CONFIG->lastcache has correct value on page load
+	  when cache is regenerated.
+	* Fixes #3522, refs #3323, #3552. Added more unit tests for ACLs
+	  and group ACLs. Added can_edit_access_collection() and moved
+	  permission checks for ACL changes to actions.
+	* Fixes #3552. Addess ACL unit tests. These currently fail because
+	  of #3522.
+
+2011-06-13  cash
+
+	* Fixes #3518 added text and css to make it clear that a user has
+	  been banned
+
+2011-06-10  cash
+
+	* Fixes #3524 using Elgg's default font in tinymce editor iframe
+
+2011-06-09  cash
+
+	* Refs #3544 fixed issue with messages plugin and send_to parameter
+	* Refs #3544 added note about preventing reflected XSS
+	  vulnerabilities. We need to develop a set of best practices on
+	  this and publish them for plugin authors.
+
+2011-06-02  brettp
+
+	* Updated changes. Version bump.
+	* Fixes #3366: Added warning to
+	  get_entities_from_annotation_count() that it doesn't actually
+	  count.
+	* Fixes #3323. Group ACLs are populated correctly when adding
+	  joining users who aren't currently logged in. Thanks for the
+	  code, emdagon!
+	* Fixes #3508. Pulled in the right commits to add a "creating",
+	  "river" hook for river entries.
+
+2011-06-01  brettp
+
+	* Refs #3508. Undoing previous commit. Will find the real commit
+	  for river plugin hook tomorrow.
+	* Fixes #3508: Backported add, river plugin hook from 1.8
+	* Fixes #3421. Checking for user entities before accessing methods
+	  during registration.
+	* Fixes #3316. Moved profile's call to
+	  register_metadata_as_independent() higher up in the boot
+	  sequence.
+
+2011-05-28  brettp
+
+	* Fixes #2831. Attempts to save widgets if not logged in displays
+	  an error instead of doing nothing.
+	* Fixes #3416. Making sure all users have the relationship
+	  member_of_site to their primary site. If you're using any
+	  unsupported multisite features you will need to add relationships
+	  to other site guids manually.
+	* Refs #3264: Can't reply to messages with a deleted sender.
+
+2011-05-27  brettp
+
+	* Fixes #3264. Messages from deleted users show up as "Deleted
+	  user" instead of showing the viewer's icon.
+	* Fixes #3414. Not rewriting http -> https if https login is
+	  enabled on a fully https server.
+	* Fixes #3383. urldecode()'ing the submit input for delete action.
+	  Wow this is hacky.
+	* Fixes #3418. Throwing exception if a gatekeeper call can't
+	  forward away.
+	* Fixes #3359 Updated TinyMCE to 3.4.2.
+
+2011-05-26  cash
+
+	* Fixes #3485 - using the correct url for autocomplete
+
+2011-05-13  cash
+
+	* Fixes #3424 admins can delete pages again
+	* Fixes #3429 display message board posts to everyone
+	* Fixes #3433 correctly checking return value of plugin hook in
+	  elgg_count_comments() now
+
+2011-04-04  brettp
+
+	* Removed a number of executable props.
+	* Removed version number in readme because it's not needed and we
+	  always forget to update it.
+	* Version bump to 1.7.8.
+
+2011-04-02  cash
+
+	* updated changelog for 1.7.8 release
+	* Fixes #3001 using :checked in user validation bulk actions
+	* Fixes #3179 encoding characters in search query string
+	* Fixes #3277 supporting deleting disabled entities in a recursive
+	  delete
+	* fixed annoying reportedcontent forwarding issue
+
+2011-03-31  cash
+
+	* Fixes #2940 integrated Prasanth's changes into htaccess_dist for
+	  better comments on php settings
+
+2011-03-26  cash
+
+	* Fixes #3248 adds remove_submenu_item() to 1.7 branch
+	* Refs #3238 #3246 integrated fixes for annotations into 1.7 branch
+	* Fixes #3238 update_metadata() allows updating the name and
+	  integrated the fix for #3246 into 1.7 branch
+
+2011-03-19  brettp
+
+	* Refs #3164. Merged messages denormalization to 1.7 branch.
+
+2011-03-17  cash
+
+	* Fixes #3154 prevent system log cache from crashing Elgg
+	* Fixes #2886 custom_index checks if another plugin has provided a
+	  front page
+
+2011-03-16  cash
+
+	* Fixes #3149 only call hooks once per trigger
+	* Fixes #2987 brought the fix over from trunk
+	* Fixes #2988 fixed typos in relationship import method
+	* Fixes #2994 search title for group uses name instead of
+	  description
+	* Fixes #2878 detect_extender_valuetype() makes sure passed value
+	  type is valid
+	* Fixes #1833 clearing the blog guid metadata when saving an edited
+	  blog post
+	* Refs #2909 removes bookmark plugin's use of clearRelationships()
+	* Fixes #2901 fixes duplicate translation string in messages plugin
+
+2011-03-15  cash
+
+	* Fixes #2978 editing a topic works now and admins are allowed to
+	  edit topics
+	* Fixes #2968 adds logged in user check - thanks for the bug report
+
+2011-02-18  brettp
+
+	* Fixes #2847. Cache is set correctly on installation.
+
+2011-02-14  brettp
+
+	* Refs #2914: You can sort by r.time_created when using
+	  relationship getter/lister functions.
+
+2011-02-04  brettp
+
+	* Fixes #2836: Reverted [7972]'s changes and removed the 2nd
+	  incorrect 'bookmarks:more' definition.
+	* Fixes #2837: Using an ID on bookmarks widget's "show more
+	  discription" link to prevent js collisions.
+
 2011-02-01  brettp
 
-	* .: Tagged 1.7.7.
 	* Credited reporter with user validation by email admin bug.
 
 2011-02-01  cash

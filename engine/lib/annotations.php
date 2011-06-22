@@ -33,21 +33,21 @@ class ElggAnnotation extends ElggExtender {
 		$this->attributes = array();
 
 		if (!empty($id)) {
+			// Create from db row
 			if ($id instanceof stdClass) {
 				$annotation = $id;
-			} else {
-				$annotation = get_annotation($id);
-			}
 
-			if ($annotation) {
 				$objarray = (array) $annotation;
-
-				foreach($objarray as $key => $value) {
+				foreach ($objarray as $key => $value) {
 					$this->attributes[$key] = $value;
 				}
-
-				$this->attributes['type'] = "annotation";
+			} else {
+				// get an ElggAnnotation object and copy its attributes
+				$annotation = get_annotation($id);
+				$this->attributes = $annotation->attributes;
 			}
+
+			$this->attributes['type'] = "annotation";
 		}
 	}
 
@@ -254,8 +254,8 @@ function update_annotation($annotation_id, $name, $value, $value_type, $owner_gu
 
 	// If ok then add it
 	$result = update_data("UPDATE {$CONFIG->dbprefix}annotations
-		set value_id='$value', value_type='$value_type', access_id=$access_id, owner_guid=$owner_guid
-		where id=$annotation_id and name_id='$name' and $access");
+		set name_id='$name', value_id='$value', value_type='$value_type', access_id=$access_id, owner_guid=$owner_guid
+		where id=$annotation_id and $access");
 
 	if ($result!==false) {
 		$obj = get_annotation($annotation_id);
@@ -884,6 +884,12 @@ function __get_entities_from_annotations_calculate_x($sum = "sum", $entity_type 
 
 /**
  * Returns entities ordered by the sum of an annotation
+ *
+ * @warning This is function uses sum instead of count. THIS IS SLOW. See #3366.
+ *          This should be used when you have annotations with different values and you
+ *          want a list of entities ordered by the sum of all of those values.
+ *          If you want a list of entities ordered by the number of annotations on each entity,
+ *          use __get_entities_from_annotations_calculate_x() and pass 'count' as the first param.
  *
  * @param unknown_type $entity_type
  * @param unknown_type $entity_subtype

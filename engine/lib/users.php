@@ -1398,7 +1398,7 @@ function validate_username($username) {
 
 	// Basic, check length
 	if (!isset($CONFIG->minusername)) {
-		$CONFIG->minusername = 2;
+		$CONFIG->minusername = 4;
 	}
 
 	if (strlen($username) < $CONFIG->minusername) {

@@ -148,12 +148,11 @@ class ElggRelationship implements
 	 * Import a relationship
 	 *
 	 * @param array $data
-	 * @param int $version
-	 * @return ElggRelationship
+	 * @return bool
 	 * @throws ImportException
 	 */
 	public function import(ODD $data) {
-		if (!($element instanceof ODDRelationship)) {
+		if (!($data instanceof ODDRelationship)) {
 			throw new InvalidParameterException(elgg_echo('InvalidParameterException:UnexpectedODDClass'));
 		}
 
@@ -181,7 +180,7 @@ class ElggRelationship implements
 					throw new ImportException(sprintf(elgg_echo('ImportException:ProblemSaving'), get_class()));
 				}
 
-				return $this;
+				return true;
 			}
 		}
 	}
@@ -531,6 +530,16 @@ function elgg_get_entities_from_relationship($options) {
 		}
 
 		$options['joins'] = array_merge($options['joins'], $clauses['joins']);
+
+		if (isset($options['selects']) && !is_array($options['selects'])) {
+			$options['selects'] = array($options['selects']);
+		} elseif (!isset($options['selects'])) {
+			$options['selects'] = array();
+		}
+
+		$select = array('r.*');
+
+		$options['selects'] = array_merge($options['selects'], $select);
 	}
 
 	return elgg_get_entities_from_metadata($options);
@@ -544,11 +553,13 @@ function elgg_get_entities_from_relationship($options) {
  * @param $table Entities table name
  * @param $relationship relationship string
  * @param $entity_guid entity guid to check
+ * @param string $inverse_relationship Inverse relationship check?
+ * 
  * @return mixed
  * @since 1.7.0
  */
 function elgg_get_entity_relationship_where_sql($table, $relationship = NULL, $relationship_guid = NULL, $inverse_relationship = FALSE) {
-	if ($relationship == NULL && $entity_guid == NULL) {
+	if ($relationship == NULL && $relationship_guid == NULL) {
 		return '';
 	}
 
