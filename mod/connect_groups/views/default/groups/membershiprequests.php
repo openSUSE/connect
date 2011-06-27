@@ -83,13 +83,17 @@
 				}
 			?>
 
-			<?php if ($request->contributions == true): // check if there are any contributions ?>
-
-        <div class="groups-contributions grid_5">
-  			<?php
-  				echo $request->contributions;
-  			?>
-  			</div>
+                    <?php if ($request->contributions == true): // check if there are any contributions ?>
+                            <div class="groups-contributions grid_5">
+                        <?php
+                            echo $request->contributions;
+                        ?>
+                        </div>
+                    <?php else : ?>
+                                <div class="groups-contributions grid_5">
+                                    <strong>No given contributions.</strong>
+                                </div>
+                    <?php endif ?>
   			
         <div class="grid_4">
           <!-- <div> -->
@@ -144,14 +148,7 @@
           <?php } ?>
         </form>
           
-          
 		    </div>
-  			
-			<?php else : ?>
-  			<div class="groups-contributions grid_5">
-          <strong>No given contributions.</strong>
-  			</div>
-			<?php endif ?>
 	
 
 			<?php } ?>
