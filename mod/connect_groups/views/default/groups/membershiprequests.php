@@ -39,7 +39,7 @@
 			<br/><br/>
 			<a href="#" id="vallinks_<?php echo $request->guid; ?>">validation links</a>
 			<br/><br/>
-			<a href="mailto:<?php echo urlencode($request->email); ?>">contact email</a>
+			<a href="mailto:<?php echo urlencode($request->email); ?>?subject=openSUSE%20Membership%20Approval:%20">contact email</a>
 			<script>
 			<?php
 				echo "$('#vallinks_{$request->guid}').click(function(){ $('#vallinks_div_{$request->guid}').toggle(); return false; });";
