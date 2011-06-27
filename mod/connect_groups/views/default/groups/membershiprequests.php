@@ -38,6 +38,8 @@
 			<strong><a href="<?php echo $url; ?>" class="archive_report_button green"><?php echo elgg_echo('groups:joinrequestaccept'); ?></a></strong>
 			<br/><br/>
 			<a href="#" id="vallinks_<?php echo $request->guid; ?>">validation links</a>
+			<br/><br/>
+			<a href="mailto:<?php urlencode($request->email); ?>">contact email</a>
 			<script>
 			<?php
 				echo "$('#vallinks_{$request->guid}').click(function(){ $('#vallinks_div_{$request->guid}').toggle(); return false; });";
