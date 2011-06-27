@@ -1,7 +1,13 @@
 <div class="contentWrapper">
 
 <?php
-	$extended = true;
+	$extended = ( $vars['entity']->guid == $CONFIG->MembersGroupID );
+
+	if ($extended) {
+?>
+<p style="text-align: center;"><strong>If you are unsure about the process it is described <a href="http://en.opensuse.org/openSUSE:Membership_officials#Process">here</a>.</strong></p>
+<?php
+	}
 
 	if (!empty($vars['requests']) && is_array($vars['requests'])) {
 
