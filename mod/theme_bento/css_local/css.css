@@ -1037,22 +1037,23 @@ div.progress-container > div {
 .groups_membershiprequest_buttons {}
 
 .groups_membershiprequest_buttons .groupe-user {
-  float: left;
-  width: 20%;
+    float: left;
+    width: 20%;
 }
 .groups_membershiprequest_buttons .member_icon {
-  margin: 0 0.5em;
+    margin: 0 0.5em;
 }
 .reportedcontent_content .groups-contributions {
-  height: 100px;
-  overflow: auto;
+    max-height: 300px;
+    min-height: 100px;
+    overflow: auto;
 }
 .reportedcontent_content .groups-contributions strong {
-  color: #ccc;
+    color: #ccc;
 }
 
 .reportedcontent_content:first-child { /* more space to page headline */
-  padding-top: 2em;
+                                       padding-top: 2em;
 }
 
 .voter-container {
@@ -1121,8 +1122,12 @@ textarea {
 }
 
 .green {
-  color: #690 !important;
+    color: #690 !important;
 }
 .red {
-  color: #c00 !important;
+    color: #c00 !important;
+}
+
+.featuredgroups .contentWrapper {
+    margin: 7px;
 }
