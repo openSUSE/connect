@@ -1,0 +1,28 @@
+diff --git a/mod/profile/views/default/profile/edit.php b/mod/profile/views/default/profile/edit.php
+index 7af052b..5de586c 100644
+--- a/mod/profile/views/default/profile/edit.php
++++ b/mod/profile/views/default/profile/edit.php
+@@ -35,6 +35,7 @@
+ 				$access_id = ACCESS_DEFAULT;
+ 			}
+ 
++			$admin_only = in_array($shortname, array('freenode_nick', 'freenode_cloak', 'email_nick', 'email_full'));
+ ?>
+ 
+ 	<p>
+@@ -43,9 +44,15 @@
+ 			<?php echo elgg_view("input/{$valtype}",array(
+ 															'internalname' => $shortname,
+ 															'value' => $value,
++															'disabled' => $admin_only,
+ 															)); ?>
+ 		</label>
+ 			<?php echo elgg_view('input/access',array('internalname' => 'accesslevel['.$shortname.']', 'value' => $access_id)); ?>
++			<?php
++				if ($admin_only) {
++					echo '<br/>This field can be changed only upon request on <a href="mailto:admin@opensuse.org">admin@opensuse.org</a>.';
++				}
++			?>
+ 	</p>
+ 
+ <?php
