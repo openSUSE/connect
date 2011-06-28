@@ -4,11 +4,11 @@
 
   $members = $membersgroup->getMembers(0);
 
-  echo "<div>";
+  echo "<p>";
   echo "<a href=\"{$vars['url']}pg/membersadmin/csv/\">download full CSV</a> | ";
   echo "<a href=\"{$vars['url']}pg/membersadmin/txt/\">download just cloaks TXT</a> | ";
   echo "<a href=\"{$vars['url']}pg/membersadmin/maildump/\">download maildump</a>";
-  echo "</div>\n";
+  echo "</p>\n";
 
   echo "<div>\n";
   $form_body  = "<table>\n";

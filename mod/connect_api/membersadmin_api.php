@@ -8,6 +8,8 @@ function connect_membersadmin_maildump() {
 
     $membersgroup = new ElggGroup($CONFIG->MembersGroupID);
     $members = $membersgroup->getMembers(0);
+    $members = array_unique($members, SORT_REGULAR);
+    $members = subval_sort($members,'username');
 
     foreach ($members as $m) {
         if (!$m->email_target) continue;
@@ -20,6 +22,17 @@ function connect_membersadmin_maildump() {
     }
     printf("%-40s %s\n", 'gnokii@opensuse.org', 'board@opensuse.org');
     echo "\n";
+}
+
+function subval_sort($a,$subkey) {
+        foreach($a as $k=>$v) {
+                $b[$k] = strtolower($v[$subkey]);
+        }
+        asort($b);
+        foreach($b as $key=>$val) {
+                $c[] = $a[$key];
+        }
+        return $c;
 }
 
 // Expose our api methods
