@@ -6,6 +6,7 @@ function connect_membersadmin_maildump() {
         return new ErrorResult("Your used key doesn't have sufficient permissions for members administration!");
     }
 
+    header('Content-type: text/plain; charset=utf-8');
     $membersgroup = new ElggGroup($CONFIG->MembersGroupID);
     $members = $membersgroup->getMembers(0);
     $members = array_unique($members, SORT_REGULAR);
