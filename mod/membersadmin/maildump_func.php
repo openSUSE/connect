@@ -24,7 +24,7 @@ function connect_maildump_func($full = true) {
             if ($m->email_nick) {
                 printf("%-40s %s\n", $m->email_nick, $m->email_target);
             }
-            if ($m->email_full) {
+            if ($m->email_full && $m->email_full != $m->email_nick) {
                 printf("%-40s %s\n", $m->email_full, $m->email_target);
             }
         } else {
