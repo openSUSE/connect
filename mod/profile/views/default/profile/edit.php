@@ -35,7 +35,8 @@
 				$access_id = ACCESS_DEFAULT;
 			}
 
-			$admin_only = in_array($shortname, array('freenode_nick', 'freenode_cloak', 'email_nick', 'email_full'));
+			$admin_only = in_array($shortname, array('freenode_nick', 'freenode_cloak', 'email_nick', 'email_full', 'email_target'));
+			if (!$admin_only || isadminloggedin()) {
 ?>
 
 	<p>
@@ -44,19 +45,13 @@
 			<?php echo elgg_view("input/{$valtype}",array(
 															'internalname' => $shortname,
 															'value' => $value,
-															'disabled' => $admin_only,
 															)); ?>
 		</label>
 			<?php echo elgg_view('input/access',array('internalname' => 'accesslevel['.$shortname.']', 'value' => $access_id)); ?>
-			<?php
-				if ($admin_only) {
-					echo '<br/>This field can be changed only upon request on <a href="mailto:admin@opensuse.org">admin@opensuse.org</a>.';
-				}
-			?>
 	</p>
 
 <?php
-
+			}
 		}
 
 ?>
