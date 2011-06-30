@@ -1,6 +1,5 @@
 fix-default-views.patch
-fix-dont-show-private-fields.patch
-fix-dont-edit-admin-fields.patch
+fix-profile-admin-fields.patch
 fix-mod_event_calendar_submenu_css.patch
 fix-mod_groups_operators_css.patch
 fix-mod_groups_submenu_css.patch
