@@ -31,6 +31,7 @@
 			// because it is escaped on both input (get_input()) and output (view:output/text). see #561 and #1405.
 			// must decode in utf8 or string corruption occurs. see #1567.
 			$value = get_input($shortname);
+			if (is_null($value)) continue;
 			if (is_array($value)) {
 				array_walk_recursive($value, 'profile_array_decoder');
 			} else {
