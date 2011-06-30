@@ -5,8 +5,15 @@
 
 	if ($extended) {
 ?>
-<p style="text-align: center;"><strong>If you are unsure about the process it is described <a href="http://en.opensuse.org/openSUSE:Membership_officials#Process">here</a>.</strong></p>
-<?php
+
+    <div class="box" style="margin: 10px;">
+    <p style="margin: 0px 5px 0px 5px;">
+    This page is used by the membership approval team to rate new members applications.
+    Currently there are <?php echo sizeof($vars['requests']); ?> requests in the queue.
+    <strong>If you are unsure about the process it is described <a href="http://en.opensuse.org/openSUSE:Membership_officials#Process">here</a>.</strong></p>
+    </div>
+    
+            <?php
 	}
 
 	if (!empty($vars['requests']) && is_array($vars['requests'])) {
