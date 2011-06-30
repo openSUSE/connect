@@ -7,6 +7,7 @@
   $membersgroup = new ElggGroup($CONFIG->MembersGroupID);
 
   $members = $membersgroup->getMembers(0);
+  $members = subval_sort($members,'username');
 
   header('Content-type: text/csv; charset=utf-8');
   header('Content-Disposition: attachment; filename="opensuse_members.csv"');

@@ -13,9 +13,9 @@ function subval_sort($a,$subkey) {
 
 // separate method, used in connect_api module as well
 function connect_maildump_func($full = true) {
+    global $CONFIG;
     $membersgroup = new ElggGroup($CONFIG->MembersGroupID);
     $members = $membersgroup->getMembers(0);
-    $members = array_unique($members, SORT_REGULAR);
     $members = subval_sort($members,'username');
 
     foreach ($members as $m) {
