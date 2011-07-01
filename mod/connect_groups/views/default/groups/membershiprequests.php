@@ -47,7 +47,7 @@
 			<a href="#" id="vallinks_<?php echo $request->guid; ?>">validation links</a>
 			<br/><br/>
 			<a href="mailto:<?php echo urlencode($request->email); ?>?subject=openSUSE%20Membership%20Approval:%20">contact email</a>
-			<script>
+                        <script type="text/javascript">
 			<?php
 				echo "$('#vallinks_{$request->guid}').click(function(){ $('#vallinks_div_{$request->guid}').toggle(); return false; });";
 			?>
@@ -77,17 +77,19 @@
 				$vote_up = array();
 				$vote_down = array();
 				$already_voted = false;
-				foreach ($annotations as $ann) {
-					if ($ann->owner_guid == get_loggedin_userid()) {
-						$already_voted = true;
-					}
-					if (substr($ann->value, 0, 3) == 'up:') {
-						$vote_up[] = $ann;
-					} else
-					if (substr($ann->value, 0, 3) == 'dn:') {
-						$vote_down[] = $ann;
-					}
-				}
+                                if ($annotations) {
+                                    foreach ($annotations as $ann) {
+                                            if ($ann->owner_guid == get_loggedin_userid()) {
+                                                    $already_voted = true;
+                                            }
+                                            if (substr($ann->value, 0, 3) == 'up:') {
+                                                    $vote_up[] = $ann;
+                                            } else
+                                            if (substr($ann->value, 0, 3) == 'dn:') {
+                                                    $vote_down[] = $ann;
+                                            }
+                                    }
+                                }
 			?>
 
                     <?php if ($request->contributions == true): // check if there are any contributions ?>
@@ -113,7 +115,7 @@
                 }
     				echo '<span style="font-size: xx-large; margin: 4px;"><a href="#" id="votesup_' . $request->guid . '">+' . count($vote_up) . '</a> / <a href="#" id="votesdn_' . $request->guid . '">-' . count($vote_down) . '</a></span>';
   			  ?>
-  					<script>
+                                        <script type="text/javascript">
   					<?php
   						echo "$('#votesup_{$request->guid}').click(function(){ $('#voter-up_{$request->guid}').toggle(); $('#voter-dn_{$request->guid}').hide(); return false; });";
   						echo "$('#votesdn_{$request->guid}').click(function(){ $('#voter-dn_{$request->guid}').toggle(); $('#voter-up_{$request->guid}').hide(); return false; });";

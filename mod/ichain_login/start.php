@@ -28,6 +28,7 @@ function ichain_client_init() {
             $email = $_SERVER['HTTP_X_EMAIL'];
             error_log("Automatically creating new elgg user " . $username . " with mail: " . $email);
             // auto register new user
+            // FIXME Fullname not included in headers
             if (register_user($username, 'opensuse', $username, $email)) {
                 error_log("New elgg user " . $username . " created.");
                 $user = get_user_by_username($username);
@@ -37,6 +38,12 @@ function ichain_client_init() {
         }
         error_log("Automatically logging in elgg user " . $username);
         login($user, true);
+        // Automatically update elgg email to ichain email
+        if ($user->email != $_SERVER['HTTP_X_EMAIL']){
+            $user->email = $_SERVER['HTTP_X_EMAIL'];
+            $user->save();
+            error_log("Updated users " . $username. " email to: " . $user->email);
+        }
         return true;
     } elseif (!isset($username) && isloggedin()) {
         error_log("Automatically logging out elgg user " . $username);
