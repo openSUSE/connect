@@ -1,0 +1,33 @@
+diff --git a/engine/lib/usersettings.php b/engine/lib/usersettings.php
+index b83021e..3235cf5 100644
+--- a/engine/lib/usersettings.php
++++ b/engine/lib/usersettings.php
+@@ -35,7 +35,9 @@ function usersettings_pagesetup() {
+ 	// Menu options
+ 	if (get_context() == "settings") {
+ 		$user = get_loggedin_user();
+-		add_submenu_item(elgg_echo('usersettings:user:opt:linktext'),$CONFIG->wwwroot . "pg/settings/user/{$user->username}/");
++                add_submenu_item(elgg_echo('profile:editsettings'), $CONFIG->wwwroot . "pg/settings/user/{$user->username}/edit/");
++		add_submenu_item(elgg_echo('profile:editdetails'), $CONFIG->wwwroot . "pg/profile/{$user->username}/edit/");
++                add_submenu_item(elgg_echo('profile:editicon'), $CONFIG->wwwroot . "pg/profile/{$user->username}/editicon/");
+ 		add_submenu_item(elgg_echo('usersettings:plugins:opt:linktext'),$CONFIG->wwwroot . "pg/settings/plugins/{$user->username}/");
+ 		add_submenu_item(elgg_echo('usersettings:statistics:opt:linktext'),$CONFIG->wwwroot . "pg/settings/statistics/{$user->username}/");
+ 	}
+diff --git a/mod/profile/start.php b/mod/profile/start.php
+index 8bf9270..9368425 100644
+--- a/mod/profile/start.php
++++ b/mod/profile/start.php
+@@ -198,8 +198,11 @@
+ 				$page_owner = page_owner_entity();
+ 
+ 				if ($page_owner && $page_owner->canEdit()) {
+-					add_submenu_item(elgg_echo('profile:editdetails'), $CONFIG->wwwroot . "pg/profile/{$page_owner->username}/edit/");
+-					add_submenu_item(elgg_echo('profile:editicon'), $CONFIG->wwwroot . "pg/profile/{$page_owner->username}/editicon/");
++                                        add_submenu_item(elgg_echo('profile:editsettings'), $CONFIG->wwwroot . "pg/settings/user/{$page_owner->username}/edit/");
++                                        add_submenu_item(elgg_echo('profile:editdetails'), $CONFIG->wwwroot . "pg/profile/{$page_owner->username}/edit/");
++                                        add_submenu_item(elgg_echo('profile:editicon'), $CONFIG->wwwroot . "pg/profile/{$page_owner->username}/editicon/");
++                                        add_submenu_item(elgg_echo('usersettings:plugins:opt:linktext'),$CONFIG->wwwroot . "pg/settings/plugins/{$page_owner->username}/");
++                                        add_submenu_item(elgg_echo('usersettings:statistics:opt:linktext'),$CONFIG->wwwroot . "pg/settings/statistics/{$page_owner->username}/");
+ 				}
+ 			}
+ 		}
