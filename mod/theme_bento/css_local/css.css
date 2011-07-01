@@ -1104,6 +1104,11 @@ div.progress-container > div {
     display: inline !important;
 }
 
+.pagination {
+    border: 2px solid #CCCCCC;
+    margin: 5px 0;
+}
+
 .toggle_editor_container, .input-access {
     margin-left: 15px;
 }
