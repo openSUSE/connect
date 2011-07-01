@@ -18,6 +18,7 @@
 	
 .usericon {
 	position:relative;
+	width: 25px;
 }
 
 .avatar_menu_button {
