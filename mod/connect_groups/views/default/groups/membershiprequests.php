@@ -1,11 +1,9 @@
 <div class="contentWrapper">
 
 <?php
-	$extended = ( $vars['entity']->guid == $CONFIG->MembersGroupID );
-
-	if ($extended) {
+	$group = page_owner_entity();
+        if ( $group->id == $CONFIG->MembersGroupID ) {
 ?>
-
     <div class="box" style="margin: 10px;">
     <p style="margin: 0px 5px 0px 5px;">
     This page is used by the membership approval team to rate new members applications.
@@ -43,6 +41,7 @@
 			$url = elgg_add_action_tokens_to_url("{$vars['url']}action/groups/addtogroup?user_guid={$request->guid}&group_guid={$vars['entity']->guid}");
 			?>
 			<strong><a href="<?php echo $url; ?>" class="archive_report_button green"><?php echo elgg_echo('groups:joinrequestaccept'); ?></a></strong>
+			<?php if ($group->joinrequestvote_enable == 'yes') { ?>
 			<br/><br/>
 			<a href="#" id="vallinks_<?php echo $request->guid; ?>">validation links</a>
 			<br/><br/>
@@ -70,8 +69,9 @@
 				<li><a href="http://forums.opensuse.org/members/<?php echo $val_username;  ?>.html" target="_blank">Forums</a></li>
 			</ul>
 			</div>
+			<?php } ?>
 			</div>
-			<?php if ($extended) {
+			<?php if ($group->joinrequestvote_enable == 'yes') {
 				$thumburl = elgg_add_action_tokens_to_url("{$vars['url']}action/groups/thumbvote?mode=add&user_guid={$request->guid}&group_guid={$vars['entity']->guid}");
 				$annotations = $request->getAnnotations('join_vote_' . ($vars['entity']->guid));
 				$vote_up = array();
