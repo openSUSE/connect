@@ -898,7 +898,7 @@ ul#calendarmenu li.sys_selected a {
 .river-message,
 .river_content_display {
     background-color: #eee;
-    padding: 2px 5px;
+    padding: 5px;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -923,7 +923,7 @@ ul#calendarmenu li.sys_selected a {
 .river_item_list p {
     margin-left: 15px;
     margin-right: 0;
-    margin-top: 3px;
+    margin-top: 5px;
     margin-bottom:0;
 }
 .river_item_time {
@@ -1000,11 +1000,11 @@ ul#calendarmenu li.sys_selected a {
 }
 
 .river_content_display {
-    margin: 8px;
+    margin: 15px 15px 5px;
 }
 
 .river_item_list p {
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 div.progress-container {
@@ -1140,3 +1140,4 @@ textarea {
 .user_settings {
     margin-left: 15px;
 }
+
