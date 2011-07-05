@@ -2,7 +2,7 @@
 
 <?php
 	$group = page_owner_entity();
-        if ( $group->id == $CONFIG->MembersGroupID ) {
+        if ( $group->guid == $CONFIG->MembersGroupID ) {
 ?>
     <div class="box" style="margin: 10px;">
     <p style="margin: 0px 5px 0px 5px;">
