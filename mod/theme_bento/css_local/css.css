@@ -165,8 +165,7 @@ ul.dropdown ul {
 .index_members {
     float: left;
     width: 40px;
-    margin-right: 0.5em;
-    margin-left: 15px;
+    margin: 0 0 10px 10px;
 }
 
 .loginbox {
