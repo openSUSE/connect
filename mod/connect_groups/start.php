@@ -36,7 +36,9 @@
 	}
 
 	global $CONFIG;
+
 	register_action("groups/thumbvote",false,$CONFIG->pluginspath . "connect_groups/actions/thumbvote.php");
-	add_group_tool_option('enable_ml',elgg_echo('groups:enablemailinglist'),true);
+
+        add_group_tool_option('enable_ml',elgg_echo('groups:enablemailinglist'),true);
 	add_group_tool_option('joinrequestvote',elgg_echo('groups:joinrequestvote'),false);
 ?>
