@@ -16,9 +16,13 @@
 	float:left;
 }
 	
+#owner_block_icon {
+  width: 25px;
+}
+	
 .usericon {
 	position:relative;
-	width: 25px;
+	width: auto;
 }
 
 .avatar_menu_button {
@@ -27,7 +31,8 @@
 	position:absolute;
 	cursor:pointer;
 	display:none;
-	right:0;
+	/*right:0;*/
+	left:0;
 	bottom:0;
 }
 .avatar_menu_arrow {
