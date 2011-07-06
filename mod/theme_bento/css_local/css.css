@@ -1106,6 +1106,7 @@ div.progress-container > div {
 .pagination {
     border: 2px solid #CCCCCC;
     margin: 5px 0;
+    padding: 2px;
 }
 
 .toggle_editor_container, .input-access {
