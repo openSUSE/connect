@@ -16,7 +16,7 @@
 	if ($mode == 'add' && $group->canEdit()) {
 		$vote = get_input('vote');
 		if ($user && $group) {
-			$user->annotate('join_vote_' . $group_guid, $vote);
+			$user->annotate('join_vote_' . $group_guid, $vote, ACCESS_PUBLIC);
 		}
 	}
 
