@@ -39,6 +39,7 @@
 
 	register_action("groups/thumbvote",false,$CONFIG->pluginspath . "connect_groups/actions/thumbvote.php");
         register_action("groups/accept_member",false,$CONFIG->pluginspath . "connect_groups/actions/accept_member.php");
+        register_action("groups/reject_member",false,$CONFIG->pluginspath . "connect_groups/actions/reject_member.php");
 
         add_group_tool_option('enable_ml',elgg_echo('groups:enablemailinglist'),true);
 	add_group_tool_option('joinrequestvote',elgg_echo('groups:joinrequestvote'),false);
