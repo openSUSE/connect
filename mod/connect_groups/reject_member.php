@@ -18,6 +18,7 @@
         $fh = fopen($template_file, 'r');
         $templatedata = fread($fh, filesize($template_file));
         fclose($fh);
+        $templatedata = str_replace ( "<username>", $user->username, $templatedata );
 
         $title = "Reject membership request";
 

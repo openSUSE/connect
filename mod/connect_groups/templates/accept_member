@@ -1,4 +1,4 @@
-Hi,
+Hi <username>,
 
 Welcome!
 Membership Officials have approved your openSUSE membership application.
@@ -6,8 +6,8 @@ Membership Officials have approved your openSUSE membership application.
 Blog, mail address and irc cloak - if you requested them - will be updated
 soon. Mail address should work within the next few hours. 
 
-Your email alias is: <please insert>
-and will get redirected to: <please insert>
+Your email alias is: <email_alias>
+and will get redirected to: <email_target>
 
 For cloak and blog it may take up to 10 days till it is set up. If the blog is
 set up you'll receive an email and your openSUSE/member cloak you see when
