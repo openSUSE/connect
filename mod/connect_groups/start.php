@@ -5,6 +5,8 @@
 	 * @package ElggGroups
 	 */
 
+         include_once "languages/en.php";
+
 	/**
 	 * Hermes notificator, FIXME move to more general place, ie. to make it useable from
 	 * other places
