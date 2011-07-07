@@ -47,11 +47,11 @@
     <?php } ?>
 
 
-    <!-- #$url = elgg_add_action_tokens_to_url("{$vars['url']}action/groups/addtogroup?user_guid={$request->guid}&group_guid={$vars['entity']->guid}"); -->
-    <form>
+    <?php $url = elgg_add_action_tokens_to_url("{$vars['url']}action/groups/accept_member"); ?>
+        <form action="<?php echo $url ?>" method="post">
 
         <p><b>Email text: </b></p>
-        <p><textarea style="width: 700px; height: 350px"><?php echo $vars['template'] ?></textarea></p>
+        <p><textarea name="notification" style="width: 700px; height: 350px"><?php echo $vars['template'] ?></textarea></p>
 
         <p><b>Settings: </b></p>
         <p><i>Configuring the openSUSE mail alias here. After accepting this can be changed upon request to admin@opensuse.org.</i></p>
@@ -64,7 +64,8 @@
         </tr></table>
 
         <p>
-            <input type="hidden" value="" name="">
+            <input type="hidden" value="<?php echo $user->guid ?>" name="user_guid">
+            <input type="hidden" value="<?php echo $group->guid ?>" name="group_guid">
             <input type="submit" value="Accept membership request">
         </p>
 

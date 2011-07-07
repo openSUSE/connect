@@ -10,7 +10,7 @@
     Currently there are <?php echo sizeof($vars['requests']); ?> requests in the queue.
     <strong>If you are unsure about the process it is described <a href="http://en.opensuse.org/openSUSE:Membership_officials#Process">here</a>.</strong></p>
     </div>
-    
+
             <?php
 	}
 
@@ -39,6 +39,10 @@
 					'text' => elgg_echo('groups:joinrequestdecline'),
 				)));
 			$url = elgg_add_action_tokens_to_url("{$vars['url']}action/groups/addtogroup?user_guid={$request->guid}&group_guid={$vars['entity']->guid}");
+                        
+                        if ( $group->guid == $CONFIG->MembersGroupID ) {
+                            $url = "/mod/connect_groups/accept_member.php?user_guid={$request->guid}&group_guid={$vars['entity']->guid}";
+                        }
 			?>
 			<strong><a href="<?php echo $url; ?>" class="archive_report_button green"><?php echo elgg_echo('groups:joinrequestaccept'); ?></a></strong>
 			<?php if ($group->joinrequestvote_enable == 'yes') { ?>
@@ -110,7 +114,7 @@
         <form action="membershiprequests_submit" method="get" accept-charset="utf-8">
           <?php if (!$already_voted) { ?>
   			  <a class="voting vote-up" href="<?php echo $thumburl . '&vote=up:reason'; ?>" id="#voteup_<?php echo $request->guid; ?>">
-            <img src="<?php echo $vars['url']; ?>mod/connect_groups/graphics/thumb_up.png" alt="thumb up" /></a>
+                              <img src="<?php echo $vars['url']; ?>mod/connect_groups/graphics/thumb_up.png" alt="vote up" title="vote up"/></a>
   			  <?php
                 }
     				echo '<span style="font-size: xx-large; margin: 4px;"><a href="#" id="votesup_' . $request->guid . '">+' . count($vote_up) . '</a> / <a href="#" id="votesdn_' . $request->guid . '">-' . count($vote_down) . '</a></span>';
@@ -123,7 +127,7 @@
   					</script>
   					<?php if (!$already_voted) { ?>
     				  <a class="voting vote-dn" href="<?php echo $thumburl . '&vote=dn:reason'; ?>" id="#votedn_<?php echo $request->guid; ?>">
-                        <img src="<?php echo $vars['url']; ?>mod/connect_groups/graphics/thumb_down.png" alt="thumb down" /></a>
+                                      <img src="<?php echo $vars['url']; ?>mod/connect_groups/graphics/thumb_down.png" alt="vote down" title="vote down"/></a>
                     <?php } ?>
 			  
     			  <div id="voter-up_<?php echo $request->guid; ?>" class="voter-container">
