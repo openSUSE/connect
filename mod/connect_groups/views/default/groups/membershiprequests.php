@@ -33,11 +33,16 @@
 				));
 				echo "</a></div>{$request->name}<br />"; // Add User Name
 
+                            if ( $group->guid == $CONFIG->MembersGroupID ) {
+                                $url = "/mod/connect_groups/reject_member.php?user_guid={$request->guid}&group_guid={$vars['entity']->guid}";
+                                echo ("<strong><a href='" . $url . "' class='delete_report_button red'>" . elgg_echo('groups:joinrequestdecline') . "</a></strong>");
+                            } else {
 				echo str_replace('<a', '<a class="delete_report_button red" ', elgg_view('output/confirmlink',array(
 					'href' => $vars['url'] . 'action/groups/killrequest?user_guid='.$request->guid.'&group_guid=' . $vars['entity']->guid,
 					'confirm' => elgg_echo('groups:joinrequest:remove:check'),
 					'text' => elgg_echo('groups:joinrequestdecline'),
 				)));
+                            }
 			$url = elgg_add_action_tokens_to_url("{$vars['url']}action/groups/addtogroup?user_guid={$request->guid}&group_guid={$vars['entity']->guid}");
                         
                         if ( $group->guid == $CONFIG->MembersGroupID ) {

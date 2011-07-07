@@ -1060,9 +1060,10 @@ div.progress-container > div {
     display: none;
     border: 1px solid #888;
     background: #eee;
+    padding: 5px;
     position: absolute;
     z-index: 10;
-    width: 300px;
+    width: 250px;
 }
 
 /* Voting Buttons */
