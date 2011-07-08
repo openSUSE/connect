@@ -31,7 +31,8 @@ if ($group->canEdit()) {
         // Notify the membership team
         elgg_send_email("membership-officials@opensuse.org",
                 "membership-officials@opensuse.org", $subject,
-                $logged_in_user->name . " approved the membership request of " . $user.name . "." .
+                $logged_in_user->name . " approved the membership request of " . $user->username . "." .
+                "\nEmail alias: " . get_input('alias_nick') . " " . get_input('alias_full') . " -> " . get_input('target_email') .
                 "\n\nText sent to user: \n\n\n" . $body);
         system_message(elgg_echo('groups:addedtogroup'));
     } else {

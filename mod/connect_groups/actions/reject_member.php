@@ -22,7 +22,7 @@ if ($group->canEdit()) {
         elgg_send_email("membership-officials@opensuse.org",
                 "membership-officials@opensuse.org", $subject,
                 $logged_in_user->name . " declined the membership request of " . $user->name . "." .
-                "\n\nText sent to user: \n\n\n" . $body);
+                "\n\nText sent to user: \n\n" . $body);
         system_message(elgg_echo("groups:joinrequestkilled"));
     }
 }
