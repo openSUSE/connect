@@ -56,9 +56,9 @@
         <p><b>Settings: </b></p>
         <p><i>Configuring the openSUSE mail alias here. After accepting this can be changed upon request to admin@opensuse.org.</i></p>
         <table><tr><td width="200">openSUSE email alias (nick): </td>
-                <td><input type="text" size="40" value="<?php echo $vars['user']->name ?>@opensuse.org" name="alias_nick"> </td></tr>
+                <td><input type="text" size="40" value="<?php echo $vars['user']->username ?>@opensuse.org" name="alias_nick"> </td></tr>
             <tr><td>openSUSE email alias (fullname): </td>
-                <td><input type="text" size="40" value="" name="alias_full"> </td></tr>
+                <td><input type="text" size="40" value="<?php echo $vars['user']->name ?>" name="alias_full"> </td></tr>
             <tr><td>Target email: </td>
                 <td><input type="text" size="40" value="<?php echo $vars['user']->email ?>" name="target_email"></td>
         </tr></table>

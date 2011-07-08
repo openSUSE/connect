@@ -19,7 +19,7 @@
         $templatedata = fread($fh, filesize($template_file));
         fclose($fh);
         $templatedata = str_replace ( "<username>", $user->username, $templatedata );
-        $templatedata = str_replace ( "<email_alias>", $user->name . "@opensuse.org", $templatedata );
+        $templatedata = str_replace ( "<email_alias>", $user->username . "@opensuse.org", $templatedata );
         $templatedata = str_replace ( "<email_target>", $user->email, $templatedata );
 
         $title = "Accept membership request";
