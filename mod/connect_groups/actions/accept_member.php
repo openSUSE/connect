@@ -28,7 +28,11 @@ if ($group->canEdit()) {
         $subject = "openSUSE membership application approved";
         $body = get_input('notification');
         notify_user($user->getGUID(), $group->owner_guid, $subject, $body, NULL);
-
+        // Notify the membership team
+        elgg_send_email("membership-officials@opensuse.org",
+                "membership-officials@opensuse.org", $subject,
+                $logged_in_user->name . " approved the membership request of " . $user.name . "." .
+                "\n\nText sent to user: \n\n\n" . $body);
         system_message(elgg_echo('groups:addedtogroup'));
     } else {
         register_error(elgg_echo("groups:cantjoin"));

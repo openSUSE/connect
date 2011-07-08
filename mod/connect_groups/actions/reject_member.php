@@ -11,17 +11,18 @@ $user = get_entity($user_guid);
 
 if ($group->canEdit()) {
 
-    // set email fields
-    // ignore access controls
-    $ia = elgg_set_ignore_access(TRUE);
-    $user->set('email_nick', get_input('alias_nick'));
-    $user->set('email_full', get_input('alias_full'));
-    $user->set('email_target', get_input('target_email'));
-    $user->save();
-
     // If join request made
     if (check_entity_relationship($user->guid, 'membership_request', $group->guid)) {
         remove_entity_relationship($user->guid, 'membership_request', $group->guid);
+        // send reject email
+        $subject = "openSUSE membership application declined";
+        $body = get_input('notification');
+        notify_user($user->getGUID(), $group->owner_guid, $subject, $body, NULL);
+        // Notify the membership team
+        elgg_send_email("membership-officials@opensuse.org",
+                "membership-officials@opensuse.org", $subject,
+                $logged_in_user->name . " declined the membership request of " . $user->name . "." .
+                "\n\nText sent to user: \n\n\n" . $body);
         system_message(elgg_echo("groups:joinrequestkilled"));
     }
 }
