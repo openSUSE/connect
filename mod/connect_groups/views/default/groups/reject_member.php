@@ -5,7 +5,7 @@
     $user = $vars['user'];
     ?>
 
-    <p>Accepting the membership request of user <a href="/pg/profile/<?php echo $vars['user']->username ?>"><?php echo $vars['user']->username ?></a>
+    <p>Rejecting the membership request of user <a href="/pg/profile/<?php echo $vars['user']->username ?>"><?php echo $vars['user']->username ?></a>
         (<?php echo $vars['user']->name ?>) to the group
         <a href="/pg/groups/<?php echo $vars['entity']->guid ?>"><?php echo $vars['entity']->name ?></a>.</p>
 
@@ -47,26 +47,16 @@
     <?php } ?>
 
 
-    <?php $url = elgg_add_action_tokens_to_url("{$vars['url']}action/groups/accept_member"); ?>
+    <?php $url = elgg_add_action_tokens_to_url("{$vars['url']}action/groups/reject_member"); ?>
         <form action="<?php echo $url ?>" method="post">
 
         <p><b>Email text: </b></p>
         <p><textarea name="notification" style="width: 700px; height: 350px"><?php echo $vars['template'] ?></textarea></p>
 
-        <p><b>Settings: </b></p>
-        <p><i>Configuring the openSUSE mail alias here. After accepting this can be changed upon request to admin@opensuse.org.</i></p>
-        <table><tr><td width="200">openSUSE email alias (nick): </td>
-                <td><input type="text" size="40" value="<?php echo $vars['user']->name ?>@opensuse.org" name="alias_nick"> </td></tr>
-            <tr><td>openSUSE email alias (fullname): </td>
-                <td><input type="text" size="40" value="" name="alias_full"> </td></tr>
-            <tr><td>Target email: </td>
-                <td><input type="text" size="40" value="<?php echo $vars['user']->email ?>" name="target_email"></td>
-        </tr></table>
-
         <p>
             <input type="hidden" value="<?php echo $user->guid ?>" name="user_guid">
             <input type="hidden" value="<?php echo $group->guid ?>" name="group_guid">
-            <input type="submit" value="Accept membership request">
+            <input type="submit" value="Reject membership request">
         </p>
 
     </form>
