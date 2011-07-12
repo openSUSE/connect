@@ -114,7 +114,7 @@ if (($count > $limit || $offset > 0) && get_context() != 'widget') {
 
 		$nexturl = elgg_http_add_url_query_elements($vars['baseurl'], array($word => $nextoffset));
 
-		echo " <a href=\"{$nexturl}\" class=\"pagination_next\">" . elgg_echo("next") . " &raquo;</a>";
+		echo " <a href=\"{$nexturl}\" class=\"pagination_next button\">" . elgg_echo("next") . " &raquo;</a>";
 
 	}
 

@@ -1105,10 +1105,22 @@ div.progress-container > div {
 }
 
 .pagination {
-    border: 2px solid #CCCCCC;
-    margin: 5px 0;
-    padding: 2px;
+   font-size: 1.2em;
+   margin: 1em;
+   padding: 2px;
+   text-align: center;
 }
+
+.pagination_currentpage,
+.pagination_number,
+.pagination_more {
+  margin: 0 0.5em;
+}
+
+a.pagination_next.button {
+  padding: 0.2em 0.5em;
+}
+
 
 .toggle_editor_container, .input-access {
     margin-left: 15px;
