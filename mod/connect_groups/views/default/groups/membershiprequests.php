@@ -122,7 +122,7 @@
                               <img src="<?php echo $vars['url']; ?>mod/connect_groups/graphics/thumb_up.png" alt="Vote up" title="Vote up"/></a>
   			  <?php
                 }
-    				echo '<span style="font-size: xx-large; margin: 4px;"><a href="#" id="votesup_' . $request->guid . '" alt="See why others voted +" title="See why others voted +">+' . count($vote_up) . '</a> / <a href="#" id="votesdn_' . $request->guid . '" alt="See why others voted -" title="See why others voted -">-' . count($vote_down) . '</a></span>';
+    				echo '<span style="font-size: xx-large; margin: 4px;"><a href="#" id="votesup_' . $request->guid . '" alt="See why others voted up" title="See why others voted up">+' . count($vote_up) . '</a> / <a href="#" id="votesdn_' . $request->guid . '" alt="See why others voted down" title="See why others voted down">-' . count($vote_down) . '</a></span>';
   			  ?>
                                         <script type="text/javascript">
   					<?php
