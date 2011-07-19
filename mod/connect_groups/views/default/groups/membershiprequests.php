@@ -119,10 +119,10 @@
         <form action="membershiprequests_submit" method="get" accept-charset="utf-8">
           <?php if (!$already_voted) { ?>
   			  <a class="voting vote-up" href="<?php echo $thumburl . '&vote=up:reason'; ?>" id="#voteup_<?php echo $request->guid; ?>">
-                              <img src="<?php echo $vars['url']; ?>mod/connect_groups/graphics/thumb_up.png" alt="vote up" title="vote up"/></a>
+                              <img src="<?php echo $vars['url']; ?>mod/connect_groups/graphics/thumb_up.png" alt="Vote up" title="Vote up"/></a>
   			  <?php
                 }
-    				echo '<span style="font-size: xx-large; margin: 4px;"><a href="#" id="votesup_' . $request->guid . '">+' . count($vote_up) . '</a> / <a href="#" id="votesdn_' . $request->guid . '">-' . count($vote_down) . '</a></span>';
+    				echo '<span style="font-size: xx-large; margin: 4px;"><a href="#" id="votesup_' . $request->guid . '" alt="See why others voted +" title="See why others voted +">+' . count($vote_up) . '</a> / <a href="#" id="votesdn_' . $request->guid . '" alt="See why others voted -" title="See why others voted -">-' . count($vote_down) . '</a></span>';
   			  ?>
                                         <script type="text/javascript">
   					<?php
@@ -132,7 +132,7 @@
   					</script>
   					<?php if (!$already_voted) { ?>
     				  <a class="voting vote-dn" href="<?php echo $thumburl . '&vote=dn:reason'; ?>" id="#votedn_<?php echo $request->guid; ?>">
-                                      <img src="<?php echo $vars['url']; ?>mod/connect_groups/graphics/thumb_down.png" alt="vote down" title="vote down"/></a>
+                                      <img src="<?php echo $vars['url']; ?>mod/connect_groups/graphics/thumb_down.png" alt="Vote down" title="Vote down"/></a>
                     <?php } ?>
 			  
     			  <div id="voter-up_<?php echo $request->guid; ?>" class="voter-container">
