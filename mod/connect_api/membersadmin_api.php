@@ -10,6 +10,7 @@ function connect_membersadmin_maildump() {
 
     header('Content-type: text/plain; charset=utf-8');
     connect_maildump_func();
+    return true;
 }
 
 function connect_membersadmin_membermails() {
@@ -20,6 +21,7 @@ function connect_membersadmin_membermails() {
 
     header('Content-type: text/plain; charset=utf-8');
     connect_maildump_func(false);
+    return true;
 }
 
 expose_function("connect.membersadmin.maildump",
