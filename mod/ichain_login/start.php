@@ -36,9 +36,8 @@ function ichain_client_init() {
                 $user = get_user_by_username($username);
             } else
                 error_log("Could not create elgg user " . $username);
-                return false;
         }
-        error_log("Automatically logging in elgg user " . $username);
+        error_log("Logging in elgg user " . $username);
         login($user, true);
         // Automatically update elgg email to ichain email
         if ($user->email != $_SERVER['HTTP_X_EMAIL']){
@@ -49,10 +48,8 @@ function ichain_client_init() {
         return true;
     } elseif (!isset($username) && isloggedin()) {
         $user = get_loggedin_user();
-        error_log("Automatically logging out elgg user " . $user->name);
+        error_log("Logging out elgg user " . $user->username);
         logout();
-        session_destroy();
-        return false;
     }
 }
 
