@@ -64,7 +64,7 @@
             <tr><td>Freenode IRC nick: </td>
                 <td><input type="text" size="40" value="" name="irc_nick"> </td></tr>
             <tr><td>Freenode IRC cloak: </td>
-                <td><input type="text" size="40" value="" name="irc_cloak">opensuse/member/<?php echo $vars['user']->username ?></td></tr>
+                <td><input type="text" size="40" value="opensuse/member/<?php echo $vars['user']->username ?>" name="irc_cloak"></td></tr>
         </tr></table>
 
         <p>
