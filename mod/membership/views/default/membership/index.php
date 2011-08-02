@@ -17,6 +17,7 @@ the principles will be discarded.</p>
 <p>If you do want to become a member, please tell us in detail what your contributions are in the following form. Once submitted,
 a request is created and you'll be notified of the result soon. Also, please use English language to describe your contributions.</p>
 </p>
+<p>If you want to receive a Freenode cloak please provide your IRC nickname in the description.</p>
 <?php
     $form_body  = '<div>';
     $form_body  = elgg_view('input/longtext', array('internalname' => 'contributions'));

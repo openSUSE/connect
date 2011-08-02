@@ -4,10 +4,6 @@
 	 * Elgg user display (details)
 	 *
 	 * @package ElggProfile
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider Ltd <info@elgg.com>
-	 * @copyright Curverider Ltd 2008-2010
-	 * @link http://elgg.com/
 	 *
 	 * @uses $vars['entity'] The user entity
 	 */
@@ -31,6 +27,7 @@
 
 	// wrap the icon and links in a div
 	echo "<div id=\"profile_info_column_left\">";
+
 	echo "<div id=\"profile_icon_wrapper\">";
 	// get the user's main profile picture
 	echo elgg_view(
@@ -72,19 +69,22 @@ if ($vars['entity']->canEdit()) {
 
 	<div id="profile_info_column_middle" >
 
-
-
 	<?php
 
 	// Simple XFN
-	$rel = "";
-	if (page_owner() == $vars['entity']->guid)
-		$rel = 'me';
-	else if (check_entity_relationship(page_owner(), 'friend', $vars['entity']->guid))
-		$rel = 'friend';
+	$rel_type = "";
+	if (get_loggedin_userid() == $vars['entity']->guid) {
+		$rel_type = 'me';
+	} elseif (check_entity_relationship(get_loggedin_userid(), 'friend', $vars['entity']->guid)) {
+		$rel_type = 'friend';
+	}
+
+	if ($rel_type) {
+		$rel = "rel=\"$rel_type\"";
+	}
 
 	// display the users name
-	echo "<h2><a href=\"" . $vars['entity']->getUrl() . "\" rel=\"$rel\">" . $vars['entity']->name . "</a></h2>";
+	echo "<h2><a href=\"" . $vars['entity']->getUrl() . "\" $rel>" . $vars['entity']->name . "</a></h2>";
 
 	//insert a view that can be extended
 	echo elgg_view("profile/status", array("entity" => $vars['entity']));
@@ -97,7 +97,7 @@ if ($vars['entity']->canEdit()) {
 
 		if (is_array($vars['config']->profile) && sizeof($vars['config']->profile) > 0)
 			foreach($vars['config']->profile as $shortname => $valtype) {
-				if (in_array($shortname, array('freenode_nick', 'freenode_cloak', 'email_nick', 'email_full', 'email_target'))) continue;
+				if ($shortname == 'email_target') continue;
 				if ($shortname != "description") {
 					$value = $vars['entity']->$shortname;
 					if (!empty($value)) {

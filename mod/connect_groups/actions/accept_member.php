@@ -17,6 +17,8 @@ if ($group->canEdit()) {
     $user->set('email_nick', get_input('alias_nick'));
     $user->set('email_full', get_input('alias_full'));
     $user->set('email_target', get_input('target_email'));
+    $user->set('freenode_nick', get_input('irc_nick'));
+    $user->set('freenode_cloak', get_input('irc_cloak'));
     $user->save();
 
     if (!$group->isMember($user)) {

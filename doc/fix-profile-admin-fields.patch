@@ -35,7 +35,7 @@
  
  		if (is_array($vars['config']->profile) && sizeof($vars['config']->profile) > 0)
  			foreach($vars['config']->profile as $shortname => $valtype) {
-+				if (in_array($shortname, array('freenode_nick', 'freenode_cloak', 'email_nick', 'email_full', 'email_target'))) continue;
++				if ($shortname == 'email_target') continue;
  				if ($shortname != "description") {
  					$value = $vars['entity']->$shortname;
  					if (!empty($value)) {

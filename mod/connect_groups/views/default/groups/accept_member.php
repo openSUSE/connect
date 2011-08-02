@@ -61,6 +61,10 @@
                 <td><input type="text" size="40" value="" name="alias_full"> </td></tr>
             <tr><td>Target email: </td>
                 <td><input type="text" size="40" value="<?php echo $vars['user']->email ?>" name="target_email"></td>
+            <tr><td>Freenode IRC nick: </td>
+                <td><input type="text" size="40" value="" name="irc_nick"> </td></tr>
+            <tr><td>Freenode IRC cloak: </td>
+                <td><input type="text" size="40" value="" name="irc_cloak">opensuse/member/<?php echo $vars['user']->username ?></td></tr>
         </tr></table>
 
         <p>
