@@ -17,6 +17,7 @@
       if ($m->cloak_applied) continue;
         $form_body .= "<tr><td>{$m->username}</td><td>{$m->freenode_nick}</td><td>{$m->freenode_cloak}</td><td><input type='checkbox' name='apply[]' value='{$m->guid}' /></tr>\n";
   }
+  $form_body .= '<tr><td colspan="4">' . elgg_view('input/longtext', array('internalname' => 'applylist', 'value' => '')) . '</td></tr>';
   $form_body .= "</table>\n";
   $form_body .= elgg_view('input/submit', array('value' => elgg_echo('membersadmin:mark')));
   echo elgg_view('input/form', array('action' => "{$vars['url']}action/membersadmin/mark", "body" => $form_body));
