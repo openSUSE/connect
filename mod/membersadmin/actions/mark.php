@@ -23,11 +23,10 @@
           $nicks[] = $tok;
           $tok = strtok(" \t\r\n");
       }
-      foreach ( elgg_get_entities(array('types' => 'user')) as $user) {
-          if ($user->freenode_nick && in_array($user->freenode_nick, $nicks)) {
-              $user->cloak_applied = true;
-              $user->save();
-          }
+      $users = elgg_get_entities_from_metadata(array('types' => 'user', 'metadata_names' => array('freenode_nick'), 'metadata_values' => $nicks, 'limit' => 9999));
+      foreach ($users as $user) {
+          $user->cloak_applied = true;
+          $user->save();
       }
   }
 
