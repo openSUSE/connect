@@ -109,12 +109,10 @@
 				$priorVote = polls_check_for_previous_vote($vars['entity'], get_loggedin_userid());				
 				//if user has voted, show the results
 				if ($priorVote)	{
-				
-					echo "<p>";
+					echo "<p><i>";
 					echo elgg_echo("polls:voted");
-					echo "</p>";
+					echo "</i></p>";
 					echo elgg_view('polls/results', array('entity' => $vars['entity']));
-					
 				} else {
 					
 					//else show the form
@@ -133,10 +131,7 @@
 		{			
 	?>
 		<!-- show results -->
-		<div class="contentWrapper">
-		<p align="center"><a onclick="toggleResults();" style="cursor:hand;">Show Results</a></p>
-		</div>
-		<div id="resultsDiv" class="poll_post_body" style="display:none;">
+		<div id="resultsDiv" class="poll_post_body" style="display:block;">
 			<?php echo elgg_view('polls/results',array('entity' => $vars['entity'])); ?>
 	</div>
 		

@@ -11,12 +11,11 @@
 	 * www.webgalli.com or www.m4medicine.com
 	 */
 	 
-
 	if (isset($vars['entity'])) {
 
 		if ($vars['entity']->is_secret && (!$vars['entity']->enddate || (strtotime($vars['entity']->enddate)>time()))) {
 			if ($vars['entity']->enddate) {
-				echo sprintf(elgg_echo('polls:secretdate'),$vars['entity']->enddate);
+				echo sprintf(elgg_echo('polls:secretdate'), gmdate("M d Y, H:i \U\T\C", strtotime($vars['entity']->enddate) ) );
 			} else {
 				echo elgg_echo('polls:secret');
 			}

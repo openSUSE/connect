@@ -1,0 +1,62 @@
+diff --git a/mod/polls/views/default/object/poll.php b/mod/polls/views/default/object/poll.php
+index 146873e..06ab3b1 100644
+--- a/mod/polls/views/default/object/poll.php
++++ b/mod/polls/views/default/object/poll.php
+@@ -109,12 +109,10 @@
+ 				$priorVote = polls_check_for_previous_vote($vars['entity'], get_loggedin_userid());				
+ 				//if user has voted, show the results
+ 				if ($priorVote)	{
+-				
+-					echo "<p>";
++					echo "<p><i>";
+ 					echo elgg_echo("polls:voted");
+-					echo "</p>";
++					echo "</i></p>";
+ 					echo elgg_view('polls/results', array('entity' => $vars['entity']));
+-					
+ 				} else {
+ 					
+ 					//else show the form
+@@ -133,10 +131,7 @@
+ 		{			
+ 	?>
+ 		<!-- show results -->
+-		<div class="contentWrapper">
+-		<p align="center"><a onclick="toggleResults();" style="cursor:hand;">Show Results</a></p>
+-		</div>
+-		<div id="resultsDiv" class="poll_post_body" style="display:none;">
++		<div id="resultsDiv" class="poll_post_body" style="display:block;">
+ 			<?php echo elgg_view('polls/results',array('entity' => $vars['entity'])); ?>
+ 	</div>
+ 		
+diff --git a/mod/polls/views/default/polls/results.php b/mod/polls/views/default/polls/results.php
+index 349e12d..9e70977 100644
+--- a/mod/polls/views/default/polls/results.php
++++ b/mod/polls/views/default/polls/results.php
+@@ -11,12 +11,11 @@
+ 	 * www.webgalli.com or www.m4medicine.com
+ 	 */
+ 	 
+-
+ 	if (isset($vars['entity'])) {
+ 
+ 		if ($vars['entity']->is_secret && (!$vars['entity']->enddate || (strtotime($vars['entity']->enddate)>time()))) {
+ 			if ($vars['entity']->enddate) {
+-				echo sprintf(elgg_echo('polls:secretdate'),$vars['entity']->enddate);
++				echo sprintf(elgg_echo('polls:secretdate'), gmdate("M d Y, H:i \U\T\C", strtotime($vars['entity']->enddate) ) );
+ 			} else {
+ 				echo elgg_echo('polls:secret');
+ 			}
+diff --git a/mod/polls/views/default/polls/results_for_widget.php b/mod/polls/views/default/polls/results_for_widget.php
+index 53d8e78..c93dce7 100644
+--- a/mod/polls/views/default/polls/results_for_widget.php
++++ b/mod/polls/views/default/polls/results_for_widget.php
+@@ -16,7 +16,7 @@
+ 
+ 		if ($vars['entity']->is_secret && (!$vars['entity']->enddate || (strtotime($vars['entity']->enddate)>time()))) {
+ 			if ($vars['entity']->enddate) {
+-				echo sprintf(elgg_echo('polls:secretdate'),$vars['entity']->enddate);
++				echo sprintf(elgg_echo('polls:secretdate'), gmdate("M d Y, H:i \U\T\C", strtotime($vars['entity']->enddate) ) );
+ 			} else {
+ 				echo elgg_echo('polls:secret');
+ 			}
