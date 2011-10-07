@@ -7,3 +7,5 @@ http://wiki.opensuse.org/openSUSE:Connect_installation
 Please set:
 date.timezone = "Europe/Berlin";
 in your php.ini to avoid lots of warnings. 
+
+In doc/ we collect diffs to the upstream elgg, so we can upgrade to a new version easily.
