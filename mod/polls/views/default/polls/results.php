@@ -50,7 +50,11 @@
 			$response_count = getResponseCount($response, $user_responses);
 			
 			//calculate %
-			$response_percentage = round(100 / ($user_responses_count / $response_count))
+			if ($response_count > 0) {
+			    $response_percentage = round(100 / ($user_responses_count / $response_count));
+			} else {
+			    $response_percentage = 0;
+			}
 			
 			//html
 			?>
