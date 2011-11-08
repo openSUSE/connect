@@ -111,7 +111,7 @@
             <p><a href="<?php echo $vars['url']; ?>/pg/groups/world/?filter=pop">More groups</a></p>
         </div>
       <div class="box box-shadow" style="text-align: center;">
-      <h2 class="box-header" style="text-align: left;">openSUSE 12.1</h2>
+      <h2 class="box-header" style="text-align: left;">See whats new</h2>
 	<a href="http://counter.opensuse.org/link/"><img src="http://counter.opensuse.org/small" alt="openSUSE 12.1" title="openSUSE 12.1"></a>
       </div>
 <?php
