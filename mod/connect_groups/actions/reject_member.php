@@ -19,9 +19,19 @@ if ($group->canEdit()) {
         $body = get_input('notification');
         notify_user($user->getGUID(), $group->owner_guid, $subject, $body, NULL);
         // Notify the membership team
+        $annotations = $user->getAnnotations('join_vote_' . ($group->guid));
+        $feedback = "";
+        if ($annotations) {
+            $feedback = "\n\nFeedback from Membership team: ";
+            foreach ($annotations as $ann) {
+                $feedback .= "\n" . get_entity($ann->owner_guid)->username . ": {$ann->value}";
+            }
+        }
+
         elgg_send_email("membership-officials@opensuse.org",
                 "membership-officials@opensuse.org", $subject,
                 $logged_in_user->name . " declined the membership request of " . $user->name . "." .
+		$feedback .
                 "\n\nText sent to user: \n\n" . $body);
         system_message(elgg_echo("groups:joinrequestkilled"));
     }
