@@ -43,7 +43,8 @@ if ($group->canEdit()) {
                 "tom@opensuse.org", $subject,
                 $logged_in_user->name . " approved the membership request of " . $user->username . "." .
                 "\nEmail alias: " . get_input('alias_nick') . " " . get_input('alias_full') . " -> " . get_input('target_email') .
-                "\nName: : " . $user->name .
+                "\nName: " . $user->name .
+		"\nConnect page: https://connect.opensuse.org/pg/profile/" . $user->username .
                 $feedback .
                 "\n\nText sent to user: \n\n" . $body);
         system_message(elgg_echo('groups:addedtogroup'));
