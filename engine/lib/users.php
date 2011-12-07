@@ -1419,7 +1419,8 @@ function validate_username($username) {
 	if (
 		preg_match($blacklist, $username)
 	) {
-		throw new RegistrationException(elgg_echo('registration:invalidchars'));
+		// We don't need to check the usernames, they come from the novell account
+		//throw new RegistrationException(elgg_echo('registration:invalidchars'));
 	}
 
 	// Belts and braces
@@ -1427,7 +1428,8 @@ function validate_username($username) {
 	$blacklist2 = '\'/\\"*& ?#%^(){}[]~?<>;|¬`@-+=';
 	for ($n=0; $n < strlen($blacklist2); $n++) {
 		if (strpos($username, $blacklist2[$n])!==false) {
-			throw new RegistrationException(sprintf(elgg_echo('registration:invalidchars'), $blacklist2[$n], $blacklist2));
+			// We don't need to check the usernames, they come from the novell account
+			//throw new RegistrationException(sprintf(elgg_echo('registration:invalidchars'), $blacklist2[$n], $blacklist2));
 		}
 	}
 

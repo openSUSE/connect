@@ -1,0 +1,52 @@
+diff --git a/engine/lib/users.php b/engine/lib/users.php
+index cccad21..e6edf51 100644
+--- a/engine/lib/users.php
++++ b/engine/lib/users.php
+@@ -1419,7 +1419,8 @@ function validate_username($username) {
+ 	if (
+ 		preg_match($blacklist, $username)
+ 	) {
+-		throw new RegistrationException(elgg_echo('registration:invalidchars'));
++		// We don't need to check the usernames, they come from the novell account
++		//throw new RegistrationException(elgg_echo('registration:invalidchars'));
+ 	}
+ 
+ 	// Belts and braces
+@@ -1427,7 +1428,8 @@ function validate_username($username) {
+ 	$blacklist2 = '\'/\\"*& ?#%^(){}[]~?<>;|¬`@-+=';
+ 	for ($n=0; $n < strlen($blacklist2); $n++) {
+ 		if (strpos($username, $blacklist2[$n])!==false) {
+-			throw new RegistrationException(sprintf(elgg_echo('registration:invalidchars'), $blacklist2[$n], $blacklist2));
++			// We don't need to check the usernames, they come from the novell account
++			//throw new RegistrationException(sprintf(elgg_echo('registration:invalidchars'), $blacklist2[$n], $blacklist2));
+ 		}
+ 	}
+ 
+diff --git a/mod/ichain_login/start.php b/mod/ichain_login/start.php
+index 066425a..aeb0eae 100644
+--- a/mod/ichain_login/start.php
++++ b/mod/ichain_login/start.php
+@@ -18,8 +18,8 @@ function ichain_client_init() {
+     // uncomment to change the user
+     //logout();
+     // use the following 2 lines to fake a login:
+-    //$_SERVER['HTTP_X_USERNAME'] = "rio";
+-    //$_SERVER['HTTP_X_EMAIL'] = "rio@scherben.de";
++    $_SERVER['HTTP_X_USERNAME'] = "digitaltomm";
++    $_SERVER['HTTP_X_EMAIL'] = "rio@scherben.de";
+ 
+     $username = $_SERVER['HTTP_X_USERNAME'];
+     if (isset($username) && !isloggedin()) {
+diff --git a/mod/membersadmin/start.php b/mod/membersadmin/start.php
+index 5dc47fe..749547f 100644
+--- a/mod/membersadmin/start.php
++++ b/mod/membersadmin/start.php
+@@ -2,7 +2,7 @@
+   function membersadmin_init($event, $object_type, $object = null) {
+ 
+     global $CONFIG;
+-    $CONFIG->MembersGroupID = 111;
++    $CONFIG->MembersGroupID = 42;
+ 
+     register_page_handler('membersadmin','membersadmin_page_handler');
+ 
