@@ -112,7 +112,7 @@
         </div>
       <div class="box box-shadow" style="text-align: center;">
       <h2 class="box-header" style="text-align: left;">See whats new</h2>
-	<a href="http://counter.opensuse.org/link/"><img src="http://counter.opensuse.org/small" alt="openSUSE 12.1" title="openSUSE 12.1"></a>
+        <a href="https://counter.opensuse.org/link/"><img src="https://counter.opensuse.org/small" alt="openSUSE 12.1" title="openSUSE 12.1"></a>
       </div>
 <?php
         }
