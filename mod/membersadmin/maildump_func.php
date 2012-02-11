@@ -35,7 +35,7 @@ function connect_maildump_func($full = true) {
     }
     if ($full) {
         printf("%-40s %s\n", 'gnokii@opensuse.org', 'board@opensuse.org');
-	printf("%-40s %s\n", 'security@opensuse.org', 'admin@opensuse.org');
+	printf("%-40s %s\n", 'security@opensuse.org', 'security@suse.de');
     }
 }
 
