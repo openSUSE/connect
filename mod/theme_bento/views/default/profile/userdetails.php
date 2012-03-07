@@ -39,6 +39,11 @@
 											)
 					);
 
+        $user = get_entity($vars['entity']->guid);
+        $members = get_entity($CONFIG->MembersGroupID);
+        if ($members->isMember($user)) {
+        echo "<br><a href=\"/pg/groups/$CONFIG->MembersGroupID\"><img src=\"/mod/theme_bento/graphics/memberbadge.png\" width=\"200px\" title=\"This user a is an openSUSE Member\" alt=\"This user a is an openSUSE Member\"/></a>";
+        }
 
 	echo "</div>";
 	echo "<div class=\"clearfloat\"></div>";

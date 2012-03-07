@@ -6,3 +6,4 @@ nbproject
 .*.swp
 .DS_Store
 elgg_dev_tools
+.htaccess
