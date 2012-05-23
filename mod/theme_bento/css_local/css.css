@@ -973,7 +973,7 @@ ul#calendarmenu li.sys_selected a {
     background-color: #ccc;
 }
 .submenu_group_a li.selected a {
-    color: #069;
+    color: #ccc;
 }
 .submenu_group_a li a {
     margin: 0px 0px;
