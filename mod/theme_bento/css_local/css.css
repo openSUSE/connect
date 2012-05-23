@@ -961,7 +961,7 @@ ul#calendarmenu li.sys_selected a {
 
 .submenu_group_a li {
     background-color: #ccc;
-    padding: 3px 0;
+    padding: 5px 0;
 
     border-radius: 5px;
     -moz-border-radius: 5px;
@@ -976,7 +976,7 @@ ul#calendarmenu li.sys_selected a {
     color: #ccc;
 }
 .submenu_group_a li a {
-    margin: 0px 0px;
+    margin: 2px 0px;
 }
 
 .messages, .messages_error {
