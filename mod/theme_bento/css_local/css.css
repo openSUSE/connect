@@ -960,7 +960,7 @@ ul#calendarmenu li.sys_selected a {
 }
 
 .submenu_group_a li {
-    background-color: #ccc;
+    background-color: #eee;
     padding: 5px 0;
 
     border-radius: 5px;
@@ -973,7 +973,7 @@ ul#calendarmenu li.sys_selected a {
     background-color: #ccc;
 }
 .submenu_group_a li.selected a {
-    color: #ccc;
+    color: #069;
 }
 .submenu_group_a li a {
     margin: 2px 0px;
