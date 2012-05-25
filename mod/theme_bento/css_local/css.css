@@ -976,7 +976,7 @@ ul#calendarmenu li.sys_selected a {
     color: #069;
 }
 .submenu_group_a li a {
-    margin: 2px 0px;
+    margin: 0px 0px;
 }
 
 .messages, .messages_error {
