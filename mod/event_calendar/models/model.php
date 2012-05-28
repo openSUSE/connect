@@ -60,6 +60,7 @@ function event_calendar_get_event_from_form() {
 			$event_data->end_time = '';
 		}
 	}
+	$event_data->location = get_input('location','');
 	$event_data->start_date = get_input('start_date','');
 	$event_data->end_date = get_input('end_date','');
 	if ($event_calendar_spots_display == 'yes') {
