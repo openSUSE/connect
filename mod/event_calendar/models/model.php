@@ -32,6 +32,7 @@ function event_calendar_get_event_from_form() {
 	$event_data->event_id = get_input('event_id',0);
 	$event_data->access_id = get_input('access',ACCESS_PRIVATE);
 	$event_data->title = get_input('title','');
+	$event_data->location = get_input('location','');
 	$event_data->description = get_input('brief_description','');
 	$event_data->venue = get_input('venue','');
 	$event_calendar_times = get_plugin_setting('times', 'event_calendar');
@@ -60,7 +61,7 @@ function event_calendar_get_event_from_form() {
 			$event_data->end_time = '';
 		}
 	}
-	$event_data->location = get_input('location','');
+	
 	$event_data->start_date = get_input('start_date','');
 	$event_data->end_date = get_input('end_date','');
 	if ($event_calendar_spots_display == 'yes') {
@@ -106,7 +107,7 @@ function event_calendar_set_event_from_form() {
 
 	if ($event_calendar_more_required == 'yes') {
 		$required_fields = array('title','venue','start_date',
-			'brief_description','fees','contact','organiser',
+			'brief_description','fees','contact','organiser','location',
 			'event_tags');
 		
 		if ($event_calendar_times == 'yes') {
@@ -183,6 +184,7 @@ function event_calendar_set_event_from_form() {
 		$event->fees = $ed->fees;
 		$event->contact = $ed->contact;
 		$event->organiser = $ed->organiser;
+		$event->location = $ed->location;
 		$event->event_tags = array_reverse(string_to_tag_array($ed->event_tags));
 		$event->long_description = $ed->long_description;
 		$event->real_end_time = event_calendar_get_end_time($event);
@@ -864,6 +866,9 @@ function event_calendar_get_formatted_full_items($event) {
 	$item = new stdClass();
 	$item->title = elgg_echo('event_calendar:organiser_label');
 	$item->value = htmlspecialchars($event->organiser);
+	$event_items[] = $item;
+	$item->title = elgg_echo('event_calendar:location_label');
+	$item->value = htmlspecialchars($event->location);
 	$event_items[] = $item;
 	$item = new stdClass();
 	$item->title = elgg_echo('event_calendar:contact_label');
