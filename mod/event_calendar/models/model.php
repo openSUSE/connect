@@ -85,6 +85,7 @@ function event_calendar_get_event_from_form() {
 	$event_data->contact = get_input('contact','');
 	$event_data->organiser = get_input('organiser','');
 	$event_data->event_tags = get_input('event_tags','');
+	
 	$event_data->long_description = get_input('long_description','');
 
 	return $event_data;

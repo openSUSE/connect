@@ -12,13 +12,13 @@ $event_calendar_more_required = get_plugin_setting('more_required', 'event_calen
 
 if ($event_calendar_more_required == 'yes') {
 	$required_fields = array('title','venue','start_date','start_time',
-		'brief_description','region','event_type','fees','contact','organiser',
+		'brief_description','location' ,'region','event_type','fees','contact','organiser',
 		'event_tags','spots');
 } else {
 	$required_fields = array('title','venue','start_date');
 }
 $all_fields = array('title','venue','start_time','start_date','end_time','end_date',
-	'brief_description','region','event_type','fees','contact','organiser','event_tags',
+	'brief_description','region','location','event_type','fees','contact','organiser','event_tags',
 	'long_description','spots');
 $prefix = array();
 foreach ($all_fields as $fn) {
@@ -66,6 +66,7 @@ if ($event) {
 	}
 	$fees = $event->fees;
 	$contact = $event->contact;
+	$location = $event->location;
 	$organiser = $event->organiser;
 	$event_tags = $event->event_tags;
 	$long_description = $event->long_description;
@@ -83,6 +84,7 @@ if ($event) {
 	$start_date = '';
 	$end_date = '';
 	$fees = '';
+	$location = ''; 
 	if ($event_calendar_spots_display) {
 		$spots = '';
 	}
@@ -221,6 +223,12 @@ $body .= '<p><label>'.elgg_echo("event_calendar:contact_label").'<br />';
 $body .= elgg_view("input/text",array('internalname' => 'contact','value'=>$contact));
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['contact'].elgg_echo('event_calendar:contact_description').'</p>';
+
+$body .= '<p><label>'.elgg_echo("event_calendar:location_label").'<br />';
+$body .= elgg_view("input/text",array('internalname' => 'location','value'=>$location));
+$body .= '</label></p>';
+$body .= '<p class="description">'.$prefix['location'].elgg_echo('event_calendar:location_description').'</p>';
+
 
 $body .= '<p><label>'.elgg_echo("event_calendar:organiser_label").'<br />';
 $body .= elgg_view("input/text",array('internalname' => 'organiser','value'=>$organiser));
