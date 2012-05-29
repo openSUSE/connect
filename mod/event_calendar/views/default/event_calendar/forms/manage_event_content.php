@@ -227,7 +227,7 @@ $body .= '<p class="description">'.$prefix['contact'].elgg_echo('event_calendar:
 $body .= '<p><label>'.elgg_echo("event_calendar:location_label").'<br />';
 $body .= elgg_view("input/text",array('internalname' => 'location','value'=>$location));
 $body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['location'].elgg_echo('event_calendar:location_description').'</p>';
+//$body .= '<p class="description">'.$prefix['location'].elgg_echo('event_calendar:location_description').'</p>';
 
 
 $body .= '<p><label>'.elgg_echo("event_calendar:organiser_label").'<br />';
