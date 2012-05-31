@@ -868,7 +868,7 @@ function event_calendar_get_formatted_full_items($event) {
 	$item->title = elgg_echo('event_calendar:organiser_label');
 	$item->value = htmlspecialchars($event->organiser);
 	$event_items[] = $item;
-	$item->title = elgg_echo('event_calendar:location_label');
+	$item->title = elgg_echo('Location');
 	$item->value = htmlspecialchars($event->location);
 	$event_items[] = $item;
 	$item = new stdClass();

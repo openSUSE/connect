@@ -12,7 +12,7 @@ $event_calendar_more_required = get_plugin_setting('more_required', 'event_calen
 
 if ($event_calendar_more_required == 'yes') {
 	$required_fields = array('title','venue','start_date','start_time',
-		'brief_description','location' ,'region','event_type','fees','contact','organiser',
+		'brief_description','location','region','event_type','fees','contact','organiser',
 		'event_tags','spots');
 } else {
 	$required_fields = array('title','venue','start_date');
