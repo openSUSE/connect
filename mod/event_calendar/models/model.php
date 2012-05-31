@@ -108,7 +108,7 @@ function event_calendar_set_event_from_form() {
 
 	if ($event_calendar_more_required == 'yes') {
 		$required_fields = array('title','venue','start_date',
-			'brief_description','fees','contact','organiser','location',
+			'brief_description','fees','contact','organiser',
 			'event_tags');
 		
 		if ($event_calendar_times == 'yes') {
