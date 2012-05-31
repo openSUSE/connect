@@ -108,7 +108,7 @@ function event_calendar_set_event_from_form() {
 
 	if ($event_calendar_more_required == 'yes') {
 		$required_fields = array('title','venue','start_date',
-			'brief_description','fees','contact','organiser',
+			'brief_description','fees','contact','location', 'organiser',
 			'event_tags');
 		
 		if ($event_calendar_times == 'yes') {
@@ -868,6 +868,7 @@ function event_calendar_get_formatted_full_items($event) {
 	$item->title = elgg_echo('event_calendar:organiser_label');
 	$item->value = htmlspecialchars($event->organiser);
 	$event_items[] = $item;
+	$item = new stdClass();
 	$item->title = elgg_echo('Location');
 	$item->value = htmlspecialchars($event->location);
 	$event_items[] = $item;
