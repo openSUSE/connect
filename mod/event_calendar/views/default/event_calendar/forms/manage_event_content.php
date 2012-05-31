@@ -11,13 +11,13 @@ $event_calendar_hide_end = get_plugin_setting('hide_end', 'event_calendar');
 $event_calendar_more_required = get_plugin_setting('more_required', 'event_calendar');
 
 if ($event_calendar_more_required == 'yes') {
-	$required_fields = array('title','venue','start_date','start_time',
+	$required_fields = array('title',/*'venue */,'start_date','start_time',
 		'brief_description','location','region','event_type','fees','contact','organiser',
 		'event_tags','spots');
 } else {
-	$required_fields = array('title','venue','start_date');
+	$required_fields = array('title',/*'venue'*/,'start_date');
 }
-$all_fields = array('title','venue','start_time','start_date','end_time','end_date',
+$all_fields = array('title',/*'venue'*/,'start_time','start_date','end_time','end_date',
 	'brief_description','region','location','event_type','fees','contact','organiser','event_tags',
 	'long_description','spots');
 $prefix = array();
@@ -32,7 +32,7 @@ foreach ($all_fields as $fn) {
 if ($event) {
 	$title = $event->title;
 	$brief_description = $event->description;
-	$venue = $event->venue;
+	$//venue = $event->venue;
 	if ($event->form_data) {
 		// this is a form redisplay, so take the values as submitted
 		$start_date = $event->start_date;
@@ -80,7 +80,7 @@ if ($event) {
 	$event_id = 0;
 	$title = '';
 	$brief_description = '';
-	$venue = '';
+//	$//venue = '';
 	$start_date = '';
 	$end_date = '';
 	$fees = '';
@@ -116,10 +116,10 @@ $body .= elgg_view("input/text",array('internalname' => 'title','value'=>$title)
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['title'].elgg_echo('event_calendar:title_description').'</p>';
 
-$body .= '<p><label>'.elgg_echo("event_calendar:venue_label").'<br />';
-$body .= elgg_view("input/text",array('internalname' => 'venue','value'=>$venue));
-$body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['venue'].elgg_echo('event_calendar:venue_description').'</p>';
+//$body .= '<p><label>'.elgg_echo("event_calendar:venue_label").'<br />';
+//$body .= elgg_view("input/text",array('internalname' => 'venue','value'=>$venue));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['venue'].elgg_echo('event_calendar:venue_description').'</p>';
 
 if ($event_calendar_times == 'yes') {
 	$body .= '<p><label>'.elgg_echo("event_calendar:start_time_label").'</label><br />';

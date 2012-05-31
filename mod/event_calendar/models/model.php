@@ -34,7 +34,7 @@ function event_calendar_get_event_from_form() {
 	$event_data->title = get_input('title','');
 	$event_data->location = get_input('location','');
 	$event_data->description = get_input('brief_description','');
-	$event_data->venue = get_input('venue','');
+	// $event_data->venue = get_input('venue','');
 	$event_calendar_times = get_plugin_setting('times', 'event_calendar');
 	$event_calendar_region_display = get_plugin_setting('region_display', 'event_calendar');
 	$event_calendar_type_display = get_plugin_setting('type_display', 'event_calendar');
@@ -107,7 +107,7 @@ function event_calendar_set_event_from_form() {
 	$event_calendar_more_required = get_plugin_setting('more_required', 'event_calendar');
 
 	if ($event_calendar_more_required == 'yes') {
-		$required_fields = array('title','venue','start_date',
+		$required_fields = array('title',/*'venue*/,'start_date',
 			'brief_description','fees','contact','location', 'organiser',
 			'event_tags');
 		
@@ -127,7 +127,7 @@ function event_calendar_set_event_from_form() {
 			$required_fields[] = 'spots';
 		}
 	} else {
-		$required_fields = array('title','venue','start_date');
+		$required_fields = array('title',/*venue*/,'start_date');
 	}
 	foreach ($required_fields as $fn) {
 		if (!trim($ed->$fn)) {
@@ -156,7 +156,7 @@ function event_calendar_set_event_from_form() {
 		$event->access_id = $ed->access_id;
 		$event->title = $ed->title;
 		$event->description = $ed->description;
-		$event->venue = $ed->venue;
+	//	$event->venue = $ed->venue;
 		$event->start_date = strtotime($ed->start_date);
 		if ($ed->end_date) {
 			$event->end_date = strtotime($ed->end_date);
@@ -844,10 +844,10 @@ function event_calendar_get_formatted_full_items($event) {
 	$item->title = elgg_echo('event_calendar:when_label');
 	$item->value = $time_bit;
 	$event_items[] = $item;
-	$item = new stdClass();
-	$item->title = elgg_echo('event_calendar:venue_label');
-	$item->value = htmlspecialchars($event->venue);
-	$event_items[] = $item;
+	//$item = new stdClass();
+	//$item->title = elgg_echo('event_calendar:venue_label');
+	//$item->value = htmlspecialchars($event->venue);
+	//$event_items[] = $item;
 	if ($event_calendar_region_display == 'yes') {
 		$item = new stdClass();
 		$item->title = elgg_echo('event_calendar:region_label');
