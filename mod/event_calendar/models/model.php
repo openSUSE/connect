@@ -107,7 +107,7 @@ function event_calendar_set_event_from_form() {
 	$event_calendar_more_required = get_plugin_setting('more_required', 'event_calendar');
 
 	if ($event_calendar_more_required == 'yes') {
-		$required_fields = array('title',/*'venue*/,'start_date',
+		$required_fields = array('title','start_date',
 			'brief_description','fees','contact','location', 'organiser',
 			'event_tags');
 		
@@ -127,7 +127,7 @@ function event_calendar_set_event_from_form() {
 			$required_fields[] = 'spots';
 		}
 	} else {
-		$required_fields = array('title',/*venue*/,'start_date');
+		$required_fields = array('title','start_date');
 	}
 	foreach ($required_fields as $fn) {
 		if (!trim($ed->$fn)) {
