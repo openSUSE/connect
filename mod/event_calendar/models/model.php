@@ -191,7 +191,7 @@ function event_calendar_set_event_from_form() {
 		$event->event_tags = array_reverse(string_to_tag_array($ed->event_tags));
 		$event->long_description = $ed->long_description;
 		$event->material= $ed->material;
-		//$event = get_entity($ed->material);
+		$event = get_entity($ed->material);
 		$event->real_end_time = event_calendar_get_end_time($event);
 		$result->success = $event->save();
 		if ($result->success) {
