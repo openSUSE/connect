@@ -242,13 +242,9 @@ function event_calendar_set_event_from_form() {
 	return $result;
 }
 
-function annotate(
-		$name,           // The name of the annotation type (eg 'comment')
-		$value,          // The value of the annotation
-		$access_id = 0,  // The access level of the annotation
-		$owner_id = 0,   // The annotation owner, defaults to current user
-		$vartype = "text"    // 'text' or 'integer'
-)
+function annotate($name,$value,$access_id = 0,$owner_id = 0,$vartype = "text"){
+	
+}
 
 $event2->annotate('comment', $comment_text, $event2->access_id);
 
