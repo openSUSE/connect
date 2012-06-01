@@ -153,6 +153,18 @@ function event_calendar_set_event_from_form() {
 			} else {
 				$event->container_guid = $event->owner_guid;
 			}
+			
+			$event2 = new ElggObject();
+			$event2->subtype = 'event_calendar';
+			$event2->material = $ed->material;
+			
+			$event2->owner_guid = $_SESSION['user']->getGUID();
+			$group_guid = (int) get_input('group_guid',0);
+			if ($group_guid) {
+				$event->container_guid = $group_guid;
+			} else {
+				$event->container_guid = $event->owner_guid;
+			}
 		}
 		
 		$event->access_id = $ed->access_id;
@@ -190,7 +202,7 @@ function event_calendar_set_event_from_form() {
 		$event->location = $ed->location;
 		$event->event_tags = array_reverse(string_to_tag_array($ed->event_tags));
 		$event->long_description = $ed->long_description;
-		$event->material= $ed->material;
+		//$event->material= $ed->material;
 		//$event = get_entity($ed->material);
 		$event->real_end_time = event_calendar_get_end_time($event);
 		$result->success = $event->save();
