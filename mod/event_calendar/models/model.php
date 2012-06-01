@@ -228,11 +228,23 @@ function event_calendar_set_event_from_form() {
 	return $result;
 }
 
-function elgg_view_comments(ElggObject $event_calendar){
+//function elgg_view_comments(ElggObject $event_calendar){
 	
 	
 	
-}
+//}
+$test_material = get_entity($ed->material);
+ 
+
+echo elgg_view_entity($test_material);
+
+function annotate(
+		$comment,           // The name of the annotation type (eg 'comment')
+		$value,          // The value of the annotation
+		$access_id = 0,  // The access level of the annotation
+		$owner_id = 0,   // The annotation owner, defaults to current user
+		$vartype = ""    // 'text' or 'integer'
+)
 
 //$event_calendar->annotate('comment', $comment_text, $entity->access_id);
 
