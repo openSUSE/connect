@@ -19,7 +19,7 @@ if ($event_calendar_more_required == 'yes') {
 }
 $all_fields = array('title','start_time','start_date','end_time','end_date',
 	'brief_description','region','location','event_type','fees','contact','organiser','event_tags',
-	'long_description','spots');
+	'long_description','material','spots');
 $prefix = array();
 foreach ($all_fields as $fn) {
 	if (in_array($fn,$required_fields)) {
@@ -70,6 +70,7 @@ if ($event) {
 	$organiser = $event->organiser;
 	$event_tags = $event->event_tags;
 	$long_description = $event->long_description;
+	$material= $event->material;
 	$access = $event->access_id;
 	if ($event_calendar_times == 'yes') {
 		$start_time = $event->start_time;
@@ -98,6 +99,7 @@ if ($event) {
 	$organiser = '';
 	$event_tags = '';
 	$long_description = '';
+	$material='';
 	$access = get_default_access();
 	if ($event_calendar_times == 'yes') {
 		$start_time = '';
@@ -244,6 +246,11 @@ $body .= '<p><label>'.elgg_echo("event_calendar:long_description_label").'<br />
 $body .= elgg_view("input/longtext",array('internalname' => 'long_description','value'=>$long_description));
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['long_description'].elgg_echo('event_calendar:long_description_description').'</p>';
+
+$body .= '<p><label>'.elgg_echo("Material").'<br />';
+$body .= elgg_view("input/longtext",array('internalname' => 'material','value'=>$material));
+$body .= '</label></p>';
+$body .= '<p class="description">'.$prefix['material'].elgg_echo('Add the material here').'</p>';
 
 if($event_calendar_hide_access == 'yes') {
 	$event_calendar_default_access = get_plugin_setting('default_access', 'event_calendar');

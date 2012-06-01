@@ -34,6 +34,7 @@ function event_calendar_get_event_from_form() {
 	$event_data->title = get_input('title','');
 	$event_data->location = get_input('location','');
 	$event_data->description = get_input('brief_description','');
+	$event_data->material = get_input('material','');
 	// $event_data->venue = get_input('venue','');
 	$event_calendar_times = get_plugin_setting('times', 'event_calendar');
 	$event_calendar_region_display = get_plugin_setting('region_display', 'event_calendar');
@@ -188,6 +189,7 @@ function event_calendar_set_event_from_form() {
 		$event->location = $ed->location;
 		$event->event_tags = array_reverse(string_to_tag_array($ed->event_tags));
 		$event->long_description = $ed->long_description;
+		$event->material= $ed->material;
 		$event->real_end_time = event_calendar_get_end_time($event);
 		$result->success = $event->save();
 		if ($result->success) {
