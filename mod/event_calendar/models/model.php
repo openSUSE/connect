@@ -228,13 +228,13 @@ function event_calendar_set_event_from_form() {
 	return $result;
 }
 
-//function elgg_view_comments(ElggObject $event->material){
+function elgg_view_comments(ElggObject $event_calendar){
 	
 	
 	
-//}
+}
 
-//$ed->material->annotate('comment', $comment_text, $entity->access_id);
+$event_calendar->annotate('comment', $comment_text, $entity->access_id);
 
 function event_calendar_get_events_between($start_date,$end_date,$is_count,$limit=10,$offset=0,$container_guid=0,$region='-') {
 	if ($is_count) {
