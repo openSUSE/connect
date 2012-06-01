@@ -154,17 +154,17 @@ function event_calendar_set_event_from_form() {
 				$event->container_guid = $event->owner_guid;
 			}
 			
-			$event2 = new ElggObject();
-			$event2->subtype = 'event_calendar';
-			$event2->material = $ed->material;
+			//$event2 = new ElggObject();
+			//$event2->subtype = 'event_calendar';
+			//$event2->material = $ed->material;
 			
-			$event2->owner_guid = $_SESSION['user']->getGUID();
-			$group_guid = (int) get_input('group_guid',0);
-			if ($group_guid) {
-				$event->container_guid = $group_guid;
-			} else {
-				$event->container_guid = $event->owner_guid;
-			}
+			//$event2->owner_guid = $_SESSION['user']->getGUID();
+			//$group_guid = (int) get_input('group_guid',0);
+			//if ($group_guid) {
+				//$event->container_guid = $group_guid;
+			//} else {
+				//$event->container_guid = $event->owner_guid;
+			//}
 			//$event2->save();
 			
 		}
@@ -207,6 +207,7 @@ function event_calendar_set_event_from_form() {
 		//$event->material= $ed->material;
 		//$event = get_entity($ed->material);
 		$event->real_end_time = event_calendar_get_end_time($event);
+		$event->canComment($user_guid = 0);
 		$result->success = $event->save();
 		if ($result->success) {
 			if ($group_guid && (get_plugin_setting('autogroup', 'event_calendar') == 'yes')) {
@@ -244,7 +245,7 @@ function event_calendar_set_event_from_form() {
 	return $result;
 }
 
-$event->canComment($user_guid = 0);
+
 //function annotate($name,$value,$access_id = 0,$owner_id = 0,$vartype = "text"){
 	
 //}
