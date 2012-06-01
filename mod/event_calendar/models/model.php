@@ -154,7 +154,7 @@ function event_calendar_set_event_from_form() {
 				$event->container_guid = $event->owner_guid;
 			}
 		}
-		$test_material = get_entity($ed->material);
+		
 		$event->access_id = $ed->access_id;
 		$event->title = $ed->title;
 		$event->description = $ed->description;
@@ -191,6 +191,7 @@ function event_calendar_set_event_from_form() {
 		$event->event_tags = array_reverse(string_to_tag_array($ed->event_tags));
 		$event->long_description = $ed->long_description;
 		$event->material= $ed->material;
+		$test_material = get_entity($ed->material);
 		$event->real_end_time = event_calendar_get_end_time($event);
 		$result->success = $event->save();
 		if ($result->success) {
