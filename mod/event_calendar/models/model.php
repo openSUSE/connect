@@ -109,7 +109,7 @@ function event_calendar_set_event_from_form() {
 
 	if ($event_calendar_more_required == 'yes') {
 		$required_fields = array('title','start_date',
-			'brief_description','fees','contact','location','material' 'organiser',
+			'brief_description','fees','contact','location', 'organiser',
 			'event_tags');
 		
 		if ($event_calendar_times == 'yes') {
@@ -230,26 +230,6 @@ function event_calendar_set_event_from_form() {
 	return $result;
 }
 
-//function elgg_view_comments(ElggObject $event_calendar){
-	
-	
-	
-//}
-//$test_material = get_entity($ed->material);
-//$event = get_entity($test_material);
- 
-
-//echo elgg_view_entity($event);
-
-//function annotate(
-	//	$comment,           // The name of the annotation type (eg 'comment')
-	//	$value,          // The value of the annotation
-	//	$access_id = 0,  // The access level of the annotation
-	//	$owner_id = 0,   // The annotation owner, defaults to current user
-	//	$vartype = ""    // 'text' or 'integer'
-//)
-
-//$event_calendar->annotate('comment', $comment_text, $entity->access_id);
 
 function event_calendar_get_events_between($start_date,$end_date,$is_count,$limit=10,$offset=0,$container_guid=0,$region='-') {
 	if ($is_count) {
