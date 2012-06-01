@@ -242,9 +242,9 @@ function event_calendar_set_event_from_form() {
 	return $result;
 }
 
-function annotate($name,$value,$access_id = 0,$owner_id = 0,$vartype = "text"){
+//function annotate($name,$value,$access_id = 0,$owner_id = 0,$vartype = "text"){
 	
-}
+//}
 
 $event2->annotate('comment', $comment_text, $event2->access_id);
 
