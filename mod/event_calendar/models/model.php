@@ -228,11 +228,11 @@ function event_calendar_set_event_from_form() {
 	return $result;
 }
 
-//function elgg_view_comments(ElggObject $event_calendar){
+function elgg_view_comments(ElggObject $event_calendar){
 	
 	
 	
-//}
+}
 
 //$event_calendar->annotate('comment', $comment_text, $entity->access_id);
 
