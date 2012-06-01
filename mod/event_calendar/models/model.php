@@ -109,7 +109,7 @@ function event_calendar_set_event_from_form() {
 
 	if ($event_calendar_more_required == 'yes') {
 		$required_fields = array('title','start_date',
-			'brief_description','fees','contact','location', 'organiser',
+			'brief_description','fees','contact','location','material' 'organiser',
 			'event_tags');
 		
 		if ($event_calendar_times == 'yes') {
@@ -191,7 +191,7 @@ function event_calendar_set_event_from_form() {
 		$event->event_tags = array_reverse(string_to_tag_array($ed->event_tags));
 		$event->long_description = $ed->long_description;
 		$event->material= $ed->material;
-		$event = get_entity($ed->material);
+		//$event = get_entity($ed->material);
 		$event->real_end_time = event_calendar_get_end_time($event);
 		$result->success = $event->save();
 		if ($result->success) {
@@ -241,13 +241,13 @@ function event_calendar_set_event_from_form() {
 
 //echo elgg_view_entity($event);
 
-function annotate(
-		$comment,           // The name of the annotation type (eg 'comment')
-		$value,          // The value of the annotation
-		$access_id = 0,  // The access level of the annotation
-		$owner_id = 0,   // The annotation owner, defaults to current user
-		$vartype = ""    // 'text' or 'integer'
-)
+//function annotate(
+	//	$comment,           // The name of the annotation type (eg 'comment')
+	//	$value,          // The value of the annotation
+	//	$access_id = 0,  // The access level of the annotation
+	//	$owner_id = 0,   // The annotation owner, defaults to current user
+	//	$vartype = ""    // 'text' or 'integer'
+//)
 
 //$event_calendar->annotate('comment', $comment_text, $entity->access_id);
 
