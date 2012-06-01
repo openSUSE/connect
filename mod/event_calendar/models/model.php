@@ -233,7 +233,8 @@ function event_calendar_set_event_from_form() {
 	
 	
 //}
-$event = get_entity($ed->material);
+$test_material = $ed->material
+$event = get_entity($test_material);
  
 
 //echo elgg_view_entity($event);
