@@ -236,7 +236,7 @@ function event_calendar_set_event_from_form() {
 $event = get_entity($ed->material);
  
 
-echo elgg_view_entity($event);
+//echo elgg_view_entity($event);
 
 function annotate(
 		$comment,           // The name of the annotation type (eg 'comment')
