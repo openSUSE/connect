@@ -154,6 +154,7 @@ function event_calendar_set_event_from_form() {
 				$event->container_guid = $event->owner_guid;
 			}
 		}
+		$test_material = get_entity($ed->material);
 		$event->access_id = $ed->access_id;
 		$event->title = $ed->title;
 		$event->description = $ed->description;
@@ -233,8 +234,8 @@ function event_calendar_set_event_from_form() {
 	
 	
 //}
-$test_material = $ed->material;
-$event = get_entity($test_material);
+//$test_material = get_entity($ed->material);
+//$event = get_entity($test_material);
  
 
 //echo elgg_view_entity($event);
