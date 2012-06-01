@@ -242,6 +242,15 @@ function event_calendar_set_event_from_form() {
 	return $result;
 }
 
+function annotate(
+		$name,           // The name of the annotation type (eg 'comment')
+		$value,          // The value of the annotation
+		$access_id = 0,  // The access level of the annotation
+		$owner_id = 0,   // The annotation owner, defaults to current user
+		$vartype = "text"    // 'text' or 'integer'
+)
+
+$event2->annotate('comment', $comment_text, $event2->access_id);
 
 function event_calendar_get_events_between($start_date,$end_date,$is_count,$limit=10,$offset=0,$container_guid=0,$region='-') {
 	if ($is_count) {
