@@ -233,7 +233,7 @@ function event_calendar_set_event_from_form() {
 	
 	
 //}
-$test_material = $ed->material
+$test_material = $ed->material;
 $event = get_entity($test_material);
  
 
