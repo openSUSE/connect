@@ -204,7 +204,8 @@ function event_calendar_set_event_from_form() {
 		$event->location = $ed->location;
 		$event->event_tags = array_reverse(string_to_tag_array($ed->event_tags));
 		$event->long_description = $ed->long_description;
-		//$event->material= $ed->material;
+		$event->material= $ed->material;
+		
 		//$event = get_entity($ed->material);
 		$event->real_end_time = event_calendar_get_end_time($event);
 		$event->canComment($user_guid = 0);
@@ -241,7 +242,8 @@ function event_calendar_set_event_from_form() {
 		// required data missing
 		$result->success = false;
 	}
-
+	
+	$event->annotate('comment', $comment_text, $event->access_id);
 	return $result;
 }
 
