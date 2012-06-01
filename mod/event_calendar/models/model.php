@@ -244,7 +244,7 @@ function event_calendar_set_event_from_form() {
 	return $result;
 }
 
-$event2->canComment($user_guid = 0);
+$event->canComment($user_guid = 0);
 //function annotate($name,$value,$access_id = 0,$owner_id = 0,$vartype = "text"){
 	
 //}
