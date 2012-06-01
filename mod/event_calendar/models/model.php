@@ -165,6 +165,8 @@ function event_calendar_set_event_from_form() {
 			} else {
 				$event->container_guid = $event->owner_guid;
 			}
+			//$event2->save();
+			
 		}
 		
 		$event->access_id = $ed->access_id;
@@ -246,7 +248,7 @@ function event_calendar_set_event_from_form() {
 	
 //}
 
-$event2->annotate('comment', $comment_text, $event2->access_id);
+//$event2->annotate('comment', $comment_text, $event2->access_id);
 
 function event_calendar_get_events_between($start_date,$end_date,$is_count,$limit=10,$offset=0,$container_guid=0,$region='-') {
 	if ($is_count) {
