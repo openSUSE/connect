@@ -883,6 +883,10 @@ function event_calendar_get_formatted_full_items($event) {
 	$item->value = htmlspecialchars($event->location);
 	$event_items[] = $item;
 	$item = new stdClass();
+	$item->title = elgg_echo('Material');
+	$item->value = htmlspecialchars($event->material);
+	$event_items[] = $item;
+	$item = new stdClass();
 	$item->title = elgg_echo('event_calendar:contact_label');
 	$item->value = htmlspecialchars($event->contact);
 	$event_items[] = $item;
