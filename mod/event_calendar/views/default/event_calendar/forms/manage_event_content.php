@@ -237,10 +237,10 @@ $body .= elgg_view("input/tags",array('internalname' => 'event_tags','value'=>$e
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['event_tags'].elgg_echo('event_calendar:event_tags_description').'</p>';
 
-$body .= '<p><label>'.elgg_echo("event_calendar:long_description_label").'<br />';
-$body .= elgg_view("input/longtext",array('internalname' => 'long_description','value'=>$long_description));
-$body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['long_description'].elgg_echo('event_calendar:long_description_description').'</p>';
+//$body .= '<p><label>'.elgg_echo("event_calendar:long_description_label").'<br />';
+//$body .= elgg_view("input/longtext",array('internalname' => 'long_description','value'=>$long_description));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['long_description'].elgg_echo('event_calendar:long_description_description').'</p>';
 
 $body .= '<p><label>'.elgg_echo("Material").'<br />';
 $body .= elgg_view("input/longtext",array('internalname' => 'material','value'=>$material));
