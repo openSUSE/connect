@@ -231,8 +231,8 @@ function event_calendar_set_event_from_form() {
 	
 	//$test = $event->material;
 	//$test->annotate('comment', $comment_text, $test->access_id);
-	//return $result;
-	return $test;
+	return $result;
+	//return $test;
 }
 
 
