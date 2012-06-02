@@ -35,7 +35,6 @@ function event_calendar_get_event_from_form() {
 	$event_data->location = get_input('location','');
 	$event_data->description = get_input('brief_description','');
 	$event_data->material = get_input('material','');
-	// $event_data->venue = get_input('venue','');
 	$event_calendar_times = get_plugin_setting('times', 'event_calendar');
 	$event_calendar_region_display = get_plugin_setting('region_display', 'event_calendar');
 	$event_calendar_type_display = get_plugin_setting('type_display', 'event_calendar');
@@ -109,7 +108,7 @@ function event_calendar_set_event_from_form() {
 
 	if ($event_calendar_more_required == 'yes') {
 		$required_fields = array('title','start_date',
-			'brief_description','fees','contact','location', 'organiser',
+			'brief_description','fees','contact','location','material' 'organiser',
 			'event_tags');
 		
 		if ($event_calendar_times == 'yes') {
@@ -154,25 +153,14 @@ function event_calendar_set_event_from_form() {
 				$event->container_guid = $event->owner_guid;
 			}
 			
-			//$event2 = new ElggObject();
-			//$event2->subtype = 'event_calendar';
-			//$event2->material = $ed->material;
 			
-			//$event2->owner_guid = $_SESSION['user']->getGUID();
-			//$group_guid = (int) get_input('group_guid',0);
-			//if ($group_guid) {
-				//$event->container_guid = $group_guid;
-			//} else {
-				//$event->container_guid = $event->owner_guid;
-			//}
-			//$event2->save();
 			
 		}
 		
 		$event->access_id = $ed->access_id;
 		$event->title = $ed->title;
 		$event->description = $ed->description;
-	//	$event->venue = $ed->venue;
+	
 		$event->start_date = strtotime($ed->start_date);
 		if ($ed->end_date) {
 			$event->end_date = strtotime($ed->end_date);
@@ -205,10 +193,8 @@ function event_calendar_set_event_from_form() {
 		$event->event_tags = array_reverse(string_to_tag_array($ed->event_tags));
 		$event->long_description = $ed->long_description;
 		$event->material= $ed->material;
-		
-		//$event = get_entity($ed->material);
 		$event->real_end_time = event_calendar_get_end_time($event);
-		//$event->canComment($user_guid = 0);
+		
 		$result->success = $event->save();
 		if ($result->success) {
 			if ($group_guid && (get_plugin_setting('autogroup', 'event_calendar') == 'yes')) {
@@ -243,8 +229,8 @@ function event_calendar_set_event_from_form() {
 		$result->success = false;
 	}
 	
-	//$test = $ed->material;
-	//$test->annotate('comment', $comment_text, $test->access_id);
+	
+	$event->material->annotate('comment', $comment_text, $event->material->access_id);
 	return $result;
 }
 
