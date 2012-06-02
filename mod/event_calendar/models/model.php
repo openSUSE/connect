@@ -208,7 +208,7 @@ function event_calendar_set_event_from_form() {
 		
 		//$event = get_entity($ed->material);
 		$event->real_end_time = event_calendar_get_end_time($event);
-		$event->canComment($user_guid = 0);
+		//$event->canComment($user_guid = 0);
 		$result->success = $event->save();
 		if ($result->success) {
 			if ($group_guid && (get_plugin_setting('autogroup', 'event_calendar') == 'yes')) {
@@ -249,11 +249,6 @@ function event_calendar_set_event_from_form() {
 }
 
 
-//function annotate($name,$value,$access_id = 0,$owner_id = 0,$vartype = "text"){
-	
-//}
-
-//$event2->annotate('comment', $comment_text, $event2->access_id);
 
 function event_calendar_get_events_between($start_date,$end_date,$is_count,$limit=10,$offset=0,$container_guid=0,$region='-') {
 	if ($is_count) {
