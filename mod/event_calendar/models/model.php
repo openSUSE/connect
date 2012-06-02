@@ -108,7 +108,7 @@ function event_calendar_set_event_from_form() {
 
 	if ($event_calendar_more_required == 'yes') {
 		$required_fields = array('title','start_date',
-			'brief_description','fees','contact','location','material' 'organiser',
+			'brief_description','fees','contact','location','material', 'organiser',
 			'event_tags');
 		
 		if ($event_calendar_times == 'yes') {
@@ -229,10 +229,9 @@ function event_calendar_set_event_from_form() {
 		$result->success = false;
 	}
 	
-	//$test = $event->material;
-	//$test->annotate('comment', $comment_text, $test->access_id);
+	
 	return $result;
-	//return $test;
+	
 }
 
 
