@@ -229,8 +229,8 @@ function event_calendar_set_event_from_form() {
 		$result->success = false;
 	}
 	
-	
-	$event->material->annotate('comment', $comment_text, $event->material->access_id);
+	$test = $ed->material;
+	$test->annotate('comment', $comment_text, $event->material->access_id);
 	return $result;
 }
 
