@@ -237,15 +237,15 @@ $body .= elgg_view("input/tags",array('internalname' => 'event_tags','value'=>$e
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['event_tags'].elgg_echo('event_calendar:event_tags_description').'</p>';
 
-$body .= elgg_echo("event_calendar:long_description_label");
+$body .= '<p><label>'.elgg_echo("event_calendar:long_description_label").'<br />';
 $body .= elgg_view("input/longtext",array('internalname' => 'long_description','value'=>$long_description));
-//$body .= '</label></p>';
+$body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['long_description'].elgg_echo('event_calendar:long_description_description').'</p>';
 
-$body .= '<p><label>'.elgg_echo("Material").'<br />';
+$body .= '<p><label>'.elgg_echo("event_calendar:material_label").'<br />';
 $body .= elgg_view("input/longtext",array('internalname' => 'material','value'=>$material));
 $body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['material'].elgg_echo('Add the material here').'</p>';
+$body .= '<p class="description">'.$prefix['material'].elgg_echo('event_calendar:material_description').'</p>';
 
 if($event_calendar_hide_access == 'yes') {
 	$event_calendar_default_access = get_plugin_setting('default_access', 'event_calendar');
