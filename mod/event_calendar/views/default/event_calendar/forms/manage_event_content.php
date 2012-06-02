@@ -12,14 +12,14 @@ $event_calendar_more_required = get_plugin_setting('more_required', 'event_calen
 
 if ($event_calendar_more_required == 'yes') {
 	$required_fields = array('title','start_date','start_time',
-		'brief_description','location','region','event_type','fees','contact','organiser',
+		'brief_description','location','region','material','event_type','fees','contact','organiser',
 		'event_tags','spots');
 } else {
 	$required_fields = array('title','start_date');
 }
 $all_fields = array('title','start_time','start_date','end_time','end_date',
-	'brief_description','region','location','event_type','fees','contact','organiser','event_tags',
-	'long_description','material','spots');
+	'brief_description','region','location','event_type','fees','contact','material','organiser','event_tags',
+	'long_description','spots');
 $prefix = array();
 foreach ($all_fields as $fn) {
 	if (in_array($fn,$required_fields)) {
