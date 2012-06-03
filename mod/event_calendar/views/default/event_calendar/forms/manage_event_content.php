@@ -70,6 +70,11 @@ if ($event) {
 	$event_tags = $event->event_tags;
 	$long_description = $event->long_description;
 	$material= $event->material;
+	$booth = $event->booth;
+	$talks=$event->talks;
+	$travel=$event->travel;
+	$arrival=$event->arrival;
+	$departure=$event->departure;
 	$access = $event->access_id;
 	if ($event_calendar_times == 'yes') {
 		$start_time = $event->start_time;
@@ -84,8 +89,14 @@ if ($event) {
 	$start_date = '';
 	$end_date = '';
 	$fees = '';
+	$departure='';
 	$location = ''; 
 	$material='';
+	$arrival='';
+	$departure='';
+	$booth='';
+	$travel='';
+	$talks='';
 	if ($event_calendar_spots_display) {
 		$spots = '';
 	}
@@ -246,6 +257,31 @@ $body .= '<p><label>'.elgg_echo("Material").'<br />';
 $body .= elgg_view("input/longtext",array('internalname' => 'material','value'=>$material));
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['material'].elgg_echo('Add your Material here').'</p>';
+
+$body .= '<p><label>'.elgg_echo("Talks").'<br />';
+$body .= elgg_view("input/longtext",array('internalname' => 'talks','value'=>$talks));
+$body .= '</label></p>';
+$body .= '<p class="description">'.$prefix['talks'].elgg_echo('Add your Material here').'</p>';
+
+$body .= '<p><label>'.elgg_echo("Travel Support").'<br />';
+$body .= elgg_view("input/longtext",array('internalname' => 'travel','value'=>$travel));
+$body .= '</label></p>';
+$body .= '<p class="description">'.$prefix['travel'].elgg_echo('Who needs travel support').'</p>';
+
+$body .= '<p><label>'.elgg_echo("Booth").'<br />';
+$body .= elgg_view("input/longtext",array('internalname' => 'booth','value'=>$booth));
+$body .= '</label></p>';
+$body .= '<p class="description">'.$prefix['booth'].elgg_echo('Who will help at the booth').'</p>';
+
+$body .= '<p><label>'.elgg_echo("Arrival").'<br />';
+$body .= elgg_view("input/longtext",array('internalname' => 'arrival','value'=>$arrival));
+$body .= '</label></p>';
+$body .= '<p class="description">'.$prefix['arrival'].elgg_echo('Who will arrive and when').'</p>';
+
+$body .= '<p><label>'.elgg_echo("Departure").'<br />';
+$body .= elgg_view("input/longtext",array('internalname' => 'departure','value'=>$departure));
+$body .= '</label></p>';
+$body .= '<p class="description">'.$prefix['departure'].elgg_echo('Who will leave and when').'</p>';
 
 if($event_calendar_hide_access == 'yes') {
 	$event_calendar_default_access = get_plugin_setting('default_access', 'event_calendar');

@@ -35,6 +35,11 @@ function event_calendar_get_event_from_form() {
 	$event_data->location = get_input('location','');
 	$event_data->description = get_input('brief_description','');
 	$event_data->material = get_input('material','');
+	$event_data->arrival = get_input('arrival','');
+	$event_data->departure = get_input('departure','');
+	$event_data->booth = get_input('booth','');
+	$event_data->travel = get_input('travel','');
+	$event_data->talks = get_input('talks','');
 	$event_calendar_times = get_plugin_setting('times', 'event_calendar');
 	$event_calendar_region_display = get_plugin_setting('region_display', 'event_calendar');
 	$event_calendar_type_display = get_plugin_setting('type_display', 'event_calendar');
@@ -108,7 +113,7 @@ function event_calendar_set_event_from_form() {
 
 	if ($event_calendar_more_required == 'yes') {
 		$required_fields = array('title','start_date',
-			'brief_description','fees','contact','location','material', 'organiser',
+			'brief_description','fees','contact','location','material','arrival','departure','booth','talks','travel', 'organiser',
 			'event_tags');
 		
 		if ($event_calendar_times == 'yes') {
@@ -193,6 +198,11 @@ function event_calendar_set_event_from_form() {
 		$event->event_tags = array_reverse(string_to_tag_array($ed->event_tags));
 		$event->long_description = $ed->long_description;
 		$event->material= $ed->material;
+		$event->arrival= $ed->arrival;
+		$event->departure=$ed->departure;
+		$event->talks= $ed->talks;
+		$event->travel=$ed->travel;
+		$event->booth=$ed->booth;
 		$event->real_end_time = event_calendar_get_end_time($event);
 		
 		$result->success = $event->save();
@@ -883,8 +893,28 @@ function event_calendar_get_formatted_full_items($event) {
 	$item->value = htmlspecialchars($event->location);
 	$event_items[] = $item;
 	$item = new stdClass();
+	$item->title = elgg_echo('Arrival');
+	$item->value = $event->arrival;
+	$event_items[] = $item;
+	$item = new stdClass();
+	$item->title = elgg_echo('Departure');
+	$item->value = $event->departure;
+	$event_items[] = $item;
+	$item = new stdClass();
 	$item->title = elgg_echo('Material');
 	$item->value = $event->material;
+	$event_items[] = $item;
+	$item = new stdClass();
+	$item->title = elgg_echo('Booth');
+	$item->value = $event->booth;
+	$event_items[] = $item;
+	$item = new stdClass();
+	$item->title = elgg_echo('Travel Support');
+	$item->value = $event->travel;
+	$event_items[] = $item;
+	$item = new stdClass();
+	$item->title = elgg_echo('Talks');
+	$item->value = $event->talks;
 	$event_items[] = $item;
 	$item = new stdClass();
 	$item->title = elgg_echo('event_calendar:contact_label');
