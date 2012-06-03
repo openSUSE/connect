@@ -35,7 +35,7 @@ function event_calendar_get_event_from_form() {
 	$event_data->location = get_input('location','');
 	$event_data->description = get_input('brief_description','');
 	$event_data->material = get_input('material','');
-	$event_data->arrival = get_input('arrival','',ACCESS_PUBLIC);
+	$event_data->arrival = get_input('arrival','');
 	$event_data->departure = get_input('departure','');
 	$event_data->booth = get_input('booth','');
 	$event_data->travel = get_input('travel','');

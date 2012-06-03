@@ -283,7 +283,7 @@ $body .= elgg_view("input/longtext",array('internalname' => 'departure','value'=
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['departure'].elgg_echo('Who will leave and when').'</p>';
 
-$body .= elgg_view_comments($pages);
+$body .= elgg_view_comments($event_data->$material);
 
 if($event_calendar_hide_access == 'yes') {
 	$event_calendar_default_access = get_plugin_setting('default_access', 'event_calendar');
