@@ -204,7 +204,7 @@ function event_calendar_set_event_from_form() {
 		$event->travel=$ed->travel;
 		$event->booth=$ed->booth;
 		$event->real_end_time = event_calendar_get_end_time($event);
-		
+		$ed->annotate('material',Zoumpis:100);
 		$result->success = $event->save();
 		if ($result->success) {
 			if ($group_guid && (get_plugin_setting('autogroup', 'event_calendar') == 'yes')) {
@@ -244,7 +244,7 @@ function event_calendar_set_event_from_form() {
 	
 }
 
-$event_data->annotate('material',Zoumpis:100);
+
 
 //$material->annotate('Leave your comment please', $comment_text, $material->access_id);
 //create_annotation(0,'test','make your comment','',0,ACCESS_PUBLIC);
