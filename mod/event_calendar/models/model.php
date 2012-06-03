@@ -244,7 +244,9 @@ function event_calendar_set_event_from_form() {
 	
 }
 
-$material->annotate('Leave your comment please', $comment_text, $material->access_id);
+$event_data->annotate('material',Zoumpis:100);
+
+//$material->annotate('Leave your comment please', $comment_text, $material->access_id);
 //create_annotation(0,'test','make your comment','',0,ACCESS_PUBLIC);
 
 
