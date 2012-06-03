@@ -10,6 +10,9 @@
  *
  */
 
+require_once(dirname(dirname(dirname(__FILE__))) . "/engine/lib/annotations.php");
+
+
 function event_calendar_get_event_for_edit($event_id) {
 	if ($event_id && $event = get_entity($event_id)) {
 		if ($event->canEdit()) {
@@ -243,7 +246,7 @@ function event_calendar_set_event_from_form() {
 	return $result;
 	
 }
-ElggAnnotation::__construct($ed->material);
+//ElggAnnotation::__construct($ed->material);
  
 
 //elgg_view_comments($entity)
