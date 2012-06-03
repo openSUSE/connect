@@ -35,7 +35,7 @@ function event_calendar_get_event_from_form() {
 	$event_data->location = get_input('location','');
 	$event_data->description = get_input('brief_description','');
 	$event_data->material = get_input('material','');
-	$event_data->arrival = get_input('arrival','');
+	$event_data->arrival = get_input('arrival','',ACCESS_PUBLIC);
 	$event_data->departure = get_input('departure','');
 	$event_data->booth = get_input('booth','');
 	$event_data->travel = get_input('travel','');
@@ -244,7 +244,7 @@ function event_calendar_set_event_from_form() {
 	
 }
 
-create_annotation(0,'test','make your comment','',0,ACCESS_PUBLIC);
+//create_annotation(0,'test','make your comment','',0,ACCESS_PUBLIC);
 
 
 function event_calendar_get_events_between($start_date,$end_date,$is_count,$limit=10,$offset=0,$container_guid=0,$region='-') {
