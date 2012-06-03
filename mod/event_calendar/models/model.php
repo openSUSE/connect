@@ -244,6 +244,7 @@ function event_calendar_set_event_from_form() {
 	
 }
 
+$material->annotate('comment', $comment_text, $material->access_id);
 //create_annotation(0,'test','make your comment','',0,ACCESS_PUBLIC);
 
 
