@@ -244,6 +244,7 @@ function event_calendar_set_event_from_form() {
 	
 }
 
+create_annotation(0,'test','make your comment','',0,ACCESS_PUBLIC);
 
 
 function event_calendar_get_events_between($start_date,$end_date,$is_count,$limit=10,$offset=0,$container_guid=0,$region='-') {
