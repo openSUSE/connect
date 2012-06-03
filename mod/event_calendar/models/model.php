@@ -10,7 +10,7 @@
  *
  */
 
-require_once(dirname(__FILE__) . "/engine/lib/annotations.php");
+require_once(dirname(dirname(dirname(dirname(__FILE__)))) . "/engine/lib/annotations.php");
 
 
 function event_calendar_get_event_for_edit($event_id) {
