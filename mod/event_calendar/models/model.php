@@ -168,9 +168,9 @@ function event_calendar_set_event_from_form() {
 		$event->access_id = $ed->access_id;
 		$event->title = $ed->title;
 		$event->description = $ed->description;
-		$event->annotate('comment', $comment_text, $event->access_id);
-		$annotations = $event->getAnnotations('comment',10,1);
-		elgg_echo($annotations);
+	//	$event->annotate('comment', $comment_text, $event->access_id);
+	//	$annotations = $event->getAnnotations('comment',10,1);
+	//	elgg_echo($annotations);
 		$event->start_date = strtotime($ed->start_date);
 		if ($ed->end_date) {
 			$event->end_date = strtotime($ed->end_date);
