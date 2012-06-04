@@ -169,6 +169,8 @@ function event_calendar_set_event_from_form() {
 		$event->title = $ed->title;
 		$event->description = $ed->description;
 		$event->annotate('comment', $comment_text, $event->access_id);
+		$annotations = $event->getAnnotations('comment',10,1);
+		elgg_echo($annotations);
 		$event->start_date = strtotime($ed->start_date);
 		if ($ed->end_date) {
 			$event->end_date = strtotime($ed->end_date);
@@ -252,15 +254,6 @@ function event_calendar_set_event_from_form() {
 
 
 
-//function enable();
-//ElggAnnotation::__construct($ed->material);
- 
-
-//elgg_view_comments($entity)
-
-
-//$material->annotate('Leave your comment please', $comment_text, $material->access_id);
-//create_annotation(0,'test','make your comment','',0,ACCESS_PUBLIC);
 
 
 function event_calendar_get_events_between($start_date,$end_date,$is_count,$limit=10,$offset=0,$container_guid=0,$region='-') {
