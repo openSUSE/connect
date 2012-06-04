@@ -208,6 +208,7 @@ function event_calendar_set_event_from_form() {
 		$event->booth=$ed->booth;
 		$event->real_end_time = event_calendar_get_end_time($event);
 		create_annotation(0,'test','my first comment',ACCESS_PUBLIC);
+		elgg_view_comments($event);
 		//$ed->annotate('material',Zoumpis:100);
 		$result->success = $event->save();
 		if ($result->success) {
