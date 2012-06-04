@@ -284,8 +284,8 @@ $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['departure'].elgg_echo('Who will leave and when').'</p>';
 
 $material->annotate('comment', $comment_text, $material->access_id);
-$annotations = $material->getAnnotations('comment',10,1);
-$body .= elgg_echo($annotations);
+//$annotations = $material->getAnnotations('comment',10,1);
+//$body .= elgg_echo($annotations);
 //$body .= elgg_view_comments($event);
 
 if($event_calendar_hide_access == 'yes') {
