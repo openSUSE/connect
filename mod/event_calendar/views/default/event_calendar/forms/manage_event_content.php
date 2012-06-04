@@ -283,6 +283,10 @@ $body .= elgg_view("input/longtext",array('internalname' => 'departure','value'=
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['departure'].elgg_echo('Who will leave and when').'</p>';
 
+
+$event->annotate('comment', "This is my first comment",$event->access_id);
+$annotations = $event->getAnnotations('comment');
+echo "This is an echo";
 //$event->annotate('comment', $comment_text, $event->access_id);
 //$annotations = $event->getAnnotations('comment',10,1);
 //$body .= elgg_echo($annotations);
