@@ -168,7 +168,7 @@ function event_calendar_set_event_from_form() {
 		$event->access_id = $ed->access_id;
 		$event->title = $ed->title;
 		$event->description = $ed->description;
-	
+		$event->annotate('comment', $comment_text, $event->access_id);
 		$event->start_date = strtotime($ed->start_date);
 		if ($ed->end_date) {
 			$event->end_date = strtotime($ed->end_date);
@@ -207,9 +207,9 @@ function event_calendar_set_event_from_form() {
 		$event->travel=$ed->travel;
 		$event->booth=$ed->booth;
 		$event->real_end_time = event_calendar_get_end_time($event);
-		create_annotation(0,'test','my first comment',ACCESS_PUBLIC);
-		elgg_view_comments($event);
-		//$ed->annotate('material',Zoumpis:100);
+		//create_annotation(0,'test','my first comment',ACCESS_PUBLIC);
+		//elgg_view_comments($event);
+		
 		$result->success = $event->save();
 		if ($result->success) {
 			if ($group_guid && (get_plugin_setting('autogroup', 'event_calendar') == 'yes')) {
