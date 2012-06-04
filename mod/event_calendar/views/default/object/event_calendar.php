@@ -29,9 +29,10 @@ if ($vars['full']) {
 				$body .= "<p class=\"{$even_odd}\"><b>";
 				$body .= $item->title.':</b> ';
 				$body .= $item->value;
-					
+			}		
 		}
 	}
+	
 	echo $body;
 	if ($event->long_description) {
 		echo '<p>'.$event->long_description.'</p>';
