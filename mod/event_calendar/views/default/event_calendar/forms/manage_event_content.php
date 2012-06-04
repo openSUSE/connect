@@ -285,8 +285,8 @@ $body .= '<p class="description">'.$prefix['departure'].elgg_echo('Who will leav
 
 
 //$event->annotate('comment', "This is my first comment",$event->access_id);
-$annotations = $event->getAnnotations('comment');
-echo $annotations;
+//$annotations = $event->getAnnotations('comment');
+//echo $annotations;
 //$event->annotate('comment', $comment_text, $event->access_id);
 //$annotations = $event->getAnnotations('comment',10,1);
 //$body .= elgg_echo($annotations);
