@@ -207,7 +207,7 @@ function event_calendar_set_event_from_form() {
 		$event->travel=$ed->travel;
 		$event->booth=$ed->booth;
 		$event->real_end_time = event_calendar_get_end_time($event);
-		ElggAnnotation::__construct($ed->material);
+		ElggAnnotation::__construct($event->material);
 		//$ed->annotate('material',Zoumpis:100);
 		$result->success = $event->save();
 		if ($result->success) {
