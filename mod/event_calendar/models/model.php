@@ -247,8 +247,9 @@ function event_calendar_set_event_from_form() {
 	
 }
 
-function __construct($ed->material);
-function enable();
+ElggAnnotation::__construct($ed->material);
+
+//function enable();
 //ElggAnnotation::__construct($ed->material);
  
 
