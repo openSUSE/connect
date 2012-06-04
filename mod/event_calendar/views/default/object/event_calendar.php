@@ -24,14 +24,12 @@ if ($vars['full']) {
 	foreach($event_items as $item) {
 		$value = $item->value;
 		if (!empty($value)) {
-				
-			//This function controls the alternating class
-			//$even_odd = ( 'odd' != $even_odd ) ? 'odd' : 'even';
 			if ($vars['full']) {
+				
 				$body .= "<p class=\"{$even_odd}\"><b>";
 				$body .= $item->title.':</b> ';
 				$body .= $item->value;
-
+					
 		}
 	}
 	echo $body;
