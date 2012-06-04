@@ -206,7 +206,7 @@ function event_calendar_set_event_from_form() {
 		$event->travel=$ed->travel;
 		$event->booth=$ed->booth;
 		$event->real_end_time = event_calendar_get_end_time($event);
-		$event->annotate('comment', $comment_text, $event->access_id);
+		$event->annotate('comment', "This is my first comment",$event->access_id);
 		$annotations = $event->getAnnotations('comment',10,1);
 		$body .= elgg_echo($annotations);
 		$result->success = $event->save();
