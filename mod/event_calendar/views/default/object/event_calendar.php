@@ -25,7 +25,7 @@ if ($vars['full']) {
 		$value = $item->value;
 		if (!empty($value)) {
 			if ($vars['full']) {
-				$even_odd = ( 'odd' != $even_odd ) ? 'odd' : 'even';
+				//$even_odd = ( 'odd' != $even_odd ) ? 'odd' : 'even';
 				$body .= "<p class=\"{$even_odd}\"><b>";
 				$body .= $item->title.':</b> ';
 				$body .= $item->value;
