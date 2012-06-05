@@ -22,8 +22,8 @@ if ($vars['full']) {
 	$annotation_material = $event->getAnnotations('material_comment');
 	print_r( $annotation_material);
 	
-	$annotation_arrival = $event->getAnnotations('arrival_comment');
-	print_r( $annotation_arrival);
+	//$annotation_arrival = $event->getAnnotations('arrival_comment');
+	//print_r( $annotation_arrival);
 	
 	//$annotation_departure = $event->getAnnotations('departure_comment');
 	//print_r( $annotation_departure);
