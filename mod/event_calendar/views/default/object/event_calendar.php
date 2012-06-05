@@ -20,8 +20,8 @@ if ($vars['full']) {
 	$body .= '<div class="contentWrapper" >';
 	
 	
-	print($material_guid);
-	print($arrival_guid);
+	//print($material_guid);
+	//print($arrival_guid);
 	//$annotation_material = $event->getAnnotations('material_comment',5,0,'asc');
 	//print_r( $annotation_material);
 	//$a = $event->getGUID();
