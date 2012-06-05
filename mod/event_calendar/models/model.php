@@ -208,7 +208,18 @@ function event_calendar_set_event_from_form() {
 		$event->booth=$ed->booth;
 		$event->real_end_time = event_calendar_get_end_time($event);
 		
-		$event->annotate('comment', "This is the first comment");
+		$event->annotate('material_comment', "Aj :200 DVD's");
+		
+		$event->annotate('arrival_comment', "Aj: 21/06");
+		
+		$event->annotate('departure_comment', "Aj : 23/06");
+		
+		$event->annotate('talks_comment', "Aj : How to become a lizard");
+		
+		$event->annotate('travel_comment', "Aj");
+		
+		$event->annotate('booth_comment', "Aj");
+		
 		
 		$result->success = $event->save();
 		
