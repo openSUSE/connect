@@ -13,6 +13,10 @@
 
 $event = $vars['entity'];
 
+$a = $event->getURL();
+
+print $a;
+//$body = 
 
 if ($vars['full']) {
 	$body = elgg_view('event_calendar/strapline',$vars);
