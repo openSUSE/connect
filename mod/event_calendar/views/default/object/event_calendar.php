@@ -20,7 +20,7 @@ if ($vars['full']) {
 	$body .= '<div class="contentWrapper" >';
 	
 	$annotations = $event->getAnnotations('comment');
-	echo $annotations;
+	print_r( $annotations);
 	foreach($event_items as $item) {
 		$value = $item->value;
 		if (!empty($value)) {
