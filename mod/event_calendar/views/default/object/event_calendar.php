@@ -22,7 +22,7 @@ if ($vars['full']) {
 	$annotation_material = $event->getAnnotations('material_comment',5,0,'asc');
 	print_r( $annotation_material);
 	
-	elgg_view_comments($event, $add_comment=true, array $vars=array())
+	elgg_view_comments($event, $add_comment=true, array $vars=array());
 	//$annotation_arrival = $event->getAnnotations('arrival_comment');
 	//print_r( $annotation_arrival);
 	
