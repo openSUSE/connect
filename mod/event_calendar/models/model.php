@@ -208,17 +208,17 @@ function event_calendar_set_event_from_form() {
 		$event->booth=$ed->booth;
 		$event->real_end_time = event_calendar_get_end_time($event);
 		
-		$event->annotate('material_comment', "Aj :200 DVD's");
+		//$event->annotate('material_comment', "Aj :200 DVD's");
 		
-		$event->annotate('arrival_comment', "Aj: 21/06");
+		//$event->annotate('arrival_comment', "Aj: 21/06");
 		
-		$event->annotate('departure_comment', "Aj : 23/06");
+		//$event->annotate('departure_comment', "Aj : 23/06");
 		
-		$event->annotate('talks_comment', "Aj : How to become a lizard");
+		//$event->annotate('talks_comment', "Aj : How to become a lizard");
 		
-		$event->annotate('travel_comment', "Aj");
+		//$event->annotate('travel_comment', "Aj");
 		
-		$event->annotate('booth_comment', "Aj");
+		//$event->annotate('booth_comment', "Aj");
 		
 		
 		$result->success = $event->save();
@@ -923,6 +923,10 @@ function event_calendar_get_formatted_full_items($event) {
 	$item = new stdClass();
 	$item->title = elgg_echo('Material');
 	$item->value = $event->material;
+	$event_items[] = $item;
+	$item = new stdClass();
+	$item->title = elgg_echo('Material Comment');
+	$item->value = $event->annotate('material_comment', "Aj :200 DVD's");
 	$event_items[] = $item;
 	$item = new stdClass();
 	$item->title = elgg_echo('Booth');

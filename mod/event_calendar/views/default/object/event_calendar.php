@@ -19,22 +19,22 @@ if ($vars['full']) {
 	$event_items = event_calendar_get_formatted_full_items($event);
 	$body .= '<div class="contentWrapper" >';
 	
-	$material_annotation = $event->getAnnotations('material_comment');
-	$body .= elgg_echo($material_annotation[0][value]);
+	//$material_annotation = $event->getAnnotations('material_comment');
+	//print_r($material_annotation[0][value]);
 	
-	$arrival_annotation = $event->getAnnotations('arrival_comment');
-	$body .=elgg_echo($arrival_annotation[0][value]);
+	 // $arrival_annotation = $event->getAnnotations('arrival_comment');
+	  // print_r ($arrival_annotation[0][value]);
 	
 	
-	$departure_annotation = $event->getAnnotations('departure_comment');
-	$body .=elgg_echo($departure_annotation[0][value]);
+   //	$departure_annotation = $event->getAnnotations('departure_comment');
+	// print_r($departure_annotation[0][value]);
 	
-	$talks_annotation = $event->getAnnotations('talks_comment');
-	$body .=elgg_echo($talks_annotation[0][value]);
+	//$talks_annotation = $event->getAnnotations('talks_comment');
+//	print_r ($talks_annotation[0][value]);
 	
 
-	$booth_annotation = $event->getAnnotations('booth_comment');
-	$body .= elgg_echo($booth_annotation[0][value]);
+//	$booth_annotation = $event->getAnnotations('booth_comment');
+//	print_r ($booth_annotation[0][value]);
 	
 	foreach($event_items as $item) {
 		$value = $item->value;
