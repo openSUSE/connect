@@ -19,6 +19,9 @@ if ($vars['full']) {
 	$event_items = event_calendar_get_formatted_full_items($event);
 	$body .= '<div class="contentWrapper" >';
 	
+	
+	print($material_guid);
+	print($arrival_guid);
 	//$annotation_material = $event->getAnnotations('material_comment',5,0,'asc');
 	//print_r( $annotation_material);
 	//$a = $event->getGUID();
