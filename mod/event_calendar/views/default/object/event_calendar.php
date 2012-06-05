@@ -20,33 +20,14 @@ if ($vars['full']) {
 	$body .= '<div class="contentWrapper" >';
 	
 	
-	//$annotation_guid = $event->getGUID(); // We create this guid so as to use the create_annotation function properly
-	create_annotation($event->getGUID(),'material_comment',"This is my DVD");
 	
-	//,0,$access_id = ACCESS_PUBLIC);
+	$event->elgg_get_annotations ($options = array());
+
+	echo $options[annotation_names];
 	
-	//print($material_guid);
-	//print($arrival_guid);
-	//$annotation_material = $event->getAnnotations('material_comment',5,0,'asc');
-	//print_r( $annotation_material);
-	//$a = $event->getGUID();
-	//print ($a);
-	//elgg_view_comments($event);
-	///, $add_comment=true, array $vars=array());
-	//$annotation_arrival = $event->getAnnotations('arrival_comment');
-	//print_r( $annotation_arrival);
 	
-	//$annotation_departure = $event->getAnnotations('departure_comment');
-	//print_r( $annotation_departure);
 	
-	//$annotation_talks = $event->getAnnotations('talks_comment');
-	//print_r( $annotation_talks);
 	
-	//$annotation_travel = $event->getAnnotations('travel_comment');
-	//print_r( $annotation_travel);
-	
-	//$annotation_booth = $event->getAnnotations('booth_comment');
-	//print_r( $annotation_booth);
 	foreach($event_items as $item) {
 		$value = $item->value;
 		if (!empty($value)) {
