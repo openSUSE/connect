@@ -1005,8 +1005,8 @@ function event_calendar_get_formatted_full_items($event) {
 	$event_items[] = $item;
 	
 	$item = new stdClass();
-	$item->title = elgg_echo('talks_print_button');
-	$item->value = elgg_view("input/submit",array("value"=>elgg_echo('event_calendar:model:talks_print_button')));
+	$item->title = elgg_echo('Submit your comment');
+	$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
 	$event_items[] = $item;
 	$item = new stdClass();
 	$item->title = elgg_echo('event_calendar:contact_label');
