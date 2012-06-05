@@ -955,7 +955,7 @@ function event_calendar_get_formatted_full_items($event) {
 	$material_annotation = $event->getAnnotations('material_comment');
 	$material_print = $material_annotation[0][value];
 	
-	$item->elgg_view("input/longtext",array('internalname' => 'material','value'=>$material_print));
+	$item->value=elgg_view("input/longtext",array('internalname' => 'material','value'=>$material_print));
 	//$item->value = $material_print;
 	$event_items[] = $item;
 	
