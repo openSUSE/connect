@@ -918,6 +918,7 @@ function event_calendar_get_formatted_full_items($event) {
 	$item->title = elgg_echo('Arrival');
 	$item->value = $event->arrival;
 	$event_items[] = $item;
+	
 	$item = new stdClass();
 	$item->title = elgg_echo('Arrival Comment');
 	$event->annotate('arrival_comment', "Aj :21/06");
@@ -953,7 +954,9 @@ function event_calendar_get_formatted_full_items($event) {
 	$event->annotate('material_comment', "Aj :200 DVD's");
 	$material_annotation = $event->getAnnotations('material_comment');
 	$material_print = $material_annotation[0][value];
-	$item->value = $material_print;
+	
+	$item->elgg_view("input/longtext",array('internalname' => 'material_comment','value'=>$material_print));
+	//$item->value = $material_print;
 	$event_items[] = $item;
 	
 	$item = new stdClass();
