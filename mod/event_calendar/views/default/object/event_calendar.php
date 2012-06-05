@@ -20,7 +20,7 @@ if ($vars['full']) {
 	$body .= '<div class="contentWrapper" >';
 	
 	$annotations = $event->getAnnotations('comment');
-	print_r ( $annotations[name] );
+	print_r ( $annotations[0][attributes:protected][name]);
 	
 
 	
