@@ -25,17 +25,17 @@ if ($vars['full']) {
 	$annotation_arrival = $event->getAnnotations('arrival_comment');
 	print_r( $annotation_arrival);
 	
-	$annotation_departure = $event->getAnnotations('departure_comment');
-	print_r( $annotation_departure);
+	//$annotation_departure = $event->getAnnotations('departure_comment');
+	//print_r( $annotation_departure);
 	
-	$annotation_talks = $event->getAnnotations('talks_comment');
-	print_r( $annotation_talks);
+	//$annotation_talks = $event->getAnnotations('talks_comment');
+	//print_r( $annotation_talks);
 	
-	$annotation_travel = $event->getAnnotations('travel_comment');
-	print_r( $annotation_travel);
+	//$annotation_travel = $event->getAnnotations('travel_comment');
+	//print_r( $annotation_travel);
 	
-	$annotation_booth = $event->getAnnotations('booth_comment');
-	print_r( $annotation_booth);
+	//$annotation_booth = $event->getAnnotations('booth_comment');
+	//print_r( $annotation_booth);
 	foreach($event_items as $item) {
 		$value = $item->value;
 		if (!empty($value)) {
