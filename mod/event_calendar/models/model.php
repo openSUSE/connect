@@ -914,10 +914,10 @@ function event_calendar_get_formatted_full_items($event) {
 	//$item->value = $arrival_print;
 	$event_items[] = $item;
 	
-	$item = new stdClass();
-	$item->title = elgg_echo('');
-	$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
-	$event_items[] = $item;
+	//$item = new stdClass();
+	//$item->title = elgg_echo('');
+	//$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
+	//$event_items[] = $item;
 	
 	
 	
@@ -937,10 +937,10 @@ function event_calendar_get_formatted_full_items($event) {
 	$event_items[] = $item;
 	
 	
-	$item = new stdClass();
-	$item->title = elgg_echo('');
-	$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
-	$event_items[] = $item;
+	//$item = new stdClass();
+	//$item->title = elgg_echo('');
+	//$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
+	//$event_items[] = $item;
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Material');
@@ -957,10 +957,10 @@ function event_calendar_get_formatted_full_items($event) {
 	//$item->value = $material_print;
 	$event_items[] = $item;
 	
-	$item = new stdClass();
-	$item->title = elgg_echo('');
-	$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
-	$event_items[] = $item;
+	//$item = new stdClass();
+	//$item->title = elgg_echo('');
+	//$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
+	//$event_items[] = $item;
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Booth');
@@ -976,10 +976,10 @@ function event_calendar_get_formatted_full_items($event) {
 	//$item->value = $booth_print;
 	$event_items[] = $item;
 	
-	$item = new stdClass();
-	$item->title = elgg_echo('');
-	$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
-	$event_items[] = $item;
+	//$item = new stdClass();
+	//$item->title = elgg_echo('');
+	//$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
+	//$event_items[] = $item;
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Travel Support');
@@ -996,10 +996,10 @@ function event_calendar_get_formatted_full_items($event) {
 	//$item->value = $travel_print;
 	$event_items[] = $item;
 	
-	$item = new stdClass();
-	$item->title = elgg_echo('');
-	$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
-	$event_items[] = $item;
+	//$item = new stdClass();
+	//$item->title = elgg_echo('');
+	//$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
+	//$event_items[] = $item;
 	
 	
 	$item = new stdClass();
@@ -1016,10 +1016,10 @@ function event_calendar_get_formatted_full_items($event) {
 	//$item->value = $talks_print;
 	$event_items[] = $item;
 	
-	$item = new stdClass();
-	$item->title = elgg_echo('');
-	$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
-	$event_items[] = $item;
+	//$item = new stdClass();
+	//$item->title = elgg_echo('');
+	//$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
+	//$event_items[] = $item;
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('event_calendar:contact_label');

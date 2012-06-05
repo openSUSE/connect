@@ -13,9 +13,9 @@
 
 $event = $vars['entity'];
 
-$a = $event->getURL();
+//$a = $event->getURL();
 
-print $a;
+//print $a;
 //$body = 
 
 if ($vars['full']) {
