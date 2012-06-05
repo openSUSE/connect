@@ -161,8 +161,7 @@ function event_calendar_set_event_from_form() {
 				$event->container_guid = $event->owner_guid;
 			}
 			
-			$material = new ElggObject();
-			$event->owner_guid = $_SESSION['user']->getGUID();
+			
 			
 			
 		}
@@ -201,7 +200,7 @@ function event_calendar_set_event_from_form() {
 		$event->location = $ed->location;
 		$event->event_tags = array_reverse(string_to_tag_array($ed->event_tags));
 		$event->long_description = $ed->long_description;
-		//$event->material= $ed->material;
+		$event->material= $ed->material;
 		$event->arrival= $ed->arrival;
 		$event->departure=$ed->departure;
 		$event->talks= $ed->talks;
@@ -909,7 +908,7 @@ function event_calendar_get_formatted_full_items($event) {
 	$event_items[] = $item;
 	$item = new stdClass();
 	$item->title = elgg_echo('Material');
-	$item->value = $material->material;
+	$item->value = $event->material;
 	$event_items[] = $item;
 	$item = new stdClass();
 	$item->title = elgg_echo('Booth');
