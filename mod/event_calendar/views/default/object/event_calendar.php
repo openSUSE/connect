@@ -19,8 +19,23 @@ if ($vars['full']) {
 	$event_items = event_calendar_get_formatted_full_items($event);
 	$body .= '<div class="contentWrapper" >';
 	
-	$annotations = $event->getAnnotations('comment');
-	print_r( $annotations);
+	$annotation_material = $event->getAnnotations('material_comment');
+	print_r( $annotation_material);
+	
+	$annotation_arrival = $event->getAnnotations('arrival_comment');
+	print_r( $annotation_arrival);
+	
+	$annotation_departure = $event->getAnnotations('departure_comment');
+	print_r( $annotation_departure);
+	
+	$annotation_talks = $event->getAnnotations('talks_comment');
+	print_r( $annotation_talks);
+	
+	$annotation_travel = $event->getAnnotations('travel_comment');
+	print_r( $annotation_travel);
+	
+	$annotation_booth = $event->getAnnotations('booth_comment');
+	print_r( $annotation_booth);
 	foreach($event_items as $item) {
 		$value = $item->value;
 		if (!empty($value)) {
