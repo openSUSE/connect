@@ -1000,10 +1000,13 @@ function event_calendar_get_formatted_full_items($event) {
 	$talks_print = $talks_annotation[0][value];
 	
 	$item->value=elgg_view("input/longtext",array('internalname' => 'talks','value'=>$talks_print));
-	$submit_button = "<p>".elgg_view("input/submit",array("value"=>elgg_echo('event_calendar:model:talks_print_button')))."</p>";
+	//$submit_button = "<p>".elgg_view("input/submit",array("value"=>elgg_echo('event_calendar:model:talks_print_button')))."</p>";
 	//$item->value = $talks_print;
 	$event_items[] = $item;
 	
+	$item = new stdClass();
+	$item->title = elgg_echo('talks_print_button');
+	$item->value = elgg_view("input/submit",array("value"=>elgg_echo('event_calendar:model:talks_print_button')));
 	$item = new stdClass();
 	$item->title = elgg_echo('event_calendar:contact_label');
 	$item->value = htmlspecialchars($event->contact);
