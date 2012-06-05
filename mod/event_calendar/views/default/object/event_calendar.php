@@ -19,11 +19,12 @@ if ($vars['full']) {
 	$event_items = event_calendar_get_formatted_full_items($event);
 	$body .= '<div class="contentWrapper" >';
 	
+	$annotations = $event->getAnnotations('comment');
+	print_r ( $annotations );
 	
-	
-	$event->elgg_get_annotations ($options = array());
+	//$event->elgg_get_annotations ($options = array());
 
-	echo $options[annotation_names];
+	//echo $options[annotation_names];
 	
 	
 	
@@ -31,12 +32,12 @@ if ($vars['full']) {
 	foreach($event_items as $item) {
 		$value = $item->value;
 		if (!empty($value)) {
-			//if ($vars['full']) {
+			if ($vars['full']) {
 				$even_odd = ( 'odd' != $even_odd ) ? 'odd' : 'even';
 				$body .= "<p class=\"{$even_odd}\"><b>";
 				$body .= $item->title.':</b> ';
 				$body .= $item->value;
-			//}		
+			}		
 		}
 	}
 	
