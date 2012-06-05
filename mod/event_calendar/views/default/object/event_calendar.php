@@ -21,7 +21,9 @@ if ($vars['full']) {
 	
 	
 	//$annotation_guid = $event->getGUID(); // We create this guid so as to use the create_annotation function properly
-	create_annotation($event->getGUID(),'material_comment',"This is my DVD",0,$access_id = ACCESS_PUBLIC);
+	create_annotation($event->getGUID(),'material_comment',"This is my DVD");
+	
+	//,0,$access_id = ACCESS_PUBLIC);
 	
 	//print($material_guid);
 	//print($arrival_guid);
