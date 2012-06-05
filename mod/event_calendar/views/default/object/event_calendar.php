@@ -19,7 +19,7 @@ if ($vars['full']) {
 	$event_items = event_calendar_get_formatted_full_items($event);
 	$body .= '<div class="contentWrapper" >';
 	
-	$annotations = $event->getAnnotations('comment');
+	$annotations = $material->getAnnotations('comment');
 	print_r ( $annotations );
 	foreach($event_items as $item) {
 		$value = $item->value;

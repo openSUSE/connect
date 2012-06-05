@@ -253,10 +253,10 @@ $body .= elgg_view("input/longtext",array('internalname' => 'long_description','
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['long_description'].elgg_echo('event_calendar:long_description_description').'</p>';
 
-$body .= '<p><label>'.elgg_echo("Material").'<br />';
-$body .= elgg_view("input/longtext",array('internalname' => 'material','value'=>$material));
-$body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['material'].elgg_echo('Add your Material here').'</p>';
+//$body .= '<p><label>'.elgg_echo("Material").'<br />';
+//$body .= elgg_view("input/longtext",array('internalname' => 'material','value'=>$material));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['material'].elgg_echo('Add your Material here').'</p>';
 
 $body .= '<p><label>'.elgg_echo("Talks").'<br />';
 $body .= elgg_view("input/longtext",array('internalname' => 'talks','value'=>$talks));
@@ -284,7 +284,13 @@ $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['departure'].elgg_echo('Who will leave and when').'</p>';
 
 
-
+//$event->annotate('comment', "This is my first comment",$event->access_id);
+//$annotations = $event->getAnnotations('comment');
+//echo $annotations;
+//$event->annotate('comment', $comment_text, $event->access_id);
+//$annotations = $event->getAnnotations('comment',10,1);
+//$body .= elgg_echo($annotations);
+//$body .= elgg_view_comments($event);
 
 if($event_calendar_hide_access == 'yes') {
 	$event_calendar_default_access = get_plugin_setting('default_access', 'event_calendar');

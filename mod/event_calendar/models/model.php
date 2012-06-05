@@ -161,6 +161,8 @@ function event_calendar_set_event_from_form() {
 				$event->container_guid = $event->owner_guid;
 			}
 			
+			$material = new ElggObject();
+			$event->owner_guid = $_SESSION['user']->getGUID();
 			
 			
 		}
@@ -199,14 +201,14 @@ function event_calendar_set_event_from_form() {
 		$event->location = $ed->location;
 		$event->event_tags = array_reverse(string_to_tag_array($ed->event_tags));
 		$event->long_description = $ed->long_description;
-		$event->material= $ed->material;
+		//$event->material= $ed->material;
 		$event->arrival= $ed->arrival;
 		$event->departure=$ed->departure;
 		$event->talks= $ed->talks;
 		$event->travel=$ed->travel;
 		$event->booth=$ed->booth;
 		$event->real_end_time = event_calendar_get_end_time($event);
-		$event->annotate('comment', "This is my first comment");
+		$material->annotate('comment', "This is my first comment");
 		$result->success = $event->save();
 		if ($result->success) {
 			if ($group_guid && (get_plugin_setting('autogroup', 'event_calendar') == 'yes')) {
@@ -907,7 +909,7 @@ function event_calendar_get_formatted_full_items($event) {
 	$event_items[] = $item;
 	$item = new stdClass();
 	$item->title = elgg_echo('Material');
-	$item->value = $event->material;
+	$item->value = $material->material;
 	$event_items[] = $item;
 	$item = new stdClass();
 	$item->title = elgg_echo('Booth');
