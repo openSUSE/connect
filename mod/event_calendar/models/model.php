@@ -924,7 +924,8 @@ function event_calendar_get_formatted_full_items($event) {
 	$event->annotate('arrival_comment', "Aj :21/06");
 	$arrival_annotation = $event->getAnnotations('arrival_comment');
 	$arrival_print = $arrival_annotation[0][value];
-	$item->value = $arrival_print;
+	$item->value=elgg_view("input/longtext",array('internalname' => 'arrival','value'=>$arrival_print));
+	//$item->value = $arrival_print;
 	$event_items[] = $item;
 	
 	
@@ -940,7 +941,9 @@ function event_calendar_get_formatted_full_items($event) {
 	$event->annotate('departure_comment', "Aj :26/06");
 	$departure_annotation = $event->getAnnotations('departure_comment');
 	$departure_print = $departure_annotation[0][value];
-	$item->value = $departure_print;
+	
+	$item->value=elgg_view("input/longtext",array('internalname' => 'departure','value'=>$departure_print));
+	//$item->value = $departure_print;
 	$event_items[] = $item;
 	
 	
@@ -968,7 +971,8 @@ function event_calendar_get_formatted_full_items($event) {
 	$event->annotate('booth_comment', "Aj,Zoumpis");
 	$booth_annotation = $event->getAnnotations('booth_comment');
 	$booth_print = $booth_annotation[0][value];
-	$item->value = $booth_print;
+	$item->value=elgg_view("input/longtext",array('internalname' => 'booth','value'=>$booth_print));
+	//$item->value = $booth_print;
 	$event_items[] = $item;
 	
 	$item = new stdClass();
@@ -980,7 +984,9 @@ function event_calendar_get_formatted_full_items($event) {
 	$event->annotate('travel_comment', "Aj,Zoumpis");
 	$travel_annotation = $event->getAnnotations('travel_comment');
 	$travel_print = $travel_annotation[0][value];
-	$item->value = $travel_print;
+	
+	$item->value=elgg_view("input/longtext",array('internalname' => 'travel','value'=>$travel_print));
+	//$item->value = $travel_print;
 	$event_items[] = $item;
 	
 	$item = new stdClass();
@@ -992,7 +998,10 @@ function event_calendar_get_formatted_full_items($event) {
 	$event->annotate('talks_comment', "Aj :How to become a lizard");
 	$talks_annotation = $event->getAnnotations('talks_comment');
 	$talks_print = $talks_annotation[0][value];
-	$item->value = $talks_print;
+	
+	$item->value=elgg_view("input/longtext",array('internalname' => 'talks','value'=>$talks_print));
+	
+	//$item->value = $talks_print;
 	$event_items[] = $item;
 	
 	$item = new stdClass();
