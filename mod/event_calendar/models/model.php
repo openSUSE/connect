@@ -209,8 +209,8 @@ function event_calendar_set_event_from_form() {
 		$event->real_end_time = event_calendar_get_end_time($event);
 		
 		$event->annotate('comment', "This is the first comment");
-		//$event->enableAnnotations('arrival_comment');
 		
+		$result->success = $event->save();
 		
 		if ($result->success) {
 			if ($group_guid && (get_plugin_setting('autogroup', 'event_calendar') == 'yes')) {
