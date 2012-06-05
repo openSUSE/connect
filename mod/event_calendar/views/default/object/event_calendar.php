@@ -21,7 +21,7 @@ if ($vars['full']) {
 	
 	//$annotation_material = $event->getAnnotations('material_comment',5,0,'asc');
 	//print_r( $annotation_material);
-	$a = $event->getGUID()
+	$a = $event->getGUID();
 	print ($a);
 	//elgg_view_comments($event);
 	///, $add_comment=true, array $vars=array());
