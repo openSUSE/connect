@@ -207,7 +207,10 @@ function event_calendar_set_event_from_form() {
 		$event->travel=$ed->travel;
 		$event->booth=$ed->booth;
 		$event->real_end_time = event_calendar_get_end_time($event);
-		$event->annotate('material_comment', "This is my DVD",0,0,'text');
+		$material_guid = $event->getGUID(); // We create this guid so as to use the create_annotation function properly
+		create_annotation($material_guid,'material_comment',"This is my DVD",0,$access_id = ACCESS_PUBLIC)
+		
+		//$event->annotate('material_comment', "This is my DVD",0,0,'text');
 		$event->annotate('arrival_comment', "Zoumpis : 21/06");
 		$event->annotate('departure_comment', "Zoumpis:25/06");
 		$event->annotate('talks_comment', "Zoumpis : openSUSE 12.1");
