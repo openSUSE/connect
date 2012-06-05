@@ -207,18 +207,24 @@ function event_calendar_set_event_from_form() {
 		$event->travel=$ed->travel;
 		$event->booth=$ed->booth;
 		$event->real_end_time = event_calendar_get_end_time($event);
+		
 		$material_guid = $event->getGUID(); // We create this guid so as to use the create_annotation function properly
 		create_annotation($material_guid,'material_comment',"This is my DVD",0,$access_id = ACCESS_PUBLIC);
+		
 		$arrival_guid = $event->getGUID();
 		create_annotation($arrival_guid,'arrival_comment',"Zoumpis : 21/06",0,$access_id = ACCESS_PUBLIC);
+		
 		$departure_guid = $event->getGUID();
 		create_annotation($departure_guid,'departure_comment',"Zoumpis:25/06",0,$access_id = ACCESS_PUBLIC);
+		
 		$talks_guid = $event->getGUID();
-		create_annotation($talk_guid,'talks_comment',"Zoumpis : openSUSE 12.1",0,$access_id = ACCESS_PUBLIC);
+		create_annotation($talks_guid,'talks_comment',"Zoumpis : openSUSE 12.1",0,$access_id = ACCESS_PUBLIC);
+		
 		$travel_guid = $event->getGUID();
-		create_annotation($talk_guid,'travel_comment',"I don't need travel sponshorship",0,$access_id = ACCESS_PUBLIC);
+		create_annotation($travel_guid,'travel_comment',"I don't need travel sponshorship",0,$access_id = ACCESS_PUBLIC);
+		
 		$booth_guid = $event->getGUID();
-		create_annotation($talk_guid,'booth_comment',"Zoumpis",0,$access_id = ACCESS_PUBLIC);
+		create_annotation($booth_guid,'booth_comment',"Zoumpis",0,$access_id = ACCESS_PUBLIC);
 		//$event->annotate('material_comment', "This is my DVD",0,0,'text');
 		//$event->annotate('arrival_comment', "Zoumpis : 21/06");
 		//$event->annotate('departure_comment', "Zoumpis:25/06");
