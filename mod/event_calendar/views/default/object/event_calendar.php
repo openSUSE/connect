@@ -21,6 +21,9 @@ if ($vars['full']) {
 	
 	$annotations = $event->getAnnotations('comment');
 	print_r ( $annotations );
+	//$total = $event->getAnnotationsSum('comment');
+	
+	//echo $total;
 	
 	//$event->elgg_get_annotations ($options = array());
 
