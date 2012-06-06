@@ -905,6 +905,7 @@ function event_calendar_get_formatted_full_items($event) {
 	
 	$options['markers'] = array(array('address'=>'(40.417074,-3.700315)',
                                   'html'=>'This is Madrid',
+			                      'zoom'=>5,
                                   'type'=>'user'));
                           //  array('address'=>'(40.417074,-3.700315)',
                             //      'html'=>'<i>Middle of</i> <b>Nowhere</b>',
