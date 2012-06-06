@@ -912,7 +912,7 @@ function event_calendar_get_formatted_full_items($event) {
                               //    'type'=>'attraction'));
 	//$map = elgg_view('google-map/view', $options);
 	$lat = $options['makers']['address'];
-	$item->value = $lat;
+	$item->value = $item->value=elgg_view("input/longtext",array('internalname' => 'arrival','value'=>$lat));
 	$event_items[] = $item;
 	
 	
