@@ -13,6 +13,9 @@
 
 $event = $vars['entity'];
 
+<div class='gmapped' address='Hamburg, Germany'>Hi! I am here</div>
+<div class='gmapped' latlng='(34,-120)' origin='clickme'>You're over here</div>
+
 //$a = $event->getURL();
 
 //print $a;
