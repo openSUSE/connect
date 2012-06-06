@@ -905,7 +905,7 @@ function event_calendar_get_formatted_full_items($event) {
 	
 	$options['markers'] = array('address'=>'(40.417074,-3.700315)',
 								'html'=>'Puerta del Sol',
-								'type'=>'user'));
+								'type'=>'user');
 	$map = elgg_view('google-map/view', $options);
 	
 	$item->value = $map;
