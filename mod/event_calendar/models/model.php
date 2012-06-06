@@ -911,7 +911,7 @@ function event_calendar_get_formatted_full_items($event) {
                             //      'html'=>'<i>Middle of</i> <b>Nowhere</b>',
                               //    'type'=>'attraction'));
 	//$map = elgg_view('google-map/view', $options);
-	$lat = $options[makers][address];
+	$lat = $options[address];
 	$item->value = $item->value=elgg_view("input/longtext",array('internalname' => 'arrival','value'=>$lat));
 	$event_items[] = $item;
 	
