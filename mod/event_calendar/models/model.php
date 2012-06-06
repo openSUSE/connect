@@ -903,11 +903,8 @@ function event_calendar_get_formatted_full_items($event) {
 	$item = new stdClass();
 	$item->title = elgg_echo('Google Map Location');
 	
-	$options['markers'] = array(array('address'=>'Boston',
-									  'html'=>'This is Boston',
-									  'type'=>'user'),
-						  array('address'=>'(40.417074,-3.700315)',
-								'html'=>'<i>Middle of</i> <b>Nowhere</b>',
+	$options['markers'] = array('address'=>'(40.417074,-3.700315)',
+								'html'=>'Puerta del Sol',
 								'type'=>'attraction'));
 	$map = elgg_view('google-map/view', $options);
 	
