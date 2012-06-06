@@ -12,14 +12,7 @@
  */
 
 $event = $vars['entity'];
-?>
-<div class='gmapped' address='Hamburg, Germany'>Hi! I am here</div>
-<div class='gmapped' latlng='(34,-120)' origin='clickme'>You're over here</div>
-<?php 
-//$a = $event->getURL();
 
-//print $a;
-//$body = 
 
 if ($vars['full']) {
 	$body = elgg_view('event_calendar/strapline',$vars);
