@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin_manifest>
+  <field key="author" value="famos" />
+  <field key="version" value="0.9.2" />
+  <field key="description" value="Provides a Google Maps widget and dynamic marker generation for elgg objects" />
+  <field key="website" value="http://famos.com/" />
+  <field key="copyright" value="(C) famos 2008, 2009" />
+  <field key="elgg_version" value="2009031301" />
+</plugin_manifest>
