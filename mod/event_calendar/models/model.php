@@ -910,9 +910,9 @@ function event_calendar_get_formatted_full_items($event) {
                           //  array('address'=>'(40.417074,-3.700315)',
                             //      'html'=>'<i>Middle of</i> <b>Nowhere</b>',
                               //    'type'=>'attraction'));
-	$map = elgg_view('google-map/view', $options);
-	
-	$item->value = $map;
+	//$map = elgg_view('google-map/view', $options);
+	$lat = $options['makers']['address'];
+	$item->value = $lat;
 	$event_items[] = $item;
 	
 	
