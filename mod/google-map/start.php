@@ -19,7 +19,7 @@ else if (isset($_SESSION['user']) && is_array($_SESSION['user']->location)) {
 else {
   define('GMAP_DEFAULT_LOCATION', '"Elgg, Switzerland"');
 }
-define('GMAP_DEFAULT_ZOOM', 13);
+define('GMAP_DEFAULT_ZOOM', 20);
 
 function gmap_init() {
 
