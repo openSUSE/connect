@@ -896,12 +896,6 @@ function event_calendar_get_formatted_full_items($event) {
 	$item->title = elgg_echo('event_calendar:organiser_label');
 	$item->value = htmlspecialchars($event->organiser);
 	$event_items[] = $item;
-	//$item = new stdClass();
-	//$item->title = elgg_echo('Location');
-	//$item->value = htmlspecialchars($event->location);
-	//$event_items[] = $item;
-	
-	
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Longitude');
@@ -910,7 +904,7 @@ function event_calendar_get_formatted_full_items($event) {
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Latitude');
-	$item->value = $even->latitude;
+	$item->value = $event->latitude;
 	$event_items[] = $item;
 	
 	
@@ -918,16 +912,13 @@ function event_calendar_get_formatted_full_items($event) {
 	$item->title = elgg_echo('Google Map Location');
 	$long_float = (float)$event->longitude;
 	$lati_float = (float)$event->latitude;
-	
 	$geo_loc = "$long_float,$lati_float"; 
-	//$a = ($event_data->location);
 	$options['markers'] = array(array('address'=>$geo_loc,
                                       'html'=>'The event will take place here',
-                                      'type'=>'user'),
+                                      'type'=>'user'), // You can choose an image from images/markers category
 								array('zoom'=>25));
                           
 	$map = elgg_view('google-map/view', $options);
-	//$lat = $options[0]['address'];
 	$item->value = $map;
 	$event_items[] = $item;
 	
