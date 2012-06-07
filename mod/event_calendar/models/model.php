@@ -903,7 +903,15 @@ function event_calendar_get_formatted_full_items($event) {
 	
 	
 	
+	$item = new stdClass();
+	$item->title = elgg_echo('Longitude');
+	$item->value = $longitude;
+	$event_items[] = $item;
 	
+	$item = new stdClass();
+	$item->title = elgg_echo('Latitude');
+	$item->value = $latitude;
+	$event_items[] = $item;
 	
 	
 	$item = new stdClass();
@@ -924,15 +932,7 @@ function event_calendar_get_formatted_full_items($event) {
 	$event_items[] = $item;
 	
 	
-	$item = new stdClass();
-	$item->title = elgg_echo('Longitude');
-	$item->value = $long_float;
-	$event_items[] = $item;
 	
-	$item = new stdClass();
-	$item->title = elgg_echo('Latitude');
-	$item->value = $lati_float;
-	$event_items[] = $item;
 	
 	
 	
