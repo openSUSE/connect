@@ -12,13 +12,13 @@ $event_calendar_more_required = get_plugin_setting('more_required', 'event_calen
 
 if ($event_calendar_more_required == 'yes') {
 	$required_fields = array('title','start_date','start_time',
-		'brief_description','location','region','event_type','fees','contact','organiser',
+		'brief_description','latitude','region','event_type','fees','contact','organiser',
 		'event_tags','spots');
 } else {
 	$required_fields = array('title','start_date');
 }
 $all_fields = array('title','start_time','start_date','end_time','end_date',
-	'brief_description','region','location','event_type','fees','contact','organiser','event_tags',
+	'brief_description','region','latitude','event_type','fees','contact','organiser','event_tags',
 	'long_description','spots');
 $prefix = array();
 foreach ($all_fields as $fn) {
@@ -65,7 +65,7 @@ if ($event) {
 	}
 	$fees = $event->fees;
 	$contact = $event->contact;
-	$location = $event->location;
+	$latitude = $event->latitude;
 	$organiser = $event->organiser;
 	$event_tags = $event->event_tags;
 	$long_description = $event->long_description;
@@ -90,7 +90,7 @@ if ($event) {
 	$end_date = '';
 	$fees = '';
 	$departure='';
-	$location = ''; 
+	$latitude = ''; 
 	$material='';
 	$arrival='';
 	$departure='';

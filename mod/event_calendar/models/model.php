@@ -35,7 +35,8 @@ function event_calendar_get_event_from_form() {
 	$event_data->event_id = get_input('event_id',0);
 	$event_data->access_id = get_input('access',ACCESS_PRIVATE);
 	$event_data->title = get_input('title','');
-	$event_data->location = get_input('location','');
+	$event_data->latitude = get_input('latitude','');
+	$event_data->longitude = get_input('longitude','');
 	$event_data->description = get_input('brief_description','');
 	$event_data->material = get_input('material','');
 	$event_data->arrival = get_input('arrival','');
@@ -116,7 +117,7 @@ function event_calendar_set_event_from_form() {
 
 	if ($event_calendar_more_required == 'yes') {
 		$required_fields = array('title','start_date',
-			'brief_description','fees','contact','location','material','arrival','departure','booth','talks','travel', 'organiser',
+			'brief_description','fees','contact','latitude','longitude','material','arrival','departure','booth','talks','travel', 'organiser',
 			'event_tags');
 		
 		if ($event_calendar_times == 'yes') {
@@ -197,7 +198,8 @@ function event_calendar_set_event_from_form() {
 		$event->fees = $ed->fees;
 		$event->contact = $ed->contact;
 		$event->organiser = $ed->organiser;
-		$event->location = $ed->location;
+		$event->latitude = $ed->latitude;
+		$event->longitude = $ed->longitude;
 		$event->event_tags = array_reverse(string_to_tag_array($ed->event_tags));
 		$event->long_description = $ed->long_description;
 		$event->material= $ed->material;
@@ -894,16 +896,17 @@ function event_calendar_get_formatted_full_items($event) {
 	$item->title = elgg_echo('event_calendar:organiser_label');
 	$item->value = htmlspecialchars($event->organiser);
 	$event_items[] = $item;
-	$item = new stdClass();
-	$item->title = elgg_echo('Location');
-	$item->value = htmlspecialchars($event->location);
-	$event_items[] = $item;
+	//$item = new stdClass();
+	//$item->title = elgg_echo('Location');
+	//$item->value = htmlspecialchars($event->location);
+	//$event_items[] = $item;
 	
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Google Map Location');
+	$geo_loc = "$longitude,$langitude"; 
 	//$a = ($event_data->location);
-	$options['markers'] = array(array('address'=>$location,
+	$options['markers'] = array(array('address'=>$geo_loc,
                                   'html'=>'The event will take place here',
                                   'type'=>'user'),
 								array('zoom'=>25));
