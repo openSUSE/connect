@@ -232,10 +232,10 @@ $body .= elgg_view("input/text",array('internalname' => 'contact','value'=>$cont
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['contact'].elgg_echo('event_calendar:contact_description').'</p>';
 
-$body .= '<p><label>'.elgg_echo("Location").'<br />';
-$body .= elgg_view("input/text",array('internalname' => 'location','value'=>$location));
-$body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['location'].elgg_echo('Give the Latitude of the event').'</p>';
+//$body .= '<p><label>'.elgg_echo("Location").'<br />';
+//$body .= elgg_view("input/text",array('internalname' => 'location','value'=>$location));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['location'].elgg_echo('Give the Latitude of the event').'</p>';
 
 
 $body .= '<p><label>'.elgg_echo("event_calendar:organiser_label").'<br />';
