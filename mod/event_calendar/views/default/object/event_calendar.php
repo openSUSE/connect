@@ -13,7 +13,7 @@
 
 $event = $vars['entity'];
 
-$options['markers'] = array(array('address'=>'(40.417074,-3.700315)',
+$options= array(array('address'=>'(40.417074,-3.700315)',
 		'html'=>'This is Madrid',
 		'type'=>'user'),
 		array('zoom'=>25));
