@@ -910,7 +910,7 @@ function event_calendar_get_formatted_full_items($event) {
                           
 	$map = elgg_view('google-map/view', $options);
 	//$lat = $options[0]['address'];
-	
+	$item->value = $map;
 	$event_items[] = $item;
 	
 	

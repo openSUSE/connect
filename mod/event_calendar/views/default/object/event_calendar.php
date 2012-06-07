@@ -21,9 +21,7 @@ if ($vars['full']) {
 	$body .= '<div class="contentWrapper" >';
 	
 	foreach($event_items as $item) {
-		//if ($item->title = elgg_echo('Material Comment');){
-			
-		//}
+		
 		$value = $item->value;
 		if (!empty($value)) {
 			if ($vars['full']) {
