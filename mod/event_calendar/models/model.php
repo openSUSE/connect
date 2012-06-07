@@ -900,20 +900,18 @@ function event_calendar_get_formatted_full_items($event) {
 	$event_items[] = $item;
 	
 	
-	//$item = new stdClass();
-	//$item->title = elgg_echo('Google Map Location');
+	$item = new stdClass();
+	$item->title = elgg_echo('Google Map Location');
 	
-	//$options['markers'] = array(array('address'=>'(40.417074,-3.700315)',
-      //                            'html'=>'This is Madrid',
-        //                          'type'=>'user'),
-			//					array('zoom'=>25));
-                          //  array('address'=>'(40.417074,-3.700315)',
-                            //      'html'=>'<i>Middle of</i> <b>Nowhere</b>',
-                              //    'type'=>'attraction'));
-	//$map = elgg_view('google-map/view', $options);
-	//$lat = $options[address];
-	//$item->value = $item->value=elgg_view("input/longtext",array('internalname' => 'arrival','value'=>$lat));
-	//$event_items[] = $item;
+	$options['markers'] = array(array('address'=>'$event_data->location',
+                                  'html'=>'The event will take place here',
+                                  'type'=>'user'),
+								array('zoom'=>25));
+                          
+	$map = elgg_view('google-map/view', $options);
+	//$lat = $options[0]['address'];
+	
+	$event_items[] = $item;
 	
 	
 	

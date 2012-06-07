@@ -13,13 +13,7 @@
 
 $event = $vars['entity'];
 
-$options= array(array('address'=>'(40.417074,-3.700315)',
-		'html'=>'This is Madrid',
-		'type'=>'user'),
-		array('zoom'=>25));
-$lat = $options[address];
 
-echo $lat;
 
 if ($vars['full']) {
 	$body = elgg_view('event_calendar/strapline',$vars);
