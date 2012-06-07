@@ -903,7 +903,7 @@ function event_calendar_get_formatted_full_items($event) {
 	$item = new stdClass();
 	$item->title = elgg_echo('Google Map Location');
 	//$a = ($event_data->location);
-	$options['markers'] = array(array('address'=>$event_data->location,
+	$options['markers'] = array(array('address'=>$location,
                                   'html'=>'The event will take place here',
                                   'type'=>'user'),
 								array('zoom'=>25));
