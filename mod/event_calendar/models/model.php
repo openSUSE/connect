@@ -903,8 +903,20 @@ function event_calendar_get_formatted_full_items($event) {
 	
 	
 	$item = new stdClass();
+	$item->title = elgg_echo('Longitude');
+	$item->value = $event->longitude;
+	$event_items[] = $item;
+	
+	$item = new stdClass();
+	$item->title = elgg_echo('Latitude');
+	$item->value = $event->latitude;
+	$event_items[] = $item;
+	
+	
+	
+	$item = new stdClass();
 	$item->title = elgg_echo('Google Map Location');
-	$geo_loc = "$longitude,$langitude"; 
+	$geo_loc = "$longitude,$latitude"; 
 	//$a = ($event_data->location);
 	$options['markers'] = array(array('address'=>$geo_loc,
                                   'html'=>'The event will take place here',
