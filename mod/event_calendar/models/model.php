@@ -917,19 +917,19 @@ function event_calendar_get_formatted_full_items($event) {
 	$item = new stdClass();
 	$item->title = elgg_echo('Google Map Location');
 	$long_float = (float)$longitude;
-	//$lati_float = (float)$latitude;
-	$item->value = $long_float;
-	$event_items[] = $item;
-	//$geo_loc = "$long_float,$lati_float"; 
-	//$a = ($event_data->location);
-	//$options['markers'] = array(array('address'=>$geo_loc,
-                                //  'html'=>'The event will take place here',
-                                  //'type'=>'user'),
-								//array('zoom'=>25));
-                          
-	//$map = elgg_view('google-map/view', $options);
-	//$lat = $options[0]['address'];
+	$lati_float = (float)$latitude;
 	
+	$geo_loc = "$long_float,$lati_float"; 
+	//$a = ($event_data->location);
+	$options['markers'] = array(array('address'=>$geo_loc,
+                                      'html'=>'The event will take place here',
+                                      'type'=>'user'),
+								array('zoom'=>25));
+                          
+	$map = elgg_view('google-map/view', $options);
+	//$lat = $options[0]['address'];
+	$item->value = $map;
+	$event_items[] = $item;
 	
 	
 	
