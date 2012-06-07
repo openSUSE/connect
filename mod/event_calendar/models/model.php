@@ -905,19 +905,19 @@ function event_calendar_get_formatted_full_items($event) {
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Longitude');
-	$item->value = $longitude;
+	$item->value = $event->longitude;
 	$event_items[] = $item;
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Latitude');
-	$item->value = $latitude;
+	$item->value = $even->latitude;
 	$event_items[] = $item;
 	
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Google Map Location');
-	$long_float = (float)$longitude;
-	$lati_float = (float)$latitude;
+	$long_float = (float)$event->longitude;
+	$lati_float = (float)$event->latitude;
 	
 	$geo_loc = "$long_float,$lati_float"; 
 	//$a = ($event_data->location);
