@@ -916,7 +916,9 @@ function event_calendar_get_formatted_full_items($event) {
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Google Map Location');
-	$geo_loc = "$longitude,$latitude"; 
+	$long_float = (float)$longitude;
+	$lati_float = (float)$latitude;
+	$geo_loc = "$long_float,$lati_float"; 
 	//$a = ($event_data->location);
 	$options['markers'] = array(array('address'=>$geo_loc,
                                   'html'=>'The event will take place here',
