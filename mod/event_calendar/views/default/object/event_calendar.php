@@ -34,6 +34,9 @@ if ($vars['full']) {
 	}
 	
 	echo $body;
+	$link = $event->getURL();
+	echo '<a href="http://www.facebook.com/sharer.php?u="'.$link.'>link description</a>';
+	
 	if ($event->long_description) {
 		echo '<p>'.$event->long_description.'</p>';
 	} else {
