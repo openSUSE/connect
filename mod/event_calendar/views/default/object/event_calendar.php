@@ -18,7 +18,7 @@ $event = $vars['entity'];
 if ($vars['full']) {
 	$body = elgg_view('event_calendar/strapline',$vars);
 	$event_items = event_calendar_get_formatted_full_items($event);
-	$search = htmlentities($_GET["arrival_comment"]);
+	$search = tinyMCE.get('departure_comment_parent').getContent()
 	echo $search;
 	
 	$body .= '<div class="contentWrapper" >';
