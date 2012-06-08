@@ -15,8 +15,20 @@ $event = $vars['entity'];
 
 $link = $event->getURL();
 //echo"<a href='permalink.php?'>PermaLink</a>";
-echo"<input type='button' value='$link'>";
+//echo"<input type='button' value='$link'>";
 
+<script type="text/javascript">
+	myMessage = "$link";
+	
+
+<form name="testForm">
+
+<textarea name="textBox" rows="3"></textarea><br/>
+
+<input type="button" value="Press Me" onclick="document.testForm.textBox.value = myMessage;"/><input type="reset" value="Clear the Box"/>
+
+</form>
+</script>
 
 if ($vars['full']) {
 	$body = elgg_view('event_calendar/strapline',$vars);
