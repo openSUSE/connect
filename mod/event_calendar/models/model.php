@@ -945,21 +945,9 @@ function event_calendar_get_formatted_full_items($event) {
 	$arrival_annotation = $event->getAnnotations('arrival_comment');
 	$arrival_print = $arrival_annotation[0][value];
 	$item->value=elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$arrival_print));
-	//$item->value = $arrival_print;
 	$event_items[] = $item;
 	
-	//$item = new stdClass();
-	//$item->title = elgg_echo('');
-	//$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
-	//$event_items[] = $item;
-	
-	//$item = new stdClass();
-	//$item->title = elgg_echo('Other comment');
-	//$search = $_GET["arrival_comment"];
-	//$item->value=elgg_view("input/longtext",array('internalname' => 'other_comment','value'=>$search));
-	//echo $search;
-	
-	$event_items[] = $item;
+
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Departure');
