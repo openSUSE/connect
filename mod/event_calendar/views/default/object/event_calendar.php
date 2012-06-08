@@ -13,7 +13,17 @@
 
 $event = $vars['entity'];
 
-//$link = $event->getURL();
+$link = $event->getURL();
+
+echo ("<form action= ".$link." method="GET">
+		<textarea class="input-textarea mceEditor" name="arrival" >Aj :21/06</textarea>
+		<input type="submit" value="Add arrival comment!"/>
+		
+		</form>");
+
+
+		
+
 //echo"<a href='permalink.php?'>PermaLink</a>";
 //echo"<input type='button' value='$link'>";
 
@@ -29,6 +39,33 @@ $event = $vars['entity'];
 
 //</form>
 //</script>
+
+//}
+//</script>
+
+//<!-- show the textarea -->
+//<textarea class="input-textarea mceEditor" name="arrival" >Aj :21/06</textarea>
+//<div class="toggle_editor_container"><a class="toggle_editor" href="javascript:toggleEditor('arrival');">Add/Remove editor</a></div>
+
+//<script type="text/javascript">
+//$(document).ready(function() {
+	//$('textarea').parents('form').submit(function() {
+	//	tinyMCE.triggerSave();
+//	});
+//});
+//</script>
+//<p class="odd"><b>Departure:</b> <p>Bla</p><p class="even"><b>Departure Comment:</b>
+//<!-- show the textarea -->
+//<textarea class="input-textarea mceEditor" name="departure" >Aj :26/06</textarea>
+//<div class="toggle_editor_container"><a class="toggle_editor" href="javascript:toggleEditor('departure');">Add/Remove editor</a></div>
+
+//<script type="text/javascript">
+//$(document).ready(function() {
+	//$('textarea').parents('form').submit(function() {
+	//	tinyMCE.triggerSave();
+//	});
+//});
+//</script> //
 
 if ($vars['full']) {
 	$body = elgg_view('event_calendar/strapline',$vars);
