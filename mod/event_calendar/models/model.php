@@ -909,8 +909,7 @@ function event_calendar_get_formatted_full_items($event) {
 	
 	$item = new stdClass();
 	$search = htmlentities($_GET["departure"]);
-	//echo $search;
-	$item->title = elgg_echo('Tags');
+	$item->title = elgg_echo('Other field');
 	$item->value = $search;
 	$event_items[] = $item;
 	

@@ -13,64 +13,10 @@
 
 $event = $vars['entity'];
 
-//$link = $event->getURL();
 
-//echo ("<form action= ".$link." method="GET">
-	//	<textarea class="input-textarea mceEditor" name="arrival">Aj :21/06</textarea>
-		//<input type="submit" value="Add arrival comment!"/>
-		
-		//</form>");
-
-
-		
-
-//echo"<a href='permalink.php?'>PermaLink</a>";
-//echo"<input type='button' value='$link'>";
-
-//<script type="text/javascript">
-//	myMessage = "Hello! I'm a box!";
-	
-
-//<form name="testForm">
-
-//<textarea name="textBox" rows="3"></textarea><br/>
-
-//<input type="button" value="Press Me" onclick="document.testForm.textBox.value = myMessage;"/><input type="reset" value="Clear the Box"/>
-
-//</form>
-//</script>
-
-//}
-//</script>
-
-//<!-- show the textarea -->
-//<textarea class="input-textarea mceEditor" name="arrival" >Aj :21/06</textarea>
-//<div class="toggle_editor_container"><a class="toggle_editor" href="javascript:toggleEditor('arrival');">Add/Remove editor</a></div>
-
-//<script type="text/javascript">
-//$(document).ready(function() {
-	//$('textarea').parents('form').submit(function() {
-	//	tinyMCE.triggerSave();
-//	});
-//});
-//</script>
-//<p class="odd"><b>Departure:</b> <p>Bla</p><p class="even"><b>Departure Comment:</b>
-//<!-- show the textarea -->
-//<textarea class="input-textarea mceEditor" name="departure" >Aj :26/06</textarea>
-//<div class="toggle_editor_container"><a class="toggle_editor" href="javascript:toggleEditor('departure');">Add/Remove editor</a></div>
-
-//<script type="text/javascript">
-//$(document).ready(function() {
-	//$('textarea').parents('form').submit(function() {
-	//	tinyMCE.triggerSave();
-//	});
-//});
-//</script> //
 
 if ($vars['full']) {
 	$body = elgg_view('event_calendar/strapline',$vars);
-	//$search = htmlentities($_GET["departure"]);
-	//echo $search;
 	$event_items = event_calendar_get_formatted_full_items($event);
 	$body .= '<div class="contentWrapper" >';
 	
