@@ -65,4 +65,26 @@ if ($vars['full']) {
 	echo elgg_view_listing($icon, $info);
 }
 
+$url = $event->getURL();
+<html>
+<head>
+<style>
+p { background:green;
+}
+</style>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+<button>Show it</button>
+
+<p style="display: none">$url</p>
+<script>
+$("button").click(function () {
+	$("p").show("slow");
+});
+</script>
+
+</body>
+</html>
+
 ?>
