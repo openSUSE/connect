@@ -13,13 +13,13 @@
 
 $event = $vars['entity'];
 
-$link = $event->getURL();
+//$link = $event->getURL();
 
-echo ("<form action= ".$link." method="GET">
-		<textarea class="input-textarea mceEditor" name="arrival" >Aj :21/06</textarea>
-		<input type="submit" value="Add arrival comment!"/>
+//echo ("<form action= ".$link." method="GET">
+	//	<textarea class="input-textarea mceEditor" name="arrival">Aj :21/06</textarea>
+		//<input type="submit" value="Add arrival comment!"/>
 		
-		</form>");
+		//</form>");
 
 
 		
@@ -69,6 +69,8 @@ echo ("<form action= ".$link." method="GET">
 
 if ($vars['full']) {
 	$body = elgg_view('event_calendar/strapline',$vars);
+	$search = htmlentities($_GET["departure"]);
+	echo $search;
 	$event_items = event_calendar_get_formatted_full_items($event);
 	$body .= '<div class="contentWrapper" >';
 	
