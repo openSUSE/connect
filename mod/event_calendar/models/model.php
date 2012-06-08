@@ -953,7 +953,12 @@ function event_calendar_get_formatted_full_items($event) {
 	//$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
 	//$event_items[] = $item;
 	
-	
+	$item = new stdClass();
+	$item->title = elgg_echo('Other comment');
+	$search = htmlentities($_GET["arrival_comment"]);
+	//echo $search;
+	$item->value = $search;
+	$event_items[] = $item;
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Departure');
