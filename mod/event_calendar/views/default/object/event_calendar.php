@@ -13,8 +13,9 @@
 
 $event = $vars['entity'];
 
-echo"<a href='permalink.php?'>PermaLink</a>";
-echo"<input type='button' value='PermaLink'>";
+$link = $event->getURL();
+//echo"<a href='permalink.php?'>PermaLink</a>";
+echo"<input type='button' value='$link'>";
 
 
 if ($vars['full']) {
