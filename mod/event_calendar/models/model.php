@@ -956,8 +956,9 @@ function event_calendar_get_formatted_full_items($event) {
 	$item = new stdClass();
 	$item->title = elgg_echo('Other comment');
 	$search = htmlentities($_GET["arrival_comment"]);
+	$item->value=elgg_view("input/text",array('internalname' => 'other_comment','value'=>$search));
 	//echo $search;
-	$item->value = $search;
+	
 	$event_items[] = $item;
 	
 	$item = new stdClass();
