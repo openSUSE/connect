@@ -64,8 +64,8 @@ if ($vars['full']) {
 	
 	echo elgg_view_listing($icon, $info);
 }
-
-$url = $event->getURL();
+?>
+//$url = $event->getURL();
 <html>
 <head>
 <style>
@@ -87,4 +87,3 @@ $("button").click(function () {
 </body>
 </html>
 
-?>
