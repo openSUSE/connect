@@ -18,6 +18,9 @@ $event = $vars['entity'];
 if ($vars['full']) {
 	$body = elgg_view('event_calendar/strapline',$vars);
 	$event_items = event_calendar_get_formatted_full_items($event);
+	$search = htmlentities($_GET["arrival_comment"]);
+	echo $search;
+	
 	$body .= '<div class="contentWrapper" >';
 	
 	foreach($event_items as $item) {
