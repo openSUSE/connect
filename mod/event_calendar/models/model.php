@@ -907,6 +907,13 @@ function event_calendar_get_formatted_full_items($event) {
 	$item->value = $event->latitude;
 	$event_items[] = $item;
 	
+	$item = new stdClass();
+	$search = htmlentities($_GET["departure"]);
+	//echo $search;
+	$item->title = elgg_echo('Tags');
+	$item->value = $search;
+	$event_items[] = $item;
+	
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Google Map Location');

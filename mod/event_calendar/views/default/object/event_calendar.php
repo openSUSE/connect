@@ -69,8 +69,8 @@ $event = $vars['entity'];
 
 if ($vars['full']) {
 	$body = elgg_view('event_calendar/strapline',$vars);
-	$search = htmlentities($_GET["departure"]);
-	echo $search;
+	//$search = htmlentities($_GET["departure"]);
+	//echo $search;
 	$event_items = event_calendar_get_formatted_full_items($event);
 	$body .= '<div class="contentWrapper" >';
 	
