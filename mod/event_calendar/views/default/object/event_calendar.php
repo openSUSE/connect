@@ -32,10 +32,9 @@ if ($vars['full']) {
 			}		
 		}
 	}
-	//$link = $event->getURL();
-	//$url_body= '<a href="http://www.facebook.com/sharer.php?u="'.$link.'">Share me on Fb</a>';
+	
 	echo $body;
-	//echo $url_body;
+	
 	
 	
 	

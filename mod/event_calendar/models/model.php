@@ -944,7 +944,7 @@ function event_calendar_get_formatted_full_items($event) {
 	$event->annotate('arrival_comment', "Aj :21/06");
 	$arrival_annotation = $event->getAnnotations('arrival_comment');
 	$arrival_print = $arrival_annotation[0][value];
-	$item->value=elgg_view("input/text",array('internalname' => 'arrival','value'=>$arrival_print));
+	$item->value=elgg_view("input/text",array('internalname' => 'arrival_comment','value'=>$arrival_print));
 	//$item->value = $arrival_print;
 	$event_items[] = $item;
 	
