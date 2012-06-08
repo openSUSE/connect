@@ -13,6 +13,8 @@
 
 $event = $vars['entity'];
 
+echo"<a href='permalink.php?'>PermaLink</a>";
+echo"<input type='button' value='PermaLink'>";
 
 
 if ($vars['full']) {
@@ -32,10 +34,10 @@ if ($vars['full']) {
 			}		
 		}
 	}
-	$link = $event->getURL();
-	$url_body= '<a href="http://www.facebook.com/sharer.php?u="'.$link.'>Share me on Fb</a>';
+	//$link = $event->getURL();
+	//$url_body= '<a href="http://www.facebook.com/sharer.php?u="'.$link.'">Share me on Fb</a>';
 	echo $body;
-	echo $url_body;
+	//echo $url_body;
 	
 	
 	
