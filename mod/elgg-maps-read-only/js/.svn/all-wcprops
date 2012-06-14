@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 26
+/svn/!svn/ver/157/trunk/js
+END
+ElggMap.remote.js
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/157/trunk/js/ElggMap.remote.js
+END
+ElggMap.constants.js
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/157/trunk/js/ElggMap.constants.js
+END
+ElggMap.ui.js
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/157/trunk/js/ElggMap.ui.js
+END
+OpenLayers.Feature.Vector.ext.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/157/trunk/js/OpenLayers.Feature.Vector.ext.js
+END
+ElggMap.js
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/157/trunk/js/ElggMap.js
+END
+ElggMap.session.js
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/157/trunk/js/ElggMap.session.js
+END
+ElggMap.edit.js
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/157/trunk/js/ElggMap.edit.js
+END
+OpenLayers.Layer.Vector.emKML.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/157/trunk/js/OpenLayers.Layer.Vector.emKML.js
+END
