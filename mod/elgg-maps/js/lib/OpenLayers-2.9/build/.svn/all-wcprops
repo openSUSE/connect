@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/build
+END
+license.txt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/build/license.txt
+END
+full.cfg
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/build/full.cfg
+END
+library.cfg
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/build/library.cfg
+END
+build.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/build/build.py
+END
+README.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/build/README.txt
+END
+lite.cfg
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/build/lite.cfg
+END
+OpenLayers.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/build/OpenLayers.js
+END
+sign.cfg
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/build/sign.cfg
+END
+buildUncompressed.py
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/build/buildUncompressed.py
+END

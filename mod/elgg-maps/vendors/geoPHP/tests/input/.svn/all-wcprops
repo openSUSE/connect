@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/123/trunk/vendors/geoPHP/tests/input
+END
+linestring.wkt
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/123/trunk/vendors/geoPHP/tests/input/linestring.wkt
+END
+multipolygon.wkb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/123/trunk/vendors/geoPHP/tests/input/multipolygon.wkb
+END
+barret_spur.gpx
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/123/trunk/vendors/geoPHP/tests/input/barret_spur.gpx
+END
+fells_loop.gpx
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/123/trunk/vendors/geoPHP/tests/input/fells_loop.gpx
+END
+polygon.wkt
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/123/trunk/vendors/geoPHP/tests/input/polygon.wkt
+END
+pentagon.kml
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/123/trunk/vendors/geoPHP/tests/input/pentagon.kml
+END
+multilinestring.wkt
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/123/trunk/vendors/geoPHP/tests/input/multilinestring.wkt
+END
+point.wkt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/123/trunk/vendors/geoPHP/tests/input/point.wkt
+END
+cdata.kml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/123/trunk/vendors/geoPHP/tests/input/cdata.kml
+END
+big_n_ugly.kml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/123/trunk/vendors/geoPHP/tests/input/big_n_ugly.kml
+END
+track.gpx
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/123/trunk/vendors/geoPHP/tests/input/track.gpx
+END
+multipolygon.wkt
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/123/trunk/vendors/geoPHP/tests/input/multipolygon.wkt
+END
+geometrycollection.wkt
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/123/trunk/vendors/geoPHP/tests/input/geometrycollection.wkt
+END
+point.kml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/123/trunk/vendors/geoPHP/tests/input/point.kml
+END
+polygon2.wkt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/123/trunk/vendors/geoPHP/tests/input/polygon2.wkt
+END
+path.kml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/123/trunk/vendors/geoPHP/tests/input/path.kml
+END
