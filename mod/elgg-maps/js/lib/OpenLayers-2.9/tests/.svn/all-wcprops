@@ -1,0 +1,275 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests
+END
+georss.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/georss.txt
+END
+Handler.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Handler.html
+END
+Map.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Map.html
+END
+owls.xml
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/owls.xml
+END
+Control.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control.html
+END
+Lang.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Lang.html
+END
+Ajax.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Ajax.html
+END
+Filter.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Filter.html
+END
+Tile.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Tile.html
+END
+StyleMap.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/StyleMap.html
+END
+BaseTypes.html
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/BaseTypes.html
+END
+Popup.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Popup.html
+END
+Events.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Events.html
+END
+Renderer.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Renderer.html
+END
+Extras.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Extras.html
+END
+Rule.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Rule.html
+END
+auto-tests.html
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/auto-tests.html
+END
+data_Layer_Text_textfile_2.txt
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/data_Layer_Text_textfile_2.txt
+END
+data_Layer_Text_textfile_overflow.txt
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/data_Layer_Text_textfile_overflow.txt
+END
+Layer.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Layer.html
+END
+Projection.html
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Projection.html
+END
+Util.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Util.html
+END
+Marker.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Marker.html
+END
+OpenLayers.html
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/OpenLayers.html
+END
+Tween.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Tween.html
+END
+geom_eq.js
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/geom_eq.js
+END
+Request.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Request.html
+END
+Icon.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Icon.html
+END
+data_Layer_Text_textfile.txt
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/data_Layer_Text_textfile.txt
+END
+atom-1.0.xml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/atom-1.0.xml
+END
+Format.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Format.html
+END
+Geometry.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Geometry.html
+END
+Feature.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Feature.html
+END
+xml_eq.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/xml_eq.js
+END
+throws.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/throws.js
+END
+Style.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Style.html
+END
+Protocol.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Protocol.html
+END
+Strategy.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Strategy.html
+END
+Console.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Console.html
+END
+run-tests.html
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/run-tests.html
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/index.html
+END
+README.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/README.txt
+END
+grid_inittiles.html
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/grid_inittiles.html
+END
+mice.xml
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/mice.xml
+END
+list-tests.html
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/list-tests.html
+END

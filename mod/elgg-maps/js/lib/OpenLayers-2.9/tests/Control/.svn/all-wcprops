@@ -1,0 +1,179 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control
+END
+DragPan.html
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/DragPan.html
+END
+MousePosition.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/MousePosition.html
+END
+Snapping.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/Snapping.html
+END
+Graticule.html
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/Graticule.html
+END
+NavigationHistory.html
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/NavigationHistory.html
+END
+Permalink.html
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/Permalink.html
+END
+PanZoom.html
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/PanZoom.html
+END
+LayerSwitcher.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/LayerSwitcher.html
+END
+TransformFeature.html
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/TransformFeature.html
+END
+Scale.html
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/Scale.html
+END
+KeyboardDefaults.html
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/KeyboardDefaults.html
+END
+DragFeature.html
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/DragFeature.html
+END
+Split.html
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/Split.html
+END
+SelectFeature.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/SelectFeature.html
+END
+GetFeature.html
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/GetFeature.html
+END
+WMSGetFeatureInfo.html
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/WMSGetFeatureInfo.html
+END
+PanPanel.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/PanPanel.html
+END
+Navigation.html
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/Navigation.html
+END
+Panel.html
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/Panel.html
+END
+ScaleLine.html
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/ScaleLine.html
+END
+Measure.html
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/Measure.html
+END
+ModifyFeature.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/ModifyFeature.html
+END
+Attribution.html
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/Attribution.html
+END
+OverviewMap.html
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/OverviewMap.html
+END
+NavToolbar.html
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/NavToolbar.html
+END
+PanZoomBar.html
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/PanZoomBar.html
+END
+DrawFeature.html
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/DrawFeature.html
+END
+MouseToolbar.html
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/MouseToolbar.html
+END
+Button.html
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/6/trunk/js/lib/OpenLayers-2.9/tests/Control/Button.html
+END
