@@ -925,7 +925,12 @@ function event_calendar_get_formatted_full_items($event) {
 	$event_items[] = $item;
 	
 	
-	
+	//// add the post to the forum topic
+//$post_id = $topic->annotate('group_topic_post', $post, $topic->access_id, $user->guid);
+//if ($post_id == false) {
+	//system_message(elgg_echo("groupspost:failure"));
+	//forward($_SERVER['HTTP_REFERER']);
+//}
 	
 	
 	
