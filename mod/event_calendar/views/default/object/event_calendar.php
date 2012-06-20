@@ -4,6 +4,7 @@
  * Elgg event_calendar object view
  * 
  * @package event_calendar
+ * @package ElggGroups
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
  * @author Kevin Jardine <kevin@radagast.biz>
  * @copyright Radagast Solutions 2008
@@ -13,7 +14,8 @@
 
 $event = $vars['entity'];
 
-
+//display the add comment form, this will appear after all the existing comments
+echo elgg_view("forms/forums/addpost", array('entity' => $event));
 
 if ($vars['full']) {
 	$body = elgg_view('event_calendar/strapline',$vars);
