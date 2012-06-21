@@ -89,6 +89,7 @@ EOT;
 	
 	echo $form_body;
 	
+	echo elgg_view('input/form', array('action' => "{$vars['url']}action/groups/editpost", 'body' => $form_body, 'internalid' => 'editforumpostForm'));
 	
 	if ($event->long_description) {
 		echo '<p>'.$event->long_description.'</p>';
