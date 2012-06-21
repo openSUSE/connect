@@ -12,10 +12,12 @@
  * 
  */
 ?>
+<?php 
 $event = $vars['entity'];
 //$area2 = elgg_view("event_calendar/forms/addcomment", array('entity' => $event));
 //display the add comment form, this will appear after all the existing comments
 //echo elgg_view("forms/forums/addpost", array('entity' => $event));
+?>
 <?php
 $submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
 $text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment'.$vars['entity']->id, 'value' => $vars['entity']->value));
