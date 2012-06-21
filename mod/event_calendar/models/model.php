@@ -946,19 +946,19 @@ function event_calendar_get_formatted_full_items($event) {
 	$item->title = elgg_echo('Arrival');
 	$item->value = $event->arrival;
 	
-	$event_items[] = $item;
+	//$event_items[] = $item;
 	
-	$item = new stdClass();
-	$item->title = elgg_echo('Arrival Comment');
-	$event->annotate('arrival_comment', "Aj :21/06");
-	$arrival_annotation = $event->getAnnotations('arrival_comment');
+	//$item = new stdClass();
+	//$item->title = elgg_echo('Arrival Comment');
+	//$event->annotate('arrival_comment', "Aj :21/06");
+	//$arrival_annotation = $event->getAnnotations('arrival_comment');
 	
 	//display follow up comments
 	//$count = $event->countAnnotations('arrival_comment');
-	$arrival_print = $arrival_annotation[0][value];
-	$item->value=elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$arrival_print));
+	//$arrival_print = $arrival_annotation[0][value];
+	//$item->value=elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$arrival_print));
 	//$topic = get_entity($item->value);
-	$event_items[] = $item;
+	//$event_items[] = $item;
 	
 
 	
