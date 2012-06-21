@@ -11,7 +11,7 @@
 
 ?>
 
-	<form action="<?php echo $vars['url']; ?>event_calendar/forms/addcomment" method="post">
+	<form action="<?php echo $event->getURL(); ?>" method="post">
 		<p class="longtext_editarea">
 			<label><<br />
 			<?php
