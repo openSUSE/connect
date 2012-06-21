@@ -14,30 +14,24 @@
 
  
 $event = $vars['entity'];
-//$area2 = elgg_view("event_calendar/forms/addcomment", array('entity' => $event));
-//display the add comment form, this will appear after all the existing comments
-//echo elgg_view("forms/forums/addpost", array('entity' => $event));
-
-
-//$submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
-//$text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $event->arrival));
-//$post = elgg_view('input/hidden', array('internalname' => 'post', 'value' => $vars['entity']->id));
-//$field = elgg_view('input/hidden', array('internalname' => 'field_num', 'value' => $vars['entity']->id));
-//$topic = elgg_view('input/hidden', array('internalname' => 'topic', 'value' => get_input('topic')));
-//$group = elgg_view('input/hidden', array('internalname' => 'group', 'value' => get_input('group_guid')));
-//$event_items[] = $item;
-
-//$item = new stdClass();
-//$item->title = elgg_echo('Arrival Comment');
-//$event->annotate('arrival_comment', "Aj :21/06");
-//$arrival_annotation = $event->getAnnotations('arrival_comment');
 
 //display follow up comments
 //$count = $event->countAnnotations('arrival_comment');
 //$arrival_print = $arrival_annotation[0][value];
 //$item->value=elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$arrival_print));
 //$topic = get_entity($item->value);
-//$event_items[] = $item; 
+//$event_items[] = $item;
+
+$submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
+$text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $event->arrival));
+//$post = elgg_view('input/hidden', array('internalname' => 'post', 'value' => $vars['entity']->id));
+//$field = elgg_view('input/hidden', array('internalname' => 'field_num', 'value' => $vars['entity']->id));
+//$topic = elgg_view('input/hidden', array('internalname' => 'topic', 'value' => get_input('topic')));
+//$group = elgg_view('input/hidden', array('internalname' => 'group', 'value' => get_input('group_guid')));
+
+
+
+
 //$post
 //$field
 //$form_body = <<<EOT
@@ -76,10 +70,24 @@ if ($vars['full']) {
 			}		
 		}
 	}
+	$form_body = <<<EOT
+		
+					<div class='post_comments'>
+					<p class='longtext_editarea'>
+						$text_textarea
+					</p>
+			
+					<p>
+						$submit_input
+					</p>
+	
+					</div>
+			
+EOT;
 	
 	echo $body;
 	
-	
+	echo $form_body;
 	
 	
 	if ($event->long_description) {
