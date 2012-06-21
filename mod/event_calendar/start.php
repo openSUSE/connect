@@ -234,5 +234,5 @@
 	register_action("event_calendar/addtocalendar",false,$CONFIG->pluginspath . "event_calendar/actions/addtocalendar.php");
 	register_action("event_calendar/add_to_group",false,$CONFIG->pluginspath . "event_calendar/actions/add_to_group.php");
 	register_action("event_calendar/remove_from_group",false,$CONFIG->pluginspath . "event_calendar/actions/remove_from_group.php");
-
+	register_action("event_calendar/addcoment",false ,$CONFIG->pluginspath . "event_calendar/actions/addcomment.php");
 ?>

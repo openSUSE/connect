@@ -15,7 +15,7 @@
 $event = $vars['entity'];
 
 //display the add comment form, this will appear after all the existing comments
-echo elgg_view("forms/forums/addpost", array('entity' => $event));
+//echo elgg_view("forms/forums/addpost", array('entity' => $event));
 
 if ($vars['full']) {
 	$body = elgg_view('event_calendar/strapline',$vars);
