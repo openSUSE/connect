@@ -11,19 +11,19 @@
 
 ?>
 
-	<form action="<?php echo $vars['url']; ?>event_calendar/addcoment" method="post">
+	<form action="<?php echo $vars['url']; ?>event_calendar/addcomment" method="post">
 		<p class="longtext_editarea">
 			<label><<br />
 			<?php
 
 				echo elgg_view("input/longtext",array(
-									"internalname" => "topic_post",
+									"internalname" => "comment_post",
 									"value" => $body,
 													));
 			?>
 			</label>
 		</p>
-		<p>
+		//<p>
 		    <!-- pass across the topic guid -->
 			<input type="hidden" name="topic_guid" value="<?php echo $vars['entity']->guid; ?>" />
 			<input type="hidden" name="group_guid" value="<?php echo $vars['entity']->container_guid; ?>" />
