@@ -934,7 +934,10 @@ function event_calendar_get_formatted_full_items($event) {
 	
 	
 	
-	
+	$item = new stdClass();
+	$item->title = elgg_echo('Add a new comment here');
+	$item->value = elgg_view("event_calendar/addcomment", array('entity' => $event));
+	$event_items[] = $item;
 	
 	
 	

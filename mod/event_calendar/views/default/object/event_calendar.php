@@ -13,7 +13,7 @@
  */
 
 $event = $vars['entity'];
-$area2 = elgg_view("event_calendar/addcomment", array('entity' => $event));
+//$area2 = elgg_view("event_calendar/addcomment", array('entity' => $event));
 //display the add comment form, this will appear after all the existing comments
 //echo elgg_view("forms/forums/addpost", array('entity' => $event));
 
