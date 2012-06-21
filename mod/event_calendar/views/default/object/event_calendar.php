@@ -20,9 +20,9 @@ $event = $vars['entity'];
 ?>
 <?php
 $submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
-$text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment'.$vars['entity']->id, 'value' => $vars['entity']->value));
-$post = elgg_view('input/hidden', array('internalname' => 'post', 'value' => $vars['entity']->id));
-$field = elgg_view('input/hidden', array('internalname' => 'field_num', 'value' => $vars['entity']->id));
+$text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $event->arrival));
+//$post = elgg_view('input/hidden', array('internalname' => 'post', 'value' => $vars['entity']->id));
+//$field = elgg_view('input/hidden', array('internalname' => 'field_num', 'value' => $vars['entity']->id));
 //$topic = elgg_view('input/hidden', array('internalname' => 'topic', 'value' => get_input('topic')));
 //$group = elgg_view('input/hidden', array('internalname' => 'group', 'value' => get_input('group_guid')));
 //$event_items[] = $item;
@@ -38,14 +38,15 @@ $field = elgg_view('input/hidden', array('internalname' => 'field_num', 'value' 
 //$item->value=elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$arrival_print));
 //$topic = get_entity($item->value);
 //$event_items[] = $item; 
+//$post
+//$field
 $form_body = <<<EOT
 			
 					<div class='edit_forum_comments'>
 					<p class='longtext_editarea'>
 						$text_textarea
 					</p>
-					$post
-					$field
+					
 					<p>
 						$submit_input
 					</p>
