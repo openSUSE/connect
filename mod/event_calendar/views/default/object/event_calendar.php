@@ -21,11 +21,9 @@ $event = $vars['entity'];
 //$item->value=elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$arrival_print));
 //$topic = get_entity($item->value);
 //$event_items[] = $item;
-global $text_textarea;
-global $submit_input;
+//global $text_textarea;
+//global $submit_input;
 
-$submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
-$text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $event->arrival));
 //$post = elgg_view('input/hidden', array('internalname' => 'post', 'value' => $vars['entity']->id));
 //$field = elgg_view('input/hidden', array('internalname' => 'field_num', 'value' => $vars['entity']->id));
 //$topic = elgg_view('input/hidden', array('internalname' => 'topic', 'value' => get_input('topic')));
@@ -56,12 +54,19 @@ if ($vars['full']) {
 		}
 	}
 	
+	echo $body;
+	
+	
 	
 	?>
 	
 <?php
 
-		global $form_body;
+		
+		
+		$submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
+		$text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $event->arrival));
+		
 		
 		$form_body= <<<EOT 
 		
@@ -77,24 +82,25 @@ if ($vars['full']) {
 					</div>
 					</form>
 					
-		EOT;					
+		EOT;
 
+		elgg_view('input/securitytoken');
+		
+		echo $form_body;
+	
 ?>		
 
-<?php 
+
 		
-		global $sec_token; 
-		$sec_token = elgg_view('input/securitytoken');
-		  ?>
+		 
 		
 
 
 <?php 
 		
-	//	
-	echo $body;
-	echo $form_body;
-	echo $sec_token;
+		
+	
+	
 	
 	//echo $form_body;
 	
