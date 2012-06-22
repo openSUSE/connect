@@ -57,7 +57,7 @@ if ($vars['full']) {
 	echo $body;
 	
 		$submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
-		$text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $event->arrival));
+		$text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));
 		$sec_token = elgg_view('input/securitytoken');
 		$url = $event->getURL();
 		
