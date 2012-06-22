@@ -21,6 +21,8 @@ $event = $vars['entity'];
 //$item->value=elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$arrival_print));
 //$topic = get_entity($item->value);
 //$event_items[] = $item;
+global $text_textarea;
+global $submit_input;
 
 $submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
 $text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $event->arrival));
@@ -54,36 +56,43 @@ if ($vars['full']) {
 		}
 	}
 	
-	echo $body;
+	
 	?>
 	
- 
-		$form_body= <<<EOT
+<?php
+
+		global $form_body;
+		
+		$form_body= <<<EOT 
 		
 		<form action="{$CONFIG->url}action/event_calendar/editfield" method="post">
-					<div class='post_comments'>
-					<p class='longtext_editarea'>
-						$text_textarea
-					</p>
+		<div class='post_comments'>
+		<p class='longtext_editarea'>
+		$text_textarea
+		</p>
 			
-					<p>
-						$submit_input
+		<p>
+		$submit_input
 					</p>
 					</div>
-			
+					</form>
 					
-		<?php 
+		EOT;					
+
+?>		
+
+<?php 
 		
 		global $sec_token; 
 		$sec_token = elgg_view('input/securitytoken');
 		  ?>
-		</form>	
+		
 
 
 <?php 
 		
 	//	
-	
+	echo $body;
 	echo $form_body;
 	echo $sec_token;
 	
