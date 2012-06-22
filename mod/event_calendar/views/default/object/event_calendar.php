@@ -52,8 +52,10 @@ if ($vars['full']) {
 		}
 	}
 	
+	echo $body;
+	?>
 	
-		$form_body= <<<EOT
+		 
 		
 		<form action="{$CONFIG->url}action/event_calendar/editfield" method="post">
 					<div class='post_comments'>
@@ -65,14 +67,15 @@ if ($vars['full']) {
 						$submit_input
 					</p>
 					</div>
+		<?php echo elgg_view('input/securitytoken'); ?>
 		</form>	
 
 
-EOT;
+<?php 
 		
-	echo elgg_view('input/securitytoken');	
-	echo $body;
-	echo $form_body;
+	//	
+	
+	//echo $form_body;
 	//echo $form_body;
 	
 	//$e = $event->getURL();
