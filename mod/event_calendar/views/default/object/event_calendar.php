@@ -48,10 +48,7 @@ $text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_co
 					//</div>
 					
 //EOT;
-				
-
-
- 
+				 
 if ($vars['full']) {
 	$body = elgg_view('event_calendar/strapline',$vars);
 	$event_items = event_calendar_get_formatted_full_items($event);
@@ -87,9 +84,9 @@ EOT;
 	
 	echo $body;
 	
-	echo $form_body;
+	//echo $form_body;
 	
-	//echo elgg_view('input/form', array('action' => "{$vars['url']}action/groups/editpost", 'body' => $form_body, 'internalid' => 'editforumpostForm'));
+	echo elgg_view('input/form', array('action' => "{$vars['url']}action/groups/editfield", 'body' => $form_body, 'internalid' => 'editforumpostForm'));
 	
 	if ($event->long_description) {
 		echo '<p>'.$event->long_description.'</p>';
