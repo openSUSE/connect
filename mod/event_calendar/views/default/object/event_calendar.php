@@ -61,7 +61,8 @@ if ($vars['full']) {
 					<p>
 						$submit_input
 					</p>
-	
+					<!-- display the post button -->
+					<input type="submit" class="submit_button" value="<?php echo elgg_echo('post'); ?>" />
 					</div>
 		</form>	
 EOT;
