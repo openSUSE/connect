@@ -51,15 +51,16 @@ if ($vars['full']) {
 			}		
 		}
 	}
-	?>
 	
+	
+		$form_body= <<<EOT
+		
 		<form action="{$CONFIG->url}action/event_calendar/editfield" method="post">
 					<div class='post_comments'>
 					<p class='longtext_editarea'>
 						$text_textarea
 					</p>
-			<?php echo elgg_view('input/form', array('action' => "{$CONFIG->url}action/event_calendar/editfield", 'body' => $form_body, 'internalid' => 'editforumpostForm'));
-	?>
+			
 					<p>
 						$submit_input
 					</p>
@@ -67,13 +68,14 @@ if ($vars['full']) {
 		</form>	
 
 
-<?php 	
+EOT;
+ 	
 	echo $body;
 	echo $form_body;
 	//echo $form_body;
 	
 	//$e = $event->getURL();
-	echo elgg_view('input/form', array('action' => "{$CONFIG->url}action/event_calendar/editfield", 'body' => $form_body, 'internalid' => 'editforumpostForm'));
+	//echo elgg_view('input/form', array('action' => "{$CONFIG->url}action/event_calendar/editfield", 'body' => $form_body, 'internalid' => 'editforumpostForm'));
 	
 	
 	
