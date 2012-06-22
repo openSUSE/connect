@@ -76,9 +76,9 @@ if ($vars['full']) {
 	//	</form>
 		
 //EOT;
-		$post = get_input("arrival_comment");
+		//$post = get_input("arrival_comment");
 
-		echo $post;
+		//echo $post;
 		//echo $form_body;
 		//echo parse_urls(elgg_view("output/longtext",array("value" => $event->arrival)));
 		//echo elgg_view('input/form', array('body' => $form_body, 'action' => "{$url}"));

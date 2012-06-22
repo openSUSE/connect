@@ -968,8 +968,8 @@ function event_calendar_get_formatted_full_items($event) {
 	//$topic_guid = get_input("topic");
 	//$item -> value = update_annotation($post, "comment_post", $post_comment, "",$commentOwner, $access_id);
 	//forward($topic->getURL()); // It could be $event->getURL(); 
-	$item->value=elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$arrival_print));
-	//$a = $item->value;
+	//$item->value=elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$arrival_print));
+	$item->value = get_input("arrival_comment");
 	//$topic = get_entity($item->value);
 	$event_items[] = $item;
 	
