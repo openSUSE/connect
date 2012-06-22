@@ -68,7 +68,7 @@ if ($vars['full']) {
 EOT;
 	
 	echo $body;
-	
+	echo $form_body;
 	//echo $form_body;
 	
 	//$e = $event->getURL();
