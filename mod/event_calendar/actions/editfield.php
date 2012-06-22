@@ -37,6 +37,6 @@ $access_id = $annotation->access_id;
 //}
 
 //$topic = get_entity($topic_guid);
-forward($event->getURL());
+//forward($event->getURL());
 
 ?>

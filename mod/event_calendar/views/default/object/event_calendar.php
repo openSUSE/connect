@@ -77,7 +77,8 @@ if ($vars['full']) {
 EOT;
 		 
 		echo $form_body;
- 	
+		echo parse_urls(elgg_view("output/longtext",array("value" => $event->arrival)));
+		
 		
 	if ($event->long_description) {
 		echo '<p>'.$event->long_description.'</p>';
