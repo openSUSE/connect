@@ -86,8 +86,8 @@ EOT;
 	
 	//echo $form_body;
 	
-	$e = $event->getURL();
-	echo elgg_view('input/form', array('action' => "{$e}event_calendar/editfield", 'body' => $form_body, 'internalid' => 'editforumpostForm'));
+	//$e = $event->getURL();
+	echo elgg_view('input/form', array('action' => "{$CONFIG->url}action/event_calendar/editfield", 'body' => $form_body, 'internalid' => 'editforumpostForm'));
 	
 	if ($event->long_description) {
 		echo '<p>'.$event->long_description.'</p>';
