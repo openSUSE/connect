@@ -75,7 +75,7 @@ if ($vars['full']) {
 		
 EOT;
 		
-		
+		echo elgg_view('input/securitytoken');
 		echo $form_body;
  	
 		
