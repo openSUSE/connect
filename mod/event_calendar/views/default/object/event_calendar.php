@@ -79,7 +79,7 @@ EOT;
 		//$post = get_input("arrival_comment");
 
 		//echo $post;
-		//echo $form_body;
+		echo $form_body;
 		echo elgg_view("output/longtext",array("value" => $_POST)));
 		//echo elgg_view('input/form', array('body' => $form_body, 'action' => "{$url}"));
 		
