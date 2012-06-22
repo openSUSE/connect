@@ -59,9 +59,10 @@ if ($vars['full']) {
 		$submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
 		$text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $event->arrival));
 		$sec_token = elgg_view('input/securitytoken');
+		$url = event->getURL();
 		
 		$form_body = <<<EOT
-			<form action="{$CONFIG->url}action/event_calendar/editfield" method="post">
+			<form action="$url" method="post">
 					<div class='post_comments'>
 					<p class='longtext_editarea'>
 						$text_textarea
@@ -77,7 +78,7 @@ if ($vars['full']) {
 EOT;
 		 
 		echo $form_body;
-		echo parse_urls(elgg_view("output/longtext",array("value" => $event->arrival)));
+		//echo parse_urls(elgg_view("output/longtext",array("value" => $event->arrival)));
 		
 		
 	if ($event->long_description) {
