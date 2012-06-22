@@ -56,30 +56,32 @@ if ($vars['full']) {
 	
 	echo $body;
 	
-		$submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
-		$text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));
-		$sec_token = elgg_view('input/securitytoken');
-		$url = $event->getURL();
+//		$submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
+//		$text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));
+//		$sec_token = elgg_view('input/securitytoken');
+//		$url = $event->getURL();
 		
-		$form_body = <<<EOT
-			<form action = "{$url}" method="post">
-					<div class='post_comments'>
-					<p class='longtext_editarea'>
-						$text_textarea
-					</p>
-					<p>
-						$submit_input
-						$sec_token
-					</p>
+//		$form_body = <<<EOT
+		//	<form action = "{$url}" method="post">
+			//		<div class='post_comments'>
+				//	<p class='longtext_editarea'>
+					//	$text_textarea
+					//</p>
+				//	<p>
+					//	$submit_input
+					//	$sec_token
+					//</p>
 		
-					</div>
-		</form>
+	//				</div>
+	//	</form>
 		
-EOT;
-		 
+//EOT;
+		$post = get_input("arrival_comment");
+
+		echo $post;
 		//echo $form_body;
 		//echo parse_urls(elgg_view("output/longtext",array("value" => $event->arrival)));
-		echo elgg_view('input/form', array('body' => $form_body, 'action' => "{$url}"));
+		//echo elgg_view('input/form', array('body' => $form_body, 'action' => "{$url}"));
 		
 	if ($event->long_description) {
 		echo '<p>'.$event->long_description.'</p>';
