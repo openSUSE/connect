@@ -34,6 +34,8 @@ $text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_co
 
 
 if ($vars['full']) {
+	
+	global $body;
 	$body = elgg_view('event_calendar/strapline',$vars);
 	$event_items = event_calendar_get_formatted_full_items($event);
 	
@@ -55,7 +57,8 @@ if ($vars['full']) {
 	echo $body;
 	?>
 	
-		 
+ 
+		$form_body= <<<EOT
 		
 		<form action="{$CONFIG->url}action/event_calendar/editfield" method="post">
 					<div class='post_comments'>
@@ -67,7 +70,13 @@ if ($vars['full']) {
 						$submit_input
 					</p>
 					</div>
-		<?php echo elgg_view('input/securitytoken'); ?>
+			
+					
+		<?php 
+		
+		global $sec_token; 
+		$sec_token = elgg_view('input/securitytoken');
+		  ?>
 		</form>	
 
 
@@ -75,7 +84,9 @@ if ($vars['full']) {
 		
 	//	
 	
-	//echo $form_body;
+	echo $form_body;
+	echo $sec_token;
+	
 	//echo $form_body;
 	
 	//$e = $event->getURL();
