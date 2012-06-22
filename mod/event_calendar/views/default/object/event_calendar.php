@@ -60,23 +60,21 @@ if ($vars['full']) {
 		$text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $event->arrival));
 		
 		
-		$form_body= <<<EOT 
-		
-		<form action="{$CONFIG->url}action/event_calendar/editfield" method="post">
-		<div class='post_comments'>
-		<p class='longtext_editarea'>
-		$text_textarea
-		</p>
-			
-		<p>
-		$submit_input
+		$form_body = <<<EOT
+			<form action="{$CONFIG->url}action/event_calendar/editfield" method="post">
+					<div class='post_comments'>
+					<p class='longtext_editarea'>
+						$text_textarea
 					</p>
+					<p>
+						$submit_input
+					</p>
+		
 					</div>
-					</form>
-					
-		EOT;
-
-		elgg_view('input/securitytoken');
+		</form>
+		
+EOT;
+		
 		
 		echo $form_body;
  	
