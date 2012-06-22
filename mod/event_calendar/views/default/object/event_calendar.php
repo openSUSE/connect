@@ -56,14 +56,6 @@ if ($vars['full']) {
 	
 	echo $body;
 	
-	
-	
-	?>
-	
-<?php
-
-		
-		
 		$submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
 		$text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $event->arrival));
 		
@@ -87,29 +79,8 @@ if ($vars['full']) {
 		elgg_view('input/securitytoken');
 		
 		echo $form_body;
-	
-?>		
-
-
+ 	
 		
-		 
-		
-
-
-<?php 
-		
-		
-	
-	
-	
-	//echo $form_body;
-	
-	//$e = $event->getURL();
-	//echo elgg_view('input/form', array('action' => "{$CONFIG->url}action/event_calendar/editfield", 'body' => $form_body, 'internalid' => 'editforumpostForm'));
-	
-	
-	
-	
 	if ($event->long_description) {
 		echo '<p>'.$event->long_description.'</p>';
 	} else {
