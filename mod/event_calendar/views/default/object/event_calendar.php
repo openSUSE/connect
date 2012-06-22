@@ -62,7 +62,7 @@ if ($vars['full']) {
 		$url = event->getURL();
 		
 		$form_body = <<<EOT
-			<form action="{$url}" method="post">
+			<form action = "{$url}action/event_calendar/editfield" method="post">
 					<div class='post_comments'>
 					<p class='longtext_editarea'>
 						$text_textarea
