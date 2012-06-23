@@ -897,32 +897,32 @@ function event_calendar_get_formatted_full_items($event) {
 	$item->value = htmlspecialchars($event->organiser);
 	$event_items[] = $item;
 	
-	$item = new stdClass();
-	$item->title = elgg_echo('Longitude');
-	$item->value = $event->longitude;
-	$event_items[] = $item;
+	//$item = new stdClass();
+	//$item->title = elgg_echo('Longitude');
+	//$item->value = $event->longitude;
+	//$event_items[] = $item;
 	
-	$item = new stdClass();
-	$item->title = elgg_echo('Latitude');
-	$item->value = $event->latitude;
-	$event_items[] = $item;
-	
-	
+	//$item = new stdClass();
+	//$item->title = elgg_echo('Latitude');
+	//$item->value = $event->latitude;
+	//$event_items[] = $item;
 	
 	
-	$item = new stdClass();
-	$item->title = elgg_echo('Google Map Location');
-	$long_float = (float)$event->longitude;
-	$lati_float = (float)$event->latitude;
-	$geo_loc = "$long_float,$lati_float"; 
-	$options['markers'] = array(array('address'=>$geo_loc,
-                                      'html'=>'The event will take place here',
-                                      'type'=>'user'), // You can choose an image from images/markers category
-								array('zoom'=>25));
+	
+	
+	//$item = new stdClass();
+	//$item->title = elgg_echo('Google Map Location');
+	//$long_float = (float)$event->longitude;
+	//$lati_float = (float)$event->latitude;
+	//$geo_loc = "$long_float,$lati_float"; 
+	//$options['markers'] = array(array('address'=>$geo_loc,
+      //                                'html'=>'The event will take place here',
+        //                              'type'=>'user'), // You can choose an image from images/markers category
+			//					array('zoom'=>25));
                           
-	$map = elgg_view('google-map/view', $options);
-	$item->value = $map;
-	$event_items[] = $item;
+	//$map = elgg_view('google-map/view', $options);
+	//$item->value = $map;
+	//$event_items[] = $item;
 	
 	
 	//// add the post to the forum topic
@@ -934,10 +934,10 @@ function event_calendar_get_formatted_full_items($event) {
 	
 	
 	
-	$item = new stdClass();
-	$item->title = elgg_echo('Add a new comment here');
-	$item->value = elgg_view("event_calendar/addcomment", array('entity' => $event));
-	$event_items[] = $item;
+	//$item = new stdClass();
+	//$item->title = elgg_echo('Add a new comment here');
+	//$item->value = elgg_view("event_calendar/addcomment", array('entity' => $event));
+	//$event_items[] = $item;
 	
 	
 	
@@ -982,7 +982,7 @@ function event_calendar_get_formatted_full_items($event) {
 	$item = new stdClass();
 	
 	$item->title = elgg_echo('Departure Comment');
-	$event->annotate('departure_comment', "Aj :26/06");
+	//$event->annotate('departure_comment', "Aj :26/06");
 	$departure_annotation = $event->getAnnotations('departure_comment');
 	$departure_print = $departure_annotation[0][value];
 	
@@ -1003,7 +1003,7 @@ function event_calendar_get_formatted_full_items($event) {
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Material Comment');
-	$event->annotate('material_comment', "Aj :200 DVD's");
+	//$event->annotate('material_comment', "Aj :200 DVD's");
 	$material_annotation = $event->getAnnotations('material_comment');
 	$material_print = $material_annotation[0][value];
 	
@@ -1023,7 +1023,7 @@ function event_calendar_get_formatted_full_items($event) {
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Booth Comment');
-	$event->annotate('booth_comment', "Aj,Zoumpis");
+	//$event->annotate('booth_comment', "Aj,Zoumpis");
 	$booth_annotation = $event->getAnnotations('booth_comment');
 	$booth_print = $booth_annotation[0][value];
 	$item->value=elgg_view("input/longtext",array('internalname' => 'booth_comment','value'=>$booth_print));
@@ -1042,7 +1042,7 @@ function event_calendar_get_formatted_full_items($event) {
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Travel Support Comment');
-	$event->annotate('travel_comment', "Aj,Zoumpis");
+	//$event->annotate('travel_comment', "Aj,Zoumpis");
 	$travel_annotation = $event->getAnnotations('travel_comment');
 	$travel_print = $travel_annotation[0][value];
 	
@@ -1062,7 +1062,7 @@ function event_calendar_get_formatted_full_items($event) {
 	$event_items[] = $item;
 	$item = new stdClass();
 	$item->title = elgg_echo('Talks Comment');
-	$event->annotate('talks_comment', "Aj :How to become a lizard");
+	//$event->annotate('talks_comment', "Aj :How to become a lizard");
 	$talks_annotation = $event->getAnnotations('talks_comment');
 	$talks_print = $talks_annotation[0][value];
 	$item->value=elgg_view("input/longtext",array('internalname' => 'talks_comment','value'=>$talks_print));
