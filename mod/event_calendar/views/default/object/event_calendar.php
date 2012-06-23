@@ -80,7 +80,7 @@ EOT;
 
 		//echo $post;
 		
-		echo $form_body;
+		//echo $form_body;
 		$comment = $_POST['arrival_comment'];
 		//echo elgg_view("output/longtext",array("value" => $comment));
 		// Thelw na typwnw syndasmena dyo stoixeia apo array
