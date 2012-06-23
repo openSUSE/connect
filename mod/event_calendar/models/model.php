@@ -973,7 +973,10 @@ function event_calendar_get_formatted_full_items($event) {
 	//$topic = get_entity($item->value);
 	$event_items[] = $item;
 	
-
+	$item = new stdClass();
+	//$item->title = elgg_echo('Arrival');
+	$item->value = elgg_view('input/submit', array('internalname' => 'submit_arrival', 'value' => elgg_echo('save')));
+	$event_items[] = $item;
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Departure');
