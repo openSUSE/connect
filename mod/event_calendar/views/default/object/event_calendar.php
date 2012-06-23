@@ -12,7 +12,8 @@
  * 
  */
 
- 
+gatekeeper(); // Access to the event only for logged in users.
+
 $event = $vars['entity'];
 
 //display follow up comments
