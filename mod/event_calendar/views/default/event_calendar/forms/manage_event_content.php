@@ -232,16 +232,16 @@ $body .= elgg_view("input/text",array('internalname' => 'contact','value'=>$cont
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['contact'].elgg_echo('event_calendar:contact_description').'</p>';
 
-$body .= '<p><label>'.elgg_echo("Longitude").'<br />';
-$body .= elgg_view("input/text",array('internalname' => 'longitude','value'=>$longitude));
-$body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['longitude'].elgg_echo('Give the longitude of the event').'</p>';
+//$body .= '<p><label>'.elgg_echo("Longitude").'<br />';
+//$body .= elgg_view("input/text",array('internalname' => 'longitude','value'=>$longitude));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['longitude'].elgg_echo('Give the longitude of the event').'</p>';
 
 
-$body .= '<p><label>'.elgg_echo("Latitude").'<br />';
-$body .= elgg_view("input/text",array('internalname' => 'latitude','value'=>$latitude));
-$body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['latitude'].elgg_echo('Give the latitude of the event').'</p>';
+//$body .= '<p><label>'.elgg_echo("Latitude").'<br />';
+//$body .= elgg_view("input/text",array('internalname' => 'latitude','value'=>$latitude));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['latitude'].elgg_echo('Give the latitude of the event').'</p>';
 
 $body .= '<p><label>'.elgg_echo("event_calendar:organiser_label").'<br />';
 $body .= elgg_view("input/text",array('internalname' => 'organiser','value'=>$organiser));
