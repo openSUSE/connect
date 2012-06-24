@@ -85,8 +85,10 @@ EOT;
 		$comment = $_POST['arrival_comment'];
 		//echo elgg_view("output/longtext",array("value" => $comment));
 		// Thelw na typwnw syndasmena dyo stoixeia apo array
-		echo $submit_input;
-		echo elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$comment));
+		//echo $submit_input;
+		echo $text_textarea;
+		
+		//echo elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$comment));
 		//echo elgg_view('input/form', array('body' => $form_body, 'action' => "{$url}"));
 		
 	if ($event->long_description) {
