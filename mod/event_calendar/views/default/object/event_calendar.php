@@ -83,7 +83,7 @@ EOT;
 		
 		echo $form_body;
 		$comment = $_POST['arrival_comment'];
-		isset($_POST)
+		isset($_POST);
 		//$a = $event->arrival;
 		
 		$event->arrival = $event->arrival.'\n'.$comment;
