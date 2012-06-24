@@ -16,23 +16,6 @@ gatekeeper(); // Access to the event only for logged in users.
 
 $event = $vars['entity'];
 
-//display follow up comments
-//$count = $event->countAnnotations('arrival_comment');
-//$arrival_print = $arrival_annotation[0][value];
-//$item->value=elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$arrival_print));
-//$topic = get_entity($item->value);
-//$event_items[] = $item;
-//global $text_textarea;
-//global $submit_input;
-
-//$post = elgg_view('input/hidden', array('internalname' => 'post', 'value' => $vars['entity']->id));
-//$field = elgg_view('input/hidden', array('internalname' => 'field_num', 'value' => $vars['entity']->id));
-//$topic = elgg_view('input/hidden', array('internalname' => 'topic', 'value' => get_input('topic')));
-//$group = elgg_view('input/hidden', array('internalname' => 'group', 'value' => get_input('group_guid')));
-
-
-
-
 
 if ($vars['full']) {
 	
@@ -57,57 +40,223 @@ if ($vars['full']) {
 	
 	echo $body;
 	
-		$submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
-		$text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));
-		$sec_token = elgg_view('input/securitytoken');
+		$arrival_submit = elgg_view('input/submit', array('internalname' => 'arrival_submit', 'value' => elgg_echo('Add your Arrival here')));
+		$arrival_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));
+		$arrival_token = elgg_view('input/securitytoken');
 		$url = $event->getURL();
-		//$text_textarea
-		$form_body = <<<EOT
+		
+		$arrival_body = <<<EOT
 			<form action = "{$url}" method="post">
-					<div class='post_comments'>
+					<div class='arrival_comments'>
 					<p class='longtext_editarea'>
-						$text_textarea
+						$arrival_textarea
 					</p>
 				<p>
 						$submit_input
-						$sec_token
+						$arrival_token
 					</p>
 		
 					</div>
 	</form>
 		
 EOT;
-		//$post = get_input("arrival_comment");
-
-		//echo $post;
 		
-		echo $form_body;
-		//$comment = $_POST['arrival_comment'];
+		$departure_annotation = $event->getAnnotations('departure_comment');
+		$departure_print = $departure_annotation[0][value];
+		$departure_submit = elgg_view('input/submit', array('internalname' => 'departure_submit', 'value' => elgg_echo('Add your Departure here')));
+		$departure_textarea = elgg_view('input/longtext', array('internalname' => 'departure_comment', 'value' => $departure_print));
+		$departure_token = elgg_view('input/securitytoken');
+		$url = $event->getURL();
+		
+		$departure_body = <<<EOT
+			<form action = "{$url}" method="post">
+					<div class='departure_comments'>
+					<p class='longtext_editarea'>
+						$departure_textarea
+					</p>
+				<p>
+						$departure_submit
+						$departure_token
+					</p>
+		
+		 			</div>
+	</form>
+		
+EOT;
+		
+		
+		
+		$material_annotation = $event->getAnnotations('material_comment');
+		$material_print = $material_annotation[0][value];
+		$material_submit = elgg_view('input/submit', array('internalname' => 'material_submit', 'value' => elgg_echo('Add your Material here')));
+		$material_textarea = elgg_view('input/longtext', array('internalname' => 'material_comment', 'value' => $material_print));
+		$material_token = elgg_view('input/securitytoken');
+		$url = $event->getURL();
+		
+		$material_body = <<<EOT
+			<form action = "{$url}" method="post">
+					<div class='material_comments'>
+					<p class='longtext_editarea'>
+						$material_textarea
+					</p>
+				<p>
+						$material_submit
+						$material_token
+					</p>
+		
+		 			</div>
+	</form>
+EOT;
+	
+		
+		$booth_annotation = $event->getAnnotations('booth_comment');
+		$booth_print = $booth_annotation[0][value];
+		$booth_submit = elgg_view('input/submit', array('internalname' => 'booth_submit', 'value' => elgg_echo('Add your Booth here')));
+		$booth_textarea = elgg_view('input/longtext', array('internalname' => 'booth_comment', 'value' => $booth_print));
+		$booth_token = elgg_view('input/securitytoken');
+		$url = $event->getURL();
+		
+		$booth_body = <<<EOT
+			<form action = "{$url}" method="post">
+					<div class='booth_comments'>
+					<p class='longtext_editarea'>
+						$booth_textarea
+					</p>
+				<p>
+						$booth_submit
+						$booth_token
+					</p>
+		
+		 			</div>
+	</form>
+EOT;
+
+		
+		$booth_annotation = $event->getAnnotations('booth_comment');
+		$booth_print = $booth_annotation[0][value];
+		$booth_submit = elgg_view('input/submit', array('internalname' => 'booth_submit', 'value' => elgg_echo('Add your Booth here')));
+		$booth_textarea = elgg_view('input/longtext', array('internalname' => 'booth_comment', 'value' => $booth_print));
+		$booth_token = elgg_view('input/securitytoken');
+		$url = $event->getURL();
+		
+		$booth_body = <<<EOT
+			<form action = "{$url}" method="post">
+					<div class='booth_comments'>
+					<p class='longtext_editarea'>
+						$booth_textarea
+					</p>
+				<p>
+						$booth_submit
+						$booth_token
+					</p>
+		
+		 			</div>
+	</form>
+EOT;
+		
+		$travel_annotation = $event->getAnnotations('travel_comment');
+		$travel_print = $travel_annotation[0][value];
+		$travel_submit = elgg_view('input/submit', array('internalname' => 'travel_submit', 'value' => elgg_echo('Add your Travel here')));
+		$travel_textarea = elgg_view('input/longtext', array('internalname' => 'travel_comment', 'value' => $travel_print));
+		$travel_token = elgg_view('input/securitytoken');
+		$url = $event->getURL();
+		
+		$travel_body = <<<EOT
+			<form action = "{$url}" method="post">
+					<div class='travel_comments'>
+					<p class='longtext_editarea'>
+						$travel_textarea
+					</p>
+				<p>
+						$travel_submit
+						$travel_token
+					</p>
+		
+		 			</div>
+	</form>
+EOT;
+		
+		$talks_annotation = $event->getAnnotations('talks_comment');
+		$talks_print = $talks_annotation[0][value];
+		$talks_submit = elgg_view('input/submit', array('internalname' => 'takls_submit', 'value' => elgg_echo('Add your Talk here')));
+		$talks_textarea = elgg_view('input/longtext', array('internalname' => 'talks_comment', 'value' => $talks_print));
+		$talks_token = elgg_view('input/securitytoken');
+		$url = $event->getURL();
+		
+		$talks_body = <<<EOT
+			<form action = "{$url}" method="post">
+					<div class='talks_comments'>
+					<p class='longtext_editarea'>
+						$talks_textarea
+					</p>
+				<p>
+						$talks_submit
+						$talks_token
+					</p>
+		
+		 			</div>
+	</form>
+EOT;
+		
+		echo $arrival_body;
+		echo $departure_body;
+		echo $material_body;
+		echo $booth_body;
+		echo $travel_body;
+		echo $talks_body;
+		
 		if (isset($_POST['arrival_comment']))
 				{
 					
-					$comment = $_POST['arrival_comment'];
-					$a = "\n";
-					$event->arrival = $event->arrival.$a.$comment;
-					//$event->arrival = $comment;
+					$arr_comment = $_POST['arrival_comment'];
+					$arr_line = "\n";
+					$event->arrival = $event->arrival.$arr_line.$arr_comment;
+					
 				}
-		//$a = $event->arrival;
+				
+		if (isset($_POST['departure_comment']))
+				{
+						
+					$dep_comment = $_POST['departure_comment'];
+					$dep_line = "\n";
+					$event->departure = $event->departure.$dep_line.$dep_comment;
+						
+				}
+		if (isset($_POST['material_comment']))
+				{
+				
+					$mat_comment = $_POST['material_comment'];
+					$mat_line = "\n";
+					$event->material = $event->material.$dep_line.$mat_comment;
+				
+				}
+		if (isset($_POST['booth_comment']))
+				{
+				
+					$bot_comment = $_POST['booth_comment'];
+					$bot_line = "\n";
+					$event->booth = $event->booth.$bot_line.$bot_comment;
+				
+				}
 		
-		
-		
-		//$b = $a.$comment;
-		
-		//echo elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$a));
-		
-		  
-		
-		//echo elgg_view("output/longtext",array("value" => $comment));
-		// Thelw na typwnw syndasmena dyo stoixeia apo array
-		//echo $submit_input;
-		//echo $text_textarea;
-		
-		//echo elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$comment));
-		//echo elgg_view('input/form', array('body' => $form_body, 'action' => "{$url}"));
+		if (isset($_POST['travel_comment']))
+				{
+				
+					$tra_comment = $_POST['travel_comment'];
+					$tra_line = "\n";
+					$event->travel = $event->travel.$tra_line.$tra_comment;
+				
+				}
+		if (isset($_POST['talks_comment']))
+				{
+				
+					$tal_comment = $_POST['talks_comment'];
+					$tal_line = "\n";
+					$event->talks = $event->talks.$tal_line.$tal_comment;
+				
+				}		
+				
+				
 		
 	if ($event->long_description) {
 		echo '<p>'.$event->long_description.'</p>';
