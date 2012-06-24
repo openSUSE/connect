@@ -87,7 +87,8 @@ EOT;
 				{
 					
 					$comment = $_POST['arrival_comment'];
-					$event->arrival = $event->arrival.'\n'.$comment;
+					$a = "\n";
+					$event->arrival = $event->arrival.$a.$comment;
 					//$event->arrival = $comment;
 				}
 		//$a = $event->arrival;
