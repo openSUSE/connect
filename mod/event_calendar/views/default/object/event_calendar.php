@@ -47,6 +47,7 @@ if ($vars['full']) {
 		
 		$arrival_body = <<<EOT
 			<form action = "{$url}" method="post">
+					<label>Arrival Comment:</label>
 					<div class='arrival_comments'>
 					<p class='longtext_editarea'>
 						$arrival_textarea
@@ -71,6 +72,7 @@ EOT;
 		$departure_body = <<<EOT
 			<form action = "{$url}" method="post">
 					<div class='departure_comments'>
+					<label>Departure Comment:</label>
 					<p class='longtext_editarea'>
 						$departure_textarea
 					</p>
@@ -96,6 +98,7 @@ EOT;
 		$material_body = <<<EOT
 			<form action = "{$url}" method="post">
 					<div class='material_comments'>
+					<label>Material Comment:</label>
 					<p class='longtext_editarea'>
 						$material_textarea
 					</p>
@@ -119,29 +122,7 @@ EOT;
 		$booth_body = <<<EOT
 			<form action = "{$url}" method="post">
 					<div class='booth_comments'>
-					<p class='longtext_editarea'>
-						$booth_textarea
-					</p>
-				<p>
-						$booth_submit
-						$booth_token
-					</p>
-		
-		 			</div>
-	</form>
-EOT;
-
-		
-		$booth_annotation = $event->getAnnotations('booth_comment');
-		$booth_print = $booth_annotation[0][value];
-		$booth_submit = elgg_view('input/submit', array('internalname' => 'booth_submit', 'value' => elgg_echo('Add your Booth here')));
-		$booth_textarea = elgg_view('input/longtext', array('internalname' => 'booth_comment', 'value' => $booth_print));
-		$booth_token = elgg_view('input/securitytoken');
-		$url = $event->getURL();
-		
-		$booth_body = <<<EOT
-			<form action = "{$url}" method="post">
-					<div class='booth_comments'>
+					<label>Booth Comment:</label>
 					<p class='longtext_editarea'>
 						$booth_textarea
 					</p>
@@ -164,6 +145,7 @@ EOT;
 		$travel_body = <<<EOT
 			<form action = "{$url}" method="post">
 					<div class='travel_comments'>
+					<label>Travel Comment:</label>
 					<p class='longtext_editarea'>
 						$travel_textarea
 					</p>
@@ -186,6 +168,7 @@ EOT;
 		$talks_body = <<<EOT
 			<form action = "{$url}" method="post">
 					<div class='talks_comments'>
+					<label>Talks Comment:</label>
 					<p class='longtext_editarea'>
 						$talks_textarea
 					</p>

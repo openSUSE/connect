@@ -944,8 +944,7 @@ function event_calendar_get_formatted_full_items($event) {
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Arrival');
-	$item->value = $event->arrival;
-	
+	$item->value = $event->arrival;	
 	$event_items[] = $item;
 	
 	//$item = new stdClass();
@@ -974,14 +973,14 @@ function event_calendar_get_formatted_full_items($event) {
 	//$event_items[] = $item;
 	
 //	$item = new stdClass();
-	//$item->title = elgg_echo('Arrival');
+//	$item->title = elgg_echo('Arrival');
 //	$item->value = elgg_view('input/submit', array('internalname' => 'submit_arrival', 'value' => elgg_echo('save')));
 //	$event_items[] = $item;
 	
-	//$item = new stdClass();
-	//$item->title = elgg_echo('Departure');
-	//$item->value = $event->departure;
-	//$event_items[] = $item;
+	$item = new stdClass();
+	$item->title = elgg_echo('Departure');
+	$item->value = $event->departure;
+	$event_items[] = $item;
 
 //	$item = new stdClass();
 //	$item->title = elgg_echo('Departure Comment');
