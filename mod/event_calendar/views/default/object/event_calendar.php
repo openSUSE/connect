@@ -66,7 +66,7 @@ if ($vars['full']) {
 			<form action = "{$url}" method="post">
 					<div class='post_comments'>
 					<p class='longtext_editarea'>
-						
+						$text_textarea
 					</p>
 				<p>
 						$submit_input
