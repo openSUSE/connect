@@ -948,14 +948,14 @@ function event_calendar_get_formatted_full_items($event) {
 	
 	$event_items[] = $item;
 	
-//	$item = new stdClass();
-//	$item->title = elgg_echo('Arrival Comment');
+	$item = new stdClass();
+	$item->title = elgg_echo('Arrival Comment');
 	//$event->annotate('arrival_comment', "Aj :21/06");
-//	$arrival_annotation = $event->getAnnotations('arrival_comment');
+	$arrival_annotation = $event->getAnnotations('arrival_comment');
 	
 	//display follow up comments
 	//$count = $event->countAnnotations('arrival_comment');
-//	$arrival_print = $arrival_annotation[0][value];
+	$arrival_print = $arrival_annotation[0][value];
 	
 	//$post = get_input("post");
 	//$field_num = get_input("field_num");
@@ -968,10 +968,10 @@ function event_calendar_get_formatted_full_items($event) {
 	//$topic_guid = get_input("topic");
 	//$item -> value = update_annotation($post, "comment_post", $post_comment, "",$commentOwner, $access_id);
 	//forward($topic->getURL()); // It could be $event->getURL(); 
-//	$item->value=elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$arrival_print));
+	$item->value=elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$arrival_print));
 	//$item->value = get_input("arrival_comment");
 	//$topic = get_entity($item->value);
-//	$event_items[] = $item;
+	$event_items[] = $item;
 	
 //	$item = new stdClass();
 	//$item->title = elgg_echo('Arrival');
