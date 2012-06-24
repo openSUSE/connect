@@ -86,9 +86,9 @@ EOT;
 		isset($_POST);
 		//$a = $event->arrival;
 		
-		$event->arrival = $event->arrival.$comment;
+		$a = $event->arrival.$comment;
 		
-		echo $event->arrival;
+		echo elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$a));
 		
 		  
 		
