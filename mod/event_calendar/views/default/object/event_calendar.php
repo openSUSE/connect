@@ -40,6 +40,9 @@ if ($vars['full']) {
 	
 	echo $body;
 	
+	
+		$arrival_annotation = $event->getAnnotations('arrival_comment');
+		$arrival_print = $arrival_annotation[0][value];
 		$arrival_submit = elgg_view('input/submit', array('internalname' => 'arrival_submit', 'value' => elgg_echo('Add your Arrival here')));
 		$arrival_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));
 		$arrival_token = elgg_view('input/securitytoken');
@@ -47,13 +50,13 @@ if ($vars['full']) {
 		
 		$arrival_body = <<<EOT
 			<form action = "{$url}" method="post">
-					<label>Arrival Comment:</label>
+					<label><b>Arrival Comment:</b></label>
 					<div class='arrival_comments'>
 					<p class='longtext_editarea'>
 						$arrival_textarea
 					</p>
 				<p>
-						$submit_input
+						$arrival_input
 						$arrival_token
 					</p>
 		
@@ -72,7 +75,7 @@ EOT;
 		$departure_body = <<<EOT
 			<form action = "{$url}" method="post">
 					<div class='departure_comments'>
-					<label>Departure Comment:</label>
+					<label><b>Departure Comment:</b></label>
 					<p class='longtext_editarea'>
 						$departure_textarea
 					</p>
@@ -98,7 +101,7 @@ EOT;
 		$material_body = <<<EOT
 			<form action = "{$url}" method="post">
 					<div class='material_comments'>
-					<label>Material Comment:</label>
+					<label><b>Material Comment:</b></label>
 					<p class='longtext_editarea'>
 						$material_textarea
 					</p>
@@ -122,7 +125,7 @@ EOT;
 		$booth_body = <<<EOT
 			<form action = "{$url}" method="post">
 					<div class='booth_comments'>
-					<label>Booth Comment:</label>
+					<label><b>Booth Comment:</b></label>
 					<p class='longtext_editarea'>
 						$booth_textarea
 					</p>
@@ -145,7 +148,7 @@ EOT;
 		$travel_body = <<<EOT
 			<form action = "{$url}" method="post">
 					<div class='travel_comments'>
-					<label>Travel Comment:</label>
+					<label><b>Travel Comment:</b></label>
 					<p class='longtext_editarea'>
 						$travel_textarea
 					</p>
@@ -168,7 +171,7 @@ EOT;
 		$talks_body = <<<EOT
 			<form action = "{$url}" method="post">
 					<div class='talks_comments'>
-					<label>Talks Comment:</label>
+					<label><b>Talks Comment:</b></label>
 					<p class='longtext_editarea'>
 						$talks_textarea
 					</p>
