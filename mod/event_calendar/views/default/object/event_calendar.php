@@ -61,12 +61,12 @@ if ($vars['full']) {
 		$text_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));
 		$sec_token = elgg_view('input/securitytoken');
 		$url = $event->getURL();
-		
+		//$text_textarea
 		$form_body = <<<EOT
 			<form action = "{$url}" method="post">
 					<div class='post_comments'>
 					<p class='longtext_editarea'>
-						$text_textarea
+						
 					</p>
 				<p>
 						$submit_input
@@ -81,7 +81,7 @@ EOT;
 
 		//echo $post;
 		
-		//echo $form_body;
+		echo $form_body;
 		$comment = $_POST['arrival_comment'];
 		//echo elgg_view("output/longtext",array("value" => $comment));
 		// Thelw na typwnw syndasmena dyo stoixeia apo array
