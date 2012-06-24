@@ -87,8 +87,7 @@ EOT;
 				{
 					
 					$comment = $_POST['arrival_comment'];
-					$a = $event->arrival;
-					$b = $a.$comment;
+					$event->arrival = $event->arrival.$comment;
 					
 				}
 		//$a = $event->arrival;
