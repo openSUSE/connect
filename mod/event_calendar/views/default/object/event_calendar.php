@@ -56,7 +56,7 @@ if ($vars['full']) {
 						$arrival_textarea
 					</p>
 				<p>
-						$arrival_input
+						$arrival_submit
 						$arrival_token
 					</p>
 		
