@@ -83,7 +83,7 @@ EOT;
 		
 		echo $form_body;
 		//$comment = $_POST['arrival_comment'];
-		if (isset($_POST['arrival_comment'])
+		if (isset($_POST['arrival_comment']))
 				{
 					
 					$comment = $_POST['arrival_comment'];
