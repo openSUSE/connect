@@ -50,7 +50,7 @@ if ($vars['full']) {
 		
 		$arrival_body = <<<EOT
 			<form action = "{$url}" method="post">
-					<label><b>&nbsp;Arrival Comment:</b></label>
+					<label><b>&nbsp;&nbsp;Arrival Comment:</b></label>
 					<div class='arrival_comments'>
 					<p class='longtext_editarea'>
 						$arrival_textarea
@@ -75,7 +75,7 @@ EOT;
 		$departure_body = <<<EOT
 			<form action = "{$url}" method="post">
 					<div class='departure_comments'>
-					<label><b>&nbsp;Departure Comment:</b></label>
+					<label><b>&nbsp;&nbsp;Departure Comment:</b></label>
 					<p class='longtext_editarea'>
 						$departure_textarea
 					</p>
@@ -101,7 +101,7 @@ EOT;
 		$material_body = <<<EOT
 			<form action = "{$url}" method="post">
 					<div class='material_comments'>
-					<label><b>&nbsp;Material Comment:</b></label>
+					<label><b>&nbsp;&nbsp;Material Comment:</b></label>
 					<p class='longtext_editarea'>
 						$material_textarea
 					</p>
@@ -125,7 +125,7 @@ EOT;
 		$booth_body = <<<EOT
 			<form action = "{$url}" method="post">
 					<div class='booth_comments'>
-					<label><b>&nbsp;Booth Comment:</b></label>
+					<label><b>&nbsp;&nbsp;Booth Comment:</b></label>
 					<p class='longtext_editarea'>
 						$booth_textarea
 					</p>
@@ -148,7 +148,7 @@ EOT;
 		$travel_body = <<<EOT
 			<form action = "{$url}" method="post">
 					<div class='travel_comments'>
-					<label><b>&nbsp;Travel Comment:</b></label>
+					<label><b>&nbsp;&nbsp;Travel Comment:</b></label>
 					<p class='longtext_editarea'>
 						$travel_textarea
 					</p>
@@ -171,7 +171,7 @@ EOT;
 		$talks_body = <<<EOT
 			<form action = "{$url}" method="post">
 					<div class='talks_comments'>
-					<label><b>&nbsp;Talks Comment:</b></label>
+					<label><b>&nbsp;&nbsp;Talks Comment:</b></label>
 					<p class='longtext_editarea'>
 						$talks_textarea
 					</p>
@@ -185,10 +185,15 @@ EOT;
 EOT;
 		
 		echo $arrival_body;
+		echo "\n";
 		echo $departure_body;
+		echo "\n";
 		echo $material_body;
+		echo "\n";
 		echo $booth_body;
+		echo "\n";
 		echo $travel_body;
+		echo "\n";
 		echo $talks_body;
 		
 		if (isset($_POST['arrival_comment']))
