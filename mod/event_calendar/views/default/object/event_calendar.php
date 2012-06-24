@@ -87,6 +87,9 @@ EOT;
 		//$a = $event->arrival;
 		
 		$event->arrival = $event->arrival.$comment;
+		
+		echo $event->arrival;
+		
 		  
 		
 		//echo elgg_view("output/longtext",array("value" => $comment));
