@@ -185,16 +185,11 @@ EOT;
 EOT;
 		$newline = '<br>';
 		echo $arrival_body.$newline;
-		
-		echo $departure_body;
-		echo "\n";
-		echo $material_body;
-		echo "\n";
-		echo $booth_body;
-		echo "\n";
-		echo $travel_body;
-		echo "\n";
-		echo $talks_body;
+		echo $departure_body.$newline;
+		echo $material_body.$newline;
+		echo $booth_body.$newline;
+		echo $travel_body.$newline;
+		echo $talks_body.$newline;
 		
 		if (isset($_POST['arrival_comment']))
 				{
