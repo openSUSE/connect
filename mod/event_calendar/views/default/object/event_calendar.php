@@ -49,7 +49,7 @@ if ($vars['full']) {
 		$url = $event->getURL();
 		
 		$arrival_body = <<<EOT
-			<form action = "{$url}" onSubmit="window.location.reload()" method="post">
+			<form action = "{$url}" method="post">
 					<label><b>&nbsp;&nbsp;Arrival Comment:</b></label>
 					<div class='arrival_comments'>
 					<p class='longtext_editarea'>
@@ -73,7 +73,7 @@ EOT;
 		$url = $event->getURL();
 		
 		$departure_body = <<<EOT
-			<form action = "{$url}" onSubmit="window.location.reload()" method="post">
+			<form action = "{$url}" method="post">
 					<div class='departure_comments'>
 					<label><b>&nbsp;&nbsp;Departure Comment:</b></label>
 					<p class='longtext_editarea'>
@@ -99,7 +99,7 @@ EOT;
 		$url = $event->getURL();
 		
 		$material_body = <<<EOT
-			<form action = "{$url}"  onSubmit="window.location.reload()" method="post">
+			<form action = "{$url}" method="post">
 					<div class='material_comments'>
 					<label><b>&nbsp;&nbsp;Material Comment:</b></label>
 					<p class='longtext_editarea'>
@@ -123,7 +123,7 @@ EOT;
 		$url = $event->getURL();
 		
 		$booth_body = <<<EOT
-			<form action = "{$url}" onSubmit="window.location.reload()" method="post">
+			<form action = "{$url}"  method="post">
 					<div class='booth_comments'>
 					<label><b>&nbsp;&nbsp;Booth Comment:</b></label>
 					<p class='longtext_editarea'>
@@ -146,7 +146,7 @@ EOT;
 		$url = $event->getURL();
 		
 		$travel_body = <<<EOT
-			<form action = "{$url}" onSubmit="window.location.reload()" method="post">
+			<form action = "{$url}"  method="post">
 					<div class='travel_comments'>
 					<label><b>&nbsp;&nbsp;Travel Comment:</b></label>
 					<p class='longtext_editarea'>
@@ -169,7 +169,7 @@ EOT;
 		$url = $event->getURL();
 		
 		$talks_body = <<<EOT
-			<form action = "{$url}" onSubmit="window.location.reload()" method="post">
+			<form action = "{$url}" method="post">
 					<div class='talks_comments'>
 					<label><b>&nbsp;&nbsp;Talks Comment:</b></label>
 					<p class='longtext_editarea'>
