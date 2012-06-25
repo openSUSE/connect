@@ -243,7 +243,10 @@ EOT;
 				
 					$tal_comment = $_POST['talks_comment'];
 					$tal_line = "\n";
-					$event->talks = $event->talks.$tal_line.$tal_comment;
+					
+					//$event->talks = $event->talks.$tal_line.$tal_comment;
+					$a = $event->talks.$tal_line.$tal_comment;
+					$talks_textarea = elgg_view('input/longtext', array('internalname' => 'talks_comment', 'value' => $a));
 				
 				}		
 				
