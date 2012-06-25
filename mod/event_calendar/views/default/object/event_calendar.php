@@ -250,7 +250,7 @@ EOT;
 					{
 						$array['value'] = $a;
 					} 
-					//$talks_textarea = elgg_view('input/longtext', array('internalname' => 'talks_comment', 'value' => $a));
+					$talks_textarea = elgg_view('input/longtext', array('internalname' => 'talks_comment', 'value' => $a));
 				
 				}		
 				
