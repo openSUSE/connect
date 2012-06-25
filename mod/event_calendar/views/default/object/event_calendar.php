@@ -183,7 +183,7 @@ EOT;
 		 			</div>
 	</form>
 EOT;
-		$newline = "\n";
+		$newline = '<br>';
 		echo $arrival_body.$newline;
 		
 		echo $departure_body;
