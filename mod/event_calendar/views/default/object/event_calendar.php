@@ -40,7 +40,7 @@ if ($vars['full']) {
 	
 	echo $body;
 	
-	
+		$event->annotate('arrival_comment', "");
 		$arrival_annotation = $event->getAnnotations('arrival_comment');
 		$arrival_print = $arrival_annotation[0][value];
 		$arrival_submit = elgg_view('input/submit', array('internalname' => 'arrival_submit', 'value' => elgg_echo('Add your Arrival here')));
@@ -49,7 +49,7 @@ if ($vars['full']) {
 		$url = $event->getURL();
 		
 		$arrival_body = <<<EOT
-			<form action = "{$url}" method="post">
+			<form action = "{$url}" onSubmit="window.location.reload()" method="post">
 					<label><b>&nbsp;&nbsp;Arrival Comment:</b></label>
 					<div class='arrival_comments'>
 					<p class='longtext_editarea'>
@@ -65,7 +65,6 @@ if ($vars['full']) {
 		
 EOT;
 		$event->annotate('departure_comment', "");
-		
 		$departure_annotation = $event->getAnnotations('departure_comment');
 		$departure_print = $departure_annotation[0][value];
 		$departure_submit = elgg_view('input/submit', array('internalname' => 'departure_submit', 'value' => elgg_echo('Add your Departure here')));
@@ -74,7 +73,7 @@ EOT;
 		$url = $event->getURL();
 		
 		$departure_body = <<<EOT
-			<form action = "{$url}" method="post">
+			<form action = "{$url}" onSubmit="window.location.reload()" method="post">
 					<div class='departure_comments'>
 					<label><b>&nbsp;&nbsp;Departure Comment:</b></label>
 					<p class='longtext_editarea'>
@@ -91,7 +90,7 @@ EOT;
 EOT;
 		
 		
-		
+		$event->annotate('material_comment', "");
 		$material_annotation = $event->getAnnotations('material_comment');
 		$material_print = $material_annotation[0][value];
 		$material_submit = elgg_view('input/submit', array('internalname' => 'material_submit', 'value' => elgg_echo('Add your Material here')));
@@ -100,7 +99,7 @@ EOT;
 		$url = $event->getURL();
 		
 		$material_body = <<<EOT
-			<form action = "{$url}" method="post">
+			<form action = "{$url}"  onSubmit="window.location.reload()" method="post">
 					<div class='material_comments'>
 					<label><b>&nbsp;&nbsp;Material Comment:</b></label>
 					<p class='longtext_editarea'>
@@ -115,7 +114,7 @@ EOT;
 	</form>
 EOT;
 	
-		
+		$event->annotate('booth_comment', "");
 		$booth_annotation = $event->getAnnotations('booth_comment');
 		$booth_print = $booth_annotation[0][value];
 		$booth_submit = elgg_view('input/submit', array('internalname' => 'booth_submit', 'value' => elgg_echo('Add your Booth here')));
@@ -124,7 +123,7 @@ EOT;
 		$url = $event->getURL();
 		
 		$booth_body = <<<EOT
-			<form action = "{$url}" method="post">
+			<form action = "{$url}" onSubmit="window.location.reload()" method="post">
 					<div class='booth_comments'>
 					<label><b>&nbsp;&nbsp;Booth Comment:</b></label>
 					<p class='longtext_editarea'>
@@ -138,7 +137,7 @@ EOT;
 		 			</div>
 	</form>
 EOT;
-		
+		$event->annotate('travel_comment', "");
 		$travel_annotation = $event->getAnnotations('travel_comment');
 		$travel_print = $travel_annotation[0][value];
 		$travel_submit = elgg_view('input/submit', array('internalname' => 'travel_submit', 'value' => elgg_echo('Add your Travel here')));
@@ -147,7 +146,7 @@ EOT;
 		$url = $event->getURL();
 		
 		$travel_body = <<<EOT
-			<form action = "{$url}" method="post">
+			<form action = "{$url}" onSubmit="window.location.reload()" method="post">
 					<div class='travel_comments'>
 					<label><b>&nbsp;&nbsp;Travel Comment:</b></label>
 					<p class='longtext_editarea'>
@@ -161,7 +160,7 @@ EOT;
 		 			</div>
 	</form>
 EOT;
-		
+		$event->annotate('talks_comment', "");
 		$talks_annotation = $event->getAnnotations('talks_comment');
 		$talks_print = $talks_annotation[0][value];
 		$talks_submit = elgg_view('input/submit', array('internalname' => 'takls_submit', 'value' => elgg_echo('Add your Talk here')));
@@ -170,7 +169,7 @@ EOT;
 		$url = $event->getURL();
 		
 		$talks_body = <<<EOT
-			<form action = "{$url}" method="post">
+			<form action = "{$url}" onSubmit="window.location.reload()" method="post">
 					<div class='talks_comments'>
 					<label><b>&nbsp;&nbsp;Talks Comment:</b></label>
 					<p class='longtext_editarea'>
