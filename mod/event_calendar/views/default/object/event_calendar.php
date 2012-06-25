@@ -183,9 +183,9 @@ EOT;
 		 			</div>
 	</form>
 EOT;
+		$newline = "\n";
+		echo $arrival_body.$newline;
 		
-		echo $arrival_body;
-		echo "\n";
 		echo $departure_body;
 		echo "\n";
 		echo $material_body;
