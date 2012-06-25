@@ -246,7 +246,11 @@ EOT;
 					
 					//$event->talks = $event->talks.$tal_line.$tal_comment;
 					$a = $event->talks.$tal_line.$tal_comment;
-					$talks_textarea = elgg_view('input/longtext', array('internalname' => 'talks_comment', 'value' => $a));
+					if (array['internalname'] == 'talks_comment')
+					{
+						array['value'] = $a;
+					} 
+					//$talks_textarea = elgg_view('input/longtext', array('internalname' => 'talks_comment', 'value' => $a));
 				
 				}		
 				
