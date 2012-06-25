@@ -64,6 +64,7 @@ if ($vars['full']) {
 	</form>
 		
 EOT;
+		$event->annotate('departure_comment', "");
 		
 		$departure_annotation = $event->getAnnotations('departure_comment');
 		$departure_print = $departure_annotation[0][value];
