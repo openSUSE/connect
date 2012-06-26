@@ -40,30 +40,12 @@ if ($vars['full']) {
 	
 	echo $body;
 	
+	
+		/* Arrival Comment field */
+	
 		$event->annotate('arrival_comment', "");
 		$arrival_annotation = $event->getAnnotations('arrival_comment');
 		$arrival_print = $arrival_annotation[0][value];
-		//$arrival_submit = elgg_view('input/submit', array('internalname' => 'arrival_submit', 'value' => elgg_echo('Add your Arrival here')));
-		//$arrival_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));
-		//$arrival_token = elgg_view('input/securitytoken');
-		//$url = $event->getURL();
-		
-//		$arrival_body = <<<EOT
-	//		<form action = "{$url}" method="post">
-		//			<label><b>&nbsp;&nbsp;Arrival Comment:</b></label>
-			//		<div class='arrival_comments'>
-				//	<p class='longtext_editarea'>
-					//	$arrival_textarea
-				//	</p>
-			//	<p>
-				//		$arrival_submit
-				//		$arrival_token
-				//	</p>
-		
-				//	</div>
-	//</form>
-		
-//EOT;
 
 		$arrival_body = '<label><b>&nbsp;&nbsp;Arrival Comment:</b></label>';
 		$arrival_body .= elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));	
@@ -71,137 +53,258 @@ if ($vars['full']) {
 		$arrival_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
 		
-		echo elgg_view('input/form', array('body' => $arrival_body, 'action' => $url));
+		$arrival_form_body = elgg_view('input/form', array('body' => $arrival_body, 'action' => $url));
 		
 		
+		/* If you wish to use the html traditional form submission just uncomment the following lines and comment the
+		 * lines beginning with $arrival_body value.
+		*
+		* $arrival_submit = elgg_view('input/submit', array('internalname' => 'arrival_submit', 'value' => elgg_echo('Add your Arrival here')));
+		* $arrival_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));
+		* $arrival_token = elgg_view('input/securitytoken');
+		* $url = $event->getURL();
+		*
+		* $arrival_body = <<<EOT -- Don't comment this line if you wish to use the html form submission
+		* 	  <form action = "{$url}" method="post">
+		*  	<label><b>&nbsp;&nbsp;Arrival Comment:</b></label>
+		*  	<div class='arrival_comments'>
+		*  	<p class='longtext_editarea'>
+		*  		$arrival_textarea
+		*  	</p>
+		*  	<p>
+		*  		$arrival_submit
+		*  		$arrival_token
+		*  	</p>
+		*  	</div>
+		*  </form>
+		*  EOT;
+		*
+		*/
 		
+		
+		/* Departure Comment field */
 		
 		$event->annotate('departure_comment', "");
 		$departure_annotation = $event->getAnnotations('departure_comment');
 		$departure_print = $departure_annotation[0][value];
-		$departure_submit = elgg_view('input/submit', array('internalname' => 'departure_submit', 'value' => elgg_echo('Add your Departure here')));
-		$departure_textarea = elgg_view('input/longtext', array('internalname' => 'departure_comment', 'value' => $departure_print));
-		$departure_token = elgg_view('input/securitytoken');
+		
+		$departure_body  = '<label><b>&nbsp;&nbsp;Departure Comment:</b></label>';	
+		$departure_body .= elgg_view('input/longtext', array('internalname' => 'departure_comment', 'value' => $departure_print));
+		$departure_body .= elgg_view('input/submit', array('internalname' => 'departure_submit', 'value' => elgg_echo('Add your Departure here')));
+		$departure_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
+		$departure_form_body = elgg_view('input/form', array('body' => $departure_body, 'action' => $url));
 		
-		$departure_body = <<<EOT
-			<form action = "{$url}" method="post">
-					<div class='departure_comments'>
-					<label><b>&nbsp;&nbsp;Departure Comment:</b></label>
-					<p class='longtext_editarea'>
-						$departure_textarea
-					</p>
-				<p>
-						$departure_submit
-						$departure_token
-					</p>
 		
-		 			</div>
-	</form>
+		/* If you wish to use the html traditional form submission just uncomment the following lines and comment the
+		 * lines beginning with $departure_body value.
+		 * 
+		 * $departure_submit = elgg_view('input/submit', array('internalname' => 'departure_submit', 'value' => elgg_echo('Add your Departure here')));
+		 * $departure_textarea = elgg_view('input/longtext', array('internalname' => 'departure_comment', 'value' => $departure_print));
+		 * $departure_token = elgg_view('input/securitytoken');
+		 * $url = $event->getURL();
+		 * 
+		 *   $departure_body = <<<EOT -- -- Don't comment this line if you wish to use the html form submission
+		 *   <form action = "{$url}" method="post">
+		 *   <div class='departure_comments'>
+		 *   <label><b>&nbsp;&nbsp;Departure Comment:</b></label>
+		 *   <p class='longtext_editarea'>
+		 *			$departure_textarea
+		 *			</p>
+		 *		<p>
+		 *				$departure_submit
+		 *				$departure_token
+		 *			</p>
+		 *
+		 *			</div>
+	     *   </form>
+		 *
+         *  EOT;
+		 */
 		
-EOT;
 		
+		/* Material Comment field */
 		
 		$event->annotate('material_comment', "");
 		$material_annotation = $event->getAnnotations('material_comment');
 		$material_print = $material_annotation[0][value];
-		$material_submit = elgg_view('input/submit', array('internalname' => 'material_submit', 'value' => elgg_echo('Add your Material here')));
-		$material_textarea = elgg_view('input/longtext', array('internalname' => 'material_comment', 'value' => $material_print));
-		$material_token = elgg_view('input/securitytoken');
+		$material_body = elgg_view('input/longtext', array('internalname' => 'material_comment', 'value' => $material_print));
+		$material_body .= elgg_view('input/submit', array('internalname' => 'material_submit', 'value' => elgg_echo('Add your Material here')));
+		$material_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
+		$material_form_body = elgg_view('input/form', array('body' => $material_body, 'action' => $url));
 		
-		$material_body = <<<EOT
-			<form action = "{$url}" method="post">
-					<div class='material_comments'>
-					<label><b>&nbsp;&nbsp;Material Comment:</b></label>
-					<p class='longtext_editarea'>
-						$material_textarea
-					</p>
-				<p>
-						$material_submit
-						$material_token
-					</p>
+		/* If you wish to use the html traditional form submission just uncomment the following lines and comment the
+		 * lines beginning with $material_body value.
+		 *
+		 *	$material_submit = elgg_view('input/submit', array('internalname' => 'material_submit', 'value' => elgg_echo('Add your Material here')));
+		 *	$material_textarea = elgg_view('input/longtext', array('internalname' => 'material_comment', 'value' => $material_print));
+		 *	$material_token = elgg_view('input/securitytoken');
+		 *	$url = $event->getURL();
+         *		
+		 *
+		 *
+		 *	$material_body = <<<EOT
+		 *	<form action = "{$url}" method="post">
+		 *			<div class='material_comments'>
+		 *			<label><b>&nbsp;&nbsp;Material Comment:</b></label>
+		 *			<p class='longtext_editarea'>
+		 *				$material_textarea
+		 *			</p>
+		 *		<p>
+		 *				$material_submit
+		 *				$material_token
+		 *			</p>
+		 *
+		 *			</div>
+	     * </form>
+         * EOT;
+		 */
 		
-		 			</div>
-	</form>
-EOT;
-	
+		
+		/* Booth Comment field */
+		
 		$event->annotate('booth_comment', "");
 		$booth_annotation = $event->getAnnotations('booth_comment');
 		$booth_print = $booth_annotation[0][value];
-		$booth_submit = elgg_view('input/submit', array('internalname' => 'booth_submit', 'value' => elgg_echo('Add your Booth here')));
-		$booth_textarea = elgg_view('input/longtext', array('internalname' => 'booth_comment', 'value' => $booth_print));
-		$booth_token = elgg_view('input/securitytoken');
+		
+		$booth_body = elgg_view('input/longtext', array('internalname' => 'booth_comment', 'value' => $booth_print));
+		$booth_body .= elgg_view('input/submit', array('internalname' => 'booth_submit', 'value' => elgg_echo('Add your Booth here')));
+		
+		$booth_body .= elgg_view('input/securitytoken');
+		
 		$url = $event->getURL();
 		
-		$booth_body = <<<EOT
-			<form action = "{$url}"  method="post">
-					<div class='booth_comments'>
-					<label><b>&nbsp;&nbsp;Booth Comment:</b></label>
-					<p class='longtext_editarea'>
-						$booth_textarea
-					</p>
-				<p>
-						$booth_submit
-						$booth_token
-					</p>
+		$booth_form_body = elgg_view('input/form', array('body' => $booth_body, 'action' => $url));
 		
-		 			</div>
-	</form>
-EOT;
+		
+		/* If you wish to use the html traditional form submission just uncomment the following lines and comment the
+		 * lines beginning with $booth_body value.
+		*
+		*	$booth_submit = elgg_view('input/submit', array('internalname' => 'booth_submit', 'value' => elgg_echo('Add your Booth here')));
+		*	$booth_textarea = elgg_view('input/longtext', array('internalname' => 'booth_comment', 'value' => $booth_print));
+		*	$booth_token = elgg_view('input/securitytoken');
+		*	$url = $event->getURL();
+		*
+		*
+		*
+		*	$booth_body = <<<EOT
+		*	<form action = "{$url}" method="post">
+		*			<div class='booth_comments'>
+		*			<label><b>&nbsp;&nbsp;Booth Comment:</b></label>
+		*			<p class='longtext_editarea'>
+		*				$booth_textarea
+		*			</p>
+		*		<p>
+		*				$booth_submit
+		*				$booth_token
+		*			</p>
+		*
+		*			</div>
+		* </form>
+		* EOT;
+		*/
+		
+		
+		
+		
+		
+		/* Travel Comment field */
+		
 		$event->annotate('travel_comment', "");
 		$travel_annotation = $event->getAnnotations('travel_comment');
 		$travel_print = $travel_annotation[0][value];
-		$travel_submit = elgg_view('input/submit', array('internalname' => 'travel_submit', 'value' => elgg_echo('Add your Travel here')));
-		$travel_textarea = elgg_view('input/longtext', array('internalname' => 'travel_comment', 'value' => $travel_print));
-		$travel_token = elgg_view('input/securitytoken');
+		
+		$travel_body = elgg_view('input/longtext', array('internalname' => 'travel_comment', 'value' => $travel_print));
+		$travel_body .= elgg_view('input/submit', array('internalname' => 'travel_submit', 'value' => elgg_echo('Add your Travel here')));
+		$travel_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
 		
-		$travel_body = <<<EOT
-			<form action = "{$url}"  method="post">
-					<div class='travel_comments'>
-					<label><b>&nbsp;&nbsp;Travel Comment:</b></label>
-					<p class='longtext_editarea'>
-						$travel_textarea
-					</p>
-				<p>
-						$travel_submit
-						$travel_token
-					</p>
+		$travel_form_body = elgg_view('input/form', array('body' => $travel_body, 'action' => $url));
 		
-		 			</div>
-	</form>
-EOT;
+		
+		
+		/* If you wish to use the html traditional form submission just uncomment the following lines and comment the
+		 * lines beginning with $travel_body value.
+		*
+		*	$travel_submit = elgg_view('input/submit', array('internalname' => 'travel_submit', 'value' => elgg_echo('Add your Travel here')));
+		*	$travel_textarea = elgg_view('input/longtext', array('internalname' => 'travel_comment', 'value' => $travel_print));
+		*	$talks_token = elgg_view('input/securitytoken');
+		*	$url = $event->getURL();
+		*
+		*
+		*
+		*	$travel_body = <<<EOT
+		*	<form action = "{$url}" method="post">
+		*			<div class='talk_comments'>
+		*			<label><b>&nbsp;&nbsp;Travel Comment:</b></label>
+		*			<p class='longtext_editarea'>
+		*				$travel_textarea
+		*			</p>
+		*		<p>
+		*				$travel_submit
+		*				$travel_token
+		*			</p>
+		*
+		*			</div>
+		* </form>
+		* EOT;
+		*/
+		
+		
+		/*Talks comment field*/
+		
 		$event->annotate('talks_comment', "");
 		$talks_annotation = $event->getAnnotations('talks_comment');
 		$talks_print = $talks_annotation[0][value];
-		$talks_submit = elgg_view('input/submit', array('internalname' => 'takls_submit', 'value' => elgg_echo('Add your Talk here')));
-		$talks_textarea = elgg_view('input/longtext', array('internalname' => 'talks_comment', 'value' => $talks_print));
-		$talks_token = elgg_view('input/securitytoken');
+		
+		$talks_form_body = elgg_view('input/submit', array('internalname' => 'takls_submit', 'value' => elgg_echo('Add your Talk here')));
+		$talks_form_body .= elgg_view('input/longtext', array('internalname' => 'talks_comment', 'value' => $talks_print));
+		$talks_form_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
 		
-		$talks_body = <<<EOT
-			<form action = "{$url}" method="post">
-					<div class='talks_comments'>
-					<label><b>&nbsp;&nbsp;Talks Comment:</b></label>
-					<p class='longtext_editarea'>
-						$talks_textarea
-					</p>
-				<p>
-						$talks_submit
-						$talks_token
-					</p>
+		$talks_form_body = elgg_view('input/form', array('body' => $talks_body, 'action' => $url));
 		
-		 			</div>
-	</form>
-EOT;
+		
+		/* If you wish to use the html traditional form submission just uncomment the following lines and comment the
+		 * lines beginning with $talks_body value.
+		*
+		*	$talks_submit = elgg_view('input/submit', array('internalname' => 'talks_submit', 'value' => elgg_echo('Add your Talks here')));
+		*	$talks_textarea = elgg_view('input/longtext', array('internalname' => 'talks_comment', 'value' => $talks_print));
+		*	$talks_token = elgg_view('input/securitytoken');
+		*	$url = $event->getURL();
+		*
+		*
+		*
+		*	$talks_body = <<<EOT
+		*	<form action = "{$url}" method="post">
+		*			<div class='talks_comments'>
+		*			<label><b>&nbsp;&nbsp;Talks Comment:</b></label>
+		*			<p class='longtext_editarea'>
+		*				$talks_textarea
+		*			</p>
+		*		<p>
+		*				$talks_submit
+		*				$talks_token
+		*			</p>
+		*
+		*			</div>
+		* </form>
+		* EOT;
+		*/
+		
+		
+		
 		$newline = '<br>';
-		//echo $arrival_body.$newline;
-		echo $departure_body.$newline;
-		echo $material_body.$newline;
-		echo $booth_body.$newline;
-		echo $travel_body.$newline;
-		echo $talks_body.$newline;
+		
+		//echo $arrival_body.$newline; -- Uncomment this line if you use the html form method. 
+		
+		echo $arrival_form_body.$newline; 
+		echo $departure_form_body.$newline;
+		echo $material_form_body.$newline;
+		echo $booth_form_body.$newline;
+		echo $travel_form_body.$newline;
+		echo $talks_form_body.$newline;
 		
 		if (isset($_POST['arrival_comment']))
 				{
