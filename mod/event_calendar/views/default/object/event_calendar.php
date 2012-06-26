@@ -288,9 +288,12 @@ if ($vars['full']) {
 		 * 
 		 */
 		
+		$lati = (float)$event->latitude;
+		$long = (float)$event->longitude;
+		
 		$map_body = <<<EOT
 		
-		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/?lat=36.920255&amp;lon=14.722825&amp;zoom=15&amp;layers=M&amp;mlat=36.920255&amp;mlon=14.722825" style="border: 1px solid black">
+		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/?lat=<?=$lati?>&amp;lon=<?=$long?>&amp;zoom=15&amp;layers=M&amp;mlat=36.920255&amp;mlon=14.722825" style="border: 1px solid black">
 		
 		</iframe>
 		
