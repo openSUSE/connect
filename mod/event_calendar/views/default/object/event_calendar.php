@@ -296,13 +296,13 @@ if ($vars['full']) {
 		 		 
 //EOT;
 		 
-		$long = (float)$event->longitude;
+		
 		$lati = (float)$event->latitude;
- 		
+		$long = (float)$event->longitude;
 	
 		$map_body = <<<EOT
 		
-		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/index.html?lat=<?=$lati_float?>&lon=<?=$long_float?>"> 
+		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/index.html?lat=<?=$lati?>&lon=<?=$long?>"> 
 		
 		</iframe>
 
