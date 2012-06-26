@@ -43,10 +43,10 @@ if ($vars['full']) {
 		$event->annotate('arrival_comment', "");
 		$arrival_annotation = $event->getAnnotations('arrival_comment');
 		$arrival_print = $arrival_annotation[0][value];
-		$arrival_submit = elgg_view('input/submit', array('internalname' => 'arrival_submit', 'value' => elgg_echo('Add your Arrival here')));
-		$arrival_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));
-		$arrival_token = elgg_view('input/securitytoken');
-		$url = $event->getURL();
+		//$arrival_submit = elgg_view('input/submit', array('internalname' => 'arrival_submit', 'value' => elgg_echo('Add your Arrival here')));
+		//$arrival_textarea = elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));
+		//$arrival_token = elgg_view('input/securitytoken');
+		//$url = $event->getURL();
 		
 //		$arrival_body = <<<EOT
 	//		<form action = "{$url}" method="post">
@@ -196,7 +196,7 @@ EOT;
 	</form>
 EOT;
 		$newline = '<br>';
-		echo $arrival_body.$newline;
+		//echo $arrival_body.$newline;
 		echo $departure_body.$newline;
 		echo $material_body.$newline;
 		echo $booth_body.$newline;
