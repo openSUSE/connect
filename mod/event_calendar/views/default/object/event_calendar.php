@@ -71,7 +71,7 @@ if ($vars['full']) {
 		$arrival_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
 		
-		echo elgg_view('input/form', array('body' => $arrival_body, 'action' => "{$url}");
+		echo elgg_view('input/form', array('body' => $arrival_body, 'action' => $url);
 		
 		
 		
