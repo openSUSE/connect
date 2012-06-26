@@ -66,8 +66,8 @@ if ($vars['full']) {
 //EOT;
 
 		$arrival_body = '<label><b>&nbsp;&nbsp;Arrival Comment:</b></label>';
+		$arrival_body .= elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));	
 		$arrival_body .= elgg_view('input/submit', array('internalname' => 'arrival_submit', 'value' => elgg_echo('Add your Arrival here')));
-		$arrival_body .= elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));
 		$arrival_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
 		
