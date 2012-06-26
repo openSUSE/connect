@@ -293,7 +293,7 @@ if ($vars['full']) {
 		
 		$map_body = <<<EOT
 		
-		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/?lat=<?=$lati?>&amp;lon=<?=$long?>&amp;zoom=15&amp;layers=M&amp;mlat=36.920255&amp;mlon=14.722825" style="border: 1px solid black">
+		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/?lat=<?=$lati?>&amp;lon=<?=$long?>&amp;zoom=15&amp;layers=M&amp;mlat=36.920255&amp;mlon=14.722825">
 		
 		</iframe>
 		
