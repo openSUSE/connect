@@ -296,8 +296,8 @@ if ($vars['full']) {
 		 		 
 //EOT;
 		 
-		$long = $event->longitude;
-		$lati = $event->latitude;
+		$long = (float)$event->longitude;
+		$lati = (float)$event->latitude;
  		
 	
 		$map_body = <<<EOT
