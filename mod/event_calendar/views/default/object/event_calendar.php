@@ -46,13 +46,11 @@ if ($vars['full']) {
 		$event->annotate('arrival_comment', "");
 		$arrival_annotation = $event->getAnnotations('arrival_comment');
 		$arrival_print = $arrival_annotation[0][value];
-
 		$arrival_body = '<label><b>&nbsp;&nbsp;Arrival Comment:</b></label>';
 		$arrival_body .= elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));	
 		$arrival_body .= elgg_view('input/submit', array('internalname' => 'arrival_submit', 'value' => elgg_echo('Add your Arrival here')));
 		$arrival_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
-		
 		$arrival_form_body = elgg_view('input/form', array('body' => $arrival_body, 'action' => $url));
 		
 		
@@ -87,7 +85,6 @@ if ($vars['full']) {
 		$event->annotate('departure_comment', "");
 		$departure_annotation = $event->getAnnotations('departure_comment');
 		$departure_print = $departure_annotation[0][value];
-		
 		$departure_body  = '<label><b>&nbsp;&nbsp;Departure Comment:</b></label>';	
 		$departure_body .= elgg_view('input/longtext', array('internalname' => 'departure_comment', 'value' => $departure_print));
 		$departure_body .= elgg_view('input/submit', array('internalname' => 'departure_submit', 'value' => elgg_echo('Add your Departure here')));
@@ -166,15 +163,11 @@ if ($vars['full']) {
 		
 		$event->annotate('booth_comment', "");
 		$booth_annotation = $event->getAnnotations('booth_comment');
-		$booth_print = $booth_annotation[0][value];
-		
+		$booth_print = $booth_annotation[0][value];		
 		$booth_body = elgg_view('input/longtext', array('internalname' => 'booth_comment', 'value' => $booth_print));
-		$booth_body .= elgg_view('input/submit', array('internalname' => 'booth_submit', 'value' => elgg_echo('Add your Booth here')));
-		
+		$booth_body .= elgg_view('input/submit', array('internalname' => 'booth_submit', 'value' => elgg_echo('Add your Booth here')));		
 		$booth_body .= elgg_view('input/securitytoken');
-		
 		$url = $event->getURL();
-		
 		$booth_form_body = elgg_view('input/form', array('body' => $booth_body, 'action' => $url));
 		
 		
@@ -213,13 +206,11 @@ if ($vars['full']) {
 		
 		$event->annotate('travel_comment', "");
 		$travel_annotation = $event->getAnnotations('travel_comment');
-		$travel_print = $travel_annotation[0][value];
-		
+		$travel_print = $travel_annotation[0][value];		
 		$travel_body = elgg_view('input/longtext', array('internalname' => 'travel_comment', 'value' => $travel_print));
 		$travel_body .= elgg_view('input/submit', array('internalname' => 'travel_submit', 'value' => elgg_echo('Add your Travel here')));
 		$travel_body .= elgg_view('input/securitytoken');
-		$url = $event->getURL();
-		
+		$url = $event->getURL();		
 		$travel_form_body = elgg_view('input/form', array('body' => $travel_body, 'action' => $url));
 		
 		
@@ -256,13 +247,11 @@ if ($vars['full']) {
 		
 		$event->annotate('talks_comment', "");
 		$talks_annotation = $event->getAnnotations('talks_comment');
-		$talks_print = $talks_annotation[0][value];
-		
+		$talks_print = $talks_annotation[0][value];		
 		$talks_form_body = elgg_view('input/submit', array('internalname' => 'takls_submit', 'value' => elgg_echo('Add your Talk here')));
 		$talks_form_body .= elgg_view('input/longtext', array('internalname' => 'talks_comment', 'value' => $talks_print));
 		$talks_form_body .= elgg_view('input/securitytoken');
-		$url = $event->getURL();
-		
+		$url = $event->getURL();		
 		$talks_form_body = elgg_view('input/form', array('body' => $talks_body, 'action' => $url));
 		
 		
@@ -294,7 +283,23 @@ if ($vars['full']) {
 		*/
 		
 		
+		/* First openstreetmap try 
+		 * 
+		 * 
+		 */
 		
+		$map_body = <<<EOT
+		
+		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=-3.71761,40.42287,-3.70529,40.43277&amp;layer=mapnik&amp;marker=40.42570,-3.71171" style="border: 1px solid black">
+		 
+		 </iframe>
+		 		 
+EOT;
+		 
+		 
+ 		
+  
+
 		$newline = '<br>';
 		
 		//echo $arrival_body.$newline; -- Uncomment this line if you use the html form method. 
@@ -305,6 +310,8 @@ if ($vars['full']) {
 		echo $booth_form_body.$newline;
 		echo $travel_form_body.$newline;
 		echo $talks_form_body.$newline;
+		echo $map_body;
+		
 		
 		if (isset($_POST['arrival_comment']))
 				{
