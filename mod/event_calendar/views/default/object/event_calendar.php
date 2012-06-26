@@ -288,17 +288,29 @@ if ($vars['full']) {
 		 * 
 		 */
 		
+		//$map_body = <<<EOT
+		
+		//<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=-3.71761,40.42287,-3.70529,40.43277&amp;layer=mapnik&amp;marker=40.42570,-3.71171" style="border: 1px solid black">
+		 
+		// </iframe>
+		 		 
+//EOT;
+		 
+		$long_float = (float)$event->longitude;
+		$lati_float = (float)$event->latitude;
+ 		
+	
 		$map_body = <<<EOT
 		
-		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=-3.71761,40.42287,-3.70529,40.43277&amp;layer=mapnik&amp;marker=40.42570,-3.71171" style="border: 1px solid black">
-		 
-		 </iframe>
-		 		 
+		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/index.html?lat=<?=$lati_float?>&lon=<?=$long_float?>&zoom="1"" style="border: 1px solid black"> 
+		
+		</iframe>
+
+    
 EOT;
-		 
-		 
- 		
-  
+    
+    
+		
 
 		$newline = '<br>';
 		
