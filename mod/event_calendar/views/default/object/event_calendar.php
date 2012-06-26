@@ -48,22 +48,34 @@ if ($vars['full']) {
 		$arrival_token = elgg_view('input/securitytoken');
 		$url = $event->getURL();
 		
-		$arrival_body = <<<EOT
-			<form action = "{$url}" method="post">
-					<label><b>&nbsp;&nbsp;Arrival Comment:</b></label>
-					<div class='arrival_comments'>
-					<p class='longtext_editarea'>
-						$arrival_textarea
-					</p>
-				<p>
-						$arrival_submit
-						$arrival_token
-					</p>
+//		$arrival_body = <<<EOT
+	//		<form action = "{$url}" method="post">
+		//			<label><b>&nbsp;&nbsp;Arrival Comment:</b></label>
+			//		<div class='arrival_comments'>
+				//	<p class='longtext_editarea'>
+					//	$arrival_textarea
+				//	</p>
+			//	<p>
+				//		$arrival_submit
+				//		$arrival_token
+				//	</p>
 		
-					</div>
-	</form>
+				//	</div>
+	//</form>
 		
-EOT;
+//EOT;
+
+		$arrival_body = '<label><b>&nbsp;&nbsp;Arrival Comment:</b></label>';
+		$arrival_body .= elgg_view('input/submit', array('internalname' => 'arrival_submit', 'value' => elgg_echo('Add your Arrival here')));
+		$arrival_body .= elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));
+		$arrival_body .= elgg_view('input/securitytoken');
+		$url = $event->getURL();
+		
+		echo elgg_view('input/form', array('body' => $arrival_body, 'action' => "{$url}");
+		
+		
+		
+		
 		$event->annotate('departure_comment', "");
 		$departure_annotation = $event->getAnnotations('departure_comment');
 		$departure_print = $departure_annotation[0][value];
