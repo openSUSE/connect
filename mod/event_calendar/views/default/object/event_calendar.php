@@ -288,27 +288,30 @@ if ($vars['full']) {
 		 * 
 		 */
 		
-		//$map_body = <<<EOT
-		
-		//<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=-3.71761,40.42287,-3.70529,40.43277&amp;layer=mapnik&amp;marker=40.42570,-3.71171" style="border: 1px solid black">
-		 
-		// </iframe>
-		 		 
-//EOT;
-		 
-		
-		$lati = (float)$event->latitude;
-		$long = (float)$event->longitude;
-	
 		$map_body = <<<EOT
 		
-		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/index.html?lat=<?=$lati?>&lon=<?=$long?>"> 
+		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/?lat=36.920255&amp;lon=14.722825&amp;zoom=15&amp;layers=M&amp;mlat=36.920255&amp;mlon=14.722825" style="border: 1px solid black">
+		
+		</iframe>
+		
+EOT;
+		 
+		
+		//$lati = (float)$event->latitude;
+		//$long = (float)$event->longitude;
+	
+		/*$map_body = <<<EOT
+		
+		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/index.html?lat=<?=$lati//?>&lon=<?=$long?>"> 
 		
 		</iframe>
 
     
-EOT;
-    
+		/EOT;
+
+    	 */
+		
+		
     
 		
 
