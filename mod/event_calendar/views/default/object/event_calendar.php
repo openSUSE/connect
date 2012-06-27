@@ -316,6 +316,7 @@ EOT;
     	map.addLayer(new OpenLayers.Layer.OSM());
     	var lati = "<?= $lati_float ?>";
     	var long = "<?= $long_float ?>";
+    	document.write(lati);
     	var lonLat = new OpenLayers.LonLat(long,lati)
           	.transform(
             	new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
