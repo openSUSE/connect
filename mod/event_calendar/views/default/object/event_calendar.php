@@ -299,24 +299,24 @@ if ($vars['full']) {
 		
 EOT;
 		 
-	*/	$lati = $event->latitude;
+	*/	//$lati = $event->latitude;
 	
-		$long = $event->longitude;
+		//$long = $event->longitude;
 			
 		$lati_float = (float)$event->latitude;
 		$long_float = (float)$event->longitude;
 	
 		
-		/*$map_body = <<<EOT
+		$map_body = <<<EOT
 		
-		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/index.html?lat=<?=$lati//?>&lon=<?=$long?>"> 
+		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/index.html?lat=<?=$lati?>&lon=<?=$long?>"> 
 		
 		</iframe>
 
     
-		EOT;
+EOT;
 
-    	 */
+    	 
 		
 		
     
@@ -332,11 +332,8 @@ EOT;
 		echo $booth_form_body.$newline;
 		echo $travel_form_body.$newline;
 		echo $talks_form_body.$newline;
-		//echo $map_body;
-		echo $lati;
-		echo $long;
-		echo $lati_float;
-		echo $long_float;
+		echo $map_body;
+		
 		
 		
 		if (isset($_POST['arrival_comment']))
