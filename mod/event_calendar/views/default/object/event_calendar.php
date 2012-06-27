@@ -309,9 +309,28 @@ EOT;
 		
 		$map_body = <<<EOT
 		
-		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/index.html?lat=<?=$lati?>&lon=<?=$long?>"> 
-		
-		</iframe>
+		<div id="mapdiv" style="height:200px" width="100px"></div>
+  		<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+  		<script>
+    	map = new OpenLayers.Map("mapdiv");
+    	map.addLayer(new OpenLayers.Layer.OSM());
+    	var lati = "<?= $lati_float ?>";
+    	var long = "<?= $long_float ?>";
+    	var lonLat = new OpenLayers.LonLat( long,lati )
+          	.transform(
+            	new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+            	map.getProjectionObject() // to Spherical Mercator Projection
+          		);
+ 
+    	var zoom=15;
+ 
+    	var markers = new OpenLayers.Layer.Markers( "Markers" );
+    	map.addLayer(markers);
+ 
+    	markers.addMarker(new OpenLayers.Marker(lonLat));
+ 
+    	map.setCenter (lonLat, zoom);
+  </script>
 
     
 EOT;
