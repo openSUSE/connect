@@ -310,8 +310,8 @@ EOT;
 		$map_body = <<<EOT
 		
 		<div id="mapdiv" style="height:200px" width="100px"></div>
-  		<script language="javascript">
-    	var lati = "<?= $lati_float ?>";
+  		<script type="text/javascript">
+    	var lati = '<?= $lati_float ?>";
     	var long = "<?= $long_float ?>";
     	document.write (lati);
     	
