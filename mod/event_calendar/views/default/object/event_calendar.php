@@ -307,13 +307,12 @@ EOT;
 		$long_float = $event->longitude;
 	
 		
-		$map_body = <<<EOT
+	 <<<EOT
 		
-		<div id="mapdiv" style="height:200px" width="100px"></div>
+		
   		<script type="text/javascript">
     	var lati = '<?= $lati_float ?>";
     	var long = "<?= $long_float ?>";
-    	alert (lati);
     	
   </script>
 
@@ -323,7 +322,6 @@ EOT;
     	 
 		
 		
-    
 		
 
 		$newline = '<br>';
@@ -336,7 +334,9 @@ EOT;
 		echo $booth_form_body.$newline;
 		echo $travel_form_body.$newline;
 		echo $talks_form_body.$newline;
-		echo $map_body;
+		//echo $map_body;
+		echo "Lati  : ".$_GET['lati']."<br>";
+		echo "Long : ".$_GET['long']."<br>";
 		
 		
 		
