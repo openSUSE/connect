@@ -313,7 +313,7 @@ EOT;
   		<script type="text/javascript">
     	var lati = '<?= $lati_float ?>";
     	var long = "<?= $long_float ?>";
-    	document.write (lati);
+    	alert (lati);
     	
   </script>
 
