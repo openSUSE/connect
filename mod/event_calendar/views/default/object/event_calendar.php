@@ -303,8 +303,8 @@ EOT;
 	
 		//$long = $event->longitude;
 			
-		$lati_float = (float)$event->latitude;
-		$long_float = (float)$event->longitude;
+		$lati_float = $event->latitude;
+		$long_float = $event->longitude;
 	
 		
 		$map_body = <<<EOT
@@ -316,7 +316,7 @@ EOT;
     	map.addLayer(new OpenLayers.Layer.OSM());
     	var lati = "<?= $lati_float ?>";
     	var long = "<?= $long_float ?>";
-    	var lonLat = new OpenLayers.LonLat( long,lati )
+    	var lonLat = new OpenLayers.LonLat(long,lati)
           	.transform(
             	new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
             	map.getProjectionObject() // to Spherical Mercator Projection
