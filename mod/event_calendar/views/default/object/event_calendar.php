@@ -282,51 +282,34 @@ if ($vars['full']) {
 		* EOT;
 		*/
 		
-		
-		/* First openstreetmap try 
-		 * 
-		 * 
-		 */
-		
 		$lati = $event->latitude;
 		$long = $event->longitude;
-		
-		/*$map_body = <<<EOT
-		
-		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/?lat=<?=$lati?>&amp;lon=<?=$long?>&amp;zoom=15&amp;layers=M&amp;mlat=<?=$lati?>&amp;mlon=<?=$long?>">
-		
-		//</iframe>
-		
-EOT;
-		 
-	*/	//$lati = $event->latitude;
-	
-		//$long = $event->longitude;
-			
-		$lati_float = $event->latitude;
-		$long_float = $event->longitude;
-	
-		
-	 <<<EOT
-		
-		
-  		<script type="text/javascript">
-  		<?php echo $lati_float ?>
-    	var lati = <?php echo $lati_float; ?>;
-    	var long = "<?= $long_float ?>";
-    	document.write(lati);
-    	
-    	
-  </script>
 
+		//$map_body = <<<EOT
+		//<div id="mapdiv" style="height:200px" width="100px"></div>
+		//<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+		//<script>
+		//map = new OpenLayers.Map("mapdiv");
+		//map.addLayer(new OpenLayers.Layer.OSM());
+		
+		//var lonLat = new OpenLayers.LonLat( 14.722825,36.920255 )
+		//.transform(
+			//	new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+			//	map.getProjectionObject() // to Spherical Mercator Projection
+		//);
+		
+		//var zoom=15;
+		
+		//var markers = new OpenLayers.Layer.Markers( "Markers" );
+		//map.addLayer(markers);
+		
+		//markers.addMarker(new OpenLayers.Marker(lonLat));
+		
+		//map.setCenter (lonLat, zoom);
+		//</script>
     
-EOT;
-
-    	 
-		
-		
-		
-
+//EOT;
+	
 		$newline = '<br>';
 		
 		//echo $arrival_body.$newline; -- Uncomment this line if you use the html form method. 
@@ -338,8 +321,8 @@ EOT;
 		echo $travel_form_body.$newline;
 		echo $talks_form_body.$newline;
 		//echo $map_body;
-		echo "Lati  : ".$_GET['lati']."<br>";
-		echo "Long : ".$_GET['long']."<br>";
+		//echo "Lati  : ".$_GET['lati']."<br>";
+		//echo "Long : ".$_GET['long']."<br>";
 		
 		
 		
