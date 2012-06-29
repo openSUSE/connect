@@ -285,6 +285,8 @@ if ($vars['full']) {
 		$lati = $event->latitude;
 		$long = $event->longitude;
 
+		$lati_body = elgg_view("input/hidden",array('internalname' => 'lati_body','value'=>$lati));
+		$long_body = elgg_view("input/hidden",array('internalname' => 'long_body','value'=>$long));
 		//$map_body = <<<EOT
 		//<div id="mapdiv" style="height:200px" width="100px"></div>
 		//<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
