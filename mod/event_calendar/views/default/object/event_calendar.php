@@ -293,8 +293,8 @@ if ($vars['full']) {
 		<script>
 		map = new OpenLayers.Map("mapdiv");
 		map.addLayer(new OpenLayers.Layer.OSM());
-		var x = document.getElementsByName("lati_body").value);
-		var y = document.getElementsByName("long_body").value);
+		var x = document.getElementsByName("lati_body");
+		var y = document.getElementsByName("long_body");
 		var lonLat = new OpenLayers.LonLat( x,y )
 		.transform(
 				new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
@@ -323,8 +323,8 @@ EOT;
 		echo $booth_form_body.$newline;
 		echo $travel_form_body.$newline;
 		echo $talks_form_body.$newline;
-		echo $lati_body;
-		echo $long_body;
+		//echo $lati_body;
+		//echo $long_body;
 		echo $map_body;
 		//echo "Lati  : ".$_GET['lati']."<br>";
 		//echo "Long : ".$_GET['long']."<br>";
