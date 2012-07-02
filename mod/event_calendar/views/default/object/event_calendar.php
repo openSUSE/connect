@@ -281,6 +281,12 @@ if ($vars['full']) {
 		* </form>
 		* EOT;
 		*/
+		/*
+		 * var x = document.getElementsByName("lati_body");
+		var lati_element = document.getElementById('lati_body');
+		var lati_value = name_element.value;
+		var y = document.getElementsByName("long_body");
+		 */
 		
 		$lati = $event->latitude;
 		$long = $event->longitude;
@@ -293,9 +299,11 @@ if ($vars['full']) {
 		<script>
 		map = new OpenLayers.Map("mapdiv");
 		map.addLayer(new OpenLayers.Layer.OSM());
-		var x = document.getElementsByName("lati_body");
-		var y = document.getElementsByName("long_body");
-		var lonLat = new OpenLayers.LonLat( y,x )
+		var lati_element = document.getElementById('lati_body');
+		var lati_value = lati_element.value;
+		var long_element = document.getElementsById('long_body');
+		var long_value = long_element.value('long_body');
+		var lonLat = new OpenLayers.LonLat( long_value,lati_value )
 		.transform(
 				new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
 				map.getProjectionObject() // to Spherical Mercator Projection
