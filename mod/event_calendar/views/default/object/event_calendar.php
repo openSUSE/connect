@@ -295,7 +295,7 @@ if ($vars['full']) {
 		map.addLayer(new OpenLayers.Layer.OSM());
 		var x = document.getElementsByName("lati_body");
 		var y = document.getElementsByName("long_body");
-		var lonLat = new OpenLayers.LonLat( x,y )
+		var lonLat = new OpenLayers.LonLat( y,x )
 		.transform(
 				new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
 				map.getProjectionObject() // to Spherical Mercator Projection
