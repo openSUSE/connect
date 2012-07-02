@@ -302,7 +302,7 @@ if ($vars['full']) {
 		var lati_element = document.getElementById('lati_body');
 		var lati_value = lati_element.value;
 		var long_element = document.getElementsById('long_body');
-		var long_value = long_element.value('long_body');
+		var long_value = long_element.value;
 		var lonLat = new OpenLayers.LonLat( long_value,lati_value )
 		.transform(
 				new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
