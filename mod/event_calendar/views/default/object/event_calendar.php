@@ -322,6 +322,8 @@ if ($vars['full']) {
 		echo $booth_form_body.$newline;
 		echo $travel_form_body.$newline;
 		echo $talks_form_body.$newline;
+		echo $lati_body;
+		echo $long_body;
 		//echo $map_body;
 		//echo "Lati  : ".$_GET['lati']."<br>";
 		//echo "Long : ".$_GET['long']."<br>";
