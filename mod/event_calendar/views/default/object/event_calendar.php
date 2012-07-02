@@ -299,9 +299,9 @@ if ($vars['full']) {
 		<script>
 		map = new OpenLayers.Map("mapdiv");
 		map.addLayer(new OpenLayers.Layer.OSM());
-		var lati_element = document.getElementById('lati_body');
+		var lati_element = document.getElementByName('lati_body');
 		var lati_value = lati_element.value;
-		var long_element = document.getElementsById('long_body');
+		var long_element = document.getElementsByName('long_body');
 		var long_value = long_element.value;
 		var lonLat = new OpenLayers.LonLat( long_value,lati_value )
 		.transform(
