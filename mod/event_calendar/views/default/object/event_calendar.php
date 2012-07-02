@@ -287,30 +287,31 @@ if ($vars['full']) {
 
 		$lati_body = elgg_view("input/hidden",array('internalname' => 'lati_body','value'=>$lati));
 		$long_body = elgg_view("input/hidden",array('internalname' => 'long_body','value'=>$long));
-		//$map_body = <<<EOT
-		//<div id="mapdiv" style="height:200px" width="100px"></div>
-		//<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-		//<script>
-		//map = new OpenLayers.Map("mapdiv");
-		//map.addLayer(new OpenLayers.Layer.OSM());
+		$map_body = <<<EOT
+		<div id="mapdiv" style="height:200px" width="100px"></div>
+		<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+		<script>
+		map = new OpenLayers.Map("mapdiv");
+		map.addLayer(new OpenLayers.Layer.OSM());
+		var x = document.getElementsByName("lati_body").value);
+		var y = document.getElementsByName("long_body").value);
+		var lonLat = new OpenLayers.LonLat( x,y )
+		.transform(
+				new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+				map.getProjectionObject() // to Spherical Mercator Projection
+		);
 		
-		//var lonLat = new OpenLayers.LonLat( 14.722825,36.920255 )
-		//.transform(
-			//	new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-			//	map.getProjectionObject() // to Spherical Mercator Projection
-		//);
+		var zoom=15;
 		
-		//var zoom=15;
+		var markers = new OpenLayers.Layer.Markers( "Markers" );
+		map.addLayer(markers);
 		
-		//var markers = new OpenLayers.Layer.Markers( "Markers" );
-		//map.addLayer(markers);
+		markers.addMarker(new OpenLayers.Marker(lonLat));
 		
-		//markers.addMarker(new OpenLayers.Marker(lonLat));
-		
-		//map.setCenter (lonLat, zoom);
-		//</script>
+		map.setCenter (lonLat, zoom);
+		</script>
     
-//EOT;
+EOT;
 	
 		$newline = '<br>';
 		
