@@ -222,7 +222,7 @@ if ($vars['full']) {
 		//$travel_body .= '<br>';
 		$travel_title = "Travel Comment:";
 		//$travel_body = elgg_echo("travel_title");
-		$travel_body = elgg_view('output/text' ,array('internalname' => 'travel_title_text','value' => $travel_title);
+		$travel_body .= elgg_view('output/text' ,array('internalname' => 'travel_title_text','value' => $travel_title);
 		$travel_body .= '<br>';
 		$travel_body .= elgg_view('input/longtext', array('internalname' => 'travel_comment', 'value' => $travel_print));
 		$travel_body .= '<br>';
