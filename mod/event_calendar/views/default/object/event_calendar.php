@@ -40,6 +40,7 @@ if ($vars['full']) {
 	
 	echo $body;
 	
+		$newline = '<br>';
 	
 		/* Arrival Comment field */
 	
@@ -47,7 +48,8 @@ if ($vars['full']) {
 		$arrival_annotation = $event->getAnnotations('arrival_comment');
 		$arrival_print = $arrival_annotation[0][value];
 		$arrival_body = '<label><b>&nbsp;&nbsp;Arrival Comment:</b></label>';
-		$arrival_body .= elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));	
+		$arrival_body .= elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));
+		$arrival_body .= $newline;
 		$arrival_body .= elgg_view('input/submit', array('internalname' => 'arrival_submit', 'value' => elgg_echo('Add your Arrival here')));
 		$arrival_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
@@ -87,6 +89,7 @@ if ($vars['full']) {
 		$departure_print = $departure_annotation[0][value];
 		$departure_body  = '<label><b>&nbsp;&nbsp;Departure Comment:</b></label>';	
 		$departure_body .= elgg_view('input/longtext', array('internalname' => 'departure_comment', 'value' => $departure_print));
+		$depature_body .= $newline;
 		$departure_body .= elgg_view('input/submit', array('internalname' => 'departure_submit', 'value' => elgg_echo('Add your Departure here')));
 		$departure_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
@@ -126,6 +129,7 @@ if ($vars['full']) {
 		$material_annotation = $event->getAnnotations('material_comment');
 		$material_print = $material_annotation[0][value];
 		$material_body = elgg_view('input/longtext', array('internalname' => 'material_comment', 'value' => $material_print));
+		$material_body .= $newline; 
 		$material_body .= elgg_view('input/submit', array('internalname' => 'material_submit', 'value' => elgg_echo('Add your Material here')));
 		$material_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
@@ -165,6 +169,7 @@ if ($vars['full']) {
 		$booth_annotation = $event->getAnnotations('booth_comment');
 		$booth_print = $booth_annotation[0][value];		
 		$booth_body = elgg_view('input/longtext', array('internalname' => 'booth_comment', 'value' => $booth_print));
+		$booth_body .= $newline;
 		$booth_body .= elgg_view('input/submit', array('internalname' => 'booth_submit', 'value' => elgg_echo('Add your Booth here')));		
 		$booth_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
@@ -208,6 +213,7 @@ if ($vars['full']) {
 		$travel_annotation = $event->getAnnotations('travel_comment');
 		$travel_print = $travel_annotation[0][value];		
 		$travel_body = elgg_view('input/longtext', array('internalname' => 'travel_comment', 'value' => $travel_print));
+		$travel_body .= $newline;
 		$travel_body .= elgg_view('input/submit', array('internalname' => 'travel_submit', 'value' => elgg_echo('Add your Travel here')));
 		$travel_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();		
@@ -249,6 +255,7 @@ if ($vars['full']) {
 		$talks_annotation = $event->getAnnotations('talks_comment');
 		$talks_print = $talks_annotation[0][value];		
 		$talks_form_body = elgg_view('input/submit', array('internalname' => 'takls_submit', 'value' => elgg_echo('Add your Talk here')));
+		$talks_form_body .= $newline;
 		$talks_form_body .= elgg_view('input/longtext', array('internalname' => 'talks_comment', 'value' => $talks_print));
 		$talks_form_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();		
@@ -281,23 +288,12 @@ if ($vars['full']) {
 		* </form>
 		* EOT;
 		*/
-		/*
-		 * var x = document.getElementsByName("lati_body");
-		var lati_element = document.getElementById('lati_body');
-		var lati_value = name_element.value;
-		var y = document.getElementsByName("long_body");
-		var lati_value = lati_element.value;
-		var long_value = long_element.value;
-		alert(lati_value);
-		alert(long_value);
-		document.getElementsByName('myElement')[0].value;
-		 */
 		
 		$lati = $event->latitude;
 		$long = $event->longitude;
-
 		$lati_body = elgg_view("input/hidden",array('internalname' => 'lati_body','value'=>$lati));
 		$long_body = elgg_view("input/hidden",array('internalname' => 'long_body','value'=>$long));
+		
 		$map_body = <<<EOT
 		<div id="mapdiv" style="height:200px" width="100px"></div>
 		<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
@@ -325,7 +321,7 @@ if ($vars['full']) {
     
 EOT;
 	
-		$newline = '<br>';
+		
 		
 		//echo $arrival_body.$newline; -- Uncomment this line if you use the html form method. 
 		
@@ -338,10 +334,7 @@ EOT;
 		echo $lati_body;
 		echo $long_body;
 		echo $map_body;
-		//echo "Lati  : ".$_GET['lati']."<br>";
-		//echo "Long : ".$_GET['long']."<br>";
-		
-		
+	
 		
 		if (isset($_POST['arrival_comment']))
 				{
