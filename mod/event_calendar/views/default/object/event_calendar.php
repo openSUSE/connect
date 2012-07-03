@@ -134,8 +134,8 @@ if ($vars['full']) {
 		$material_print = $material_annotation[0][value];
 		$material_body  = '<label><b>&nbsp;&nbsp;Material Comment:</b></label>';
 		$material_body .= $newline;
-		$material_body .= elgg_view('input/longtext', array('internalname' => 'material_comment', 'value' => $material_print));
 		$material_body .= $newline;
+		$material_body .= elgg_view('input/longtext', array('internalname' => 'material_comment', 'value' => $material_print));
 		$material_body .= $newline;
 		$material_body .= elgg_view('input/submit', array('internalname' => 'material_submit', 'value' => elgg_echo('Add your Material here')));
 		$material_body .= elgg_view('input/securitytoken');
