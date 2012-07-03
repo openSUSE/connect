@@ -276,10 +276,10 @@ $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['travel'].elgg_echo('Who needs travel support').'</p>';
 
 
-//$body .= '<p><label>'.elgg_echo("Event page").'<br />';
-//$body .= elgg_view("input/longtext",array('internalname' => 'booth','value'=>$event_page));
-//$body .= '</label></p>';
-//$body .= '<p class="description">'.$prefix['event_page'].elgg_echo('Here is the event page').'</p>';
+$body .= '<p><label>'.elgg_echo("Facebook page").'<br />';
+$body .= elgg_view("input/longtext",array('internalname' => 'fb','value'=>$fb));
+$body .= '</label></p>';
+$body .= '<p class="description">'.$prefix['fb'].elgg_echo('Here is the Facebook event page').'</p>';
 
 $body .= '<p><label>'.elgg_echo("Arrival").'<br />';
 $body .= elgg_view("input/longtext",array('internalname' => 'arrival','value'=>$arrival));
