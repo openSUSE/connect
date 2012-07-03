@@ -93,7 +93,7 @@ if ($vars['full']) {
 		$departure_body  .= $newline;
 		$departure_body  .= $newline;
 		$departure_body .= elgg_view('input/longtext', array('internalname' => 'departure_comment', 'value' => $departure_print));
-		$depature_body  .= $newline;
+		$departure_body  .= $newline;
 		$departure_body .= elgg_view('input/submit', array('internalname' => 'departure_submit', 'value' => elgg_echo('Add your Departure here')));
 		$departure_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();

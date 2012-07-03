@@ -42,6 +42,7 @@ function event_calendar_get_event_from_form() {
 	$event_data->arrival = get_input('arrival','');
 	$event_data->departure = get_input('departure','');
 	$event_data->booth = get_input('booth','');
+	$event_data->event_page=get_input('event_page','');
 	$event_data->travel = get_input('travel','');
 	$event_data->talks = get_input('talks','');
 	$event_calendar_times = get_plugin_setting('times', 'event_calendar');
@@ -118,7 +119,7 @@ function event_calendar_set_event_from_form() {
 	if ($event_calendar_more_required == 'yes') {
 		$required_fields = array('title','start_date',
 			'brief_description','fees','contact','latitude','longitude','material','arrival','departure','booth','talks','travel', 'organiser',
-			'event_tags');
+			'event_tags','event_page');
 		
 		if ($event_calendar_times == 'yes') {
 			$required_fields[] = 'start_time';
@@ -208,6 +209,7 @@ function event_calendar_set_event_from_form() {
 		$event->talks= $ed->talks;
 		$event->travel=$ed->travel;
 		$event->booth=$ed->booth;
+		$event->event_page=$ed->event_page;
 		$event->real_end_time = event_calendar_get_end_time($event);		
 		$result->success = $event->save();
 		
@@ -939,8 +941,15 @@ function event_calendar_get_formatted_full_items($event) {
 	//$item->value = elgg_view("event_calendar/addcomment", array('entity' => $event));
 	//$event_items[] = $item;
 	
+	$item = new stdClass();
+	$item->title = elgg_echo('Event Page');
+	$item->value = $event->getURL();
+	$event_items[] = $item;
 	
-	
+	$item = new stdClass();
+	$item->title = elgg_echo('Event Page');
+	$item->value = $event->getURL();
+	$event_items[] = $item;
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Arrival');

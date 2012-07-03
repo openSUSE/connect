@@ -71,6 +71,7 @@ if ($event) {
 	$long_description = $event->long_description;
 	$material= $event->material;
 	$booth = $event->booth;
+	$event_page=$event->event_page;
 	$talks=$event->talks;
 	$travel=$event->travel;
 	$arrival=$event->arrival;
@@ -95,6 +96,7 @@ if ($event) {
 	$arrival='';
 	$departure='';
 	$booth='';
+	$event_page='';
 	$travel='';
 	$talks='';
 	if ($event_calendar_spots_display) {
@@ -273,10 +275,11 @@ $body .= elgg_view("input/longtext",array('internalname' => 'travel','value'=>$t
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['travel'].elgg_echo('Who needs travel support').'</p>';
 
-$body .= '<p><label>'.elgg_echo("Booth").'<br />';
-$body .= elgg_view("input/longtext",array('internalname' => 'booth','value'=>$booth));
+
+$body .= '<p><label>'.elgg_echo("Event page").'<br />';
+$body .= elgg_view("input/longtext",array('internalname' => 'booth','value'=>$event_page));
 $body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['booth'].elgg_echo('Who will help at the booth').'</p>';
+$body .= '<p class="description">'.$prefix['event_page'].elgg_echo('Here is the event page').'</p>';
 
 $body .= '<p><label>'.elgg_echo("Arrival").'<br />';
 $body .= elgg_view("input/longtext",array('internalname' => 'arrival','value'=>$arrival));
