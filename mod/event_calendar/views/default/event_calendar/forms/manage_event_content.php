@@ -255,6 +255,12 @@ $body .= elgg_view("input/tags",array('internalname' => 'event_tags','value'=>$e
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['event_tags'].elgg_echo('event_calendar:event_tags_description').'</p>';
 
+$body .= '<p><label>'.elgg_echo("Facebook page").'<br />';
+$body .= elgg_view("input/text",array('internalname' => 'fb','value'=>$fb));
+$body .= '</label></p>';
+$body .= '<p class="description">'.$prefix['fb'].elgg_echo('Here is the Facebook event page').'</p>';
+
+
 $body .= '<p><label>'.elgg_echo("event_calendar:long_description_label").'<br />';
 $body .= elgg_view("input/longtext",array('internalname' => 'long_description','value'=>$long_description));
 $body .= '</label></p>';
@@ -276,10 +282,6 @@ $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['travel'].elgg_echo('Who needs travel support').'</p>';
 
 
-$body .= '<p><label>'.elgg_echo("Facebook page").'<br />';
-$body .= elgg_view("input/text",array('internalname' => 'fb','value'=>$fb));
-$body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['fb'].elgg_echo('Here is the Facebook event page').'</p>';
 
 $body .= '<p><label>'.elgg_echo("Arrival").'<br />';
 $body .= elgg_view("input/longtext",array('internalname' => 'arrival','value'=>$arrival));
