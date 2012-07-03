@@ -218,14 +218,14 @@ if ($vars['full']) {
 		$event->annotate('travel_comment', "");
 		$travel_annotation = $event->getAnnotations('travel_comment');
 		$travel_print = $travel_annotation[0][value];
-		$travel_body  = '<label><b>&nbsp;&nbsp;Travel Comment:</b></label>';
+		//$travel_body  = '<label><b>&nbsp;&nbsp;Travel Comment:</b></label>';
 		//$travel_body .= '<br>';
 		$travel_title = "Travel Comment:";
 		//$travel_body = elgg_echo("travel_title");
-		$travel_body .= elgg_view('output/text' ,array('value' => $travel_title));
-		$travel_body .= '<br>';
+		$travel_body = elgg_view('output/text' ,array('value' => $travel_title));
+		$travel_body .= $newline;
 		$travel_body .= elgg_view('input/longtext', array('internalname' => 'travel_comment', 'value' => $travel_print));
-		$travel_body .= '<br>';
+		$travel_body .= $newline;
 		$travel_body .= elgg_view('input/submit', array('internalname' => 'travel_submit', 'value' => elgg_echo('Add your Travel here')));
 		$travel_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();		
