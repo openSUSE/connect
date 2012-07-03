@@ -48,9 +48,9 @@ if ($vars['full']) {
 		$arrival_annotation = $event->getAnnotations('arrival_comment');
 		$arrival_print = $arrival_annotation[0][value];
 		$arrival_body = '<label><b>&nbsp;&nbsp;Arrival Comment:</b></label>';
-		$arrival_body .= $newline;
+		$arrival_body .= '<br>';
 		$arrival_body .= elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));
-		$arrival_body .= $newline;
+		$arrival_body .= '<br>';
 		$arrival_body .= elgg_view('input/submit', array('internalname' => 'arrival_submit', 'value' => elgg_echo('Add your Arrival here')));
 		$arrival_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
@@ -89,9 +89,9 @@ if ($vars['full']) {
 		$departure_annotation = $event->getAnnotations('departure_comment');
 		$departure_print = $departure_annotation[0][value];
 		$departure_body  = '<label><b>&nbsp;&nbsp;Departure Comment:</b></label>';
-		$depature_body  .= $newline;
+		$depature_body  .= '<br>';;
 		$departure_body .= elgg_view('input/longtext', array('internalname' => 'departure_comment', 'value' => $departure_print));
-		$depature_body .= $newline;
+		$depature_body .= '<br>';;
 		$departure_body .= elgg_view('input/submit', array('internalname' => 'departure_submit', 'value' => elgg_echo('Add your Departure here')));
 		$departure_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
@@ -131,9 +131,9 @@ if ($vars['full']) {
 		$material_annotation = $event->getAnnotations('material_comment');
 		$material_print = $material_annotation[0][value];
 		$material_body  = '<label><b>&nbsp;&nbsp;Material Comment:</b></label>';
-		$material_body .= $newline;
+		$material_body .= '<br>';
 		$material_body .= elgg_view('input/longtext', array('internalname' => 'material_comment', 'value' => $material_print));
-		$material_body .= $newline; 
+		$material_body .= '<br>'; 
 		$material_body .= elgg_view('input/submit', array('internalname' => 'material_submit', 'value' => elgg_echo('Add your Material here')));
 		$material_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
@@ -173,9 +173,9 @@ if ($vars['full']) {
 		$booth_annotation = $event->getAnnotations('booth_comment');
 		$booth_print = $booth_annotation[0][value];	
 		$booth_body  = '<label><b>&nbsp;&nbsp;Booth Comment:</b></label>';
-		$booth_body .= $newline;
+		$booth_body .= '<br>';
 		$booth_body .= elgg_view('input/longtext', array('internalname' => 'booth_comment', 'value' => $booth_print));
-		$booth_body .= $newline;
+		$booth_body .= '<br>';
 		$booth_body .= elgg_view('input/submit', array('internalname' => 'booth_submit', 'value' => elgg_echo('Add your Booth here')));		
 		$booth_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
@@ -219,9 +219,9 @@ if ($vars['full']) {
 		$travel_annotation = $event->getAnnotations('travel_comment');
 		$travel_print = $travel_annotation[0][value];
 		$travel_body  = '<label><b>&nbsp;&nbsp;Travel Comment:</b></label>';
-		$travel_body .= $newline;
+		$travel_body .= '<br>';
 		$travel_body .= elgg_view('input/longtext', array('internalname' => 'travel_comment', 'value' => $travel_print));
-		$travel_body .= $newline;
+		$travel_body .= '<br>';
 		$travel_body .= elgg_view('input/submit', array('internalname' => 'travel_submit', 'value' => elgg_echo('Add your Travel here')));
 		$travel_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();		
@@ -262,12 +262,12 @@ if ($vars['full']) {
 		$event->annotate('talks_comment', "");
 		$talks_annotation = $event->getAnnotations('talks_comment');
 		$talks_print = $talks_annotation[0][value];	
-		$talks_form_body  = '<label><b>&nbsp;&nbsp;Talks Comment:</b></label>';
-		$talks_form_body .= $newline;
-		$talks_form_body .= elgg_view('input/submit', array('internalname' => 'takls_submit', 'value' => elgg_echo('Add your Talk here')));
-		$talks_form_body .= $newline;
-		$talks_form_body .= elgg_view('input/longtext', array('internalname' => 'talks_comment', 'value' => $talks_print));
-		$talks_form_body .= elgg_view('input/securitytoken');
+		$talks_body  = '<label><b>&nbsp;&nbsp;Talks Comment:</b></label>';
+		$talks_body .= '<br>';
+		$talks_body .= elgg_view('input/submit', array('internalname' => 'takls_submit', 'value' => elgg_echo('Add your Talk here')));
+		$talks_body .= '<br>';
+		$talks_body .= elgg_view('input/longtext', array('internalname' => 'talks_comment', 'value' => $talks_print));
+		$talks_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();		
 		$talks_form_body = elgg_view('input/form', array('body' => $talks_body, 'action' => $url));
 		
