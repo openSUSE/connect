@@ -339,7 +339,7 @@ EOT;
 	
 		$name = $user->username;
 		
-		
+		$name_body = elgg_view("output/text",array('internalname' => 'username','value'=>$name));
 		//echo $arrival_body.$newline; -- Uncomment this line if you use the html form method. 
 		
 		echo $arrival_form_body.$newline; 
@@ -351,7 +351,7 @@ EOT;
 		echo $lati_body;
 		echo $long_body;
 		echo $map_body;
-		echo $name;
+		echo $name_body;
 		
 		if (isset($_POST['arrival_comment']))
 				{
