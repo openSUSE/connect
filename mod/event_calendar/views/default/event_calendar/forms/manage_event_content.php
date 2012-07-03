@@ -71,7 +71,7 @@ if ($event) {
 	$long_description = $event->long_description;
 	$material= $event->material;
 	$booth = $event->booth;
-	$event_page=$event->event_page;
+	//$event_page=$event->event_page;
 	$talks=$event->talks;
 	$travel=$event->travel;
 	$arrival=$event->arrival;
@@ -96,7 +96,7 @@ if ($event) {
 	$arrival='';
 	$departure='';
 	$booth='';
-	$event_page='';
+	//$event_page='';
 	$travel='';
 	$talks='';
 	if ($event_calendar_spots_display) {

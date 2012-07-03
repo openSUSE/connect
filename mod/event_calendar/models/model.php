@@ -119,7 +119,7 @@ function event_calendar_set_event_from_form() {
 	if ($event_calendar_more_required == 'yes') {
 		$required_fields = array('title','start_date',
 			'brief_description','fees','contact','latitude','longitude','material','arrival','departure','booth','talks','travel', 'organiser',
-			'event_tags','event_page');
+			'event_tags');
 		
 		if ($event_calendar_times == 'yes') {
 			$required_fields[] = 'start_time';
@@ -209,7 +209,7 @@ function event_calendar_set_event_from_form() {
 		$event->talks= $ed->talks;
 		$event->travel=$ed->travel;
 		$event->booth=$ed->booth;
-		$event->event_page=$ed->event_page;
+		//$event->event_page=$ed->event_page;
 		$event->real_end_time = event_calendar_get_end_time($event);		
 		$result->success = $event->save();
 		
