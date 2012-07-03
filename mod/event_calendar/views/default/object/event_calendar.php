@@ -337,6 +337,7 @@ if ($vars['full']) {
     
 EOT;
 	
+		$name = $user->username;
 		
 		
 		//echo $arrival_body.$newline; -- Uncomment this line if you use the html form method. 
@@ -350,7 +351,7 @@ EOT;
 		echo $lati_body;
 		echo $long_body;
 		echo $map_body;
-	
+		echo $name;
 		
 		if (isset($_POST['arrival_comment']))
 				{
