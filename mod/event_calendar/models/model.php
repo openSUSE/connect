@@ -42,7 +42,7 @@ function event_calendar_get_event_from_form() {
 	$event_data->arrival = get_input('arrival','');
 	$event_data->departure = get_input('departure','');
 	$event_data->booth = get_input('booth','');
-	$event_data->event_page=get_input('event_page','');
+	//$event_data->event_page=get_input('event_page','');
 	$event_data->travel = get_input('travel','');
 	$event_data->talks = get_input('talks','');
 	$event_calendar_times = get_plugin_setting('times', 'event_calendar');
