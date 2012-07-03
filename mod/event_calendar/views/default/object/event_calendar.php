@@ -89,9 +89,9 @@ if ($vars['full']) {
 		$departure_annotation = $event->getAnnotations('departure_comment');
 		$departure_print = $departure_annotation[0][value];
 		$departure_body  = '<label><b>&nbsp;&nbsp;Departure Comment:</b></label>';
-		$depature_body  .= '<br>';;
+		$depature_body  .= '<br>';
 		$departure_body .= elgg_view('input/longtext', array('internalname' => 'departure_comment', 'value' => $departure_print));
-		$depature_body .= '<br>';;
+		$depature_body .= '<br>';
 		$departure_body .= elgg_view('input/submit', array('internalname' => 'departure_submit', 'value' => elgg_echo('Add your Departure here')));
 		$departure_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
@@ -218,8 +218,8 @@ if ($vars['full']) {
 		$event->annotate('travel_comment', "");
 		$travel_annotation = $event->getAnnotations('travel_comment');
 		$travel_print = $travel_annotation[0][value];
-		$travel_body  = '<label><b>&nbsp;&nbsp;Travel Comment:</b></label>';
-		$travel_body .= '<br>';
+		$travel_body  = '<label><b>&nbsp;&nbsp;Travel Comment:</b></label><br>';
+		//$travel_body .= '<br>';
 		$travel_body .= elgg_view('input/longtext', array('internalname' => 'travel_comment', 'value' => $travel_print));
 		$travel_body .= '<br>';
 		$travel_body .= elgg_view('input/submit', array('internalname' => 'travel_submit', 'value' => elgg_echo('Add your Travel here')));
@@ -264,9 +264,9 @@ if ($vars['full']) {
 		$talks_print = $talks_annotation[0][value];	
 		$talks_body  = '<label><b>&nbsp;&nbsp;Talks Comment:</b></label>';
 		$talks_body .= '<br>';
-		$talks_body .= elgg_view('input/submit', array('internalname' => 'takls_submit', 'value' => elgg_echo('Add your Talk here')));
-		$talks_body .= '<br>';
 		$talks_body .= elgg_view('input/longtext', array('internalname' => 'talks_comment', 'value' => $talks_print));
+		$talks_body .= '<br>';
+		$talks_body .= elgg_view('input/submit', array('internalname' => 'takls_submit', 'value' => elgg_echo('Add your Talk here')));	
 		$talks_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();		
 		$talks_form_body = elgg_view('input/form', array('body' => $talks_body, 'action' => $url));
