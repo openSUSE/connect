@@ -222,7 +222,7 @@ if ($vars['full']) {
 		//$travel_body .= '<br>';
 		//$travel_title = "Travel Comment:";
 		//$travel_body = elgg_echo("travel_title");
-		$travel_body .= '<br>';
+		//$travel_body .= '<br>';
 		$travel_body .= elgg_view('input/longtext', array('internalname' => 'travel_comment', 'value' => $travel_print));
 		$travel_body .= '<br>';
 		$travel_body .= elgg_view('input/submit', array('internalname' => 'travel_submit', 'value' => elgg_echo('Add your Travel here')));
