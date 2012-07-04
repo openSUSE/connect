@@ -133,8 +133,6 @@ if ($vars['full']) {
 		$talks_form_body = elgg_view('input/form', array('body' => $talks_body, 'action' => $url));
 		
 		
-		
-		
 		$lati = $event->latitude;
 		$long = $event->longitude;
 		$lati_body = elgg_view("input/hidden",array('internalname' => 'lati_body','value'=>$lati));
@@ -179,7 +177,7 @@ EOT;
 		echo $lati_body;
 		echo $long_body;
 		echo $map_body;
-		echo $name;
+		//echo $name;
 		
 		if (isset($_POST['arrival_comment']))
 				{

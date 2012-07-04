@@ -210,6 +210,7 @@ function event_calendar_set_event_from_form() {
 		$event->travel=$ed->travel;
 		$event->booth=$ed->booth;
 		$event->fb=$ed->fb;
+		$event->event_page=$ed->event_page;
 		$event->real_end_time = event_calendar_get_end_time($event);		
 		$result->success = $event->save();
 		
@@ -870,6 +871,7 @@ function event_calendar_get_formatted_full_items($event) {
 	$event_calendar_region_display = get_plugin_setting('region_display', 'event_calendar');
 	$event_calendar_type_display = get_plugin_setting('type_display', 'event_calendar');
 	$event_items = array();
+	
 	$item = new stdClass();
 	$item->title = elgg_echo('event_calendar:when_label');
 	$item->value = $time_bit;
@@ -887,26 +889,17 @@ function event_calendar_get_formatted_full_items($event) {
 		$item->value = event_calendar_get_type($event);
 		$event_items[] = $item;
 	}
-	$item = new stdClass();
-	$item->title = elgg_echo('event_calendar:fees_label');
-	$item->value = htmlspecialchars($event->fees);
-	$event_items[] = $item;
+	
+	//$item = new stdClass();
+	//$item->title = elgg_echo('event_calendar:fees_label');
+	//$item->value = htmlspecialchars($event->fees);
+	//$event_items[] = $item;
+	
 	$item = new stdClass();
 	$item->title = elgg_echo('event_calendar:organiser_label');
 	$item->value = htmlspecialchars($event->organiser);
 	$event_items[] = $item;
 	
-	
-	
-	$item = new stdClass();
-	$item->title = elgg_echo('Event Page');
-	$item->value = $event->getURL();
-	$event_items[] = $item;
-	
-	$item = new stdClass();
-	$item->title = elgg_echo('Facebook Page');
-	$item->value = $event->fb;
-	$event_items[] = $item;
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Arrival');
@@ -948,6 +941,16 @@ function event_calendar_get_formatted_full_items($event) {
 	$item->value = elgg_view("output/tags",array('value'=>$event->event_tags));
 	$event_items[] = $item;
 
+	$item = new stdClass();
+	$item->title = elgg_echo('Event Page');
+	$item->value = $event->event_page;
+	$event_items[] = $item;
+	
+	$item = new stdClass();
+	$item->title = elgg_echo('Facebook Page');
+	$item->value = $event->fb;
+	$event_items[] = $item;
+	
 	return $event_items;
 }
 

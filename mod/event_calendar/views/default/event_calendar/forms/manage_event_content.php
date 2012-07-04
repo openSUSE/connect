@@ -71,7 +71,7 @@ if ($event) {
 	$long_description = $event->long_description;
 	$material= $event->material;
 	$booth = $event->booth;
-	//$event_page=$event->event_page;
+	$event_page=$event->event_page;
 	$talks=$event->talks;
 	$travel=$event->travel;
 	$arrival=$event->arrival;
@@ -86,7 +86,6 @@ if ($event) {
 	$event_id = 0;
 	$title = '';
 	$brief_description = '';
-	//$venue = '';
 	$start_date = '';
 	$end_date = '';
 	$fees = '';
@@ -96,7 +95,7 @@ if ($event) {
 	$arrival='';
 	$departure='';
 	$booth='';
-	//$event_page='';
+	$event_page='';
 	$travel='';
 	$talks='';
 	if ($event_calendar_spots_display) {
@@ -224,10 +223,10 @@ if ($event_calendar_type_display == 'yes') {
 	}
 }
 
-$body .= '<p><label>'.elgg_echo("event_calendar:fees_label").'<br />';
-$body .= elgg_view("input/text",array('internalname' => 'fees','value'=>$fees));
-$body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['fees'].elgg_echo('event_calendar:fees_description').'</p>';
+//$body .= '<p><label>'.elgg_echo("event_calendar:fees_label").'<br />';
+//$body .= elgg_view("input/text",array('internalname' => 'fees','value'=>$fees));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['fees'].elgg_echo('event_calendar:fees_description').'</p>';
 
 $body .= '<p><label>'.elgg_echo("event_calendar:contact_label").'<br />';
 $body .= elgg_view("input/text",array('internalname' => 'contact','value'=>$contact));
@@ -250,10 +249,21 @@ $body .= elgg_view("input/text",array('internalname' => 'organiser','value'=>$or
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['organiser'].elgg_echo('event_calendar:organiser_description').'</p>';
 
+$body .= '<p><label>'.elgg_echo("event_calendar:long_description_label").'<br />';
+$body .= elgg_view("input/longtext",array('internalname' => 'long_description','value'=>$long_description));
+$body .= '</label></p>';
+$body .= '<p class="description">'.$prefix['long_description'].elgg_echo('event_calendar:long_description_description').'</p>';
+
 $body .= '<p><label>'.elgg_echo("event_calendar:event_tags_label").'<br />';
 $body .= elgg_view("input/tags",array('internalname' => 'event_tags','value'=>$event_tags));
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['event_tags'].elgg_echo('event_calendar:event_tags_description').'</p>';
+
+$body .= '<p><label>'.elgg_echo("Web page").'<br />';
+$body .= elgg_view("input/text",array('internalname' => 'event_page','value'=>$event_page));
+$body .= '</label></p>';
+$body .= '<p class="description">'.$prefix['event_page'].elgg_echo('Here is the Event web page').'</p>';
+
 
 $body .= '<p><label>'.elgg_echo("Facebook page").'<br />';
 $body .= elgg_view("input/text",array('internalname' => 'fb','value'=>$fb));
@@ -261,37 +271,33 @@ $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['fb'].elgg_echo('Here is the Facebook event page').'</p>';
 
 
-$body .= '<p><label>'.elgg_echo("event_calendar:long_description_label").'<br />';
-$body .= elgg_view("input/longtext",array('internalname' => 'long_description','value'=>$long_description));
-$body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['long_description'].elgg_echo('event_calendar:long_description_description').'</p>';
 
-$body .= '<p><label>'.elgg_echo("Material").'<br />';
-$body .= elgg_view("input/longtext",array('internalname' => 'material','value'=>$material));
-$body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['material'].elgg_echo('Add your Material here').'</p>';
+//$body .= '<p><label>'.elgg_echo("Material").'<br />';
+//$body .= elgg_view("input/longtext",array('internalname' => 'material','value'=>$material));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['material'].elgg_echo('Add your Material here').'</p>';
 
-$body .= '<p><label>'.elgg_echo("Talks").'<br />';
-$body .= elgg_view("input/longtext",array('internalname' => 'talks','value'=>$talks));
-$body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['talks'].elgg_echo('Add your Material here').'</p>';
+//$body .= '<p><label>'.elgg_echo("Talks").'<br />';
+//$body .= elgg_view("input/longtext",array('internalname' => 'talks','value'=>$talks));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['talks'].elgg_echo('Add your Material here').'</p>';
 
-$body .= '<p><label>'.elgg_echo("Travel Support").'<br />';
-$body .= elgg_view("input/longtext",array('internalname' => 'travel','value'=>$travel));
-$body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['travel'].elgg_echo('Who needs travel support').'</p>';
+//$body .= '<p><label>'.elgg_echo("Travel Support").'<br />';
+//$body .= elgg_view("input/longtext",array('internalname' => 'travel','value'=>$travel));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['travel'].elgg_echo('Who needs travel support').'</p>';
 
 
 
-$body .= '<p><label>'.elgg_echo("Arrival").'<br />';
-$body .= elgg_view("input/longtext",array('internalname' => 'arrival','value'=>$arrival));
-$body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['arrival'].elgg_echo('Who will arrive and when').'</p>';
+//$body .= '<p><label>'.elgg_echo("Arrival").'<br />';
+//$body .= elgg_view("input/longtext",array('internalname' => 'arrival','value'=>$arrival));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['arrival'].elgg_echo('Who will arrive and when').'</p>';
 
-$body .= '<p><label>'.elgg_echo("Departure").'<br />';
-$body .= elgg_view("input/longtext",array('internalname' => 'departure','value'=>$departure));
-$body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['departure'].elgg_echo('Who will leave and when').'</p>';
+//$body .= '<p><label>'.elgg_echo("Departure").'<br />';
+//$body .= elgg_view("input/longtext",array('internalname' => 'departure','value'=>$departure));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['departure'].elgg_echo('Who will leave and when').'</p>';
 
 
 
