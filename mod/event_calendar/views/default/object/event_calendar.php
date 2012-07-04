@@ -234,7 +234,7 @@ EOT;
 					$event->talks = $event->talks.$tal_line.$tal_comment;
 				}		
 				
-	echo $data;
+	echo elgg_view('input/longtext', array('internalname' => 'data', 'value' => $data));
 				
 		
 	if ($event->long_description) {
