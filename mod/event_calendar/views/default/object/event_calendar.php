@@ -170,18 +170,7 @@ EOT;
 		
 		//echo $arrival_form_body.$newline; 
 		//echo $departure_form_body.$newline;
-		echo $participant_form_body.$newline;
-		echo $material_form_body.$newline;
-		echo $booth_form_body.$newline;
-		//echo $travel_form_body.$newline;
-		echo $talks_form_body.$newline;
-		echo $lati_body;
-		echo $long_body;
-		echo $map_body;
 		
-		$con = mysql_connect("127.0.0.1","root","");
-		$sql = 'CREATE DATABASE my_db';
-		mysql_query($sql, $con);
 		
 		
 		
@@ -189,13 +178,23 @@ EOT;
 				{
 					
 					$par_comment = $_POST['participant_comment'];
-					//$par_line = "\n";
-					//$event->arrival = $event->arrival.$par_line.$par_comment;
 					
 					$data = explode("\n", $par_comment);
-				//	$booth_print = $data;
+				
 					
-					echo elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $data[0]));
+					$event->annotate('participant_comment', "");
+					$participant_annotation = $event->getAnnotations('participant_comment');
+					$participant_print = $participant_annotation[0][value];
+					$participant_body = '<label><b>&nbsp;&nbsp;Participants:</b></label>';
+					$participant_body .= $newline;
+					$participant_body .= $newline;
+					$participant_body .= elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $data[0]));
+					$participant_body .= $newline;
+					$participant_body .= elgg_view('input/submit', array('internalname' => 'participant_submit', 'value' => elgg_echo('Participate')));
+					$participant_body .= elgg_view('input/securitytoken');
+					$url = $event->getURL();
+					$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
+					
 					
 				}
 				
@@ -242,6 +241,13 @@ EOT;
 				}		
 				
 	
+				echo $participant_form_body.$newline;
+				echo $material_form_body.$newline;
+				echo $booth_form_body.$newline;
+				echo $talks_form_body.$newline;
+				echo $lati_body;
+				echo $long_body;
+				echo $map_body;
 				
 		
 	if ($event->long_description) {
