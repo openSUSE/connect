@@ -45,7 +45,7 @@ if ($vars['full']) {
 		/* Participants Comment field */
 	
 		$event->annotate('participant_comment', "");
-		$participant_annotation = $event->getAnnotations('arrival_comment');
+		$participant_annotation = $event->getAnnotations('participant_comment');
 		$participant_print = $participant_annotation[0][value];
 		$participant_body = '<label><b>&nbsp;&nbsp;Participants:</b></label>';
 		$participant_body .= $newline;
@@ -180,12 +180,15 @@ EOT;
 		echo $map_body;
 		
 		
-		if (isset($_POST['arrival_comment']))
+		if (isset($_POST['participant_comment']))
 				{
 					
-					$arr_comment = $_POST['arrival_comment'];
-					$arr_line = "\n";
-					$event->arrival = $event->arrival.$arr_line.$arr_comment;
+					$par_comment = $_POST['participant_comment'];
+					//$par_line = "\n";
+					//$event->arrival = $event->arrival.$par_line.$par_comment;
+					
+					$data = explode("\n", $_POST['participant_comment']);
+					$booth_print = $data;
 					
 				}
 				
