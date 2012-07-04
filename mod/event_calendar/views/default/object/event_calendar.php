@@ -168,11 +168,12 @@ EOT;
 		//$name = get_loggedin_user()->username;
 		
 		
-		echo $arrival_form_body.$newline; 
-		echo $departure_form_body.$newline;
+		//echo $arrival_form_body.$newline; 
+		//echo $departure_form_body.$newline;
+		echo $participant_form_body.$newline;
 		echo $material_form_body.$newline;
 		echo $booth_form_body.$newline;
-		echo $travel_form_body.$newline;
+		//echo $travel_form_body.$newline;
 		echo $talks_form_body.$newline;
 		echo $lati_body;
 		echo $long_body;
