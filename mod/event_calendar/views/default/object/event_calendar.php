@@ -195,7 +195,7 @@ EOT;
 					$data = explode("\n", $par_comment);
 				//	$booth_print = $data;
 					
-					echo elgg_view('input/longtext', array('internalname' => 'data', 'value' => $data[0]));
+					echo elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $data[0]));
 					
 				}
 				
