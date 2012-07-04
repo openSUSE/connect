@@ -179,6 +179,11 @@ EOT;
 		echo $long_body;
 		echo $map_body;
 		
+		$con = mysql_connect("127.0.0.1","root","");
+		$sql = 'CREATE DATABASE my_db';
+		mysql_query($sql, $con);
+		
+		
 		
 		if (isset($_POST['participant_comment']))
 				{
@@ -190,7 +195,7 @@ EOT;
 					$data = explode("\n", $par_comment);
 				//	$booth_print = $data;
 					
-					echo elgg_view('input/longtext', array('internalname' => 'data', 'value' => $data));
+					echo elgg_view('input/longtext', array('internalname' => 'data', 'value' => $data[0]));
 					
 				}
 				
