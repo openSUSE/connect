@@ -192,10 +192,10 @@ EOT;
 					
 					while($row = mysql_fetch_array($participant_select_query)){
 						
-						$name_row = $data[0];
-						$arrival_row = $data[1];
-						$departure_row = $data[2];
-						$from_row = $data[3];
+						$name_row = $name;
+						$arrival_row = $data[0];
+						$departure_row = $data[1];
+						$from_row = $data[2];
 						
 						$part_print_rows = $name_row;
 						$part_print_rows .= $arrival_row;
