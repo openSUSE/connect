@@ -188,7 +188,7 @@ EOT;
 					//$event->arrival = $event->arrival.$par_line.$par_comment;
 					
 					$data = explode("\n", $_POST['participant_comment']);
-					$booth_print = $data;
+				//	$booth_print = $data;
 					
 				}
 				
@@ -234,6 +234,7 @@ EOT;
 					$event->talks = $event->talks.$tal_line.$tal_comment;
 				}		
 				
+	echo $data;
 				
 		
 	if ($event->long_description) {
