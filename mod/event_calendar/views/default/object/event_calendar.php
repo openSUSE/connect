@@ -187,8 +187,10 @@ EOT;
 					//$par_line = "\n";
 					//$event->arrival = $event->arrival.$par_line.$par_comment;
 					
-					$data = explode("\n", $_POST['participant_comment']);
+					$data = explode("\n", $par_comment);
 				//	$booth_print = $data;
+					
+					echo elgg_view('input/longtext', array('internalname' => 'data', 'value' => $data));
 					
 				}
 				
@@ -234,7 +236,7 @@ EOT;
 					$event->talks = $event->talks.$tal_line.$tal_comment;
 				}		
 				
-	echo elgg_view('input/longtext', array('internalname' => 'data', 'value' => $data));
+	
 				
 		
 	if ($event->long_description) {
