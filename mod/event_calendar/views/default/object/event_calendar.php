@@ -42,35 +42,35 @@ if ($vars['full']) {
 	
 		$newline = '<br>';
 	
-		/* Arrival Comment field */
+		/* Participants Comment field */
 	
-		$event->annotate('arrival_comment', "");
-		$arrival_annotation = $event->getAnnotations('arrival_comment');
-		$arrival_print = $arrival_annotation[0][value];
-		$arrival_body = '<label><b>&nbsp;&nbsp;Arrival Comment:</b></label>';
-		$arrival_body .= $newline;
-		$arrival_body .= $newline;
-		$arrival_body .= elgg_view('input/longtext', array('internalname' => 'arrival_comment', 'value' => $arrival_print));
-		$arrival_body .= $newline;
-		$arrival_body .= elgg_view('input/submit', array('internalname' => 'arrival_submit', 'value' => elgg_echo('Add your Arrival here')));
-		$arrival_body .= elgg_view('input/securitytoken');
+		$event->annotate('participant_comment', "");
+		$participant_annotation = $event->getAnnotations('arrival_comment');
+		$participant_print = $participant_annotation[0][value];
+		$participant_body = '<label><b>&nbsp;&nbsp;Participants:</b></label>';
+		$participant_body .= $newline;
+		$participant_body .= $newline;
+		$participant_body .= elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $participant_print));
+		$participant_body .= $newline;
+		$participant_body .= elgg_view('input/submit', array('internalname' => 'participant_submit', 'value' => elgg_echo('Participate')));
+		$participant_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
-		$arrival_form_body = elgg_view('input/form', array('body' => $arrival_body, 'action' => $url));
+		$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
 		
 		/* Departure Comment field */
 		
-		$event->annotate('departure_comment', "");
-		$departure_annotation = $event->getAnnotations('departure_comment');
-		$departure_print = $departure_annotation[0][value];
-		$departure_body  = '<label><b>&nbsp;&nbsp;Departure Comment:</b></label>';
-		$departure_body  .= $newline;
-		$departure_body  .= $newline;
-		$departure_body .= elgg_view('input/longtext', array('internalname' => 'departure_comment', 'value' => $departure_print));
-		$departure_body  .= $newline;
-		$departure_body .= elgg_view('input/submit', array('internalname' => 'departure_submit', 'value' => elgg_echo('Add your Departure here')));
-		$departure_body .= elgg_view('input/securitytoken');
-		$url = $event->getURL();
-		$departure_form_body = elgg_view('input/form', array('body' => $departure_body, 'action' => $url));
+	//	$event->annotate('departure_comment', "");
+	//	$departure_annotation = $event->getAnnotations('departure_comment');
+	//	$departure_print = $departure_annotation[0][value];
+	//	$departure_body  = '<label><b>&nbsp;&nbsp;Departure Comment:</b></label>';
+	//	$departure_body  .= $newline;
+	//	$departure_body  .= $newline;
+	//	$departure_body .= elgg_view('input/longtext', array('internalname' => 'departure_comment', 'value' => $departure_print));
+	//	$departure_body  .= $newline;
+	//	$departure_body .= elgg_view('input/submit', array('internalname' => 'departure_submit', 'value' => elgg_echo('Add your Departure here')));
+	//	$departure_body .= elgg_view('input/securitytoken');
+	//	$url = $event->getURL();
+	//	$departure_form_body = elgg_view('input/form', array('body' => $departure_body, 'action' => $url));
 			
 		/* Material Comment field */
 		
@@ -82,7 +82,7 @@ if ($vars['full']) {
 		$material_body .= $newline;
 		$material_body .= elgg_view('input/longtext', array('internalname' => 'material_comment', 'value' => $material_print));
 		$material_body .= $newline;
-		$material_body .= elgg_view('input/submit', array('internalname' => 'material_submit', 'value' => elgg_echo('Add your Material here')));
+		$material_body .= elgg_view('input/submit', array('internalname' => 'material_submit', 'value' => elgg_echo('Bring your Material')));
 		$material_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
 		$material_form_body = elgg_view('input/form', array('body' => $material_body, 'action' => $url));
@@ -104,18 +104,18 @@ if ($vars['full']) {
 		
 		/* Travel Comment field */
 		
-		$event->annotate('travel_comment', "");
-		$travel_annotation = $event->getAnnotations('travel_comment');
-		$travel_print = $travel_annotation[0][value];
-		$travel_body  = '<label><b>&nbsp;&nbsp;Travel Comment:</b></label>';
-		$travel_body .= $newline;
-		$travel_body .= $newline;
-		$travel_body .= elgg_view('input/longtext', array('internalname' => 'travel_comment', 'value' => $travel_print));
-		$travel_body .= $newline;
-		$travel_body .= elgg_view('input/submit', array('internalname' => 'travel_submit', 'value' => elgg_echo('Add your Travel here')));
-		$travel_body .= elgg_view('input/securitytoken');
-		$url = $event->getURL();		
-		$travel_form_body = elgg_view('input/form', array('body' => $travel_body, 'action' => $url));
+	//	$event->annotate('travel_comment', "");
+	//	$travel_annotation = $event->getAnnotations('travel_comment');
+	//	$travel_print = $travel_annotation[0][value];
+	//	$travel_body  = '<label><b>&nbsp;&nbsp;Travel Comment:</b></label>';
+	//	$travel_body .= $newline;
+	//	$travel_body .= $newline;
+	//	$travel_body .= elgg_view('input/longtext', array('internalname' => 'travel_comment', 'value' => $travel_print));
+	//	$travel_body .= $newline;
+	//	$travel_body .= elgg_view('input/submit', array('internalname' => 'travel_submit', 'value' => elgg_echo('Add your Travel here')));
+	//	$travel_body .= elgg_view('input/securitytoken');
+	//	$url = $event->getURL();		
+	//	$travel_form_body = elgg_view('input/form', array('body' => $travel_body, 'action' => $url));
 		
 		/*Talks comment field*/
 		
@@ -165,7 +165,7 @@ if ($vars['full']) {
     
 EOT;
 	
-		$name = get_loggedin_user()->username;
+		//$name = get_loggedin_user()->username;
 		
 		
 		echo $arrival_form_body.$newline; 
@@ -177,7 +177,7 @@ EOT;
 		echo $lati_body;
 		echo $long_body;
 		echo $map_body;
-		//echo $name;
+		
 		
 		if (isset($_POST['arrival_comment']))
 				{
