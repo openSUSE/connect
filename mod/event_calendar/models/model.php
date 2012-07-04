@@ -874,11 +874,8 @@ function event_calendar_get_formatted_full_items($event) {
 	$item->title = elgg_echo('event_calendar:when_label');
 	$item->value = $time_bit;
 	$event_items[] = $item;
-	//$item = new stdClass();
-	//$item->title = elgg_echo('event_calendar:venue_label');
-	//$item->value = htmlspecialchars($event->venue);
-	//$event_items[] = $item;
-	if ($event_calendar_region_display == 'yes') {
+
+		if ($event_calendar_region_display == 'yes') {
 		$item = new stdClass();
 		$item->title = elgg_echo('event_calendar:region_label');
 		$item->value = event_calendar_get_region($event);
@@ -899,47 +896,7 @@ function event_calendar_get_formatted_full_items($event) {
 	$item->value = htmlspecialchars($event->organiser);
 	$event_items[] = $item;
 	
-	//$item = new stdClass();
-	//$item->title = elgg_echo('Longitude');
-	//$item->value = $event->longitude;
-	//$event_items[] = $item;
 	
-	//$item = new stdClass();
-	//$item->title = elgg_echo('Latitude');
-	//$item->value = $event->latitude;
-	//$event_items[] = $item;
-	
-	
-	
-	
-	//$item = new stdClass();
-	//$item->title = elgg_echo('Google Map Location');
-	//$long_float = (float)$event->longitude;
-	//$lati_float = (float)$event->latitude;
-	//$geo_loc = "$long_float,$lati_float"; 
-	//$options['markers'] = array(array('address'=>$geo_loc,
-      //                                'html'=>'The event will take place here',
-        //                              'type'=>'user'), // You can choose an image from images/markers category
-			//					array('zoom'=>25));
-                          
-	//$map = elgg_view('google-map/view', $options);
-	//$item->value = $map;
-	//$event_items[] = $item;
-	
-	
-	//// add the post to the forum topic
-//$post_id = $topic->annotate('group_topic_post', $post, $topic->access_id, $user->guid);
-//if ($post_id == false) {
-	//system_message(elgg_echo("groupspost:failure"));
-	//forward($_SERVER['HTTP_REFERER']);
-//}
-	
-	
-	
-	//$item = new stdClass();
-	//$item->title = elgg_echo('Add a new comment here');
-	//$item->value = elgg_view("event_calendar/addcomment", array('entity' => $event));
-	//$event_items[] = $item;
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Event Page');
@@ -955,141 +912,37 @@ function event_calendar_get_formatted_full_items($event) {
 	$item->title = elgg_echo('Arrival');
 	$item->value = $event->arrival;	
 	$event_items[] = $item;
-	
-	//$item = new stdClass();
-	//$item->title = elgg_echo('Arrival Comment');
-	//$event->annotate('arrival_comment', "Aj :21/06");
-	//$arrival_annotation = $event->getAnnotations('arrival_comment');
-	
-	//display follow up comments
-	//$count = $event->countAnnotations('arrival_comment');
-	//$arrival_print = $arrival_annotation[0][value];
-	
-	//$post = get_input("post");
-	//$field_num = get_input("field_num");
-	//$post_comment = get_input("postComment{$field_num}");
-	//$annotation = get_annotation($arrival_annotation);
-	//$commentOwner = $annotation->owner_guid;
-	//$access_id = $annotation->access_id;
-	
-	
-	//$topic_guid = get_input("topic");
-	//$item -> value = update_annotation($post, "comment_post", $post_comment, "",$commentOwner, $access_id);
-	//forward($topic->getURL()); // It could be $event->getURL(); 
-	//$item->value=elgg_view("input/longtext",array('internalname' => 'arrival_comment','value'=>$arrival_print));
-	//$item->value = get_input("arrival_comment");
-	//$topic = get_entity($item->value);
-	//$event_items[] = $item;
-	
-//	$item = new stdClass();
-//	$item->title = elgg_echo('Arrival');
-//	$item->value = elgg_view('input/submit', array('internalname' => 'submit_arrival', 'value' => elgg_echo('save')));
-//	$event_items[] = $item;
-	
+		
 	$item = new stdClass();
 	$item->title = elgg_echo('Departure');
 	$item->value = $event->departure;
 	$event_items[] = $item;
-
-//	$item = new stdClass();
-//	$item->title = elgg_echo('Departure Comment');
-	//$event->annotate('departure_comment', "Aj :26/06");
-//	$departure_annotation = $event->getAnnotations('departure_comment');
-//	$departure_print = $departure_annotation[0][value];
-	
-//	$item->value=elgg_view("input/longtext",array('internalname' => 'departure_comment','value'=>$departure_print));
-	//$item->value = $departure_print;
-//	$event_items[] = $item;
-	
-	
-	//$item = new stdClass();
-	//$item->title = elgg_echo('');
-	//$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
-	//$event_items[] = $item;
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Material');
 	$item->value = $event->material;
 	$event_items[] = $item;
-	
-//	$item = new stdClass();
-//	$item->title = elgg_echo('Material Comment');
-	//$event->annotate('material_comment', "Aj :200 DVD's");
-//	$material_annotation = $event->getAnnotations('material_comment');
-//	$material_print = $material_annotation[0][value];
-	
-//	$item->value=elgg_view("input/longtext",array('internalname' => 'material_comment','value'=>$material_print));
-	//$item->value = $material_print;
-//	$event_items[] = $item;
-	
-	//$item = new stdClass();
-	//$item->title = elgg_echo('');
-	//$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
-	//$event_items[] = $item;
-	
+		
 	$item = new stdClass();
 	$item->title = elgg_echo('Booth');
 	$item->value = $event->booth;
 	$event_items[] = $item;
-	
-//	$item = new stdClass();
-//	$item->title = elgg_echo('Booth Comment');
-	//$event->annotate('booth_comment', "Aj,Zoumpis");
-//	$booth_annotation = $event->getAnnotations('booth_comment');
-//	$booth_print = $booth_annotation[0][value];
-//	$item->value=elgg_view("input/longtext",array('internalname' => 'booth_comment','value'=>$booth_print));
-	//$item->value = $booth_print;
-//	$event_items[] = $item;
-	
-	//$item = new stdClass();
-	//$item->title = elgg_echo('');
-	//$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
-	//$event_items[] = $item;
-	
+		
 	$item = new stdClass();
 	$item->title = elgg_echo('Travel Support');
 	$item->value = $event->travel;
 	$event_items[] = $item;
 	
-//	$item = new stdClass();
-//	$item->title = elgg_echo('Travel Support Comment');
-	//$event->annotate('travel_comment', "Aj,Zoumpis");
-//	$travel_annotation = $event->getAnnotations('travel_comment');
-//	$travel_print = $travel_annotation[0][value];
-	
-//	$item->value=elgg_view("input/longtext",array('internalname' => 'travel_comment','value'=>$travel_print));
-	//$item->value = $travel_print;
-//	$event_items[] = $item;
-	
-	//$item = new stdClass();
-	//$item->title = elgg_echo('');
-	//$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
-	//$event_items[] = $item;
-	
-	
 	$item = new stdClass();
 	$item->title = elgg_echo('Talks');
 	$item->value = $event->talks;
 	$event_items[] = $item;
-//	$item = new stdClass();
-//	$item->title = elgg_echo('Talks Comment');
-	//$event->annotate('talks_comment', "Aj :How to become a lizard");
-//	$talks_annotation = $event->getAnnotations('talks_comment');
-//	$talks_print = $talks_annotation[0][value];
-//	$item->value=elgg_view("input/longtext",array('internalname' => 'talks_comment','value'=>$talks_print));
-	//$submit_button = "<p>".elgg_view("input/submit",array("value"=>elgg_echo('event_calendar:model:talks_print_button')))."</p>";
-	//$item->value = $talks_print;
-//	$event_items[] = $item;
-	
-	//$item = new stdClass();
-	//$item->title = elgg_echo('');
-	//$item->value = elgg_view("input/submit",array("value"=>elgg_echo('Submit me')));
-	//$event_items[] = $item;
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('event_calendar:contact_label');
 	$item->value = htmlspecialchars($event->contact);
 	$event_items[] = $item;
+
 	$item = new stdClass();
 	$item->title = elgg_echo('event_calendar:event_tags_label');
 	$item->value = elgg_view("output/tags",array('value'=>$event->event_tags));
