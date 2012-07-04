@@ -198,9 +198,9 @@ EOT;
 						$from_row = $data[3];
 						
 						$part_print_rows = $name_row;
-						$part_prin_rows .= $arrival_row;
-						$part_prin_rows .= $departure_row; 
-						$part_prin_rows .= $part_prin_rows;
+						$part_print_rows .= $arrival_row;
+						$part_print_rows .= $departure_row; 
+						$part_print_rows .= $part_prin_rows;
 						
 						
 						$event->annotate('participant_comment', "");
@@ -209,7 +209,7 @@ EOT;
 						$participant_body = '<label><b>&nbsp;&nbsp;Participants:</b></label>';
 						$participant_body .= $newline;
 						$participant_body .= $newline;
-						$participant_body .= elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $part_prin_rows));
+						$participant_body .= elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $part_print_rows));
 						$participant_body .= $newline;
 						$participant_body .= elgg_view('input/submit', array('internalname' => 'participant_submit', 'value' => elgg_echo('Participate')));
 						$participant_body .= elgg_view('input/securitytoken');
