@@ -165,12 +165,17 @@ if ($vars['full']) {
     
 EOT;
 	
-		//$name = get_loggedin_user()->username;
+		$name = get_loggedin_user()->username;
 		
 		
 		//echo $arrival_form_body.$newline; 
 		//echo $departure_form_body.$newline;
 		
+		$con = mysql_connect("127.0.0.1","root","");
+		$sql = 'CREATE DATABASE my_db';
+		mysql_query($sql, $con);
+		
+		$participant_query = "CREATE TABLE participant(name VARCHAR(30) NOT NULL AUTO_INCREMENT,arrival DATE,departure DATE,from VARCHAR(30)";
 		
 		
 		
@@ -180,22 +185,38 @@ EOT;
 					$par_comment = $_POST['participant_comment'];
 					
 					$data = explode("\n", $par_comment);
-				
 					
-					$event->annotate('participant_comment', "");
-					$participant_annotation = $event->getAnnotations('participant_comment');
-					$participant_print = $participant_annotation[0][value];
-					$participant_body = '<label><b>&nbsp;&nbsp;Participants:</b></label>';
-					$participant_body .= $newline;
-					$participant_body .= $newline;
-					$participant_body .= elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $data[0]));
-					$participant_body .= $newline;
-					$participant_body .= elgg_view('input/submit', array('internalname' => 'participant_submit', 'value' => elgg_echo('Participate')));
-					$participant_body .= elgg_view('input/securitytoken');
-					$url = $event->getURL();
-					$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
+					$participant_insert_query = "INSERT INTO participant (name,arrival,departure,from) VALUE ('$name','$data[0]','$data[1]','$data[2]')";
 					
+					$participant_select_query = "SELECT name,arrival,departure,from FROM participant";
 					
+					while($row = mysql_fetch_array($participant_select_query)){
+						
+						$name_row = $data[0];
+						$arrival_row = $data[1];
+						$departure_row = $data[2];
+						$from_row = $data[3];
+						
+						$part_print_rows = $name_row;
+						$part_prin_rows .= $arrival_row;
+						$part_prin_rows .= $departure_row; 
+						$part_prin_rows .= $part_prin_rows;
+						
+						
+						$event->annotate('participant_comment', "");
+						$participant_annotation = $event->getAnnotations('participant_comment');
+						$participant_print = $participant_annotation[0][value];
+						$participant_body = '<label><b>&nbsp;&nbsp;Participants:</b></label>';
+						$participant_body .= $newline;
+						$participant_body .= $newline;
+						$participant_body .= elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $part_prin_rows));
+						$participant_body .= $newline;
+						$participant_body .= elgg_view('input/submit', array('internalname' => 'participant_submit', 'value' => elgg_echo('Participate')));
+						$participant_body .= elgg_view('input/securitytoken');
+						$url = $event->getURL();
+						$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
+						
+					}
 				}
 				
 		if (isset($_POST['departure_comment']))
