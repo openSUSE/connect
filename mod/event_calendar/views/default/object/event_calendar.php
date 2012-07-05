@@ -229,16 +229,16 @@ EOT;
 						
 					mysql_query($ins_query,$con);
 					
-					$sql= "SELECT * FROM participant where name='{$name}';"
+					 
 						
-					$sel_query =mysql_fetch_array(mysql_query($sql));
+					$sel_query =mysql_fetch_array(mysql_query("SELECT * FROM participant where name='{$name}';",$con));
 						
 					
-					$name_row = $sel_query['name'];
-					$arrival_row = $sel_query['arrival'];
-					$departure_row = $sel_query['departure'];
-					$location_row = $sel_query['location'];
-					$part_print_rows = $name_row.$arrival_row.$departure_row.$location_row;
+					//$name_row = $sel_query['name'];
+					//$arrival_row = $sel_query['arrival'];
+					//$departure_row = $sel_query['departure'];
+					//$location_row = $sel_query['location'];
+					//$part_print_rows = $name_row.$arrival_row.$departure_row.$location_row;
 					$event->annotate('participant_comment', "");
 					$participant_annotation = $event->getAnnotations('participant_comment');
 					$participant_print = $participant_annotation[0][value];
