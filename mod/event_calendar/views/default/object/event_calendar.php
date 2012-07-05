@@ -171,15 +171,15 @@ EOT;
 		//echo $arrival_form_body.$newline; 
 		//echo $departure_form_body.$newline;
 		
-		//function table_exists ($table, $db) {
-		//	$tables = mysql_list_tables ($db);
-		//	while (list ($temp) = mysql_fetch_array ($tables)) {
-			//		if ($temp == $table) {
-			//				return TRUE;
-		//}
-		//	}
-		//	return FALSE;
-		//}
+		function table_exists ($table, $db) {
+			$tables = mysql_list_tables ($db);
+			while (list ($temp) = mysql_fetch_array ($tables)) {
+					if ($temp == $table) {
+							return TRUE;
+		}
+			}
+			return FALSE;
+		}
 					
 		$dbhost = 'localhost';
 		$dbuser = 'root';
@@ -190,8 +190,8 @@ EOT;
 		$sql = 'CREATE DATABASE my_db';
 		mysql_query($sql,$con);
 		mysql_select_db("my_db",$con);		
-		$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
-		mysql_query($participant_query,$con);
+		//$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
+		//mysql_query($participant_query,$con);
 						
 		if (isset($_POST['participant_comment']))
 				{
@@ -200,7 +200,7 @@ EOT;
 					
 					$data = explode("\n", $par_comment);
 					
-				}
+				
 					if (!$sql) {
 						
 						die("Database does not exist!");
@@ -211,13 +211,13 @@ EOT;
 						//	$db_query = mysql_query($sql,$con);
 						//	$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
 								
-						if (!$db_select) {
+						if (!mysql_select_db("my_db",$con)) {
 								
 							die("Cannot select database");
 							
 							else 
 								
-								if (table_exists('participant', 'my_db')) {
+								if (table_exists('participant','my_db')) {
 									
 									$participant_insert_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";
 									
@@ -252,7 +252,7 @@ EOT;
 								}
 							}
 						} 
-							
+					}			
 					
 				
 				
