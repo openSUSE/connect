@@ -184,6 +184,10 @@ EOT;
 		
 		$con = mysql_connect("127.0.0.1","root","");
 		$sql = 'CREATE DATABASE my_db;';
+		$db_select = mysql_select_db("my_db");
+		$db_query = mysql_query($sql,$con);
+		$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
+		
 						
 		if (isset($_POST['participant_comment']))
 				{
@@ -192,29 +196,29 @@ EOT;
 					
 					$data = explode("\n", $par_comment);
 					
-					if (!$sql) {
+					//if (!$sql) {
 						
-						die("Database does not exist!");
+						//die("Database does not exist!");
 						
-						else 
+					//	else 
 							
-							$db_select = mysql_select_db("my_db");
-							$db_query = mysql_query($sql, $con);
-							$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
-					}			
-						if (!$db_select) {
+						//	$db_select = mysql_select_db("my_db");
+						//	$db_query = mysql_query($sql,$con);
+						//	$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
+					//}			
+						//if (!$db_select) {
 								
-							die("Cannot select database");
+						//	die("Cannot select database");
 							
-							else 
+						//	else 
 								
-								if (table_exists(participant, my_db)) {
+								if (table_exists('participant', 'my_db')) {
 									
 									$participant_insert_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";
 					
 									$participant_select_query = "SELECT name,arrival,departure,location FROM participant;";
 					
-							while($row = mysql_fetch_array($participant_select_query)){
+									while($row = mysql_fetch_array($participant_select_query)){
 						
 									$name_row = $row['name'];
 									$arrival_row = $row['arrival'];
@@ -240,7 +244,7 @@ EOT;
 							}
 						}
 							
-					}
+					
 				
 				
 		if (isset($_POST['departure_comment']))
