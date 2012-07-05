@@ -192,17 +192,17 @@ EOT;
 		$cre_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
 		mysql_query($cre_query,$con);
 		mysql_close($con);
-		$con = mysql_connect($dbhost,$dbuser,$dbpass);
-		mysql_select_db("my_db",$con);
+		$con2 = mysql_connect($dbhost,$dbuser,$dbpass);
+		mysql_select_db("my_db",$con2);
 		$ins_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";
-		mysql_query($ins_query,$con);
-		mysql_close($con);
-		$con = mysql_connect($dbhost,$dbuser,$dbpass);
-		mysql_select_db("my_db",$con);
+		mysql_query($ins_query,$con2);
+		mysql_close($con2);
+		$con3 = mysql_connect($dbhost,$dbuser,$dbpass);
+		mysql_select_db("my_db",$con3);
 		$sel_query = "SELECT name,arrival,departure,location FROM participant;";
-		mysql_query($sel_query,$con);
+		mysql_query($sel_query,$con3);
 		
-		mysql_close($con);
+		mysql_close($con3);
 						
 		if (isset($_POST['participant_comment']))
 				{
