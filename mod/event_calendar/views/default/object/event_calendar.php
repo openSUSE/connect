@@ -185,25 +185,26 @@ EOT;
 		$dbuser = 'root';
 		$dbpass = '';
 		
+		$con = mysql_connect($dbhost,$dbuser,$dbpass);
+		$sql = 'CREATE DATABASE my_db';
+		mysql_query($sql,$con);
+		mysql_select_db("my_db",$con);
+		$cre_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
+		mysql_query($cre_query,$con);
+		$ins_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";
+		mysql_query($ins_query,$con);
+		$sel_query = "SELECT name,arrival,departure,location FROM participant;";
+		mysql_query($sel_query,$con);
 		
-		
+		mysql_close($con);
 						
 		if (isset($_POST['participant_comment']))
 				{
 					
 					$par_comment = $_POST['participant_comment'];
 					$data = explode("\n", $par_comment);	
-					$con = mysql_connect($dbhost,$dbuser,$dbpass);
-					$sql = 'CREATE DATABASE my_db';
-					mysql_query($sql,$con);					
-					mysql_select_db("my_db",$con);
-					$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
-					mysql_query($participant_query,$con);	
-					$participant_insert_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";	
-					mysql_query($participant_insert_query,$con);	
-					$participant_select_query = "SELECT name,arrival,departure,location FROM participant;";	
-					mysql_query($participant_select_query,$con);
-							
+					
+				}				
 							
 					/*while($row = mysql_fetch_array($result)){
 					
@@ -227,7 +228,7 @@ EOT;
 						mysql_close($con);
 													
 						} */
-					}
+					
 
 				
 		if (isset($_POST['departure_comment']))
