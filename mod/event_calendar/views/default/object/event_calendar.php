@@ -197,28 +197,35 @@ EOT;
 		$sel_query = "SELECT name,arrival,departure,location FROM participant;";
 		mysql_query($sel_query,$con);
 		mysql_close($con);
-		*/				
+		*/	
+
+		
+		$con = mysql_connect($dbhost,$dbuser,$dbpass);
+		
+		$sql = 'CREATE DATABASE my_db';
+		
+		mysql_query($sql,$con);
+		
+		mysql_select_db("my_db",$con);
+			
+		$cre_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
+			
+		mysql_query($cre_query,$con);
+			
+		$d1=data[1];
+		$d2=data[2];
+		$d3=data[3];
+		
+		mysql_close($con);
+		
+		
 		if (isset($_POST['participant_comment']))
 				{
 					
 					$par_comment = $_POST['participant_comment'];
 					$data = explode("\n", $par_comment);	
 					
-					$con = mysql_connect($dbhost,$dbuser,$dbpass);
-					 
-					$sql = 'CREATE DATABASE my_db';
-					 
-					mysql_query($sql,$con);
-					 
-					mysql_select_db("my_db",$con);
 					
-					$cre_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
-					
-					mysql_query($cre_query,$con);
-					
-					$d1=data[1];
-					$d2=data[2];
-					$d3=data[3];
 					
 					//$ins_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ('{$name}','{$d1}','{$d2}','{$d3}');";
 					
@@ -256,8 +263,7 @@ EOT;
 					$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
 					
 					*/
-					mysql_close($con);
-													
+								
 						} 
 					
 
