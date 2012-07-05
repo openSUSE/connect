@@ -202,10 +202,10 @@ EOT;
 					$participant_insert_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";	
 					mysql_query($participant_insert_query,$con);	
 					$participant_select_query = "SELECT name,arrival,departure,location FROM participant;";	
-					$result = mysql_query($participant_select_query,$con);
+					mysql_query($participant_select_query,$con);
 							
 							
-					while($row = mysql_fetch_array($result)){
+					/*while($row = mysql_fetch_array($result)){
 					
 						$name_row = $row['name'];
 						$arrival_row = $row['arrival'];
@@ -226,7 +226,7 @@ EOT;
 						$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
 						mysql_close($con);
 													
-						}
+						} */
 					}
 
 				
