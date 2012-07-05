@@ -231,7 +231,7 @@ EOT;
 					}*/
 					
 					
-					$sql= "SELECT * FROM participant where name='$name';"
+					$sql= "SELECT * FROM participant where name='{$name}';"
 					
 					$sel_query =mysql_fetch_array(mysql_query($sql));
 					
