@@ -171,15 +171,15 @@ EOT;
 		//echo $arrival_form_body.$newline; 
 		//echo $departure_form_body.$newline;
 		
-		function table_exists ($table, $db) {
-			$tables = mysql_list_tables ($db);
-			while (list ($temp) = mysql_fetch_array ($tables)) {
-					if ($temp == $table) {
-							return TRUE;
-		}
-			}
-			return FALSE;
-		}
+		//function table_exists ($table, $db) {
+			//$tables = mysql_list_tables ($db);
+			//while (list ($temp) = mysql_fetch_array ($tables)) {
+			//		if ($temp == $table) {
+			//				return TRUE;
+		//}
+		//	}
+		//	return FALSE;
+		//}
 					
 		$dbhost = 'localhost';
 		$dbuser = 'root';
@@ -202,10 +202,10 @@ EOT;
 					$participant_insert_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";	
 					mysql_query($participant_insert_query,$con);	
 					$participant_select_query = "SELECT name,arrival,departure,location FROM participant;";	
-					mysql_query($participant_select_query,$con);
+					$result = mysql_query($participant_select_query,$con);
 							
 							
-					while($row = mysql_fetch_array($participant_select_query)){
+					while($row = mysql_fetch_array($result)){
 					
 						$name_row = $row['name'];
 						$arrival_row = $row['arrival'];
