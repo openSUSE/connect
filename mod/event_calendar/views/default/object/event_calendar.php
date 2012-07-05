@@ -220,7 +220,7 @@ EOT;
 					$d2=data[2];
 					$d3=data[3];
 					
-					$ins_query = mysql_query("INSERT INTO participant (name,arrival,departure,location) VALUE ('{$name}','{$d1}','{$d2}','{$d3}')");
+					$ins_query = mysql_query("INSERT INTO participant (name,arrival,departure,location) VALUE ('{$name}','{$d1}','{$d2}','{$d3}');");
 					
 					
 					/*$sel_query =mysql_query( "SELECT * FROM participant");
@@ -229,7 +229,7 @@ EOT;
 					
 					}*/
 					
-					$sel_query =mysql_fetch_array(mysql_query( "SELECT * FROM participant where name='$name'"));
+					$sel_query =mysql_fetch_array(mysql_query("SELECT * FROM participant where name='$name';"));
 					
 					//echo $sql['name']."-".$sql['arrival'];
 												
