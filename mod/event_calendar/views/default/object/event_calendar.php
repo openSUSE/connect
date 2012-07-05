@@ -171,14 +171,20 @@ EOT;
 		//echo $arrival_form_body.$newline; 
 		//echo $departure_form_body.$newline;
 		
+		function table_exists ($table, $db) {
+			$tables = mysql_list_tables ($db);
+			while (list ($temp) = mysql_fetch_array ($tables)) {
+		if ($temp == $table) {
+			return TRUE;
+		}
+			}
+			return FALSE;
+		}
+					
+		
 		$con = mysql_connect("127.0.0.1","root","");
-		$sql = 'CREATE DATABASE my_db';
-		mysql_query($sql, $con);
-		
-		$participant_query = "CREATE TABLE participant(name VARCHAR(30) NOT NULL AUTO_INCREMENT,arrival DATE,departure DATE,from VARCHAR(30)";
-		
-		
-		
+		$sql = 'CREATE DATABASE my_db;';
+						
 		if (isset($_POST['participant_comment']))
 				{
 					
@@ -186,36 +192,48 @@ EOT;
 					
 					$data = explode("\n", $par_comment);
 					
-					$participant_insert_query = "INSERT INTO participant (name,arrival,departure,from) VALUE ('$name','$data[0]','$data[1]','$data[2]')";
+					if (isset($sql)) {
+							
+						$db_select = mysql_select_db("my_db");
+						mysql_query($sql, $con);
+						$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
+									
+						if (isset($db_select)) {
+								
+							if (table_exists(participant, my_db)) {
+									
+							$participant_insert_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";
 					
-					$participant_select_query = "SELECT name,arrival,departure,from FROM participant";
+							$participant_select_query = "SELECT name,arrival,departure,location FROM participant;";
 					
-					while($row = mysql_fetch_array($participant_select_query)){
+							while($row = mysql_fetch_array($participant_select_query)){
 						
-						$name_row = $name;
-						$arrival_row = $data[0];
-						$departure_row = $data[1];
-						$from_row = $data[2];
+									$name_row = $name;
+									$arrival_row = $data[0];
+									$departure_row = $data[1];
+									$location_row = $data[2];
 						
-						$part_print_rows = $name_row;
-						$part_print_rows .= $arrival_row;
-						$part_print_rows .= $departure_row; 
-						$part_print_rows .= $part_prin_rows;
+									$part_print_rows = $name_row;
+									$part_print_rows .= $arrival_row;
+									$part_print_rows .= $departure_row; 
+									$part_print_rows .= $location_row;
 						
-						
-						$event->annotate('participant_comment', "");
-						$participant_annotation = $event->getAnnotations('participant_comment');
-						$participant_print = $participant_annotation[0][value];
-						$participant_body = '<label><b>&nbsp;&nbsp;Participants:</b></label>';
-						$participant_body .= $newline;
-						$participant_body .= $newline;
-						$participant_body .= elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $part_print_rows));
-						$participant_body .= $newline;
-						$participant_body .= elgg_view('input/submit', array('internalname' => 'participant_submit', 'value' => elgg_echo('Participate')));
-						$participant_body .= elgg_view('input/securitytoken');
-						$url = $event->getURL();
-						$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
-						
+									$event->annotate('participant_comment', "");
+									$participant_annotation = $event->getAnnotations('participant_comment');
+									$participant_print = $participant_annotation[0][value];
+									$participant_body = '<label><b>&nbsp;&nbsp;Participants:</b></label>';
+									$participant_body .= $newline;
+									$participant_body .= $newline;
+									$participant_body .= elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $part_print_rows));
+									$participant_body .= $newline;
+									$participant_body .= elgg_view('input/submit', array('internalname' => 'participant_submit', 'value' => elgg_echo('Participate')));
+									$participant_body .= elgg_view('input/securitytoken');
+									$url = $event->getURL();
+									$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
+								}
+							}
+						}
+							
 					}
 				}
 				
