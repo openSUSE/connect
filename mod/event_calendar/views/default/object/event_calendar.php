@@ -182,7 +182,7 @@ EOT;
 		}
 					
 		
-		$con = mysql_connect("127.0.0.1","root","");
+		$con = mysql_connect('localhost','','');
 		$sql = 'CREATE DATABASE my_db;';
 		$db_select = mysql_select_db("my_db");
 		$db_query = mysql_query($sql,$con);
