@@ -192,19 +192,27 @@ EOT;
 					
 					$data = explode("\n", $par_comment);
 					
-					if (isset($sql)) {
+					if (!$sql) {
+						
+						die("Database does not exist!");
+						
+						else 
 							
-						$db_select = mysql_select_db("my_db");
-						$db_query = mysql_query($sql, $con);
-						$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
+							$db_select = mysql_select_db("my_db");
+							$db_query = mysql_query($sql, $con);
+							$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
 					}			
-						if (isset($db_select)) {
+						if (!$db_select) {
 								
-							if (table_exists(participant, my_db)) {
+							die("Cannot select database");
+							
+							else 
+								
+								if (table_exists(participant, my_db)) {
 									
-							$participant_insert_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";
+									$participant_insert_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";
 					
-							$participant_select_query = "SELECT name,arrival,departure,location FROM participant;";
+									$participant_select_query = "SELECT name,arrival,departure,location FROM participant;";
 					
 							while($row = mysql_fetch_array($participant_select_query)){
 						
