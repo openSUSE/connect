@@ -171,15 +171,15 @@ EOT;
 		//echo $arrival_form_body.$newline; 
 		//echo $departure_form_body.$newline;
 		
-		function table_exists ($table, $db) {
-			$tables = mysql_list_tables ($db);
-			while (list ($temp) = mysql_fetch_array ($tables)) {
-		if ($temp == $table) {
-			return TRUE;
-		}
-			}
-			return FALSE;
-		}
+		//function table_exists ($table, $db) {
+		//	$tables = mysql_list_tables ($db);
+		//	while (list ($temp) = mysql_fetch_array ($tables)) {
+			//		if ($temp == $table) {
+			//				return TRUE;
+		//}
+		//	}
+		//	return FALSE;
+		//}
 					
 		
 		$con = mysql_connect('localhost','','');
@@ -196,6 +196,7 @@ EOT;
 					
 					$data = explode("\n", $par_comment);
 					
+				}
 					//if (!$sql) {
 						
 						//die("Database does not exist!");
@@ -212,22 +213,22 @@ EOT;
 							
 						//	else 
 								
-								if (table_exists('participant', 'my_db')) {
+							//	if (table_exists('participant', 'my_db')) {
 									
-									$participant_insert_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";
+								//	$participant_insert_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";
 					
-									$participant_select_query = "SELECT name,arrival,departure,location FROM participant;";
+								//	$participant_select_query = "SELECT name,arrival,departure,location FROM participant;";
 					
-									while($row = mysql_fetch_array($participant_select_query)){
+								//	while($row = mysql_fetch_array($participant_select_query)){
 						
-									$name_row = $row['name'];
-									$arrival_row = $row['arrival'];
-									$departure_row = $row['departure'];
-									$location_row = $row['location'];
+									//$name_row = $row['name'];
+									//$arrival_row = $row['arrival'];
+									//$departure_row = $row['departure'];
+									//$location_row = $row['location'];
 						
-									$part_print_rows = $name_row.$arrival_row.$departure_row.$location_row;
+									//$part_print_rows = $name_row.$arrival_row.$departure_row.$location_row;
 									
-									$event->annotate('participant_comment', "");
+								/*	$event->annotate('participant_comment', "");
 									$participant_annotation = $event->getAnnotations('participant_comment');
 									$participant_print = $participant_annotation[0][value];
 									$participant_body = '<label><b>&nbsp;&nbsp;Participants:</b></label>';
@@ -242,7 +243,7 @@ EOT;
 									mysql_close($con);
 								}
 							}
-						}
+						} */
 							
 					
 				
