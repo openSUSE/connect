@@ -213,11 +213,8 @@ EOT;
 									$departure_row = $data[1];
 									$location_row = $data[2];
 						
-									$part_print_rows = $name_row;
-									$part_print_rows .= $arrival_row;
-									$part_print_rows .= $departure_row; 
-									$part_print_rows .= $location_row;
-						
+									$part_print_rows = $name_row.$arrival_row.$departure_row.$location_row;
+									
 									$event->annotate('participant_comment', "");
 									$participant_annotation = $event->getAnnotations('participant_comment');
 									$participant_print = $participant_annotation[0][value];
