@@ -200,9 +200,9 @@ EOT;
 					$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
 					mysql_query($participant_query,$con);	
 					$participant_insert_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";	
-					$mysql_query($participant_insert_query,$con);	
+					mysql_query($participant_insert_query,$con);	
 					$participant_select_query = "SELECT name,arrival,departure,location FROM participant;";	
-					$mysql_query($participant_select_query,$con);
+					mysql_query($participant_select_query,$con);
 							
 							
 					while($row = mysql_fetch_array($participant_select_query)){
@@ -225,21 +225,9 @@ EOT;
 						$url = $event->getURL();
 						$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
 						mysql_close($con);
-		
-						
-						//	$db_select = mysql_select_db("my_db");
-						//	$db_query = mysql_query($sql,$con);
-						//	$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
-								
-						
-				
-								//	if (table_exists('participant','my_db')) {
-									
-									
-									
-									
-								}
-							}
+													
+						}
+					}
 
 				
 		if (isset($_POST['departure_comment']))
