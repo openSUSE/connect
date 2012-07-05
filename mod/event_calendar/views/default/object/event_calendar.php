@@ -186,27 +186,45 @@ EOT;
 		$dbpass = '';
 		
 		
-		$con = mysql_connect($dbhost,$dbuser,$dbpass);
-		$sql = 'CREATE DATABASE my_db';
+		
 						
 		if (isset($_POST['participant_comment']))
 				{
 					
 					$par_comment = $_POST['participant_comment'];
+					$data = explode("\n", $par_comment);	
+					$con = mysql_connect($dbhost,$dbuser,$dbpass);
+					$sql = 'CREATE DATABASE my_db';
+					mysql_query($sql,$con);					
+					mysql_select_db("my_db",$con);
+					$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
+					mysql_query($participant_query,$con);	
+					$participant_insert_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";	
+					$mysql_query($participant_insert_query,$con);	
+					$participant_select_query = "SELECT name,arrival,departure,location FROM participant;";	
+					$mysql_query($participant_select_query,$con);
+							
+							
+					while($row = mysql_fetch_array($participant_select_query)){
 					
-					$data = explode("\n", $par_comment);
-					
-				
-					if (mysql_query($sql,$con)) {
-						
-						mysql_select_db("my_db",$con);
-						$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
-						
-						if(mysql_query($participant_query,$con)){
-							
-							
-							
-						
+						$name_row = $row['name'];
+						$arrival_row = $row['arrival'];
+						$departure_row = $row['departure'];
+						$location_row = $row['location'];
+						$part_print_rows = $name_row.$arrival_row.$departure_row.$location_row;	
+						$event->annotate('participant_comment', "");
+						$participant_annotation = $event->getAnnotations('participant_comment');
+						$participant_print = $participant_annotation[0][value];
+						$participant_body = '<label><b>&nbsp;&nbsp;Participants:</b></label>';
+						$participant_body .= $newline;
+						$participant_body .= $newline;
+						$participant_body .= elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $part_print_rows));
+						$participant_body .= $newline;
+						$participant_body .= elgg_view('input/submit', array('internalname' => 'participant_submit', 'value' => elgg_echo('Participate')));
+						$participant_body .= elgg_view('input/securitytoken');
+						$url = $event->getURL();
+						$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
+						mysql_close($con);
 		
 						
 						//	$db_select = mysql_select_db("my_db");
@@ -217,42 +235,12 @@ EOT;
 				
 								//	if (table_exists('participant','my_db')) {
 									
-									$participant_insert_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";
 									
-									$mysql_query($participant_insert_query,$con);
 									
-									$participant_select_query = "SELECT name,arrival,departure,location FROM participant;";
 									
-									$mysql_query($participant_select_query,$con);
-									
-									while($row = mysql_fetch_array($participant_select_query)){
-						
-									$name_row = $row['name'];
-									$arrival_row = $row['arrival'];
-									$departure_row = $row['departure'];
-									$location_row = $row['location'];
-						
-									$part_print_rows = $name_row.$arrival_row.$departure_row.$location_row;
-									
-									$event->annotate('participant_comment', "");
-									$participant_annotation = $event->getAnnotations('participant_comment');
-									$participant_print = $participant_annotation[0][value];
-									$participant_body = '<label><b>&nbsp;&nbsp;Participants:</b></label>';
-									$participant_body .= $newline;
-									$participant_body .= $newline;
-									$participant_body .= elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $part_print_rows));
-									$participant_body .= $newline;
-									$participant_body .= elgg_view('input/submit', array('internalname' => 'participant_submit', 'value' => elgg_echo('Participate')));
-									$participant_body .= elgg_view('input/securitytoken');
-									$url = $event->getURL();
-									$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
-									mysql_close($con);
 								}
 							}
-						} 
-					}			
-					
-				
+
 				
 		if (isset($_POST['departure_comment']))
 				{
