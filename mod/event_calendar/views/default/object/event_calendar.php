@@ -181,9 +181,7 @@ EOT;
 		//	return FALSE;
 		//}
 					
-		$dbhost = 'localhost';
-		$dbuser = 'root';
-		$dbpass = '';
+		
 		
 		/*$con = mysql_connect($dbhost,$dbuser,$dbpass);
 		$sql = 'CREATE DATABASE my_db';
@@ -199,24 +197,31 @@ EOT;
 		mysql_close($con);
 		*/	
 
+		$dbhost = 'localhost';
+		$dbuser = 'root';
+		$dbpass = '';
 		
 		$con = mysql_connect($dbhost,$dbuser,$dbpass);
 		
-		$sql = 'CREATE DATABASE my_db';
+		//$sql = 'CREATE DATABASE my_db';
 		
-		mysql_query($sql,$con);
+		//mysql_query($sql,$con);
 		
 		mysql_select_db("my_db",$con);
 			
-		$cre_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
+		//$cre_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
 			
-		mysql_query($cre_query,$con);
+		//mysql_query($cre_query,$con);
 			
-		$d1=data[1];
-		$d2=data[2];
-		$d3=data[3];
+		//$d1=data[1];
+		//$d2=data[2];
+		//$d3=data[3];
 		
-		mysql_close($con);
+		$sql= "SELECT * FROM participant where name='{$name}';"
+			
+		$sel_query =mysql_fetch_array(mysql_query($sql));
+			
+		
 		
 		
 		if (isset($_POST['participant_comment']))
@@ -238,13 +243,10 @@ EOT;
 					}*/
 					
 					
-					//$sql= "SELECT * FROM participant where name='{$name}';"
-					
-					//$sel_query =mysql_fetch_array(mysql_query($sql));
 					
 					//echo $sql['name']."-".$sql['arrival'];
 												
-				/*	$name_row = $sel_query['name'];
+					$name_row = $sel_query['name'];
 					$arrival_row = $sel_query['arrival'];
 					$departure_row = $sel_query['departure'];
 					$location_row = $sel_query['location'];
@@ -262,7 +264,7 @@ EOT;
 					$url = $event->getURL();
 					$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
 					
-					*/
+					mysql_close($con);
 								
 						} 
 					
