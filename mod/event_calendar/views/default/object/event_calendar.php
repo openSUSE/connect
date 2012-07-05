@@ -195,7 +195,7 @@ EOT;
 					if (isset($sql)) {
 							
 						$db_select = mysql_select_db("my_db");
-						mysql_query($sql, $con);
+						$db_query = mysql_query($sql, $con);
 						$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
 					}			
 						if (isset($db_select)) {
