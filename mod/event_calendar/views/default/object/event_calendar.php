@@ -181,11 +181,15 @@ EOT;
 		//	return FALSE;
 		//}
 					
+		$dbhost = 'localhost';
+		$dbuser = 'root';
+		$dbpass = '';
 		
-		$con = mysql_connect('localhost','','');
-		$sql = 'CREATE DATABASE my_db;';
-		$db_select = mysql_select_db("my_db");
-		$db_query = mysql_query($sql,$con);
+		
+		$con = mysql_connect($dbhost,$dbuser,$dbpass);
+		$sql = 'CREATE DATABASE my_db';
+		$db_select = mysql_select_db('my_db');
+		//$db_query = mysql_query($sql,$con);
 		$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
 		
 						
