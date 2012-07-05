@@ -188,10 +188,10 @@ EOT;
 		
 		$con = mysql_connect($dbhost,$dbuser,$dbpass);
 		$sql = 'CREATE DATABASE my_db';
-		$db_select = mysql_select_db('my_db');
-		//$db_query = mysql_query($sql,$con);
+		mysql_query($sql,$con);
+		mysql_select_db("my_db",$con);		
 		$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
-		
+		mysql_query($participant_query,$con);
 						
 		if (isset($_POST['participant_comment']))
 				{
