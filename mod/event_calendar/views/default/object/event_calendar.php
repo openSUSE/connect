@@ -201,38 +201,42 @@ EOT;
 					$data = explode("\n", $par_comment);
 					
 				}
-					//if (!$sql) {
+					if (!$sql) {
 						
-						//die("Database does not exist!");
+						die("Database does not exist!");
 						
-					//	else 
+						else 
 							
 						//	$db_select = mysql_select_db("my_db");
 						//	$db_query = mysql_query($sql,$con);
 						//	$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
-					//}			
-						//if (!$db_select) {
 								
-						//	die("Cannot select database");
+						if (!$db_select) {
+								
+							die("Cannot select database");
 							
-						//	else 
+							else 
 								
-							//	if (table_exists('participant', 'my_db')) {
+								if (table_exists('participant', 'my_db')) {
 									
-								//	$participant_insert_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";
-					
-								//	$participant_select_query = "SELECT name,arrival,departure,location FROM participant;";
-					
-								//	while($row = mysql_fetch_array($participant_select_query)){
-						
-									//$name_row = $row['name'];
-									//$arrival_row = $row['arrival'];
-									//$departure_row = $row['departure'];
-									//$location_row = $row['location'];
-						
-									//$part_print_rows = $name_row.$arrival_row.$departure_row.$location_row;
+									$participant_insert_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";
 									
-								/*	$event->annotate('participant_comment', "");
+									$mysql_query($participant_insert_query,$con);
+									
+									$participant_select_query = "SELECT name,arrival,departure,location FROM participant;";
+									
+									$mysql_query($participant_select_query,$con);
+									
+									while($row = mysql_fetch_array($participant_select_query)){
+						
+									$name_row = $row['name'];
+									$arrival_row = $row['arrival'];
+									$departure_row = $row['departure'];
+									$location_row = $row['location'];
+						
+									$part_print_rows = $name_row.$arrival_row.$departure_row.$location_row;
+									
+									$event->annotate('participant_comment', "");
 									$participant_annotation = $event->getAnnotations('participant_comment');
 									$participant_print = $participant_annotation[0][value];
 									$participant_body = '<label><b>&nbsp;&nbsp;Participants:</b></label>';
@@ -247,7 +251,7 @@ EOT;
 									mysql_close($con);
 								}
 							}
-						} */
+						} 
 							
 					
 				
