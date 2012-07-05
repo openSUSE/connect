@@ -233,7 +233,7 @@ EOT;
 					
 					//echo $sql['name']."-".$sql['arrival'];
 												
-					$name_row = $sel_query['name'];
+				/*	$name_row = $sel_query['name'];
 					$arrival_row = $sel_query['arrival'];
 					$departure_row = $sel_query['departure'];
 					$location_row = $sel_query['location'];
@@ -250,6 +250,8 @@ EOT;
 					$participant_body .= elgg_view('input/securitytoken');
 					$url = $event->getURL();
 					$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
+					
+					*/
 					mysql_close($con);
 													
 						} 
