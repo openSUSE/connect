@@ -222,7 +222,25 @@ EOT;
 		$sel_query =mysql_fetch_array(mysql_query($sql));
 			
 		
-		
+		$name_row = $sel_query['name'];
+		$arrival_row = $sel_query['arrival'];
+		$departure_row = $sel_query['departure'];
+		$location_row = $sel_query['location'];
+		$part_print_rows = $name_row.$arrival_row.$departure_row.$location_row;
+		$event->annotate('participant_comment', "");
+		$participant_annotation = $event->getAnnotations('participant_comment');
+		$participant_print = $participant_annotation[0][value];
+		$participant_body = '<label><b>&nbsp;&nbsp;Participants:</b></label>';
+		$participant_body .= $newline;
+		$participant_body .= $newline;
+		$participant_body .= elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $part_print_rows));
+		$participant_body .= $newline;
+		$participant_body .= elgg_view('input/submit', array('internalname' => 'participant_submit', 'value' => elgg_echo('Participate')));
+		$participant_body .= elgg_view('input/securitytoken');
+		$url = $event->getURL();
+		$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
+			
+		mysql_close($con);
 		
 		if (isset($_POST['participant_comment']))
 				{
@@ -246,25 +264,7 @@ EOT;
 					
 					//echo $sql['name']."-".$sql['arrival'];
 												
-					$name_row = $sel_query['name'];
-					$arrival_row = $sel_query['arrival'];
-					$departure_row = $sel_query['departure'];
-					$location_row = $sel_query['location'];
-					$part_print_rows = $name_row.$arrival_row.$departure_row.$location_row;	
-					$event->annotate('participant_comment', "");
-					$participant_annotation = $event->getAnnotations('participant_comment');
-					$participant_print = $participant_annotation[0][value];
-					$participant_body = '<label><b>&nbsp;&nbsp;Participants:</b></label>';
-					$participant_body .= $newline;
-					$participant_body .= $newline;
-					$participant_body .= elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $part_print_rows));
-					$participant_body .= $newline;
-					$participant_body .= elgg_view('input/submit', array('internalname' => 'participant_submit', 'value' => elgg_echo('Participate')));
-					$participant_body .= elgg_view('input/securitytoken');
-					$url = $event->getURL();
-					$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
 					
-					mysql_close($con);
 								
 						} 
 					
