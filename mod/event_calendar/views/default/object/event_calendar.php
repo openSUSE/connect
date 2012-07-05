@@ -197,7 +197,7 @@ EOT;
 						$db_select = mysql_select_db("my_db");
 						mysql_query($sql, $con);
 						$participant_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
-									
+					}			
 						if (isset($db_select)) {
 								
 							if (table_exists(participant, my_db)) {
@@ -208,10 +208,10 @@ EOT;
 					
 							while($row = mysql_fetch_array($participant_select_query)){
 						
-									$name_row = $name;
-									$arrival_row = $data[0];
-									$departure_row = $data[1];
-									$location_row = $data[2];
+									$name_row = $row['name'];
+									$arrival_row = $row['arrival'];
+									$departure_row = $row['departure'];
+									$location_row = $row['location'];
 						
 									$part_print_rows = $name_row.$arrival_row.$departure_row.$location_row;
 									
@@ -227,12 +227,13 @@ EOT;
 									$participant_body .= elgg_view('input/securitytoken');
 									$url = $event->getURL();
 									$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
+									mysql_close($con);
 								}
 							}
 						}
 							
 					}
-				}
+				
 				
 		if (isset($_POST['departure_comment']))
 				{
