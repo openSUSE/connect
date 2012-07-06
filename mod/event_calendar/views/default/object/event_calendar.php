@@ -164,7 +164,40 @@ if ($vars['full']) {
 		</script>
     
 EOT;
+
+		
+		function connect_create_base($dbhost,$dbuser,$dbpass,$dbname) {
+			$con = mysql_connect($dbhost,$dbuser,$dbpass);
+			$sql = "CREATE DATABASE '{$dbname}';";
+			$connection_query = mysql_query($sql,$con);
+			$selection_query = mysql_select_db("{$dbname}",$con);
+			return $con;
+		}
 	
+		function create_insert_table($tablename,$name,$field_1,$field_2,$field_3) {
+			
+			$creation_query = "CREATE TABLE `$tablename` (`$name` VARCHAR(30) primary key, `$field_1` VARCHAR(10), `$field_2` VARCHAR(10), `$field_3` VARCHAR(30));";
+			mysql_query($creation_query,$con);
+			$insert_query = "INSERT INTO `$tablename` (`$name`,`$field_1`,`$field_2`,`$field_3`) VALUE ('$name','$d1','$d2','$d3');";
+			mysql_query($insert_query,$con);
+		}
+		
+		function select_fields($param) {
+			
+		//$select_query =mysql_fetch_array(mysql_query("SELECT * FROM `$tablename` where name='$name';"));
+						
+					$select_all_query = mysql_query("SELECT * FROM `$tablename`;");
+					 
+					 while($row=mysql_fetch_array($select_all_query)){
+					
+						$name_row = $row['$name'];
+						$field_1_row = $row['$field_1'];
+						$field_2_row = $row['$field_2'];
+						$field_3_row = $row['$field_3'];
+					 };
+		}
+		
+		
 		$name = get_loggedin_user()->username;		
 
 		if (isset($_POST['participant_comment']))
@@ -173,44 +206,7 @@ EOT;
 					$par_comment = $_POST['participant_comment'];
 					$data = explode("\n", $par_comment);	
 					
-					$dbhost = 'localhost';
-					$dbuser = 'root';
-					$dbpass = '';
-					
-					$con = mysql_connect($dbhost,$dbuser,$dbpass);
-					
-					$sql = 'CREATE DATABASE my_db';
-					
-					mysql_query($sql,$con);
-					
-					mysql_select_db("my_db",$con);
-						
-					$cre_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
-						
-					mysql_query($cre_query,$con);
-						
-					$d1=$data[1];
-					$d2=$data[2];
-					$d3=$data[3];
-					
-					$ins_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ('{$name}','{$d1}','{$d2}','{$d3}');";
-						
-					mysql_query($ins_query,$con);
-					
-					 
-						
-					$sel_query =mysql_fetch_array(mysql_query("SELECT * FROM participant where name='{$name}';"));
-						
-					$sel_all_query = mysql_query("SELECT * FROM participant");
-					 
-					 while($row=mysql_fetch_array($sel_all_query)){
-					
-						$name_row = $row['name'];
-						$arrival_row = $row['arrival'];
-						$departure_row = $row['departure'];
-						$location_row = $row['location'];
-					 }
-					 
+										 
 					$part_print_rows = $name_row." ".$arrival_row." ".$departure_row." ".$location_row;
 					$event->annotate('participant_comment', "");
 					$participant_annotation = $event->getAnnotations('participant_comment');
