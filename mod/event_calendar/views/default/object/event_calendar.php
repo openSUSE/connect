@@ -201,9 +201,9 @@ EOT;
 						
 					$sel_query =mysql_fetch_array(mysql_query("SELECT * FROM participant where name='{$name}';"));
 						
-					$sel_all_query = mysql_query( "SELECT * FROM participant");
+					$sel_all_query = mysql_query("SELECT * FROM participant");
 					 
-					 while($row=mysql_fetch_array($sel_query)){
+					 while($row=mysql_fetch_array($sel_all_query)){
 					
 						$name_row = $row['name'];
 						$arrival_row = $row['arrival'];
