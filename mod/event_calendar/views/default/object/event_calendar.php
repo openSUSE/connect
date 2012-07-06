@@ -165,40 +165,8 @@ if ($vars['full']) {
     
 EOT;
 	
-		$name = get_loggedin_user()->username;
-		
-		
-		//echo $arrival_form_body.$newline; 
-		//echo $departure_form_body.$newline;
-		
-		//function table_exists ($table, $db) {
-			//$tables = mysql_list_tables ($db);
-			//while (list ($temp) = mysql_fetch_array ($tables)) {
-			//		if ($temp == $table) {
-			//				return TRUE;
-		//}
-		//	}
-		//	return FALSE;
-		//}
-					
-		
-		
-		/*$con = mysql_connect($dbhost,$dbuser,$dbpass);
-		$sql = 'CREATE DATABASE my_db';
-		mysql_query($sql,$con);
-		mysql_select_db("my_db",$con);
-		$cre_query = "CREATE TABLE participant (name VARCHAR(30) primary key, arrival VARCHAR(10), departure VARCHAR(10), location VARCHAR(30));";
-		mysql_query($cre_query,$con);
-		$ins_query = "INSERT INTO participant (name,arrival,departure,location) VALUE ("$name","$data[1]","$data[2]","$data[3]");";
-		mysql_query($ins_query,$con);
-		mysql_select_db("my_db",$con);
-		$sel_query = "SELECT name,arrival,departure,location FROM participant;";
-		mysql_query($sel_query,$con);
-		mysql_close($con);
-		*/	
+		$name = get_loggedin_user()->username;		
 
-		
-		
 		if (isset($_POST['participant_comment']))
 				{
 					
@@ -233,12 +201,17 @@ EOT;
 						
 					$sel_query =mysql_fetch_array(mysql_query("SELECT * FROM participant where name='{$name}';"));
 						
+					$sel_all_query = mysql_query( "SELECT * FROM participant");
+					 
+					 while($row=mysql_fetch_array($sel_query)){
 					
-					$name_row = $sel_query['name'];
-					$arrival_row = $sel_query['arrival'];
-					$departure_row = $sel_query['departure'];
-					$location_row = $sel_query['location'];
-					$part_print_rows = $name_row.$arrival_row.$departure_row.$location_row;
+						$name_row = $row['name'];
+						$arrival_row = $row['arrival'];
+						$departure_row = $row['departure'];
+						$location_row = $row['location'];
+					 }
+					 
+					$part_print_rows = $name_row." ".$arrival_row." ".$departure_row." ".$location_row;
 					$event->annotate('participant_comment', "");
 					$participant_annotation = $event->getAnnotations('participant_comment');
 					$participant_print = $participant_annotation[0][value];
@@ -255,23 +228,6 @@ EOT;
 					mysql_close($con);
 					
 				}
-				
-					
-					/*$sel_query =mysql_query( "SELECT * FROM participant");
-					 while($row=mysql_fetch_array($sel_query)){
-					echo $row['name'];
-					
-					}*/
-					
-					
-					
-					//echo $sql['name']."-".$sql['arrival'];
-												
-					
-								
-					
-					
-
 				
 		if (isset($_POST['departure_comment']))
 				{
