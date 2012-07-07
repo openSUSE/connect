@@ -177,6 +177,17 @@ EOT;
 			
 			public $connect;
 			
+			public $table_name;
+			
+			public $user_name = get_loggedin_user()->username;
+			
+			public $field_1;
+			
+			public $field_2;
+			
+			public $field_3;
+			
+			
 			public function __construct(){
 				
 				$this->connect_db();			
@@ -218,6 +229,13 @@ EOT;
 				
 				
 			}
+			
+			public function create_table($this->table_name,$this->field_1,$this->field_2,$this->field_3){
+				
+				$this->query_db("CREATE TABLE IF NOT EXISTS `$this->table_name` (`$this->user_name` VARCHAR(30) primary key, `$this->field_1` VARCHAR(10), `$this->field_2` VARCHAR(10), `$this->field_3` VARCHAR(30));");
+						
+				
+			}
 		
 		
 		}
@@ -226,6 +244,7 @@ EOT;
 		$base -> connect_db();
 		$base -> create_db();
 		$base -> select_db();
+		$base -> create_table("participants","arrival","departure","location")
 		$base -> close_connection();
 		
 		if (isset($_POST['participant_comment']))
