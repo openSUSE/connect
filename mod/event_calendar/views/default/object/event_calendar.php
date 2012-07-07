@@ -175,6 +175,8 @@ EOT;
 			
 			public $dbname = "my_db";
 			
+			public $connect;
+			
 			public function __construct(){
 				
 				$this->connect_db();			
@@ -185,8 +187,9 @@ EOT;
 			public function connect_db(){
 				
 				
-				$connect = mysql_connect($this->dbhost,$this->dbuser,$this->dbpass);
-
+				$this->connect = mysql_connect($this->dbhost,$this->dbuser,$this->dbpass);
+				
+				return $this->connect;
 					
 			}
 			
@@ -211,6 +214,15 @@ EOT;
 				
 				
 			}
+			
+			public function close_connection(){
+				
+				$close_query = mysql_close($this->connect);
+				
+				retutn $close_query;
+				
+				
+			}
 		
 		
 		}
@@ -219,6 +231,7 @@ EOT;
 		$base -> connect_db();
 		$base -> create_db();
 		$base -> select_db();
+		$base -> close_connection();
 		
 		if (isset($_POST['participant_comment']))
 				{
