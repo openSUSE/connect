@@ -167,22 +167,22 @@ EOT;
 
 		class database {
 			
-			public $dbhost="localhost";
+			public $dbhost ="localhost";
 			
-			public $dbuser="root";
+			public $dbuser ="root";
 			
-			public $dbpass= " ";
+			public $dbpass = "";
 			
 			public $dbname = "my_db";
 			
-			public function __construct{
+			public function __construct(){
 				
 				$this->connect_db();			
 			}
 			
 		
 				
-			public function connect_db() {
+			public function connect_db(){
 				
 				
 				$connect = mysql_connect($this->dbhost,$this->dbuser,$this->dbpass);
@@ -190,7 +190,7 @@ EOT;
 					
 			}
 			
-			public function query_db($query) {
+			public function query_db($query){
 			
 				$q = mysql_query($query);
 			
@@ -199,9 +199,9 @@ EOT;
 			
 			public function create_db(){
 				
-				$creation_query = "CREATE DATABASE '{$this->dbname}';";		
+				//$creation_query = "CREATE DATABASE '{$this->dbname}';";		
 				
-			    $this->query_db($creation_query);
+			    $this->query_db("CREATE DATABASE '{$this->dbname}';");
 			    	
 			}
 			
