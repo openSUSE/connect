@@ -167,138 +167,58 @@ EOT;
 
 		class database {
 			
-			public $dbhost;
+			public $dbhost="localhost";
 			
-			public $dbuser;
+			public $dbuser="root";
 			
-			public $dbpass;
+			public $dbpass" ";
 			
-			public $dbname;
+			public $dbname = "my_db";
 			
-			public $con;
-			
-			public $tablename;
-			
-			public $sql;
-			
-			public $post_value; // Fill this variable with this kind of value $_POST['participant_comment']
-			
-			public function __construct($dbhost, $dbuser, $dbpass,$post_value){
+			public function __construct{
 				
-				$this->dbhost = $dbhost;
-				$this->dbuser = $dbuser;
-				$this->dbpass = $dbpass;
-				$this->post_value = $post_value;
+				$this->connect_db();			
 			}
 			
 		
 				
-			public function connect_db($dbhost,$dbuser,$dbpass) {
-				
-				$this->con = mysql_connect($dbhost,$dbuser,$dbpass);
-				return $this->con;
+			public function connect_db() {
 				
 				
-			}
-			
-			public function create_db($dbname,$con){
-				
-				$this->sql = "CREATE DATABASE '{$this->dbname}';";
-				$creation_query = mysql_query($this->sql,$this->con);
-				
-			}
-			
-			
-			public function select_db($dbname,$con){
-				
-				$selection_query = mysql_select_db("{$this->dbname}",$this->con);
-				return $selection_query;
-				
-			}
-			
-			public function create_insert_table($tablename,$name,$field_1,$field_2,$field_3) {
-				
-				$name = get_loggedin_user()->username;
-				
-				if ($this->post_value == $_POST['participant_comment'])
-				
-				{
-					$comment = $_POST['participant_comment'];
-					$data = explode("\n", $comment);
-						
-				}
-				
-				if ($this->post_value == $_POST['material_comment'])
-				
-				{
-					$comment = $_POST['material_comment'];
-					$data = explode("\n", $comment);
-				
-				}
-				
-				if ($this->post_value == $_POST['booth_comment'])
-				
-				{
-					$comment = $_POST['booth_comment'];
-					$data = explode("\n", $comment);
-				
-				}
-				
-				if ($this->post_value == $_POST['talks_comment'])
-				
-				{
-					$comment = $_POST['talks_comment'];
-					$data = explode("\n", $comment);
-				
-				}
-				
-				$d1 = $data[1];
-				
-				$d2 = $data[2];
-				
-				$d3 = $data[3];
-				
-				$creation_query = "CREATE TABLE `$tablename` (`$name` VARCHAR(30) primary key, `$field_1` VARCHAR(10), `$field_2` VARCHAR(10), `$field_3` VARCHAR(30));";
-				mysql_query($creation_query,$con);
-				$insert_query = "INSERT INTO `$tablename` (`$name`,`$field_1`,`$field_2`,`$field_3`) VALUE ('$name','$d1','$d2','$d3');";
-				mysql_query($insert_query,$con);
-				return $tablename;
-			}
-			
-			public function select_fields($tablename) {
+				$connect = mysql_connect($this->dbhost,$this->dbuser,$this->dbpass);
+
 					
-				//$select_query =mysql_fetch_array(mysql_query("SELECT * FROM `$tablename` where name='$name';"));
-			
-				
-				
-				$select_all_query = mysql_query("SELECT * FROM `$tablename`;");
-			
-				while($row=mysql_fetch_array($select_all_query)){
-						
-					$name_row = $row['$name'];
-					$field_1_row = $row['$field_1'];
-					$field_2_row = $row['$field_2'];
-					$field_3_row = $row['$field_3'];
-					$print_row = $name_row." ".$field_1_row." ".$field_2_row." ".$field_3_row;
-					 
-				};
-				
-				return $print_row;
 			}
 			
-			public function close_connection(){
-				$close = mysql_close($con);
-				return $close;
+			public function query_db($query) {
+			
+				$q = mysql_query($query);
+			
+				return $q;
+			}
+			
+			public function create_db(){
+				
+				$creation_query = "CREATE DATABASE '{$this->dbname}';";		
+				
+			    $this->query_db($creation_query);
+			    	
+			}
+			
+			public function select_db(){
+				
+				$selection_query = mysql_select_db($this->dbname);
+				
 				
 			}
+		
+		
 		}
-		
-		
-		
-		
-		$base = new database("localhost","root","",$_POST['participant_comment']);
-		$base -> connect_db("localhost","root"," ");
-		$base -> create_db("my_db",$con);
+			
+		$base = new database();
+		$base -> connect_db();
+		$base -> create_db();
+		$base -> select_db();
 		
 		if (isset($_POST['participant_comment']))
 				{
