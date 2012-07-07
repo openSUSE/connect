@@ -219,7 +219,7 @@ EOT;
 				
 				$close_query = mysql_close($this->connect);
 				
-				retutn $close_query;
+				return $close_query;
 				
 				
 			}
