@@ -173,7 +173,7 @@ EOT;
 			
 			public $dbpass = "";
 			
-			public $dbname = "my_db";
+			public $dbname = "event_database";
 			
 			public $connect;
 			
@@ -182,11 +182,9 @@ EOT;
 				$this->connect_db();			
 			}
 			
-		
-				
+						
 			public function connect_db(){
-				
-				
+						
 				$this->connect = mysql_connect($this->dbhost,$this->dbuser,$this->dbpass);
 				
 				return $this->connect;
@@ -201,18 +199,15 @@ EOT;
 			}
 			
 			public function create_db(){
-				
-				//$creation_query = "CREATE DATABASE '{$this->dbname}';";		
-				
-			    $this->query_db("CREATE DATABASE '{$this->dbname}';");
+		
+			    $this->query_db("CREATE DATABASE `$this->dbname`;");
 			    	
 			}
 			
 			public function select_db(){
 				
 				$selection_query = mysql_select_db($this->dbname);
-				
-				
+					
 			}
 			
 			public function close_connection(){
