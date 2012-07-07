@@ -171,7 +171,7 @@ EOT;
 			
 			public $dbuser="root";
 			
-			public $dbpass" ";
+			public $dbpass= " ";
 			
 			public $dbname = "my_db";
 			
