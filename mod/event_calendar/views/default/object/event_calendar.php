@@ -165,40 +165,125 @@ if ($vars['full']) {
     
 EOT;
 
-		
-		function connect_create_base($dbhost,$dbuser,$dbpass,$dbname) {
-			$con = mysql_connect($dbhost,$dbuser,$dbpass);
-			$sql = "CREATE DATABASE '{$dbname}';";
-			$connection_query = mysql_query($sql,$con);
-			$selection_query = mysql_select_db("{$dbname}",$con);
-			return $con;
-		}
-	
-		function create_insert_table($tablename,$name,$field_1,$field_2,$field_3) {
+		class database {
 			
-			$creation_query = "CREATE TABLE `$tablename` (`$name` VARCHAR(30) primary key, `$field_1` VARCHAR(10), `$field_2` VARCHAR(10), `$field_3` VARCHAR(30));";
-			mysql_query($creation_query,$con);
-			$insert_query = "INSERT INTO `$tablename` (`$name`,`$field_1`,`$field_2`,`$field_3`) VALUE ('$name','$d1','$d2','$d3');";
-			mysql_query($insert_query,$con);
-		}
-		
-		function select_fields($param) {
+			public $dbhost;
 			
-		//$select_query =mysql_fetch_array(mysql_query("SELECT * FROM `$tablename` where name='$name';"));
+			public $dbuser;
+			
+			public $dbpass;
+			
+			public $dbname;
+			
+			public $post_value; // Fill this variable with this kind of value $_POST['participant_comment']
+			
+			public function __construct($dbhost, $dbuser, $dbpass, $dbname,$post_value){
+				
+				$this->dbhost = $dbhost;
+				$this->dbuser = $dbuser;
+				$this->dbpass = $dbpass;
+				$this->dbname = $dbname;
+				$this->post_value = $post_value;
+			}
+			
+		
+				
+			public function connect_db($dbhost,$dbuser,$dbpass) {
+				
+				$con = mysql_connect($dbhost,$dbuser,$dbpass);
+				return $con;
+				
+				
+			}
+			
+			public function create_db($dbname,$con){
+				
+				$sql = "CREATE DATABASE '{$dbname}';";
+				$creation_query = mysql_query($sql,$con);
+			}
+			
+			
+			public function select_db($dbname,$con){
+				
+				$selection_query = mysql_select_db("{$dbname}",$con);
+				return $selection_query;
+				
+			}
+			
+			public function create_insert_table($tablename,$name,$field_1,$field_2,$field_3) {
+				
+				$name = get_loggedin_user()->username;
+				
+				if ($this->post_value == $_POST['participant_comment'])
+				
+				{
+					$comment = $_POST['participant_comment'];
+					$data = explode("\n", $comment);
 						
-					$select_all_query = mysql_query("SELECT * FROM `$tablename`;");
-					 
-					 while($row=mysql_fetch_array($select_all_query)){
+				}
+				
+				if ($this->post_value == $_POST['material_comment'])
+				
+				{
+					$comment = $_POST['material_comment'];
+					$data = explode("\n", $comment);
+				
+				}
+				
+				if ($this->post_value == $_POST['booth_comment'])
+				
+				{
+					$comment = $_POST['booth_comment'];
+					$data = explode("\n", $comment);
+				
+				}
+				
+				if ($this->post_value == $_POST['talks_comment'])
+				
+				{
+					$comment = $_POST['talks_comment'];
+					$data = explode("\n", $comment);
+				
+				}
+				
+				$d1 = $data[1];
+				
+				$d2 = $data[2];
+				
+				$d3 = $data[3];
+				
+				$creation_query = "CREATE TABLE `$tablename` (`$name` VARCHAR(30) primary key, `$field_1` VARCHAR(10), `$field_2` VARCHAR(10), `$field_3` VARCHAR(30));";
+				mysql_query($creation_query,$con);
+				$insert_query = "INSERT INTO `$tablename` (`$name`,`$field_1`,`$field_2`,`$field_3`) VALUE ('$name','$d1','$d2','$d3');";
+				mysql_query($insert_query,$con);
+				return $tablename;
+			}
+			
+			public function select_fields($tablename) {
 					
-						$name_row = $row['$name'];
-						$field_1_row = $row['$field_1'];
-						$field_2_row = $row['$field_2'];
-						$field_3_row = $row['$field_3'];
-					 };
+				//$select_query =mysql_fetch_array(mysql_query("SELECT * FROM `$tablename` where name='$name';"));
+			
+				
+				
+				$select_all_query = mysql_query("SELECT * FROM `$tablename`;");
+			
+				while($row=mysql_fetch_array($select_all_query)){
+						
+					$name_row = $row['$name'];
+					$field_1_row = $row['$field_1'];
+					$field_2_row = $row['$field_2'];
+					$field_3_row = $row['$field_3'];
+					$print_row = $name_row." ".$field_1_row." ".$field_2_row." ".$field_3_row;
+					 
+				};
+				
+				return $print_row;
+			}
 		}
 		
 		
-		$name = get_loggedin_user()->username;		
+		
+				
 
 		if (isset($_POST['participant_comment']))
 				{
