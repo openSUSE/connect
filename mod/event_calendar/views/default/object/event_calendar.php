@@ -164,6 +164,8 @@ if ($vars['full']) {
 		</script>
     
 EOT;
+		
+		$name = get_loggedin_user()->username;
 
 		class database {
 			
@@ -179,7 +181,7 @@ EOT;
 			
 			public $table_name;
 			
-			public $user_name = get_loggedin_user()->username;
+			public $user_name = $name;
 			
 			public $field_1;
 			
