@@ -181,8 +181,6 @@ EOT;
 			
 			public $table_name;
 			
-			public $user_name = $name;
-			
 			public $field_1;
 			
 			public $field_2;
@@ -192,6 +190,7 @@ EOT;
 			
 			public function __construct(){
 				
+				global $name;
 				$this->connect_db();			
 			}
 			
@@ -239,7 +238,7 @@ EOT;
 				$this->field_2 = $element_2;
 				$this->field_3 = $element_3;
 				
-				$this->query_db("CREATE TABLE IF NOT EXISTS `$this->table_name` (`$this->user_name` VARCHAR(30) primary key, `$this->field_1` VARCHAR(10), `$this->field_2` VARCHAR(10), `$this->field_3` VARCHAR(30));");
+				$this->query_db("CREATE TABLE IF NOT EXISTS `$this->table_name` (`$name` VARCHAR(30) primary key, `$this->field_1` VARCHAR(10), `$this->field_2` VARCHAR(10), `$this->field_3` VARCHAR(30));");
 						
 				
 			}
