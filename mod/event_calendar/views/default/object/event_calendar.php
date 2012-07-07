@@ -286,7 +286,7 @@ EOT;
 		
 		$base = new database("localhost","root","",my_db,$_POST['participant_comment']);
 		$base -> connect_db("localhost","root"," ");
-		
+		$base -> create_db("my_db",$con);
 		
 		if (isset($_POST['participant_comment']))
 				{
