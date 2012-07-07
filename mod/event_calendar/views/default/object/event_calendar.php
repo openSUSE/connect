@@ -200,7 +200,7 @@ EOT;
 			
 			public function create_db(){
 		
-			    $this->query_db("CREATE DATABASE `$this->dbname`;");
+			    $this->query_db("CREATE DATABASE IF NOT EXISTS `$this->dbname`;");
 			    	
 			}
 			
