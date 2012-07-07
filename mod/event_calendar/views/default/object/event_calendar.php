@@ -175,14 +175,19 @@ EOT;
 			
 			public $dbname;
 			
+			public $con;
+			
+			public $tablename;
+			
+			public $sql;
+			
 			public $post_value; // Fill this variable with this kind of value $_POST['participant_comment']
 			
-			public function __construct($dbhost, $dbuser, $dbpass, $dbname,$post_value){
+			public function __construct($dbhost, $dbuser, $dbpass,$post_value){
 				
 				$this->dbhost = $dbhost;
 				$this->dbuser = $dbuser;
 				$this->dbpass = $dbpass;
-				$this->dbname = $dbname;
 				$this->post_value = $post_value;
 			}
 			
@@ -190,22 +195,23 @@ EOT;
 				
 			public function connect_db($dbhost,$dbuser,$dbpass) {
 				
-				$con = mysql_connect($dbhost,$dbuser,$dbpass);
-				return $con;
+				$this->con = mysql_connect($dbhost,$dbuser,$dbpass);
+				return $this->con;
 				
 				
 			}
 			
 			public function create_db($dbname,$con){
 				
-				$sql = "CREATE DATABASE '{$dbname}';";
-				$creation_query = mysql_query($sql,$con);
+				$this->sql = "CREATE DATABASE '{$this->dbname}';";
+				$creation_query = mysql_query($this->sql,$this->con);
+				
 			}
 			
 			
 			public function select_db($dbname,$con){
 				
-				$selection_query = mysql_select_db("{$dbname}",$con);
+				$selection_query = mysql_select_db("{$this->dbname}",$this->con);
 				return $selection_query;
 				
 			}
@@ -279,12 +285,18 @@ EOT;
 				
 				return $print_row;
 			}
+			
+			public function close_connection(){
+				$close = mysql_close($con);
+				return $close;
+				
+			}
 		}
 		
 		
 		
 		
-		$base = new database("localhost","root","",my_db,$_POST['participant_comment']);
+		$base = new database("localhost","root","",$_POST['participant_comment']);
 		$base -> connect_db("localhost","root"," ");
 		$base -> create_db("my_db",$con);
 		
