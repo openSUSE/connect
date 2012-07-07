@@ -249,7 +249,7 @@ EOT;
 		$base -> connect_db();
 		$base -> create_db();
 		$base -> select_db();
-		$base -> create_table("participants","arrival","departure","location")
+		$base -> create_table("participants","arrival","departure","location");
 		$base -> close_connection();
 		
 		if (isset($_POST['participant_comment']))
