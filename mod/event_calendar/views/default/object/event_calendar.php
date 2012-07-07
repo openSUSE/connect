@@ -240,7 +240,8 @@ EOT;
 				$element_3 = $this->field_3;
 				
 				$this->query_db("CREATE TABLE IF NOT EXISTS `$this->table_name` (`$name` VARCHAR(30) primary key, `$this->field_1` VARCHAR(10), `$this->field_2` VARCHAR(10), `$this->field_3` VARCHAR(30));");
-						
+
+				return $this->table_name;
 				
 			}
 		
