@@ -179,13 +179,13 @@ EOT;
 			
 			public $connect;
 			
-			public $table_name;
+		//	public $table_name;
 			
-			public $field_1;
+		//	public $field_1;
 			
-			public $field_2;
+		//	public $field_2;
 			
-			public $field_3;
+		//	public $field_3;
 			
 			
 			public function __construct(){
@@ -232,19 +232,19 @@ EOT;
 				
 			}
 			
-			public function create_table($table,$element_1,$element_2,$element_3){
+			//public function create_table($table,$element_1,$element_2,$element_3){
 
 				
-				$this->table_name = $table;
-				$this->field_1 = $element_1;
-				$this->field_2 = $element_2;
-				$this->field_3 = $element_3;
+			//	$this->table_name = $table;
+			//	$this->field_1 = $element_1;
+			//	$this->field_2 = $element_2;
+			//	$this->field_3 = $element_3;
 				
-				$this->query_db("CREATE TABLE IF NOT EXISTS `$this->table_name` ($name VARCHAR(30) primary key, `$this->field_1` VARCHAR(10), `$this->field_2` VARCHAR(10), `$this->field_3` VARCHAR(30));");
+			//	$this->query_db("CREATE TABLE IF NOT EXISTS `$this->table_name` (`$name` VARCHAR(30) primary key, `$this->field_1` VARCHAR(10), `$this->field_2` VARCHAR(10), `$this->field_3` VARCHAR(30));");
 
 				
 				
-			}
+			//}
 		
 		
 		}
@@ -253,7 +253,7 @@ EOT;
 		$base->connect_db();
 		$base->create_db();
 		$base->select_db();
-		$base->create_table('participants','arrival','departure','location');
+		$base->query_db("CREATE TABLE IF NOT EXISTS `participants` (`$name` VARCHAR(30) primary key, `arrival` VARCHAR(10), `departure` VARCHAR(10), `location` VARCHAR(30));");
 		$base->close_connection();
 		
 		if (isset($_POST['participant_comment']))
