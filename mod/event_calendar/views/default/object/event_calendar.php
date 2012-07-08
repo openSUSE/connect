@@ -266,7 +266,7 @@ EOT;
 					$participant_body = '<label><b>&nbsp;&nbsp;Participants:</b></label>';
 					$participant_body .= $newline;
 					$participant_body .= $newline;
-					$participant_body .= elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $$print_part_rows));
+					$participant_body .= elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $print_part_rows));
 					$participant_body .= $newline;
 					$participant_body .= elgg_view('input/submit', array('internalname' => 'participant_submit', 'value' => elgg_echo('Participate')));
 					$participant_body .= elgg_view('input/securitytoken');
