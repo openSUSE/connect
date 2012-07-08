@@ -244,7 +244,7 @@ EOT;
 					
 					$row_query = mysql_query("SELECT * FROM `participants`;");
 					
-					while ($row=mysql_fetch_array($row_query){
+					while ($row=mysql_fetch_array($row_query)){
 						
 					 
 					$a= $row['arrival'];
