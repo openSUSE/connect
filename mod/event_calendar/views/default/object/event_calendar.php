@@ -253,10 +253,14 @@ EOT;
 									
 					while ($row=mysql_fetch_array($row_query)){
 						
+						$a = $row['$name'];
+						$b = $row['arrival'];
+						$c = $row['departure'];
+						$d = $row['location'];
 					 
 					}
 					
-					$print_part_rows = $row['$name'].$row['arrival'].$row['departure'].$row['location'];
+					$print_part_rows = $a." ".$b." ".$c." ".$d;
 					$event->annotate('participant_comment', "");
 					$participant_annotation = $event->getAnnotations('participant_comment');
 					$participant_print = $participant_annotation[0][value];
