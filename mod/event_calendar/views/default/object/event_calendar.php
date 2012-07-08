@@ -245,11 +245,10 @@ EOT;
 					while ($row=mysql_fetch_array($base->query_db("SELECT * FROM `participants`;"))){
 						
 					
-						$part_print_rows = $row['$name']."&nbsp".$row['arrival']."&nbsp".$row['departure']."&nbsp".$row['location'];
-						
-					}
-					
-													 
+					echo  $row['$name'];
+					echo  $row['arrival'];
+					echo  $row['departure'];
+					echo  $row['location'];
 					
 					$event->annotate('participant_comment', "");
 					$participant_annotation = $event->getAnnotations('participant_comment');
@@ -263,9 +262,11 @@ EOT;
 					$participant_body .= elgg_view('input/securitytoken');
 					$url = $event->getURL();
 					$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
+					}
 						
 					$base->close_connection();
 					
+						
 				}
 				
 		
