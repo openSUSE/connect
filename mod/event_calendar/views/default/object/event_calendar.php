@@ -178,16 +178,7 @@ EOT;
 			public $dbname = "event_database";
 			
 			public $connect;
-			
-		//	public $table_name;
-			
-		//	public $field_1;
-			
-		//	public $field_2;
-			
-		//	public $field_3;
-			
-			
+						
 			public function __construct(){
 				
 				global $name;
@@ -232,33 +223,21 @@ EOT;
 				
 			}
 			
-			//public function create_table($table,$element_1,$element_2,$element_3){
-
-				
-			//	$this->table_name = $table;
-			//	$this->field_1 = $element_1;
-			//	$this->field_2 = $element_2;
-			//	$this->field_3 = $element_3;
-				
-			//	$this->query_db("CREATE TABLE IF NOT EXISTS `$this->table_name` (`$name` VARCHAR(30) primary key, `$this->field_1` VARCHAR(10), `$this->field_2` VARCHAR(10), `$this->field_3` VARCHAR(30));");
-
-				
-				
-			//}
-		
 		
 		}
 			
-		$base = new database();
-		$base->connect_db();
-		$base->create_db();
-		$base->select_db();
-		$base->query_db("CREATE TABLE IF NOT EXISTS `participants` (`$name` VARCHAR(30) primary key, `arrival` VARCHAR(10), `departure` VARCHAR(10), `location` VARCHAR(30));");
-		$base->close_connection();
+		
 		
 		if (isset($_POST['participant_comment']))
 				{
 					
+					$base = new database();
+					$base->connect_db();
+					$base->create_db();
+					$base->select_db();
+					$base->query_db("CREATE TABLE IF NOT EXISTS `participants` (`$name` VARCHAR(30) primary key, `arrival` VARCHAR(10), `departure` VARCHAR(10), `location` VARCHAR(30));");
+					
+													
 					$par_comment = $_POST['participant_comment'];
 					$data = explode("\n", $par_comment);	
 					
@@ -277,56 +256,48 @@ EOT;
 					$url = $event->getURL();
 					$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
 						
-					mysql_close($con);
+					$base->close_connection();
 					
 				}
 				
-		if (isset($_POST['departure_comment']))
-				{
-						
-					$dep_comment = $_POST['departure_comment'];
-					$dep_line = "\n";
-					$event->departure = $event->departure.$dep_line.$dep_comment;
-						
-				}
+		
 		if (isset($_POST['material_comment']))
 				{
-				
+					$base = new database();
+					$base->connect_db();
+					$base->create_db();
+					$base->select_db();
+					$base->query_db("CREATE TABLE IF NOT EXISTS `materials` (`$name` VARCHAR(30) primary key, `stuff_1` VARCHAR(10), `stuff_2` VARCHAR(10), `stuff_3` VARCHAR(30));");
+						
+					
+					
 					$mat_comment = $_POST['material_comment'];
 					$mat_line = "\n";
-					$event->material = $event->material.$dep_line.$mat_comment;
-				
+					//$event->material = $event->material.$dep_line.$mat_comment;
+					$base->close_connection();
+					
 				}
-		if (isset($_POST['booth_comment']))
+
+				if (isset($_POST['talks_comment']))
 				{
 				
-					$bot_comment = $_POST['booth_comment'];
-					$bot_line = "\n";
-					$event->booth = $event->booth.$bot_line.$bot_comment;
-				
-				}
-		
-		if (isset($_POST['travel_comment']))
-				{
-				
-					$tra_comment = $_POST['travel_comment'];
-					$tra_line = "\n";
-					$event->travel = $event->travel.$tra_line.$tra_comment;
-				
-				}
-		if (isset($_POST['talks_comment']))
-				{
-				
+					$base = new database();
+					$base->connect_db();
+					$base->create_db();
+					$base->select_db();
+					$base->query_db("CREATE TABLE IF NOT EXISTS `talks` (`$name` VARCHAR(30) primary key, `title` VARCHAR(30), `date` VARCHAR(15), `place` VARCHAR(30));");
+						
 					$tal_comment = $_POST['talks_comment'];
 					$tal_line = "\n";
 					
-					$event->talks = $event->talks.$tal_line.$tal_comment;
+					//$event->talks = $event->talks.$tal_line.$tal_comment;
+					
+					$base->close_connection();
 				}		
 				
 	
 				echo $participant_form_body.$newline;
 				echo $material_form_body.$newline;
-				echo $booth_form_body.$newline;
 				echo $talks_form_body.$newline;
 				echo $lati_body;
 				echo $long_body;
