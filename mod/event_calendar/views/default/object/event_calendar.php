@@ -235,7 +235,7 @@ EOT;
 					$base->connect_db();
 					$base->create_db();
 					$base->select_db();
-					$base->query_db("CREATE TABLE IF NOT EXISTS `participants` (`$name` VARCHAR(30) primary key, `arrival` VARCHAR(30), `departure` VARCHAR(30), `location` VARCHAR(20));");
+					$base->query_db("CREATE TABLE IF NOT EXISTS `participants` (`$name` VARCHAR(30) primary key, `arrival` VARCHAR(15), `departure` VARCHAR(15), `location` VARCHAR(20));");
 					
 					$par_comment = $_POST['participant_comment'];
 					$data = explode("\n", $par_comment);
@@ -250,16 +250,30 @@ EOT;
 					
 					$row_query = mysql_query("SELECT * FROM `participants`;");
 					
-					while ($row=mysql_fetch_array($row_query)){
-						
-					 
-					$a= $row['arrival'];
-					$b= $row['departure'];
-					$c= $row['location'];
-					
+					while(list($name_p,$arrival_p,$departure_p,$location_p)= mysql_fetch_row($result))
+					{
+						$a = $name_p;
+						$b = $arrival_p;
+						$c = $departure_p;
+						$d = $location_p;
 					}
 					
-					$print_part_rows = $a." ".$b." ".$c;
+					
+					
+					
+					
+					
+					//while ($row=mysql_fetch_array($row_query)){
+						
+					 
+					//$a= $row['$name'];
+					//$b= $row['arrival'];
+					//$c= $row['departure'];
+					//$d= $row['location'];
+					
+					//}
+					
+					$print_part_rows = $a.$b.$c.$d;
 					$event->annotate('participant_comment', "");
 					$participant_annotation = $event->getAnnotations('participant_comment');
 					$participant_print = $participant_annotation[0][value];
