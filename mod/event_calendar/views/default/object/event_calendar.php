@@ -253,13 +253,13 @@ EOT;
 					while ($row=mysql_fetch_array($k)){
 						
 					
-						$name_row = echo $row['$name'];
+						$name_row = print_r($row['$name']);
 					
-						$arrival_row = echo $row['arrival'];
+						$arrival_row = print_r($row['arrival']);
 					
-						$departure_row = echo $row['departure'];
+						$departure_row = print_r($row['departure']);
 					
-						$location_row = echo $row['location'];
+						$location_row = print_r($row['location']);
 							
 					}
 					
