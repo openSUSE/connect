@@ -248,8 +248,9 @@ EOT;
 					
 					$base->query_db("INSERT IGNORE INTO `participants` (`$name`,`arrival`,`departure`,`location`) VALUE ('$name','$d0','$d1','$d2');";
 					
+					$k = $base->query_db("SELECT * FROM `participants`;");
 					
-					while ($row=mysql_fetch_array($base->query_db("SELECT * FROM `participants`;"));){
+					while ($row=mysql_fetch_array($k)){
 						
 					
 						$name_row = $row['$name'];
