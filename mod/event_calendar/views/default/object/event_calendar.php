@@ -235,7 +235,7 @@ EOT;
 					$base->connect_db();
 					$base->create_db();
 					$base->select_db();
-					$base->query_db("CREATE TABLE IF NOT EXISTS `participants` (`$name` VARCHAR(30) primary key, `arrival` VARCHAR(10), `departure` VARCHAR(10), `location` VARCHAR(30));");
+					$base->query_db("CREATE TABLE IF NOT EXISTS `participants` (`$name` VARCHAR(30) primary key, `arrival` VARCHAR(10), `departure` VARCHAR(10), `location` VARCHAR(20));");
 					
 					$par_comment = $_POST['participant_comment'];
 					$data = explode("\n", $par_comment);
@@ -254,15 +254,19 @@ EOT;
 						
 					 
 					$a= $row['arrival'];
+					$b= $row['departure'];
+					$c = $row['location'];
+					
 					}
 					
+					$print_part_rows = $a." ".$b." ".$c;
 					$event->annotate('participant_comment', "");
 					$participant_annotation = $event->getAnnotations('participant_comment');
 					$participant_print = $participant_annotation[0][value];
 					$participant_body = '<label><b>&nbsp;&nbsp;Participants:</b></label>';
 					$participant_body .= $newline;
 					$participant_body .= $newline;
-					$participant_body .= elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $a));
+					$participant_body .= elgg_view('input/longtext', array('internalname' => 'participant_comment', 'value' => $$print_part_rows));
 					$participant_body .= $newline;
 					$participant_body .= elgg_view('input/submit', array('internalname' => 'participant_submit', 'value' => elgg_echo('Participate')));
 					$participant_body .= elgg_view('input/securitytoken');
