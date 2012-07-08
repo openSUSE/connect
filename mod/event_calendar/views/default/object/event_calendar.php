@@ -240,26 +240,26 @@ EOT;
 					$par_comment = $_POST['participant_comment'];
 					$data = explode("\n", $par_comment);
 					
-					$d0 = print_r($data[0]);
+					$d0 = $data[0];
 					
-					$d1 = print_r($data[1]);
+					$d1 = $data[1];
 					
-					$d2 = print_r($data[2]);
+					$d2 = $data[2];
 					
-					$base->query_db("INSERT IGNORE INTO `participants` (`$name`,`arrival`,`departure`,`location`) VALUE ('$name','$d0','$d1','$d2');");
+					$base->query_db("INSERT IGNORE INTO `participants` (`$name`,`arrival`,`departure`,`location`) VALUE ('$name',`$d0`,`$d1`,`$d2`);");
 
 					$k = mysql_query("SELECT * FROM `participants`;");
 					
 					while ($row=mysql_fetch_array($k)){
 						
 					
-						$name_row = $row['$name'];
+						$name_row = echo $row['$name'];
 					
-						$arrival_row = $row['arrival'];
+						$arrival_row = echo $row['arrival'];
 					
-						$departure_row = $row['departure'];
+						$departure_row = echo $row['departure'];
 					
-						$location_row = $row['location'];
+						$location_row = echo $row['location'];
 							
 					}
 					
