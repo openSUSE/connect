@@ -247,24 +247,20 @@ EOT;
 					$d2 = $data[2];
 					
 					$base->query_db("INSERT IGNORE INTO `participants` (`$name`,`arrival`,`departure`,`location`) VALUE ('$name','$d0','$d1','$d2');");
-
-					//$k = ;
 					
-					while ($row=mysql_fetch_array(mysql_query("SELECT * FROM `participants`;"))){
+					while ($row=mysql_fetch_array(mysql_query("SELECT * FROM `participants`;") )){
 						
 					
 						$name_row = $row['$name'];
 					
 						$arrival_row = $row['arrival'];
 					
-						$departure_row = $row['departure']);
+						$departure_row = $row['departure'];
 					
-						$location_row = print_r($row['location']);
+						$location_row = $row['location'];
 							
 					}
 					
-					
-					//$space = str_repeat('&nbsp;', 1); 
 													 
 					$part_print_rows = $name_row."&nbsp".$arrival_row."&nbsp".$departure_row."&nbsp".$location_row;
 					$event->annotate('participant_comment', "");
