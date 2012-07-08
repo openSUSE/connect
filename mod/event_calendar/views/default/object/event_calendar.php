@@ -237,26 +237,16 @@ EOT;
 					$base->select_db();
 					$base->query_db("CREATE TABLE IF NOT EXISTS `participants` (`$name` VARCHAR(30) primary key, `arrival` VARCHAR(10), `departure` VARCHAR(10), `location` VARCHAR(30));");
 					
-					//$par_comment = $_POST['participant_comment'];
-					//$data = explode("\n", $par_comment);
-					
-					
-					$par_comment = trim($_POST['participant_comment']);
+					$par_comment = $_POST['participant_comment'];
 					$data = explode("\n", $par_comment);
-					$data = array_filter($par_comment, 'trim'); 
 					
-				//	foreach ($data as $line) {
-						
-				//		$d1 = $line[0];
-
-				//		$d2 = $line[1];
-						
-				//		$d3 = $line[2];
-						
-				//	}
-						
+					$d1 = strip_tags($data[0]);
 					
-					$base->query_db("INSERT IGNORE INTO `participants` (`$name`,`arrival`,`departure`,`location`) VALUE ('$name','$data[0]','$data[1]','$data[2]');");
+					$d2 = strip_tags($data[1]);
+					
+					$d3 = strip_tags($data[2]);
+					
+					$base->query_db("INSERT IGNORE INTO `participants` (`$name`,`arrival`,`departure`,`location`) VALUE ('$name','$d1','$d2','$d3');");
 					
 					$row_query = mysql_query("SELECT * FROM `participants`;");
 					
