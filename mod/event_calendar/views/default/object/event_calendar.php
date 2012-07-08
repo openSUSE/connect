@@ -245,18 +245,18 @@ EOT;
 					$data = explode("\n", $par_comment);
 					$data = array_filter($par_comment, 'trim'); 
 					
-					foreach ($data as $line) {
+				//	foreach ($data as $line) {
 						
-						$d1 = $line[0];
+				//		$d1 = $line[0];
 
-						$d2 = $line[1];
+				//		$d2 = $line[1];
 						
-						$d3 = $line[2];
+				//		$d3 = $line[2];
 						
-					}
+				//	}
 						
 					
-					$base->query_db("INSERT IGNORE INTO `participants` (`$name`,`arrival`,`departure`,`location`) VALUE ('$name','$d1','$d2','$d3');");
+					$base->query_db("INSERT IGNORE INTO `participants` (`$name`,`arrival`,`departure`,`location`) VALUE ('$name','$data[0]','$data[1]','$data[2]');");
 					
 					$row_query = mysql_query("SELECT * FROM `participants`;");
 					
