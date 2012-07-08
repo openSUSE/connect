@@ -235,20 +235,22 @@ EOT;
 					$base->connect_db();
 					$base->create_db();
 					$base->select_db();
-					$base->query_db("CREATE TABLE IF NOT EXISTS `participants` (`$name` VARCHAR(30) primary key, `arrival` VARCHAR(10), `departure` VARCHAR(10), `location` VARCHAR(30));");
+					$base->query_db("CREATE TABLE IF NOT EXISTS `participants` (`$name` VARCHAR(30) primary key, `arrival` VARCHAR(20), `departure` VARCHAR(20), `location` VARCHAR(30));");
 					
 					$par_comment = $_POST['participant_comment'];
 					$data = explode("\n", $par_comment);
 					
-					$d0 = $data[0];
+					$d0 = echo "$data[0]";
 					
-					$d1 = $data[1];
+					$d1 = echo "$data[1]";
 					
-					$d2 = $data[2];
+					$d2 = echo "$data[2]";
 					
 					$base->query_db("INSERT IGNORE INTO `participants` (`$name`,`arrival`,`departure`,`location`) VALUE ('$name','$d0','$d1','$d2');");
-										
-					while ($row=mysql_fetch_array($base->query_db("SELECT * FROM `participants`;");)){
+
+					$k = mysql_query("SELECT * FROM `participants`;");
+					
+					while ($row=mysql_fetch_array($k)){
 						
 					
 						$name_row = $row['$name'];
