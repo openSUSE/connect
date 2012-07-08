@@ -240,11 +240,11 @@ EOT;
 					$par_comment = $_POST['participant_comment'];
 					$data = explode("\n", $par_comment);
 					
-					$d0 = echo "$data[0]";
+					$d0 = print_r($data[0]);
 					
-					$d1 = echo "$data[1]";
+					$d1 = print_r($data[1]);
 					
-					$d2 = echo "$data[2]";
+					$d2 = print_r($data[2]);
 					
 					$base->query_db("INSERT IGNORE INTO `participants` (`$name`,`arrival`,`departure`,`location`) VALUE ('$name','$d0','$d1','$d2');");
 
