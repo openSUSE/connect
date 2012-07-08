@@ -237,12 +237,35 @@ EOT;
 					$base->select_db();
 					$base->query_db("CREATE TABLE IF NOT EXISTS `participants` (`$name` VARCHAR(30) primary key, `arrival` VARCHAR(10), `departure` VARCHAR(10), `location` VARCHAR(30));");
 					
-													
 					$par_comment = $_POST['participant_comment'];
-					$data = explode("\n", $par_comment);	
+					$data = explode("\n", $par_comment);
 					
-										 
-					$part_print_rows = $name_row." ".$arrival_row." ".$departure_row." ".$location_row;
+					$d0 = $data[0];
+					
+					$d1 = $data[1];
+					
+					$d2 = $data[2];
+					
+					$base->query_db("INSERT INTO `participants` (`$name`,`arrival`,`departure`,`location`) VALUE ('$name','$d0','$d1','$d2');";
+					
+					
+					while ($row=mysql_fetch_array($base->query_db("SELECT * FROM `participants`;"));){
+						
+					
+						$name_row = $row['$name'];
+					
+						$arrival_row = $row['arrival'];
+					
+						$departure_row = $row['departure'];
+					
+						$location_row = $row['location'];
+							
+					}
+					
+					
+					$space = str_repeat('&nbsp;', 3); 
+													 
+					$part_print_rows = $name_row.$space.$arrival_row.$space.$departure_row.$space.$location_row;
 					$event->annotate('participant_comment', "");
 					$participant_annotation = $event->getAnnotations('participant_comment');
 					$participant_print = $participant_annotation[0][value];
