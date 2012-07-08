@@ -240,29 +240,17 @@ EOT;
 					$par_comment = $_POST['participant_comment'];
 					$data = explode("\n", $par_comment);
 					
-					$d0 = $data[0];
-					
-					$d1 = $data[1];
-					
-					$d2 = $data[2];
-					
-					$base->query_db("INSERT IGNORE INTO `participants` (`$name`,`arrival`,`departure`,`location`) VALUE ('$name','$d0','$d1','$d2');");
+					$base->query_db("INSERT IGNORE INTO `participants` (`$name`,`arrival`,`departure`,`location`) VALUE ('$name','$data[0]','$data[1]','$data[2]');");
 					
 					while ($row=mysql_fetch_array(mysql_query("SELECT * FROM `participants`;") )){
 						
 					
-						$name_row = $row['$name'];
-					
-						$arrival_row = $row['arrival'];
-					
-						$departure_row = $row['departure'];
-					
-						$location_row = $row['location'];
-							
+						$part_print_rows = $row['$name']."&nbsp".$row['arrival']."&nbsp".$row['departure']."&nbsp".$row['location'];
+						
 					}
 					
 													 
-					$part_print_rows = $name_row."&nbsp".$arrival_row."&nbsp".$departure_row."&nbsp".$location_row;
+					
 					$event->annotate('participant_comment', "");
 					$participant_annotation = $event->getAnnotations('participant_comment');
 					$participant_print = $participant_annotation[0][value];
