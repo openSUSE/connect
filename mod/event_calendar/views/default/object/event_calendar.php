@@ -235,7 +235,7 @@ EOT;
 					$base->connect_db();
 					$base->create_db();
 					$base->select_db();
-					$base->query_db("CREATE TABLE IF NOT EXISTS `participants` (`$name` VARCHAR(30) primary key, `arrival` VARCHAR(10), `departure` VARCHAR(10), `location` VARCHAR(20));");
+					$base->query_db("CREATE TABLE IF NOT EXISTS `participants` (`$name` VARCHAR(30) primary key, `arrival` VARCHAR(30), `departure` VARCHAR(30), `location` VARCHAR(20));");
 					
 					$par_comment = $_POST['participant_comment'];
 					$data = explode("\n", $par_comment);
@@ -255,7 +255,7 @@ EOT;
 					 
 					$a= $row['arrival'];
 					$b= $row['departure'];
-					$c = $row['location'];
+					$c= $row['location'];
 					
 					}
 					
