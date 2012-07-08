@@ -235,7 +235,7 @@ EOT;
 					$base->connect_db();
 					$base->create_db();
 					$base->select_db();
-					$base->query_db("CREATE TABLE IF NOT EXISTS participants ('$name' VARCHAR(30) primary key, `arrival` VARCHAR(10), `departure` VARCHAR(10), `location` VARCHAR(30));");
+					$base->query_db("CREATE TABLE IF NOT EXISTS `participants` ('$name' VARCHAR(30) primary key, `arrival` VARCHAR(10), `departure` VARCHAR(10), `location` VARCHAR(30));");
 					
 					$par_comment = $_POST['participant_comment'];
 					$data = explode("\n", $par_comment);
@@ -246,18 +246,18 @@ EOT;
 					
 					$d2 = $data[2];
 					
-					$base->query_db("INSERT IGNORE INTO participants (`$name`,`arrival`,`departure`,`location`) VALUE ('$name','$d0','$d1','$d2');");
+					$base->query_db("INSERT IGNORE INTO `participants` (`$name`,`arrival`,`departure`,`location`) VALUE ('$name','$d0','$d1','$d2');");
 
 					//$k = ;
 					
-					while ($row=mysql_fetch_array(mysql_query("SELECT * FROM participants;"))){
+					while ($row=mysql_fetch_array(mysql_query("SELECT * FROM `participants`;"))){
 						
 					
-						$name_row = print_r($row['$name']);
+						$name_row = $row['$name'];
 					
-						$arrival_row = print_r($row['arrival']);
+						$arrival_row = $row['arrival'];
 					
-						$departure_row = print_r($row['departure']);
+						$departure_row = $row['departure']);
 					
 						$location_row = print_r($row['location']);
 							
