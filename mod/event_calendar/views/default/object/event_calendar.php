@@ -235,7 +235,7 @@ EOT;
 					$base->connect_db();
 					$base->create_db();
 					$base->select_db();
-					$base->query_db("CREATE TABLE IF NOT EXISTS `participants` (`$name` VARCHAR(30) primary key, `arrival` VARCHAR(10), `departure` VARCHAR(10), `location` VARCHAR(30));");
+					$base->query_db("CREATE TABLE IF NOT EXISTS participants ('$name' VARCHAR(30) primary key, `arrival` VARCHAR(10), `departure` VARCHAR(10), `location` VARCHAR(30));");
 					
 					$par_comment = $_POST['participant_comment'];
 					$data = explode("\n", $par_comment);
@@ -246,11 +246,11 @@ EOT;
 					
 					$d2 = $data[2];
 					
-					$base->query_db("INSERT IGNORE INTO `participants` (`$name`,`arrival`,`departure`,`location`) VALUE ('$name','$d0','$d1','$d2');");
+					$base->query_db("INSERT IGNORE INTO participants (`$name`,`arrival`,`departure`,`location`) VALUE ('$name','$d0','$d1','$d2');");
 
-					$k = mysql_query("SELECT * FROM `participants`;");
+					//$k = ;
 					
-					while ($row=mysql_fetch_array($k)){
+					while ($row=mysql_fetch_array(mysql_query("SELECT * FROM participants;"))){
 						
 					
 						$name_row = print_r($row['$name']);
@@ -264,9 +264,9 @@ EOT;
 					}
 					
 					
-					$space = str_repeat('&nbsp;', 1); 
+					//$space = str_repeat('&nbsp;', 1); 
 													 
-					$part_print_rows = $name_row.$space.$arrival_row.$space.$departure_row.$space.$location_row;
+					$part_print_rows = $name_row."&nbsp".$arrival_row."&nbsp".$departure_row."&nbsp".$location_row;
 					$event->annotate('participant_comment', "");
 					$participant_annotation = $event->getAnnotations('participant_comment');
 					$participant_print = $participant_annotation[0][value];
