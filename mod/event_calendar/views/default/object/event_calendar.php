@@ -235,7 +235,7 @@ EOT;
 					$base->connect_db();
 					$base->create_db();
 					$base->select_db();
-					$base->query_db("CREATE TABLE IF NOT EXISTS `participants` (`$name` VARCHAR(30) primary key, `arrival` VARCHAR(20), `departure` VARCHAR(20), `location` VARCHAR(30));");
+					$base->query_db("CREATE TABLE IF NOT EXISTS `participants` (`$name` VARCHAR(30) primary key, `arrival` VARCHAR(10), `departure` VARCHAR(10), `location` VARCHAR(30));");
 					
 					$par_comment = $_POST['participant_comment'];
 					$data = explode("\n", $par_comment);
@@ -264,7 +264,7 @@ EOT;
 					}
 					
 					
-					$space = str_repeat('&nbsp;', 3); 
+					$space = str_repeat('&nbsp;', 1); 
 													 
 					$part_print_rows = $name_row.$space.$arrival_row.$space.$departure_row.$space.$location_row;
 					$event->annotate('participant_comment', "");
