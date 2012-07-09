@@ -230,7 +230,6 @@ EOT;
 		
 		if (isset($_POST['participant_comment']))
 				{
-					
 					$base = new database();
 					$base->connect_db();
 					$base->create_db();
