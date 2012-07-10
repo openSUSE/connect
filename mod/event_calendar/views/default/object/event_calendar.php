@@ -343,7 +343,7 @@ EOT;
 						
 					$tal_comment = $_POST['talks_comment'];
 					
-					$data_tal = explode(" ", $tal_comment);
+					$data_tal = explode(",", $tal_comment);
 					
 					$d1_tal = strip_tags($data_tal[0]);
 					
