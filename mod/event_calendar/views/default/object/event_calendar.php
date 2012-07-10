@@ -121,6 +121,9 @@ if ($vars['full']) {
 		/* Material Comment field */
 		
 		$event->annotate('material_comment', "");
+		$a = $event->material;
+		$a ->annotate('test comment',"");
+		
 		$material_annotation = $event->getAnnotations('material_comment');
 		$material_print = $material_annotation[0][value];
 		$material_body  = '<label><b>&nbsp;&nbsp;Material Comment:</b></label>';
