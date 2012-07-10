@@ -12,9 +12,6 @@
  * 
  */
 
-
-include "db_class.php";
-
 gatekeeper(); // Access to the event only for logged in users.
 
 $event = $vars['entity'];
@@ -43,6 +40,66 @@ if ($vars['full']) {
 	
 	echo $body;
 	
+	$name = get_loggedin_user()->username;
+	
+	class database {
+	
+		public $dbhost ="localhost";
+	
+		public $dbuser ="root";
+	
+		public $dbpass = "";
+	
+		public $dbname = "event_database";
+	
+		public $connect;
+	
+		public function __construct(){
+	
+			global $name;
+	
+			$this->connect_db();
+		}
+	
+	
+		public function connect_db(){
+	
+			$this->connect = mysql_connect($this->dbhost,$this->dbuser,$this->dbpass);
+	
+			return $this->connect;
+				
+		}
+	
+		public function query_db($query){
+				
+			$q = mysql_query($query);
+				
+			return $q;
+		}
+	
+		public function create_db(){
+	
+			$this->query_db("CREATE DATABASE IF NOT EXISTS `$this->dbname`;");
+	
+		}
+	
+		public function select_db(){
+	
+			$selection_query = mysql_select_db($this->dbname);
+				
+		}
+	
+		public function close_connection(){
+	
+			$close_query = mysql_close($this->connect);
+	
+			return $close_query;
+	
+	
+		}
+	
+	
+	}	
 		$newline = '<br>';
 	
 		/* Participants Comment field */
@@ -153,9 +210,7 @@ if ($vars['full']) {
 					$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
 					
 						
-					$base->close_connection();
-					
-						
+					$base->close_connection();				
 				}
 				
 		
