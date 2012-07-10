@@ -12,6 +12,9 @@
  * 
  */
 
+
+include "db_class.php";
+
 gatekeeper(); // Access to the event only for logged in users.
 
 $event = $vars['entity'];
@@ -57,20 +60,6 @@ if ($vars['full']) {
 		$url = $event->getURL();
 		$participant_form_body = elgg_view('input/form', array('body' => $participant_body, 'action' => $url));
 		
-		/* Departure Comment field */
-		
-	//	$event->annotate('departure_comment', "");
-	//	$departure_annotation = $event->getAnnotations('departure_comment');
-	//	$departure_print = $departure_annotation[0][value];
-	//	$departure_body  = '<label><b>&nbsp;&nbsp;Departure Comment:</b></label>';
-	//	$departure_body  .= $newline;
-	//	$departure_body  .= $newline;
-	//	$departure_body .= elgg_view('input/longtext', array('internalname' => 'departure_comment', 'value' => $departure_print));
-	//	$departure_body  .= $newline;
-	//	$departure_body .= elgg_view('input/submit', array('internalname' => 'departure_submit', 'value' => elgg_echo('Add your Departure here')));
-	//	$departure_body .= elgg_view('input/securitytoken');
-	//	$url = $event->getURL();
-	//	$departure_form_body = elgg_view('input/form', array('body' => $departure_body, 'action' => $url));
 			
 		/* Material Comment field */
 		
@@ -101,22 +90,7 @@ if ($vars['full']) {
 		$booth_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();
 		$booth_form_body = elgg_view('input/form', array('body' => $booth_body, 'action' => $url));
-		
-		/* Travel Comment field */
-		
-	//	$event->annotate('travel_comment', "");
-	//	$travel_annotation = $event->getAnnotations('travel_comment');
-	//	$travel_print = $travel_annotation[0][value];
-	//	$travel_body  = '<label><b>&nbsp;&nbsp;Travel Comment:</b></label>';
-	//	$travel_body .= $newline;
-	//	$travel_body .= $newline;
-	//	$travel_body .= elgg_view('input/longtext', array('internalname' => 'travel_comment', 'value' => $travel_print));
-	//	$travel_body .= $newline;
-	//	$travel_body .= elgg_view('input/submit', array('internalname' => 'travel_submit', 'value' => elgg_echo('Add your Travel here')));
-	//	$travel_body .= elgg_view('input/securitytoken');
-	//	$url = $event->getURL();		
-	//	$travel_form_body = elgg_view('input/form', array('body' => $travel_body, 'action' => $url));
-		
+				
 		/*Talks comment field*/
 		
 		$event->annotate('talks_comment', "");
@@ -131,75 +105,7 @@ if ($vars['full']) {
 		$talks_body .= elgg_view('input/securitytoken');
 		$url = $event->getURL();		
 		$talks_form_body = elgg_view('input/form', array('body' => $talks_body, 'action' => $url));
-				
-		$lati = $event->latitude;
-		$long = $event->longitude;
-		$lati_body = elgg_view("input/hidden",array('internalname' => 'lati_body','value'=>$lati));
-		$long_body = elgg_view("input/hidden",array('internalname' => 'long_body','value'=>$long));
 						
-		$name = get_loggedin_user()->username;
-
-		class database {
-			
-			public $dbhost ="localhost";
-			
-			public $dbuser ="root";
-			
-			public $dbpass = "";
-			
-			public $dbname = "event_database";
-			
-			public $connect;
-						
-			public function __construct(){
-				
-				global $name;
-				
-				$this->connect_db();			
-			}
-			
-						
-			public function connect_db(){
-						
-				$this->connect = mysql_connect($this->dbhost,$this->dbuser,$this->dbpass);
-				
-				return $this->connect;
-					
-			}
-			
-			public function query_db($query){
-			
-				$q = mysql_query($query);
-			
-				return $q;
-			}
-			
-			public function create_db(){
-		
-			    $this->query_db("CREATE DATABASE IF NOT EXISTS `$this->dbname`;");
-			    	
-			}
-			
-			public function select_db(){
-				
-				$selection_query = mysql_select_db($this->dbname);
-					
-			}
-			
-			public function close_connection(){
-				
-				$close_query = mysql_close($this->connect);
-				
-				return $close_query;
-				
-				
-			}
-			
-		
-		}
-			
-		
-		
 		if (isset($_POST['participant_comment']))
 				{
 					$base = new database();
@@ -361,9 +267,9 @@ if ($vars['full']) {
 				echo $participant_form_body.$newline;
 				echo $material_form_body.$newline;
 				echo $talks_form_body.$newline;
-				echo $lati_body;
-				echo $long_body;
-				echo $map_body;
+				//echo $lati_body;
+				//echo $long_body;
+				//echo $map_body;
 				
 		
 	if ($event->long_description) {

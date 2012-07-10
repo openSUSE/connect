@@ -898,6 +898,10 @@ function event_calendar_get_formatted_full_items($event) {
 	
 	$item = new stdClass();
 	$item->title = elgg_echo('Location');
+	$lati = $event->latitude;
+	$long = $event->longitude;
+	$lati_body = elgg_view("input/hidden",array('internalname' => 'lati_body','value'=>$lati));
+	$long_body = elgg_view("input/hidden",array('internalname' => 'long_body','value'=>$long));
 	
 	$map_body = <<<EOT
 		<div id="mapdiv" style="height:200px" width="100px"></div>
