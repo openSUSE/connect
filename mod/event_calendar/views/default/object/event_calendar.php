@@ -102,7 +102,8 @@ if ($vars['full']) {
 	}	
 		$newline = '<br>';
 		
-		
+		$lati = $event->latitude;
+		$long = $event->longitude;		
 		$lati_body = elgg_view("input/hidden",array('internalname' => 'lati_body','value'=>$lati));
 		$long_body = elgg_view("input/hidden",array('internalname' => 'long_body','value'=>$long));
 		

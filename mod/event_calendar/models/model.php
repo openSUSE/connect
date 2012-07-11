@@ -898,8 +898,8 @@ function event_calendar_get_formatted_full_items($event) {
 	
 //	$item = new stdClass();
 //	$item->title = elgg_echo('Location');
-//	$lati = $event->latitude;
-//	$long = $event->longitude;
+//
+
 	
 //	$item->value = $map_body;
 //	$event_items[] = $item;
