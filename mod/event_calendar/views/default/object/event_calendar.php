@@ -102,39 +102,7 @@ if ($vars['full']) {
 	}	
 		$newline = '<br>';
 		
-		$lati = $event->latitude;
-		$long = $event->longitude;		
-		$lati_body = elgg_view("input/hidden",array('internalname' => 'lati_body','value'=>$lati));
-		$long_body = elgg_view("input/hidden",array('internalname' => 'long_body','value'=>$long));
-		
-		$map_body = <<<EOT
-		<div id="mapdiv" style="height:200px" width="100px"></div>
-		<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-		<script>
-		map = new OpenLayers.Map("mapdiv");
-		map.addLayer(new OpenLayers.Layer.OSM());
-		var lati_value = document.getElementsByName('lati_body')[0].value;
-		var long_value = document.getElementsByName('long_body')[0].value;
-		
-		var lonLat = new OpenLayers.LonLat( long_value,lati_value )
-		.transform(
-				new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-				map.getProjectionObject() // to Spherical Mercator Projection
-		);
-		
-		var zoom=15;
-		
-		var markers = new OpenLayers.Layer.Markers( "Markers" );
-		map.addLayer(markers);
-		
-		markers.addMarker(new OpenLayers.Marker(lonLat));
-		
-		map.setCenter (lonLat, zoom);
-		</script>
-		
-EOT;
-		
-	
+
 		/* Participants Comment field */
 	
 		$event->annotate('participant_comment', "");
@@ -154,9 +122,9 @@ EOT;
 		/* Material Comment field */
 		
 		$event->annotate('material_comment', "");
-		$a = $event->material;
-		$a->annotate('test comment',"");
-		elgg_view_comments($a);
+	//	$a = $event->material;
+	//	$a->annotate('test comment',"");
+	//	elgg_view_comments($a);
 		$material_annotation = $event->getAnnotations('material_comment');
 		$material_print = $material_annotation[0][value];
 		$material_body  = '<label><b>&nbsp;&nbsp;Material Comment:</b></label>';
@@ -353,7 +321,38 @@ EOT;
 
 					$base->close_connection();
 				}		
+
+				$lati = $event->latitude;
+				$long = $event->longitude;
+				$lati_body = elgg_view("input/hidden",array('internalname' => 'lati_body','value'=>$lati));
+				$long_body = elgg_view("input/hidden",array('internalname' => 'long_body','value'=>$long));
 				
+				$map_body = <<<EOT
+		<div id="mapdiv" style="height:200px" width="100px"></div>
+		<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+		<script>
+		map = new OpenLayers.Map("mapdiv");
+		map.addLayer(new OpenLayers.Layer.OSM());
+		var lati_value = document.getElementsByName('lati_body')[0].value;
+		var long_value = document.getElementsByName('long_body')[0].value;
+				
+		var lonLat = new OpenLayers.LonLat( long_value,lati_value )
+		.transform(
+				new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+				map.getProjectionObject() // to Spherical Mercator Projection
+		);
+				
+		var zoom=15;
+				
+		var markers = new OpenLayers.Layer.Markers( "Markers" );
+		map.addLayer(markers);
+				
+		markers.addMarker(new OpenLayers.Marker(lonLat));
+				
+		map.setCenter (lonLat, zoom);
+		</script>
+				
+EOT;
 	
 				echo $participant_form_body.$newline;
 				echo $material_form_body.$newline;
