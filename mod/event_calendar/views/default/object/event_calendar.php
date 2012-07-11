@@ -123,7 +123,7 @@ if ($vars['full']) {
 		
 		$event->annotate('material_comment', "");
 	//	$a = $event->material;
-	//	$a->annotate('test comment',"");
+	//	$a->annotate('test comment',"hi girls!");
 	//	elgg_view_comments($a);
 		$material_annotation = $event->getAnnotations('material_comment');
 		$material_print = $material_annotation[0][value];
@@ -360,6 +360,9 @@ EOT;
 				
 				echo elgg_view('input/form', array('body' => $form_body, 'action' => $url));
 				
+				$a = $event->material;
+				$a->annotate('test comment',"hi girls!");
+				return elgg_view_comments($a);
 	
 				echo $participant_form_body.$newline;
 				echo $material_form_body.$newline;
