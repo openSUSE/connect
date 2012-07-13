@@ -353,17 +353,6 @@ if ($vars['full']) {
 		</script>
 				
 EOT;
-				
-				$form_body = "<div class=\"contentWrapper\"><p class='longtext_editarea'><label>".elgg_echo("generic_comments:text")."<br />" . elgg_view('input/longtext',array('internalname' => 'generic_comment')) . "</label></p>";
-				$form_body .= "<p>" . elgg_view('input/hidden', array('internalname' => 'entity_guid', 'value' => $vars['entity']->getGUID()));
-				$form_body .= elgg_view('input/submit', array('value' => elgg_echo("post"))) . "</p></div>";
-				
-				echo elgg_view('input/form', array('body' => $form_body, 'action' => $url));
-				
-				$a = $event->material;
-				$a->annotate('test comment',"hi girls!");
-				return elgg_view_comments($a);
-	
 				echo $participant_form_body.$newline;
 				echo $material_form_body.$newline;
 				echo $talks_form_body.$newline;
