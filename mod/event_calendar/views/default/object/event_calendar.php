@@ -42,64 +42,64 @@ if ($vars['full']) {
 	
 	$name = get_loggedin_user()->username;
 	
-	class database {
+	//class database {
 	
-		public $dbhost ="localhost";
+	//	public $dbhost ="localhost";
 	
-		public $dbuser ="root";
+	//	public $dbuser ="root";
 	
-		public $dbpass = "";
+	//	public $dbpass = "";
 	
-		public $dbname = "event_database";
+	//	public $dbname = "event_database";
 	
-		public $connect;
+	//	public $connect;
 	
-		public function __construct(){
+	//	public function __construct(){
 	
-			global $name;
+	//		global $name;
 	
-			$this->connect_db();
-		}
+	//		$this->connect_db();
+	//	}
 	
 	
-		public function connect_db(){
+   //		public function connect_db(){
 	
-			$this->connect = mysql_connect($this->dbhost,$this->dbuser,$this->dbpass);
+//			$this->connect = mysql_connect($this->dbhost,$this->dbuser,$this->dbpass);
 	
-			return $this->connect;
+//			return $this->connect;
 				
-		}
+//		}
 	
-		public function query_db($query){
+//		public function query_db($query){
 				
-			$q = mysql_query($query);
+//			$q = mysql_query($query);
 				
-			return $q;
-		}
+//			return $q;
+//		}
 	
-		public function create_db(){
+//		public function create_db(){
 	
-			$this->query_db("CREATE DATABASE IF NOT EXISTS `$this->dbname`;");
+//			$this->query_db("CREATE DATABASE IF NOT EXISTS `$this->dbname`;");
 	
-		}
+//		}
 	
-		public function select_db(){
+//		public function select_db(){
 	
-			$selection_query = mysql_select_db($this->dbname);
+//			$selection_query = mysql_select_db($this->dbname);
 				
-		}
+//		}
 	
-		public function close_connection(){
+//		public function close_connection(){
 	
-			$close_query = mysql_close($this->connect);
+//			$close_query = mysql_close($this->connect);
 	
-			return $close_query;
-	
-	
-		}
+//			return $close_query;
 	
 	
-	}	
+//		}
+	
+	
+//	}	
 		$newline = '<br>';
 		
 
