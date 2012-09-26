@@ -216,7 +216,8 @@ function create_annotation($entity_guid, $name, $value, $value_type, $owner_guid
 /**
  * Update an annotation.
  *
- * @param int $annotation_id
+ * @param int $
+
  * @param string $name
  * @param string $value
  * @param string $value_type

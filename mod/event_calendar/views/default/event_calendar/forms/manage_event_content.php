@@ -69,6 +69,7 @@ if ($event) {
 	$organiser = $event->organiser;
 	$event_tags = $event->event_tags;
 	$long_description = $event->long_description;
+		
 	$material= $event->material;
 	$booth = $event->booth;
 	$event_page=$event->event_page;
