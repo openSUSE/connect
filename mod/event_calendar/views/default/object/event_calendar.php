@@ -46,9 +46,12 @@ if ($vars['full']) {
 	$event->annotate('test_annotation', "This is the first annotation");
 	$event->annotate('test_annotation',"This is the second annotation");
 	$test_annotation_counter = count_annotations($event_id, "object", "event_calendar", "test_annotation");	
-	echo $test_annotation_counter;
-	
-
+	echo $test_annotation_counter."<br/>";
+		
+	$options = get_data("SELECT value_id from {$CONFIG->dbprefix}annotations WHERE name_id ='test_annotation'"); 
+	foreach ($options as $option)	 	
+		$data ="Result : ".$options['value_id']."<br/>";	
+	echo $data;
 	
 	//class database {
 	
