@@ -27,16 +27,33 @@
 		global $CONFIG;			
 					
 		// Register a page handler, so we can have nice URLs
+		
+		// More info about register page handler can be found here - http://docs.elgg.org/wiki/Elgg_register_page_handler
+		
+		// Handler is 'event_calendar and the function is 'event_calendar_page_handler'
+	 
 		register_page_handler('event_calendar','event_calendar_page_handler');
 		
 		// Register URL handler
+		// More info about this register at - http://reference.elgg.org/entities_8php.html#a2de8ea4b1f5be2df8aef5c14520d87dd
+		// Function 'event_calendar_url' , entity is 'object' and subentity is 'event_calendar' 
+		
 		register_entity_url_handler('event_calendar_url','object', 'event_calendar');
 		
 		// Register granular notification for this type
-		if (is_callable('register_notification_object'))
+		// is_callable verifies that 'register_notification_object' can be called more info at - http://php.net/manual/en/function.is-callable.php
+		// About register_notification_object - http://reference.elgg.org/notification_8php.html#aef39b8e2458f510e4bde5a34c2efe218
+		// Entity type - 'object' , Object_subtype - 'event_calendar' , language name here is the elgg_echo
+		
+		if (is_callable('register_notification_object')) 
 			register_notification_object('object', 'event_calendar', elgg_echo('event_calendar:new_event'));
 			
 		// Set up menu for users
+		
+		// Get plugin setting - gets settings for a plugin - http://docs.elgg.org/wiki/Elgg_get_plugin_setting
+		// Name of setting - 'site calendar' , plugin - 'event_calendar'
+		// Add_menu - http://docs.elgg.org/wiki/Menus , here we define as name 'item:object:event_calendar' , the url "$CONFIG->wwwroot . "pg/event_calendar/" ")	
+	
 		if (isloggedin()) {
 			$site_calendar = get_plugin_setting('site_calendar', 'event_calendar');
 			if (!$site_calendar || $site_calendar != 'no') {			
@@ -44,11 +61,16 @@
 			}
 		}
 		// make tags searchable for Elgg 1.7.4
+		// About the elgg_register - http://reference.elgg.org/engine_2lib_2tags_8php.html#a1849928ad50e0341b93ac35cf7c359b2
+		// Here the tag name is 'event_tags'
+		
 		if (function_exists('elgg_register_tag_metadata_name')) {
 			elgg_register_tag_metadata_name('event_tags');
 		}
 		
 		//add to group profile page
+		// Extend view about : http://docs.elgg.org/wiki/Elgg_extend_view
+		// The view to be extended is 'group_profile_display' in 'event_calendar
 		$group_calendar = get_plugin_setting('group_calendar', 'event_calendar');
 		if (!$group_calendar || $group_calendar != 'no') {
 			$group_profile_display = get_plugin_setting('group_profile_display', 'event_calendar');
@@ -66,6 +88,9 @@
 		add_widget_type('event_calendar',elgg_echo("event_calendar:widget_title"),elgg_echo('event_calendar:widget:description'));
 		
 		// add the event calendar group tool option
+		
+		// add_group_tool_option , More about this at : http://reference.elgg.org/group_8php.html#a6196401d96bbf0764f4277bfa162a6d2
+		// Here the name of the group tool option is "event_calendar" and the group edit form is "event_calendar:enable_event_calendar". Furthermore this option would be active an incactive as well.
 		if (function_exists('add_group_tool_option')) {
 			$event_calendar_group_default = get_plugin_setting('group_default', 'event_calendar');
 			if (!$event_calendar_group_default || ($event_calendar_group_default == 'yes')) {
@@ -76,11 +101,18 @@
 		}
 		
 		// if autogroup is set, listen and respond to join/leave events
+		
+		// More info about register event handler can be found here - http://docs.elgg.org/wiki/Elgg_register_event_handler
+		// Here the event type is 'join' or 'leave' , the object type is 'group' and the handler callback is 'event_calendar_handle_join' or else 'leave'.
+		
 		if (get_plugin_setting('autogroup', 'event_calendar') == 'yes') {
 			register_elgg_event_handler('join', 'group', 'event_calendar_handle_join');
 			register_elgg_event_handler('leave', 'group', 'event_calendar_handle_leave');
 		}
 
+		// More info about register entity type - http://reference.elgg.org/entities_8php.html#ade3d136ebb672909d60d6e3f10095818
+		// Here the entity type is 'object' and the subtype to register us 'event_calendar'
+		
 		register_entity_type('object','event_calendar');
 	}
 	
@@ -88,11 +120,20 @@
 		
 		global $CONFIG;
 		
+		// More about Page owner entity can be found here - http://docs.elgg.org/wiki/Engine/PageOwnership
+		// Here the function assigned in the variable $page_owner retrieves the whole page entity
 		$page_owner = page_owner_entity();
+		
+		// The function get_context gets the current context. 
+		// More info at - http://reference.elgg.org/pageowner_8php.html#a25fe73eb19442b4a4476f18e63abf382
 		
 		$context = get_context();
 		
 		// Group submenu option	
+		
+		// Here we use the add submenu item which works like the add menu item function
+		
+		
 		if ($page_owner instanceof ElggGroup && $context == 'groups') {
 			if (event_calendar_activated_for_group($page_owner)) {
 				add_submenu_item(elgg_echo("event_calendar:group"), $CONFIG->wwwroot . "pg/event_calendar/group/" . $page_owner->getGUID());
@@ -146,6 +187,8 @@
 	 * @param array $page From the page_handler function
 	 * @return true|false Depending on success
 	 */
+	
+	// About set_input function more information can be found here - http://reference.elgg.org/input_8php.html#a8285a579978bf0661778a02879ca4f13
 	function event_calendar_page_handler($page) {
 		if (isset($page[0]) && $page[0]) {
 			if (($page[0] == 'group') && isset($page[1])) {
@@ -173,10 +216,15 @@
 	}
 	
 // Make sure the event calendar functions are called
+// Here we register the event handlers for event calendar. 
+// We register the init and the pagesetup as 'system' object type.
+
 	register_elgg_event_handler('init','system','event_calendar_init');
 	register_elgg_event_handler('pagesetup','system','event_calendar_pagesetup');
 	
 // Register actions
+
+// More about registing actions can be found here - http://docs.elgg.org/wiki/Actions
 
 	global $CONFIG;
 	register_action("event_calendar/manage",false,$CONFIG->pluginspath . "event_calendar/actions/manage.php");
@@ -186,5 +234,5 @@
 	register_action("event_calendar/addtocalendar",false,$CONFIG->pluginspath . "event_calendar/actions/addtocalendar.php");
 	register_action("event_calendar/add_to_group",false,$CONFIG->pluginspath . "event_calendar/actions/add_to_group.php");
 	register_action("event_calendar/remove_from_group",false,$CONFIG->pluginspath . "event_calendar/actions/remove_from_group.php");
-
+	register_action("event_calendar/editfield",false ,$CONFIG->pluginspath . "event_calendar/actions/editfield.php");
 ?>

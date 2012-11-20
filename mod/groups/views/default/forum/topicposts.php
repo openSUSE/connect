@@ -90,7 +90,7 @@ EOT;
 ?>
 
 				<?php
-					echo elgg_view('input/form', array('action' => "{$vars['url']}action/groups/editpost", 'body' => $form_body, 'internalid' => 'editforumpostForm'));
+					echo elgg_view('input/form', array('action' => "{$vars['url']}action/groups/editpost", 'body' => $form_body, 'internalid' => 'editfieldForm'));
 				?>
 					</div>
 		        </p>

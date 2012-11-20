@@ -11,14 +11,14 @@ $event_calendar_hide_end = get_plugin_setting('hide_end', 'event_calendar');
 $event_calendar_more_required = get_plugin_setting('more_required', 'event_calendar');
 
 if ($event_calendar_more_required == 'yes') {
-	$required_fields = array('title','venue','start_date','start_time',
-		'brief_description','region','event_type','fees','contact','organiser',
+	$required_fields = array('title','start_date','start_time',
+		'brief_description','latitude','region','event_type','fees','contact','organiser',
 		'event_tags','spots');
 } else {
-	$required_fields = array('title','venue','start_date');
+	$required_fields = array('title','start_date');
 }
-$all_fields = array('title','venue','start_time','start_date','end_time','end_date',
-	'brief_description','region','event_type','fees','contact','organiser','event_tags',
+$all_fields = array('title','start_time','start_date','end_time','end_date',
+	'brief_description','region','latitude','event_type','fees','contact','organiser','event_tags',
 	'long_description','spots');
 $prefix = array();
 foreach ($all_fields as $fn) {
@@ -32,7 +32,6 @@ foreach ($all_fields as $fn) {
 if ($event) {
 	$title = $event->title;
 	$brief_description = $event->description;
-	$venue = $event->venue;
 	if ($event->form_data) {
 		// this is a form redisplay, so take the values as submitted
 		$start_date = $event->start_date;
@@ -66,9 +65,18 @@ if ($event) {
 	}
 	$fees = $event->fees;
 	$contact = $event->contact;
+	$latitude = $event->latitude;
 	$organiser = $event->organiser;
 	$event_tags = $event->event_tags;
 	$long_description = $event->long_description;
+		
+	$material= $event->material;
+	$booth = $event->booth;
+	$event_page=$event->event_page;
+	$talks=$event->talks;
+	$travel=$event->travel;
+	$arrival=$event->arrival;
+	$departure=$event->departure;
 	$access = $event->access_id;
 	if ($event_calendar_times == 'yes') {
 		$start_time = $event->start_time;
@@ -79,10 +87,18 @@ if ($event) {
 	$event_id = 0;
 	$title = '';
 	$brief_description = '';
-	$venue = '';
 	$start_date = '';
 	$end_date = '';
 	$fees = '';
+	$departure='';
+	$latitude = ''; 
+	$material='';
+	$arrival='';
+	$departure='';
+	$booth='';
+	$event_page='';
+	$travel='';
+	$talks='';
 	if ($event_calendar_spots_display) {
 		$spots = '';
 	}
@@ -114,10 +130,6 @@ $body .= elgg_view("input/text",array('internalname' => 'title','value'=>$title)
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['title'].elgg_echo('event_calendar:title_description').'</p>';
 
-$body .= '<p><label>'.elgg_echo("event_calendar:venue_label").'<br />';
-$body .= elgg_view("input/text",array('internalname' => 'venue','value'=>$venue));
-$body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['venue'].elgg_echo('event_calendar:venue_description').'</p>';
 
 if ($event_calendar_times == 'yes') {
 	$body .= '<p><label>'.elgg_echo("event_calendar:start_time_label").'</label><br />';
@@ -212,30 +224,83 @@ if ($event_calendar_type_display == 'yes') {
 	}
 }
 
-$body .= '<p><label>'.elgg_echo("event_calendar:fees_label").'<br />';
-$body .= elgg_view("input/text",array('internalname' => 'fees','value'=>$fees));
-$body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['fees'].elgg_echo('event_calendar:fees_description').'</p>';
+//$body .= '<p><label>'.elgg_echo("event_calendar:fees_label").'<br />';
+//$body .= elgg_view("input/text",array('internalname' => 'fees','value'=>$fees));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['fees'].elgg_echo('event_calendar:fees_description').'</p>';
 
 $body .= '<p><label>'.elgg_echo("event_calendar:contact_label").'<br />';
 $body .= elgg_view("input/text",array('internalname' => 'contact','value'=>$contact));
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['contact'].elgg_echo('event_calendar:contact_description').'</p>';
 
+$body .= '<p><label>'.elgg_echo("Longitude").'<br />';
+$body .= elgg_view("input/text",array('internalname' => 'longitude','value'=>$longitude));
+$body .= '</label></p>';
+$body .= '<p class="description">'.$prefix['longitude'].elgg_echo('Give the longitude of the event').'</p>';
+
+
+$body .= '<p><label>'.elgg_echo("Latitude").'<br />';
+$body .= elgg_view("input/text",array('internalname' => 'latitude','value'=>$latitude));
+$body .= '</label></p>';
+$body .= '<p class="description">'.$prefix['latitude'].elgg_echo('Give the latitude of the event').'</p>';
+
 $body .= '<p><label>'.elgg_echo("event_calendar:organiser_label").'<br />';
 $body .= elgg_view("input/text",array('internalname' => 'organiser','value'=>$organiser));
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['organiser'].elgg_echo('event_calendar:organiser_description').'</p>';
+
+$body .= '<p><label>'.elgg_echo("event_calendar:long_description_label").'<br />';
+$body .= elgg_view("input/longtext",array('internalname' => 'long_description','value'=>$long_description));
+$body .= '</label></p>';
+$body .= '<p class="description">'.$prefix['long_description'].elgg_echo('event_calendar:long_description_description').'</p>';
 
 $body .= '<p><label>'.elgg_echo("event_calendar:event_tags_label").'<br />';
 $body .= elgg_view("input/tags",array('internalname' => 'event_tags','value'=>$event_tags));
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['event_tags'].elgg_echo('event_calendar:event_tags_description').'</p>';
 
-$body .= '<p><label>'.elgg_echo("event_calendar:long_description_label").'<br />';
-$body .= elgg_view("input/longtext",array('internalname' => 'long_description','value'=>$long_description));
+$body .= '<p><label>'.elgg_echo("Web page").'<br />';
+$body .= elgg_view("input/text",array('internalname' => 'event_page','value'=>$event_page));
 $body .= '</label></p>';
-$body .= '<p class="description">'.$prefix['long_description'].elgg_echo('event_calendar:long_description_description').'</p>';
+$body .= '<p class="description">'.$prefix['event_page'].elgg_echo('Here is the Event web page').'</p>';
+
+
+//$body .= '<p><label>'.elgg_echo("Facebook page").'<br />';
+//$body .= elgg_view("input/text",array('internalname' => 'fb','value'=>$fb));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['fb'].elgg_echo('Here is the Facebook event page').'</p>';
+
+
+
+//$body .= '<p><label>'.elgg_echo("Material").'<br />';
+//$body .= elgg_view("input/longtext",array('internalname' => 'material','value'=>$material));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['material'].elgg_echo('Add your Material here').'</p>';
+
+//$body .= '<p><label>'.elgg_echo("Talks").'<br />';
+//$body .= elgg_view("input/longtext",array('internalname' => 'talks','value'=>$talks));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['talks'].elgg_echo('Add your Material here').'</p>';
+
+//$body .= '<p><label>'.elgg_echo("Travel Support").'<br />';
+//$body .= elgg_view("input/longtext",array('internalname' => 'travel','value'=>$travel));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['travel'].elgg_echo('Who needs travel support').'</p>';
+
+
+
+//$body .= '<p><label>'.elgg_echo("Arrival").'<br />';
+//$body .= elgg_view("input/longtext",array('internalname' => 'arrival','value'=>$arrival));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['arrival'].elgg_echo('Who will arrive and when').'</p>';
+
+//$body .= '<p><label>'.elgg_echo("Departure").'<br />';
+//$body .= elgg_view("input/longtext",array('internalname' => 'departure','value'=>$departure));
+//$body .= '</label></p>';
+//$body .= '<p class="description">'.$prefix['departure'].elgg_echo('Who will leave and when').'</p>';
+
+
 
 if($event_calendar_hide_access == 'yes') {
 	$event_calendar_default_access = get_plugin_setting('default_access', 'event_calendar');

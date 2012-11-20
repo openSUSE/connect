@@ -10,6 +10,9 @@
  *
  */
 
+require_once(dirname(dirname(dirname(dirname(__FILE__)))) . "/engine/lib/annotations.php");
+
+
 function event_calendar_get_event_for_edit($event_id) {
 	if ($event_id && $event = get_entity($event_id)) {
 		if ($event->canEdit()) {
@@ -32,8 +35,16 @@ function event_calendar_get_event_from_form() {
 	$event_data->event_id = get_input('event_id',0);
 	$event_data->access_id = get_input('access',ACCESS_PRIVATE);
 	$event_data->title = get_input('title','');
+	$event_data->latitude = get_input('latitude','');
+	$event_data->longitude = get_input('longitude','');
 	$event_data->description = get_input('brief_description','');
-	$event_data->venue = get_input('venue','');
+	$event_data->material = get_input('material','');
+	$event_data->arrival = get_input('arrival','');
+	$event_data->departure = get_input('departure','');
+	$event_data->booth = get_input('booth','');
+	//$event_data->fb=get_input('fb','');
+	$event_data->travel = get_input('travel','');
+	$event_data->talks = get_input('talks','');
 	$event_calendar_times = get_plugin_setting('times', 'event_calendar');
 	$event_calendar_region_display = get_plugin_setting('region_display', 'event_calendar');
 	$event_calendar_type_display = get_plugin_setting('type_display', 'event_calendar');
@@ -60,6 +71,7 @@ function event_calendar_get_event_from_form() {
 			$event_data->end_time = '';
 		}
 	}
+	
 	$event_data->start_date = get_input('start_date','');
 	$event_data->end_date = get_input('end_date','');
 	if ($event_calendar_spots_display == 'yes') {
@@ -83,6 +95,7 @@ function event_calendar_get_event_from_form() {
 	$event_data->contact = get_input('contact','');
 	$event_data->organiser = get_input('organiser','');
 	$event_data->event_tags = get_input('event_tags','');
+	
 	$event_data->long_description = get_input('long_description','');
 
 	return $event_data;
@@ -104,9 +117,9 @@ function event_calendar_set_event_from_form() {
 	$event_calendar_more_required = get_plugin_setting('more_required', 'event_calendar');
 
 	if ($event_calendar_more_required == 'yes') {
-		$required_fields = array('title','venue','start_date',
-			'brief_description','fees','contact','organiser',
-			'event_tags');
+		$required_fields = array('title','start_date',
+			'brief_description','fees','contact','latitude','longitude','material','arrival','departure','booth','talks','travel', 'organiser',
+			'event_tags','fb');
 		
 		if ($event_calendar_times == 'yes') {
 			$required_fields[] = 'start_time';
@@ -124,7 +137,7 @@ function event_calendar_set_event_from_form() {
 			$required_fields[] = 'spots';
 		}
 	} else {
-		$required_fields = array('title','venue','start_date');
+		$required_fields = array('title','start_date');
 	}
 	foreach ($required_fields as $fn) {
 		if (!trim($ed->$fn)) {
@@ -149,11 +162,15 @@ function event_calendar_set_event_from_form() {
 			} else {
 				$event->container_guid = $event->owner_guid;
 			}
+			
+			
+			
+			
 		}
+		
 		$event->access_id = $ed->access_id;
 		$event->title = $ed->title;
 		$event->description = $ed->description;
-		$event->venue = $ed->venue;
 		$event->start_date = strtotime($ed->start_date);
 		if ($ed->end_date) {
 			$event->end_date = strtotime($ed->end_date);
@@ -182,10 +199,21 @@ function event_calendar_set_event_from_form() {
 		$event->fees = $ed->fees;
 		$event->contact = $ed->contact;
 		$event->organiser = $ed->organiser;
+		$event->latitude = $ed->latitude;
+		$event->longitude = $ed->longitude;
 		$event->event_tags = array_reverse(string_to_tag_array($ed->event_tags));
 		$event->long_description = $ed->long_description;
-		$event->real_end_time = event_calendar_get_end_time($event);
+		$event->material= $ed->material;
+		$event->arrival= $ed->arrival;
+		$event->departure=$ed->departure;
+		$event->talks= $ed->talks;
+		$event->travel=$ed->travel;
+		$event->booth=$ed->booth;
+		$event->fb=$ed->fb;
+		$event->event_page=$ed->event_page;
+		$event->real_end_time = event_calendar_get_end_time($event);		
 		$result->success = $event->save();
+		
 		if ($result->success) {
 			if ($group_guid && (get_plugin_setting('autogroup', 'event_calendar') == 'yes')) {
 				event_calendar_add_personal_events_from_group($event->getGUID(),$group_guid);
@@ -218,9 +246,16 @@ function event_calendar_set_event_from_form() {
 		// required data missing
 		$result->success = false;
 	}
-
+	
+	
 	return $result;
+	
 }
+
+
+
+
+
 
 function event_calendar_get_events_between($start_date,$end_date,$is_count,$limit=10,$offset=0,$container_guid=0,$region='-') {
 	if ($is_count) {
@@ -836,15 +871,13 @@ function event_calendar_get_formatted_full_items($event) {
 	$event_calendar_region_display = get_plugin_setting('region_display', 'event_calendar');
 	$event_calendar_type_display = get_plugin_setting('type_display', 'event_calendar');
 	$event_items = array();
+	
 	$item = new stdClass();
 	$item->title = elgg_echo('event_calendar:when_label');
 	$item->value = $time_bit;
 	$event_items[] = $item;
-	$item = new stdClass();
-	$item->title = elgg_echo('event_calendar:venue_label');
-	$item->value = htmlspecialchars($event->venue);
-	$event_items[] = $item;
-	if ($event_calendar_region_display == 'yes') {
+
+		if ($event_calendar_region_display == 'yes') {
 		$item = new stdClass();
 		$item->title = elgg_echo('event_calendar:region_label');
 		$item->value = event_calendar_get_region($event);
@@ -856,23 +889,78 @@ function event_calendar_get_formatted_full_items($event) {
 		$item->value = event_calendar_get_type($event);
 		$event_items[] = $item;
 	}
-	$item = new stdClass();
-	$item->title = elgg_echo('event_calendar:fees_label');
-	$item->value = htmlspecialchars($event->fees);
-	$event_items[] = $item;
+	
+	//$item = new stdClass();
+	//$item->title = elgg_echo('event_calendar:fees_label');
+	//$item->value = htmlspecialchars($event->fees);
+	//$event_items[] = $item;
+	
+	
+//	$item = new stdClass();
+//	$item->title = elgg_echo('Location');
+//
+
+	
+//	$item->value = $map_body;
+//	$event_items[] = $item;
+	
+	
 	$item = new stdClass();
 	$item->title = elgg_echo('event_calendar:organiser_label');
 	$item->value = htmlspecialchars($event->organiser);
 	$event_items[] = $item;
+	
+	
+	//$item = new stdClass();
+	//$item->title = elgg_echo('Arrival');
+	//$item->value = $event->arrival;	
+	//$event_items[] = $item;
+		
+	//$item = new stdClass();
+	//$item->title = elgg_echo('Departure');
+	//$item->value = $event->departure;
+	//$event_items[] = $item;
+	
+	$item = new stdClass();
+	$item->title = elgg_echo('Material');
+	$item->value = $event->material;
+	$event_items[] = $item;
+		
+	$item = new stdClass();
+	$item->title = elgg_echo('Booth');
+	$item->value = $event->booth;
+	$event_items[] = $item;
+		
+	$item = new stdClass();
+	$item->title = elgg_echo('Travel Support');
+	$item->value = $event->travel;
+	$event_items[] = $item;
+	
+	$item = new stdClass();
+	$item->title = elgg_echo('Talks');
+	$item->value = $event->talks;
+	$event_items[] = $item;
+	
 	$item = new stdClass();
 	$item->title = elgg_echo('event_calendar:contact_label');
 	$item->value = htmlspecialchars($event->contact);
 	$event_items[] = $item;
+
 	$item = new stdClass();
 	$item->title = elgg_echo('event_calendar:event_tags_label');
 	$item->value = elgg_view("output/tags",array('value'=>$event->event_tags));
 	$event_items[] = $item;
 
+	$item = new stdClass();
+	$item->title = elgg_echo('Event Page');
+	$item->value = $event->event_page;
+	$event_items[] = $item;
+	
+	$item = new stdClass();
+	$item->title = elgg_echo('Facebook Page');
+	$item->value = $event->fb;
+	$event_items[] = $item;
+	
 	return $event_items;
 }
 
