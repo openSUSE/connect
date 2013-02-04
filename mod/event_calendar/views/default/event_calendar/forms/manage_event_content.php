@@ -18,7 +18,7 @@ if ($event_calendar_more_required == 'yes') {
 	$required_fields = array('title','venue','start_date');
 }
 $all_fields = array('title','venue','start_time','start_date','end_time','end_date',
-	'brief_description','region','event_type','fees','contact','organiser','event_tags',
+	'brief_description','region','latitude','longitude','event_type','fees','contact','organiser','event_tags',
 	'long_description','spots');
 $prefix = array();
 foreach ($all_fields as $fn) {
@@ -67,8 +67,18 @@ if ($event) {
 	$fees = $event->fees;
 	$contact = $event->contact;
 	$organiser = $event->organiser;
+	$latitude = $event->latitude;
 	$event_tags = $event->event_tags;
 	$long_description = $event->long_description;
+	
+	
+	$material= $event->material;
+	$booth = $event->booth;
+	$event_page=$event->event_page;
+	$talks=$event->talks;
+	$travel=$event->travel;
+	$arrival=$event->arrival;
+	$departure=$event->departure;
 	$access = $event->access_id;
 	if ($event_calendar_times == 'yes') {
 		$start_time = $event->start_time;
@@ -79,10 +89,20 @@ if ($event) {
 	$event_id = 0;
 	$title = '';
 	$brief_description = '';
-	$venue = '';
 	$start_date = '';
 	$end_date = '';
 	$fees = '';
+	$departure='';
+	$latitude = '';
+	$material='';
+	$arrival='';
+	$departure='';
+	$booth='';
+	$event_page='';
+	$travel='';
+	$talks='';
+	$venue = '';
+	
 	if ($event_calendar_spots_display) {
 		$spots = '';
 	}
@@ -221,6 +241,20 @@ $body .= '<p><label>'.elgg_echo("event_calendar:contact_label").'<br />';
 $body .= elgg_view("input/text",array('internalname' => 'contact','value'=>$contact));
 $body .= '</label></p>';
 $body .= '<p class="description">'.$prefix['contact'].elgg_echo('event_calendar:contact_description').'</p>';
+
+
+$body .= '<p><label>'.elgg_echo("Longitude").'<br />';
+$body .= elgg_view("input/text",array('internalname' => 'longitude','value'=>$longitude));
+$body .= '</label></p>';
+$body .= '<p class="description">'.$prefix['longitude'].elgg_echo('Give the longitude of the event').'</p>';
+
+$body .= '<p><label>'.elgg_echo("Latitude").'<br />';
+$body .= elgg_view("input/text",array('internalname' => 'latitude','value'=>$latitude));
+$body .= '</label></p>';
+$body .= '<p class="description">'.$prefix['latitude'].elgg_echo('Give the latitude of the event').'</p>';
+
+
+
 
 $body .= '<p><label>'.elgg_echo("event_calendar:organiser_label").'<br />';
 $body .= elgg_view("input/text",array('internalname' => 'organiser','value'=>$organiser));
