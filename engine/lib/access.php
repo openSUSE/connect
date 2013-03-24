@@ -777,7 +777,7 @@ function get_entities_from_access_collection($collection_id, $entity_type = "", 
  *
  * @param int $collection_id
  * @param array $options @see elgg_get_entities()
- * @return array
+ * @return if count, int. if not count, array or false if no entities. false also on errors.
  * @since 1.7.0
  */
 function elgg_get_entities_from_access_id(array $options=array()) {
@@ -917,7 +917,17 @@ function access_init() {
  * @since 1.7.0
  */
 function elgg_override_permissions_hook($hook, $type, $returnval, $params) {
-	$user_guid = get_loggedin_userid();
+	$user = $params['user'];
+	$entity = $params['entity'];
+	$user_guid = null;
+
+	if (!$user) {
+		$user = get_loggedin_user();
+	}
+
+	if ($user instanceof ElggUser) {
+		$user_guid = $user->getGUID();
+	}
 
 	// check for admin
 	if ($user_guid && elgg_is_admin_user($user_guid)) {

@@ -571,7 +571,7 @@ function find_metadata($meta_name = "", $meta_value = "", $entity_type = "", $en
  *
  *  metadata_owner_guids => NULL|ARR guids for metadata owners
  *
- * @return array
+ * @return if count, int. if not count, array or false if no entities. false also on errors.
  * @since 1.7.0
  */
 function elgg_get_entities_from_metadata(array $options = array()) {
@@ -981,6 +981,7 @@ $count = FALSE, $case_sensitive = TRUE) {
  * @see elgg_view_entity_list
  *
  * @deprecated 1.8 Use elgg_list_entities_from_metadata
+ * 
  * @param mixed $meta_name Metadata name to search on
  * @param mixed $meta_value The value to match, optionally
  * @param string $entity_type The type of entity to look for, eg 'site' or 'object'
@@ -993,7 +994,6 @@ $count = FALSE, $case_sensitive = TRUE) {
  * @return string A list of entities suitable for display
  */
 function list_entities_from_metadata($meta_name, $meta_value = "", $entity_type = ELGG_ENTITIES_ANY_VALUE, $entity_subtype = ELGG_ENTITIES_ANY_VALUE, $owner_guid = 0, $limit = 10, $fullview = true, $viewtypetoggle = true, $pagination = true, $case_sensitive = true ) {
-	elgg_deprecated_notice('list_entities_from_metadata() was deprecated by elgg_list_entities_from_metadata()!', 1.8);
 
 	$offset = (int) get_input('offset');
 	$limit = (int) $limit;
@@ -1035,7 +1035,11 @@ function elgg_list_entities_from_metadata($options) {
 
 	$options = array_merge($defaults, $options);
 
-	$count = elgg_get_entities_from_metadata(array_merge(array('count' => TRUE), $options));
+	if (isset($options['count'])) {
+		unset ($options['count']);
+	}
+
+	$count = elgg_get_entities_from_metadata(array_merge($options, array('count' => TRUE)));
 	$entities = elgg_get_entities_from_metadata($options);
 
 	return elgg_view_entity_list($entities, $count, $options['offset'], $options['limit'], $options['full_view'], $options['view_type_toggle'], $options['pagination']);

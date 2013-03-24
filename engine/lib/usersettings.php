@@ -35,9 +35,9 @@ function usersettings_pagesetup() {
 	// Menu options
 	if (get_context() == "settings") {
 		$user = get_loggedin_user();
-                add_submenu_item(elgg_echo('profile:editsettings'), $CONFIG->wwwroot . "pg/settings/user/{$user->username}/edit/");
+		add_submenu_item(elgg_echo('profile:editsettings'), $CONFIG->wwwroot . "pg/settings/user/{$user->username}/edit/");
 		add_submenu_item(elgg_echo('profile:editdetails'), $CONFIG->wwwroot . "pg/profile/{$user->username}/edit/");
-                add_submenu_item(elgg_echo('profile:editicon'), $CONFIG->wwwroot . "pg/profile/{$user->username}/editicon/");
+		add_submenu_item(elgg_echo('profile:editicon'), $CONFIG->wwwroot . "pg/profile/{$user->username}/editicon/");
 		add_submenu_item(elgg_echo('usersettings:plugins:opt:linktext'),$CONFIG->wwwroot . "pg/settings/plugins/{$user->username}/");
 		add_submenu_item(elgg_echo('usersettings:statistics:opt:linktext'),$CONFIG->wwwroot . "pg/settings/statistics/{$user->username}/");
 	}

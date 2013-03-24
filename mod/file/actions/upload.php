@@ -10,7 +10,7 @@
 	gatekeeper();
 	
 	// Get variables
-	$title = get_input("title");
+	$title = htmlspecialchars(get_input('title', '', false), ENT_QUOTES, 'UTF-8');
 	$desc = get_input("description");
 	$access_id = (int) get_input("access_id");
 	$container_guid = (int) get_input('container_guid', 0);
@@ -20,6 +20,17 @@
 	$guid = (int) get_input('file_guid');
 	$tags = get_input("tags");
 	
+	// check if upload failed
+	if (!empty($_FILES['upload']['name']) && $_FILES['upload']['error'] != 0) {
+		// cache information in session
+		$_SESSION['uploadtitle'] = $title;
+		$_SESSION['uploaddesc'] = $desc;
+		$_SESSION['uploadtags'] = $tags;
+		$_SESSION['uploadaccessid'] = $access_id;
+		register_error(elgg_echo('file:cannotload'));
+		forward($_SERVER['HTTP_REFERER']);
+	}
+	
 	// check whether this is a new file or an edit
 	$new_file = true;
 	if ($guid > 0) {
@@ -27,6 +38,7 @@
 	}
 	
 	if ($new_file) {
+
 		// must have a file if a new file upload
 		if (empty($_FILES['upload']['name'])) {
 			// cache information in session
@@ -44,7 +56,7 @@
 		
 		// if no title on new upload, grab filename
 		if (empty($title)) {
-			$title = $_FILES['upload']['name'];
+			$title = htmlspecialchars($_FILES['upload']['name'], ENT_QUOTES, 'UTF-8');
 		}
 	
 	} else {
@@ -90,9 +102,12 @@
 		}
 		
 		$file->setFilename($prefix.$filestorename);
-		$file->setMimeType($_FILES['upload']['type']);
+
+		$mime_type = $file->detectMimeType($_FILES['upload']['tmp_name'], $_FILES['upload']['type']);
+
+		$file->setMimeType($mime_type);
 		$file->originalfilename = $_FILES['upload']['name'];
-		$file->simpletype = get_general_file_type($_FILES['upload']['type']);
+		$file->simpletype = get_general_file_type($mime_type);
 
 		// Open the file to guarantee the directory exists
 		$file->open("write");
@@ -107,7 +122,7 @@
 			$thumbnail = get_resized_image_from_existing_file($file->getFilenameOnFilestore(),60,60, true);
 			if ($thumbnail) {
 				$thumb = new ElggFile();
-				$thumb->setMimeType($_FILES['upload']['type']);
+				$thumb->setMimeType($mime_type);
 				
 				$thumb->setFilename($prefix."thumb".$filestorename);
 				$thumb->open("write");

@@ -201,6 +201,11 @@ function search_tags_hook($hook, $type, $value, $params) {
 		$search_tag_names = $valid_tag_names;
 	}
 
+	// bail if no valid tags to search on.
+	if (!$search_tag_names) {
+		return array('entities' => array(), 'count' => $count);
+	}
+
 	// don't use elgg_get_entities_from_metadata() here because of
 	// performance issues.  since we don't care what matches at this point
 	// use an IN clause to grab everything that matches at once and sort
@@ -320,6 +325,9 @@ function search_comments_hook($hook, $type, $value, $params) {
 	global $CONFIG;
 
 	$query = sanitise_string($params['query']);
+	$limit = sanitise_int($params['limit']);
+	$offset = sanitise_int($params['offset']);
+
 	$params['annotation_names'] = array('generic_comment', 'group_topic_post');
 
 	$params['joins'] = array(
@@ -336,7 +344,7 @@ function search_comments_hook($hook, $type, $value, $params) {
 
 	$container_and = '';
 	if ($params['container_guid'] && $params['container_guid'] !== ELGG_ENTITIES_ANY_VALUE) {
-		$container_and = 'AND e.container_guid = ' . sanitise_string($params['container_guid']);
+		$container_and = 'AND e.container_guid = ' . sanitise_int($params['container_guid']);
 	}
 
 	$e_access = get_access_sql_suffix('e');
@@ -374,7 +382,7 @@ function search_comments_hook($hook, $type, $value, $params) {
 			AND $a_access
 			$container_and
 
-		LIMIT {$params['offset']}, {$params['limit']}
+		LIMIT $offset, $limit
 		";
 
 	$comments = get_data($q);

@@ -35,8 +35,10 @@
 				$access_id = ACCESS_DEFAULT;
 			}
 
+			// only admins can change freenode nick, freenode cloak, opensuse email alias nick and full email alias
 			$admin_only = in_array($shortname, array('freenode_nick', 'freenode_cloak', 'email_nick', 'email_full', 'email_target'));
 			if (!$admin_only || isadminloggedin()) {
+
 ?>
 
 	<p>
