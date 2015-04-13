@@ -888,11 +888,7 @@ abstract class ElggEntity implements
 
 	/** Interface to set the location */
 	public function setLocation($location) {
-		$location = sanitise_string($location);
-
-		$this->location = $location;
-
-		return true;
+		return $this->location = $location;
 	}
 
 	/**
@@ -902,9 +898,6 @@ abstract class ElggEntity implements
 	 * @param float $long
 	 */
 	public function setLatLong($lat, $long) {
-		$lat = sanitise_string($lat);
-		$long = sanitise_string($long);
-
 		$this->set('geo:lat', $lat);
 		$this->set('geo:long', $long);
 
@@ -1550,8 +1543,8 @@ function can_write_to_container($user_guid = 0, $container_guid = 0, $entity_typ
 			$return = TRUE;
 		}
 
-		// Basics, see if the user is a member of the group.
-		if ($user && $container instanceof ElggGroup) {
+		// If still not approved, see if the user is a member of the group.
+		if (!$return && $user && $container instanceof ElggGroup) {
 			if (!$container->isMember($user)) {
 				$return = FALSE;
 			} else {
@@ -1766,8 +1759,8 @@ function get_entity($guid) {
  *	
  *	callback => string A callback function to pass each row through 
  *
- * @return 	if count, int
- * 			if not count, array or false if no entities
+ * @return if count, int. if not count, array or false if no entities. false also on errors.
+ * 
  * @since 1.7.0
  */
 function elgg_get_entities(array $options = array()) {
@@ -1859,7 +1852,7 @@ function elgg_get_entities(array $options = array()) {
 	if ($options['selects']) {
 		$selects = '';
 		foreach ($options['selects'] as $select) {
-			$selects = ", $select";
+			$selects .= ", $select";
 		}
 	} else {
 		$selects = '';
@@ -2175,9 +2168,14 @@ function elgg_get_entity_owner_where_sql($table, $owner_guids) {
 
 	$owner_guids_sanitised = array();
 	foreach ($owner_guids as $owner_guid) {
-		if (($owner_guid != sanitise_int($owner_guid))) {
-			return FALSE;
+		if ($owner_guid !== ELGG_ENTITIES_NO_VALUE) {
+			$owner_guid = sanitise_int($owner_guid);
+
+			if (!$owner_guid) {
+				return false;
+			}
 		}
+		
 		$owner_guids_sanitised[] = $owner_guid;
 	}
 
@@ -2213,9 +2211,14 @@ function elgg_get_entity_container_where_sql($table, $container_guids) {
 
 	$container_guids_sanitised = array();
 	foreach ($container_guids as $container_guid) {
-		if (($container_guid != sanitise_int($container_guid))) {
-			return FALSE;
+		if ($container_guid !== ELGG_ENTITIES_NO_VALUE) {
+			$container_guid = sanitise_int($container_guid);
+			
+			if (!$container_guid) {
+				return false;
+			}
 		}
+
 		$container_guids_sanitised[] = $container_guid;
 	}
 
@@ -2329,8 +2332,12 @@ function elgg_list_entities($options) {
 		'pagination' => TRUE
 	);
 	$options = array_merge($defaults, $options);
+	
+	if (isset($options['count'])) {
+		unset ($options['count']);
+	}
 
-	$count = elgg_get_entities(array_merge(array('count' => TRUE), $options));
+	$count = elgg_get_entities(array_merge($options, array('count' => TRUE)));
 	$entities = elgg_get_entities($options);
 
 	return elgg_view_entity_list($entities, $count, $options['offset'],
@@ -2606,6 +2613,7 @@ function delete_entity($guid, $recursive = true) {
 
 					$entity_disable_override = access_get_show_hidden_status();
 					access_show_hidden_entities(true);
+					$ia = elgg_set_ignore_access(true);
 					$sub_entities = get_data("SELECT * from {$CONFIG->dbprefix}entities
 						WHERE container_guid=$guid
 							or owner_guid=$guid
@@ -2618,6 +2626,7 @@ function delete_entity($guid, $recursive = true) {
 
 					access_show_hidden_entities($entity_disable_override);
 					$__RECURSIVE_DELETE_TOKEN = null;
+					elgg_set_ignore_access($ia);
 				}
 
 				// Now delete the entity itself
@@ -3269,10 +3278,14 @@ function elgg_list_registered_entities($options) {
 		}
 	}
 
-	$options['type_subtype_pairs'] = $typearray;
-
-	$count = elgg_get_entities(array_merge(array('count' => TRUE), $options));
-	$entities = elgg_get_entities($options);
+	if (!empty($typearray)) {
+		$options['type_subtype_pairs'] = $typearray;
+		$count = elgg_get_entities(array_merge(array('count' => TRUE), $options));
+		$entities = elgg_get_entities($options);
+	} else {
+		$count = 0;
+		$entities = array();
+	}
 
 	return elgg_view_entity_list($entities, $count, $options['offset'],
 		$options['limit'], $options['full_view'], $options['view_type_toggle'], $options['pagination']);

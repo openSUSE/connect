@@ -497,7 +497,7 @@ function get_entity_relationships($guid, $inverse_relationship = FALSE) {
  *
  * 	inverse_relationship => BOOL Inverse the relationship
  *
- * @return array
+ * @return if count, int. if not count, array or false if no entities. false also on errors.
  * @since 1.7.0
  */
 function elgg_get_entities_from_relationship($options) {
@@ -721,7 +721,11 @@ function elgg_list_entities_from_relationship($options) {
 
 	$options = array_merge($defaults, $options);
 
-	$count = elgg_get_entities_from_relationship(array_merge(array('count' => TRUE), $options));
+	if (isset($options['count'])) {
+		unset ($options['count']);
+	}
+
+	$count = elgg_get_entities_from_relationship(array_merge($options, array('count' => TRUE)));
 	$entities = elgg_get_entities_from_relationship($options);
 
 	return elgg_view_entity_list($entities, $count, $options['offset'], $options['limit'], $options['full_view'], $options['view_type_toggle'], $options['pagination']);

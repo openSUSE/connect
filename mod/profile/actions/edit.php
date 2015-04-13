@@ -22,7 +22,7 @@
 		 * wrapper for recursive array walk decoding
 		 */
 		function profile_array_decoder(&$v) {
-			$v = html_entity_decode($v, ENT_COMPAT, 'UTF-8');
+			$v = _elgg_html_decode($v);
 		}
 
 
@@ -35,7 +35,7 @@
 			if (is_array($value)) {
 				array_walk_recursive($value, 'profile_array_decoder');
 			} else {
-				$value = html_entity_decode($value, ENT_COMPAT, 'UTF-8');
+				$value = _elgg_html_decode($value);
 			}
 
 			// limit to reasonable sizes.
@@ -43,6 +43,10 @@
 				$error = sprintf(elgg_echo('profile:field_too_long'), elgg_echo("profile:{$shortname}"));
 				register_error($error);
 				forward($_SERVER['HTTP_REFERER']);
+			}
+
+			if (!empty($value) && $valuetype == 'url' && !preg_match('~^https?\://~i', $value)) {
+				$value = "http://$value";
 			}
 
 			if ($valuetype == 'tags') {

@@ -1,3 +1,127 @@
+Version 1.7.19
+(March 14, 2013 from https://github.com/Elgg/Elgg/tree/1.7)
+
+ Contributing Developers:
+  * Cash Costello
+
+ Bug fix:
+  * Fixed display of http:// when website empty on profile
+
+
+Version 1.7.18
+(March 12, 2013 from https://github.com/Elgg/Elgg/tree/1.7)
+
+ Contributing Developers:
+  * Cash Costello
+  * Steve Clay
+
+ Security Enhancements:
+  * Added validation of URLs on user profiles
+
+
+Version 1.7.17
+(January 29, 2013 from https://github.com/Elgg/Elgg/tree/1.7)
+
+ Contributing Developers:
+  * Steve Clay
+
+ Security Enhancements:
+  * Added validation of Twitter usernames in Twitter widget
+
+
+Version 1.7.16
+(November 11, 2012 from https://github.com/Elgg/Elgg/tree/1.7)
+
+ Contributing Developers:
+  * Steve Clay
+
+ Security Enhancements:
+  * Removed XSS vulnerabilities in titles and user profiles
+
+
+Version 1.7.15
+(January 21th, 2011 from https://github.com/Elgg/Elgg/tree/1.7)
+ Contributing Developers and Bug Reporters:
+  * Cash Costello
+  * Juho Jaakkola
+  * ColdTrick
+
+ Bug fixes:
+  * Fixed warnings thrown in search_get_highlighted_relevant_substrings()
+    about mb_strpos().
+  * elgg_get_entities() properly supports multiple selects.
+  * Fixed incorrect handling of viewtypes in js, css, and simplecache.
+  * Correctly translating "Embed / upload media" in Embed plugin.
+  * elgg_list_registered_entities() no longer returns all entities if none
+    are registered.
+  * Fixed possible DB exception in user validation by email plugin.
+  * Fixed OpenDD import.
+
+
+Version 1.7.14
+(October 20th, 2011 from https://github.com/Elgg/Elgg/tree/1.7)
+
+ Contributing Developers:
+  * Cash Costello
+  * Jeroen Dalsem
+  * Brett Profitt
+
+ Security Enhancements:
+  * Fixed a SQL injection and query exposure vulnerability in the search
+    plugin.
+
+ Bug fixes:
+  * Rolled back changes to access system that prevented users from registering
+    if default widgets were enabled.
+  * Default widgets now registers for the correct plugin hook.
+
+
+Version 1.7.13
+(October 8th, 2011 from https://github.com/Elgg/Elgg/tree/1.7)
+
+ Security Enhancements:
+  * Fixed a SQL query exposure vulnerability in the livesearch endpoint.
+
+ Enhancements:
+  * The file plugin will reject uploads that are too large with an error instead
+    of saving an empty file.
+
+ Bugfixes:
+  * Fixed problem that could cause WSOD for logged out users during upgrade.
+  * Pages plugin forwards if no owner on a user's list page instead of empty page.
+
+
+Version 1.7.12
+(September 29th, 2011 from https://github.com/Elgg/Elgg/tree/1.7)
+
+ Enhancements:
+  * Blog supports group archives.
+  * Better detection of file types.
+  * Catching exceptions on profile icon lookup.
+
+ Bugfixes:
+  * Only admins can now run unit tests.
+  * Can drag Widgets in IE 9.
+
+
+Version 1.7.11
+(August 15, 2011 from http://github.com/Elgg/elgg)
+
+ Security Enhancements:
+  * Fixed possible XSS vector in the embed plugin. Thanks to Aung Khant from YEHG for the report.
+  * Fixed possible SQL exposure exploit in the search plugin. Thanks again to Aung Khant.
+  * Fixed possible SQL injection vector in the search plugin. Thanks to Lostmon Lords for the report.
+
+ Bugfixes:
+  * Filtering by content works in the dashboard again.
+  * Dragging widgets works in IE9.
+
+ API Changes:
+  * Deleting a container will delete all contained objects regardless of access_id.
+  * setLocation() and setLatLong() no longer double escapes strings.
+  * Calling elgg_list_entities() with count set no longer breaks the display.
+
+
 Version 1.7.10
 (June 14, 2011 from http://code.elgg.org/branches/1.7)
 
